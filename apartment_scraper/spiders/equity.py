@@ -90,7 +90,7 @@ class EquityResidentialSpider(scrapy.Spider):
                         PageMethod(
                             "wait_for_function",
                             f"document.documentElement.outerHTML.includes({_DATA_MARKER!r})",
-                            timeout=60000,
+                            timeout=30000,
                         ),
                     ],
                 },

@@ -6,6 +6,8 @@ https://docs.scrapy.org/en/latest/topics/settings.html
 
 from typing import Any
 
+from scrapy.settings.default_settings import RETRY_EXCEPTIONS as _DEFAULT_RETRY_EXCEPTIONS
+
 LOG_LEVEL = "INFO"   # DEBUG | INFO | WARNING | ERROR | CRITICAL
 
 BOT_NAME = "apartment_scraper"
@@ -52,7 +54,20 @@ DOWNLOAD_HANDLERS = {
 # launches a *single shared* headed browser for the whole run (it sets
 # PLAYWRIGHT_CDP_URL, in which case these launch options are unused).
 PLAYWRIGHT_LAUNCH_OPTIONS = {"headless": False, "args": ["--no-sandbox"]}
-PLAYWRIGHT_DEFAULT_NAVIGATION_TIMEOUT = 60000
+# Give page navigation 30s to complete; Playwright raises its TimeoutError if a
+# page does not load in time (the spiders set the same 30s on their wait_for_*
+# page methods). The Retries section below turns that timeout into a retry.
+PLAYWRIGHT_DEFAULT_NAVIGATION_TIMEOUT = 30000
+
+# --- Retries ---------------------------------------------------------------
+# Retry a request up to 3 times when a page fails to load within the timeout.
+# This mainly helps get past bot detection (e.g. Cloudflare): a challenge that
+# does not clear in time raises Playwright's TimeoutError, and retrying reloads
+# the page to give the check another chance. That TimeoutError is not in
+# Scrapy's default RETRY_EXCEPTIONS, so append it while keeping the defaults
+# (ordinary connection/timeout errors).
+RETRY_TIMES = 3
+RETRY_EXCEPTIONS = [*_DEFAULT_RETRY_EXCEPTIONS, "playwright.async_api.TimeoutError"]
 
 # A real browser user agent + viewport; Scrapy's default UA is flagged by the bot
 # challenges, after which they never clear.

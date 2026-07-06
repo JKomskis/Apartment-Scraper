@@ -71,6 +71,22 @@ def _full_res_image(url: str | None) -> str | None:
     return _IMAGE_TRANSFORM_RE.sub(r"\1q_auto,f_auto\2", url)
 
 
+def _strip_tracking(url: str) -> str:
+    """Drop RentCafe's per-visit ``_yTrack*`` analytics params from an apply URL.
+
+    RentCafe's client-side "yTrack" script decorates each outbound SecureCafe link
+    with ``_yTrackUser``/``_yTrackVisit``/``_yTrackReqDT`` params that identify the
+    visitor/visit and are regenerated on every visit. They carry no unit data and
+    would churn the stored URL on each crawl, so we remove them while leaving the
+    rest of the URL byte-for-byte intact.
+    """
+    base, sep, query = url.partition("?")
+    if not sep:
+        return url
+    kept = [part for part in query.split("&") if not part.startswith("_yTrack")]
+    return f"{base}?{'&'.join(kept)}" if kept else base
+
+
 class RentCafeSpider(scrapy.Spider):
     name = "rentcafe"
     # Nothing site-specific is hardcoded: the per-community `community` name and
@@ -98,7 +114,7 @@ class RentCafeSpider(scrapy.Spider):
                 meta={
                     "playwright": True,
                     "playwright_page_methods": [
-                        PageMethod("wait_for_selector", "div.fp-container", timeout=60000),
+                        PageMethod("wait_for_selector", "div.fp-container", timeout=30000),
                     ],
                     "units_url": url,
                 },
@@ -130,7 +146,7 @@ class RentCafeSpider(scrapy.Spider):
             meta={
                 "playwright": True,
                 "playwright_page_methods": [
-                    PageMethod("wait_for_selector", "tr.unit-container", timeout=60000),
+                    PageMethod("wait_for_selector", "tr.unit-container", timeout=30000),
                 ],
                 "floor_plan_images": images,
             },
@@ -162,6 +178,6 @@ class RentCafeSpider(scrapy.Spider):
                     square_feet=to_int("".join(row.css("td.td-card-sqft::text").getall())),
                     rent=to_int(rent),
                     available_date=_available_date(available),
-                    url=response.urljoin(apply_url.strip()),
+                    url=_strip_tracking(response.urljoin(apply_url.strip())),
                     floor_plan_image_url=image_url,
                 )
