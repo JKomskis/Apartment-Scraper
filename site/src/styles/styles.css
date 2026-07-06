@@ -261,7 +261,7 @@ a {
 /* Chart cards */
 .charts {
   display: grid;
-  grid-template-columns: repeat(2, 1fr);
+  grid-template-columns: repeat(2, minmax(0, 1fr));
   gap: 16px;
   margin-bottom: 28px;
 }
@@ -291,13 +291,29 @@ a {
   font-size: 0.82rem;
 }
 
+/* Each chart card's canvas fills a container whose HEIGHT comes from a CSS
+ * aspect-ratio (not from the canvas). With maintainAspectRatio:false in the
+ * chart JS, Chart.js just fills this box, so charts keep their proportions and
+ * resize correctly in BOTH directions as the viewport changes. */
 .card__canvas {
   position: relative;
-  height: 300px;
+  aspect-ratio: 16 / 10;
 }
 
 .card--wide .card__canvas {
-  height: 340px;
+  aspect-ratio: 12 / 5;
+}
+
+.card__canvas--square {
+  aspect-ratio: 1 / 1;
+}
+
+/* Position the canvas absolutely so it fills the container without feeding its
+ * own height back into the container's size — that feedback is what stopped the
+ * chart from growing again after the viewport was narrowed. */
+.card__canvas canvas {
+  position: absolute;
+  inset: 0;
 }
 
 /* External HTML legends (rendered by the htmlLegend Chart.js plugin) */
@@ -515,6 +531,6 @@ a {
 
 @media (max-width: 720px) {
   .charts {
-    grid-template-columns: 1fr;
+    grid-template-columns: minmax(0, 1fr);
   }
 }

@@ -107,6 +107,10 @@ export function applyDefaults(Chart) {
   Chart.defaults.color = "#495057";
   Chart.defaults.plugins.legend.labels.usePointStyle = true;
   Chart.defaults.plugins.legend.labels.boxWidth = 10;
+  // Charts fill a container that is sized by a CSS `aspect-ratio` (see
+  // styles.css), so Chart.js should NOT manage the ratio itself — otherwise a
+  // dedicated container's height feeds back into the width and the chart won't
+  // grow again after the viewport shrinks.
   Chart.defaults.maintainAspectRatio = false;
 }
 
