@@ -88,7 +88,7 @@ Chart.register(
           type: "bar",
           data: { labels: dates, datasets: unitDatasets },
           options: {
-            interaction: { mode: "index", intersect: false },
+            interaction: { mode: "nearest", intersect: true },
             plugins: {
               legend: { display: false },
               htmlLegend: { containerID: "unitsOverTime-legend" },
@@ -139,7 +139,7 @@ Chart.register(
           type: "line",
           data: { labels: dates, datasets: rentDatasets },
           options: {
-            interaction: { mode: "index", intersect: false },
+            interaction: { mode: "nearest", intersect: false },
             plugins: {
               legend: { display: false },
               htmlLegend: { containerID: "rentOverTime-legend" },
