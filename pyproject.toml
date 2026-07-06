@@ -1,0 +1,40 @@
+[project]
+name = "apartment-scraper"
+version = "0.1.0"
+description = "Scrapy crawlers that collect apartment availability and export it to JSON for a static site."
+readme = "README.md"
+requires-python = ">=3.13"
+dependencies = [
+    "scrapy>=2.12",
+    "scrapy-playwright>=0.0.40",
+]
+
+[dependency-groups]
+dev = [
+    "ruff>=0.6",
+]
+
+[tool.uv]
+# This is an application, not a distributable library, so uv only needs to
+# manage the dependencies (it does not build/install the project itself).
+package = false
+
+[tool.ruff]
+line-length = 100
+target-version = "py313"
+
+[tool.ruff.lint]
+select = [
+    "E",   # pycodestyle errors
+    "W",   # pycodestyle warnings
+    "F",   # pyflakes
+    "I",   # isort (import sorting)
+    "B",   # flake8-bugbear
+    "C4",  # flake8-comprehensions
+    "SIM", # flake8-simplify
+    "UP",  # pyupgrade
+]
+
+[tool.ruff.format]
+quote-style = "double"
+indent-style = "space"

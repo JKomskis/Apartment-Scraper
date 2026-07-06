@@ -1,0 +1,58 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>{% if title %}{{ title }} · {% endif %}{{ site.title }}</title>
+    <meta name="description" content="{{ site.description }}" />
+    <link rel="stylesheet" href="/styles/styles.css" />
+  </head>
+  <body>
+    <header class="topbar">
+      <div class="topbar__inner">
+        <a class="topbar__brand" href="{{ '/' | url }}">Apartment Availability</a>
+        <nav class="topbar__nav">
+          <a
+            href="{{ '/' | url }}"
+            {% if page.url == '/' %}aria-current="page"{% endif %}
+            >Overview</a
+          >
+          <a
+            href="{{ '/snapshots/' | url }}"
+            {% if '/snapshots/' in page.url %}aria-current="page"{% endif %}
+            >Snapshots</a
+          >
+        </nav>
+      </div>
+    </header>
+
+    <main class="wrap">{{ content | safe }}</main>
+
+    <footer class="footer">
+      <a
+        class="footer__github"
+        href="https://github.com/JKomskis/Apartment-Scraper"
+        target="_blank"
+        rel="noopener"
+        >GitHub</a
+      >
+      <p>
+        Generated from {{ availability.snapshotCount }} snapshot(s)
+        {% if availability.firstDate %}({{ availability.firstDate }} to
+        {{ availability.latestDate }}){% endif %} · {{ availability.generatedAt }}
+      </p>
+    </footer>
+
+    {% if isDashboard %}
+    <script>
+      window.DASHBOARD_DATA = {{ availability.charts | jsonify | safe }};
+    </script>
+    <script type="module" src="/scripts/dashboard.js"></script>
+    {% elif snapshot %}
+    <script>
+      window.SNAPSHOT_DATA = {{ snapshot.charts | jsonify | safe }};
+    </script>
+    <script type="module" src="/scripts/snapshot.js"></script>
+    {% endif %}
+  </body>
+</html>

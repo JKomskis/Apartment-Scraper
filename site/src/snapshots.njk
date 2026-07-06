@@ -1,0 +1,36 @@
+---
+layout: base.njk
+title: Snapshots
+---
+
+<section class="snap-head">
+  <div>
+    <p class="eyebrow">History</p>
+    <h1 class="page-title">Daily snapshots</h1>
+    <p class="muted">
+      {{ snapshots | length }} day(s) of archived availability. Newest first.
+    </p>
+  </div>
+</section>
+
+{% if snapshots | length %}
+<ul class="snap-list">
+  {% for s in snapshots | reverse %}
+  <li>
+    <a class="snap-list__item" href="{{ s.url | url }}">
+      <span class="snap-list__date">{{ s.date }}</span>
+      <span class="snap-list__meta">
+        <span>{{ s.totalUnits | number }} units</span>
+        <span>·</span>
+        <span>{{ s.communityCount }} communities</span>
+        <span>·</span>
+        <span>median {{ s.medianRent | money }}</span>
+      </span>
+      <span class="snap-list__go" aria-hidden="true">→</span>
+    </a>
+  </li>
+  {% endfor %}
+</ul>
+{% else %}
+<p class="muted">No snapshots yet. They appear once the scraper archives daily data.</p>
+{% endif %}

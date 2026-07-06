@@ -1,0 +1,59 @@
+---
+layout: base.njk
+title: Overview
+isDashboard: true
+---
+
+<section class="stats" aria-label="Key metrics">
+  <article class="stat">
+    <span class="stat__label">Available units</span>
+    <span class="stat__value">{{ availability.current.totalUnits | number }}</span>
+  </article>
+  <article class="stat">
+    <span class="stat__label">Communities</span>
+    <span class="stat__value">{{ availability.communities | length }}</span>
+  </article>
+  <article class="stat">
+    <span class="stat__label">Median rent</span>
+    <span class="stat__value">{{ availability.current.medianRent | money }}</span>
+  </article>
+  <article class="stat">
+    <span class="stat__label">Average rent</span>
+    <span class="stat__value">{{ availability.current.avgRent | money }}</span>
+  </article>
+  <article class="stat">
+    <span class="stat__label">Lowest rent</span>
+    <span class="stat__value">{{ availability.current.minRent | money }}</span>
+  </article>
+  <article class="stat">
+    <span class="stat__label">Highest rent</span>
+    <span class="stat__value">{{ availability.current.maxRent | money }}</span>
+  </article>
+</section>
+
+<div class="chart-filter">
+  <label class="chart-filter__label" for="dashBeds">Bedrooms</label>
+  <select id="dashBeds" class="listings__select" aria-label="Filter charts by bedrooms">
+    <option value="all">All bedrooms</option>
+  </select>
+</div>
+
+<section class="charts" aria-label="Charts">
+  <figure class="card card--wide">
+    <figcaption class="card__title">Available units over time</figcaption>
+    <p class="card__hint">Stacked by community.</p>
+    <div class="card__canvas">
+      <canvas id="unitsOverTime"></canvas>
+    </div>
+    <div id="unitsOverTime-legend" class="card__legend"></div>
+  </figure>
+
+  <figure class="card card--wide">
+    <figcaption class="card__title">Average rent over time</figcaption>
+    <p class="card__hint">Solid line = all communities; dashed = per community.</p>
+    <div class="card__canvas">
+      <canvas id="rentOverTime"></canvas>
+    </div>
+    <div id="rentOverTime-legend" class="card__legend"></div>
+  </figure>
+</section>

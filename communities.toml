@@ -1,0 +1,64 @@
+# Communities to scrape. `run.py` launches one spider per entry, all in parallel,
+# and writes the combined result to data/availability.json.
+#
+# Per entry:
+#   name    - the community name (passed to the spider as `community`)
+#   spider  - which spider to use (see: uv run scrapy list)
+#   <other> - any other key is passed to the spider as a constructor argument,
+#             e.g. start_urls, or a platform-specific property id.
+#
+# Communities that share a hosting platform can reuse the same spider with
+# different arguments.
+
+[[communities]]
+name = "Parkside Esterra Park"
+spider = "jonah"
+start_urls = ["https://parksideesterrapark.com/floorplans/"]
+
+[[communities]]
+name = "Hyde Square"
+spider = "jonah"
+start_urls = ["https://hydesquare.com/floorplans/"]
+
+[[communities]]
+name = "Verde Esterra Park"
+spider = "jonah"
+start_urls = ["https://verdeesterrapark.com/floorplans/"]
+
+# RentCafe community behind Cloudflare; the rentcafe spider renders headed, so run
+# via `xvfb-run -a uv run python run.py`. Reuse for other RentCafe sites by
+# pointing start_urls at their /availableunits page.
+[[communities]]
+name = "Vue 22 Apartments"
+spider = "rentcafe"
+start_urls = ["https://www.vue22apts.com/availableunits"]
+
+[[communities]]
+name = "Avalon Esterra Park"
+spider = "avalon"
+start_urls = ["https://www.avaloncommunities.com/washington/redmond-apartments/avalon-esterra-park/"]
+
+[[communities]]
+name = "AVA Esterra Park"
+spider = "avalon"
+start_urls = ["https://www.avaloncommunities.com/washington/redmond-apartments/ava-esterra-park/"]
+
+[[communities]]
+name = "Avalon Redmond Campus"
+spider = "avalon"
+start_urls = ["https://www.avaloncommunities.com/washington/redmond-apartments/avalon-redmond-campus/"]
+
+[[communities]]
+name = "Nightingale"
+spider = "g5rainmaker"
+start_urls = ["https://www.livenightingale.com/apartments/wa/redmond/floor-plans"]
+
+[[communities]]
+name = "Zephyr on the Park Apartments"
+spider = "equity"
+start_urls = ["https://www.equityapartments.com/seattle/downtown-redmond/zephyr-on-the-park-apartments"]
+
+# [[communities]]
+# name = "Example Community"
+# spider = "example"
+# start_urls = ["https://www.example.com/availableunits"]

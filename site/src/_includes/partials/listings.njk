@@ -1,0 +1,74 @@
+{#
+  Reusable availability listings table with client-side filters (free-text
+  search plus Community / Beds / Baths dropdowns). `idBase` namespaces the
+  control and table element ids; JS wires them up via AptCharts.initListingFilters.
+  Each row carries data-* attributes so filtering is robust to display formatting.
+#}
+{% macro listingsTable(listings, title, idBase) %}
+<section class="listings" aria-label="{{ title }}">
+  <div class="listings__head">
+    <h2 class="listings__title">{{ title }}</h2>
+    <div class="listings__filters">
+      <input
+        id="{{ idBase }}-search"
+        class="listings__filter"
+        type="search"
+        placeholder="Search…"
+        aria-label="Search listings"
+      />
+      <select id="{{ idBase }}-community" class="listings__select" aria-label="Filter by community">
+        <option value="">All communities</option>
+      </select>
+      <select id="{{ idBase }}-beds" class="listings__select" aria-label="Filter by bedrooms">
+        <option value="">All beds</option>
+      </select>
+      <select id="{{ idBase }}-baths" class="listings__select" aria-label="Filter by bathrooms">
+        <option value="">All baths</option>
+      </select>
+    </div>
+  </div>
+
+  <p class="listings__count" id="{{ idBase }}-count" aria-live="polite"></p>
+
+  <div class="listings__scroll">
+    <table id="{{ idBase }}-table" class="listings__table">
+      <thead>
+        <tr>
+          <th scope="col">Community</th>
+          <th scope="col">Unit</th>
+          <th scope="col">Floor plan</th>
+          <th scope="col" class="num">Beds</th>
+          <th scope="col" class="num">Baths</th>
+          <th scope="col" class="num">Sq ft</th>
+          <th scope="col" class="num">Rent</th>
+          <th scope="col">Available</th>
+          <th scope="col"></th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for unit in listings %}
+        <tr
+          data-community="{{ unit.community }}"
+          data-bedrooms="{{ unit.bedrooms }}"
+          data-bathrooms="{{ unit.bathrooms }}"
+        >
+          <td>{{ unit.community }}</td>
+          <td>{{ unit.unit or "—" }}</td>
+          <td>{{ unit.floor_plan or "—" }}</td>
+          <td class="num" data-sort="{{ unit.bedrooms }}">
+            {% if unit.bedrooms == 0 %}Studio{% elif unit.bedrooms %}{{ unit.bedrooms }}{% else %}—{% endif %}
+          </td>
+          <td class="num" data-sort="{{ unit.bathrooms }}">{{ unit.bathrooms if unit.bathrooms else "—" }}</td>
+          <td class="num" data-sort="{{ unit.square_feet }}">{{ unit.square_feet | number }}</td>
+          <td class="num" data-sort="{{ unit.rent }}">{{ unit.rent | money }}</td>
+          <td data-sort="{{ unit.available_date }}">{{ unit.available_date or "—" }}</td>
+          <td>
+            {% if unit.url %}<a href="{{ unit.url }}" target="_blank" rel="noopener">View</a>{% endif %}
+          </td>
+        </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+  </div>
+</section>
+{% endmacro %}

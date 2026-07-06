@@ -1,0 +1,116 @@
+---
+layout: base.njk
+pagination:
+  data: snapshots
+  size: 1
+  alias: snapshot
+permalink: "/snapshots/{{ snapshot.slug }}/"
+eleventyComputed:
+  title: "Snapshot {{ snapshot.date }}"
+---
+
+{% from "partials/listings.njk" import listingsTable %}
+
+<section class="snap-head">
+  <div>
+    <p class="eyebrow">Daily snapshot</p>
+    <h1 class="page-title">{{ snapshot.date }}</h1>
+    <p class="muted">
+      {{ snapshot.totalUnits | number }} available units across
+      {{ snapshot.communityCount }} communities
+    </p>
+  </div>
+
+  <nav class="snap-nav" aria-label="Snapshot navigation">
+    {% if snapshot.prev %}
+    <a class="btn" href="{{ snapshot.prev.url | url }}" rel="prev">
+      <span aria-hidden="true">←</span> {{ snapshot.prev.date }}
+    </a>
+    {% else %}
+    <span class="btn btn--disabled" aria-disabled="true">
+      <span aria-hidden="true">←</span> Previous
+    </span>
+    {% endif %}
+
+    <a class="btn btn--ghost" href="{{ '/snapshots/' | url }}">All</a>
+
+    {% if snapshot.next %}
+    <a class="btn" href="{{ snapshot.next.url | url }}" rel="next">
+      {{ snapshot.next.date }} <span aria-hidden="true">→</span>
+    </a>
+    {% else %}
+    <span class="btn btn--disabled" aria-disabled="true">
+      Next <span aria-hidden="true">→</span>
+    </span>
+    {% endif %}
+  </nav>
+</section>
+
+<section class="stats" aria-label="Snapshot metrics">
+  <article class="stat">
+    <span class="stat__label">Available units</span>
+    <span class="stat__value">{{ snapshot.totalUnits | number }}</span>
+  </article>
+  <article class="stat">
+    <span class="stat__label">Communities</span>
+    <span class="stat__value">{{ snapshot.communityCount }}</span>
+  </article>
+  <article class="stat">
+    <span class="stat__label">Median rent</span>
+    <span class="stat__value">{{ snapshot.medianRent | money }}</span>
+  </article>
+  <article class="stat">
+    <span class="stat__label">Average rent</span>
+    <span class="stat__value">{{ snapshot.avgRent | money }}</span>
+  </article>
+  <article class="stat">
+    <span class="stat__label">Lowest rent</span>
+    <span class="stat__value">{{ snapshot.minRent | money }}</span>
+  </article>
+  <article class="stat">
+    <span class="stat__label">Highest rent</span>
+    <span class="stat__value">{{ snapshot.maxRent | money }}</span>
+  </article>
+</section>
+
+<div class="chart-filter">
+  <label class="chart-filter__label" for="snapBeds">Bedrooms</label>
+  <select id="snapBeds" class="listings__select" aria-label="Filter charts by bedrooms">
+    <option value="all">All bedrooms</option>
+  </select>
+</div>
+
+<section class="charts" aria-label="Snapshot charts">
+  <figure class="card">
+    <figcaption class="card__title">Units by community</figcaption>
+    <div class="card__canvas">
+      <canvas id="snapUnitsByCommunity"></canvas>
+    </div>
+    <div id="snapUnitsByCommunity-legend" class="card__legend"></div>
+  </figure>
+
+  <figure class="card">
+    <figcaption class="card__title">Units by floor-plan size</figcaption>
+    <div class="card__canvas">
+      <canvas id="snapUnitsByBedrooms"></canvas>
+    </div>
+    <div id="snapUnitsByBedrooms-legend" class="card__legend"></div>
+  </figure>
+
+  <figure class="card">
+    <figcaption class="card__title">Average rent by size</figcaption>
+    <div class="card__canvas">
+      <canvas id="snapRentByBedrooms"></canvas>
+    </div>
+  </figure>
+
+  <figure class="card">
+    <figcaption class="card__title">Rent distribution</figcaption>
+    <p class="card__hint">Units grouped into $250 bands.</p>
+    <div class="card__canvas">
+      <canvas id="snapRentHistogram"></canvas>
+    </div>
+  </figure>
+</section>
+
+{{ listingsTable(snapshot.listings, "Listings on " + snapshot.date, "snap") }}

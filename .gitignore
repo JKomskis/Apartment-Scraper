@@ -1,0 +1,27 @@
+# Byte-compiled / optimized / cache
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Virtual environments
+.venv/
+venv/
+env/
+
+# uv
+# (uv.lock SHOULD be committed so builds are reproducible.)
+
+# Distribution / packaging
+build/
+dist/
+*.egg-info/
+
+# Scrapy
+.scrapy/
+*.log
+httpcache/
+
+# Editor / OS
+.idea/
+.vscode/
+.DS_Store

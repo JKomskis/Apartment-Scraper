@@ -1,0 +1,25 @@
+{
+  "name": "apartment-availability-site",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Eleventy static dashboard that visualizes apartment availability data collected by the scraper.",
+  "scripts": {
+    "build": "eleventy",
+    "serve": "eleventy --serve --incremental",
+    "clean": "rm -rf _site"
+  },
+  "keywords": [
+    "eleventy",
+    "chart.js",
+    "dashboard",
+    "apartments"
+  ],
+  "license": "MIT",
+  "devDependencies": {
+    "@11ty/eleventy": "^3.0.0",
+    "@11ty/eleventy-plugin-vite": "^8.0.0"
+  },
+  "dependencies": {
+    "chart.js": "^4.4.7"
+  }
+}

@@ -1,0 +1,4 @@
+node_modules/
+_site/
+.cache/
+.11ty-vite/
