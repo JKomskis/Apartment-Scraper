@@ -66,7 +66,7 @@ jobs:
           read -r YEAR MONTH DAY <<< "$(date -u +'%Y %m %d')"
           DEST_DIR="data/${YEAR}/${MONTH}"
           mkdir -p "$DEST_DIR"
-          ARCHIVE="${DEST_DIR}/inventory_${YEAR}_${MONTH}_${DAY}.json.gz"
+          ARCHIVE="${DEST_DIR}/availability_${YEAR}_${MONTH}_${DAY}.json.gzip"
           gzip -9 -c data/availability.json > "$ARCHIVE"
           echo "archive=${ARCHIVE}" >> "$GITHUB_ENV"
           echo "snapshot_date=${YEAR}-${MONTH}-${DAY}" >> "$GITHUB_ENV"
