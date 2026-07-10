@@ -34,6 +34,11 @@ spider = "rentcafe"
 start_urls = ["https://www.vue22apts.com/availableunits"]
 
 [[communities]]
+name = "Bell Overlake Apartments"
+spider = "rentcafe"
+start_urls = ["https://qrc.belloverlake.com/availableunits"]
+
+[[communities]]
 name = "Avalon Esterra Park"
 spider = "avalon"
 start_urls = ["https://www.avaloncommunities.com/washington/redmond-apartments/avalon-esterra-park/"]
