@@ -1,0 +1,4699 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Snapshot 2026-07-07 · Apartment Availability Dashboard</title>
+    <meta name="description" content="Daily apartment availability, rent trends and floor-plan mix across tracked communities." />
+    <script type="module" crossorigin src="/Apartment-Scraper/assets/charts-D9r3jfOg.js"></script>
+    <script type="module" crossorigin src="/Apartment-Scraper/assets/snapshot-DHIn-4kH.js"></script>
+    <link rel="stylesheet" crossorigin href="/Apartment-Scraper/assets/styles-sJP6Tmkv.css">
+  </head>
+  <body>
+    <header class="topbar">
+      <div class="topbar__inner">
+        <a class="topbar__brand" href="/Apartment-Scraper/">Apartment Availability</a>
+        <nav class="topbar__nav">
+          <a
+            href="/Apartment-Scraper/"
+            
+            >Overview</a
+          >
+          <a
+            href="/Apartment-Scraper/snapshots/"
+            aria-current="page"
+            >Snapshots</a
+          >
+        </nav>
+      </div>
+    </header>
+
+    <main class="wrap">
+
+
+<section class="snap-head">
+  <div>
+    <p class="eyebrow">Daily snapshot</p>
+    <h1 class="page-title">2026-07-07</h1>
+    <p class="muted">
+      225 available units across
+      9 communities
+    </p>
+  </div>
+
+  <nav class="snap-nav" aria-label="Snapshot navigation">
+    
+    <a class="btn" href="/Apartment-Scraper/snapshots/2026-07-06/" rel="prev">
+      <span aria-hidden="true">←</span> 2026-07-06
+    </a>
+    
+
+    <a class="btn btn--ghost" href="/Apartment-Scraper/snapshots/">All</a>
+
+    
+    <a class="btn" href="/Apartment-Scraper/snapshots/2026-07-08/" rel="next">
+      2026-07-08 <span aria-hidden="true">→</span>
+    </a>
+    
+  </nav>
+</section>
+
+<section class="stats" aria-label="Snapshot metrics">
+  <article class="stat">
+    <span class="stat__label">Available units</span>
+    <span class="stat__value">225</span>
+  </article>
+  <article class="stat">
+    <span class="stat__label">Communities</span>
+    <span class="stat__value">9</span>
+  </article>
+  <article class="stat">
+    <span class="stat__label">Median rent</span>
+    <span class="stat__value">$2,560</span>
+  </article>
+  <article class="stat">
+    <span class="stat__label">Average rent</span>
+    <span class="stat__value">$2,703</span>
+  </article>
+  <article class="stat">
+    <span class="stat__label">Lowest rent</span>
+    <span class="stat__value">$1,764</span>
+  </article>
+  <article class="stat">
+    <span class="stat__label">Highest rent</span>
+    <span class="stat__value">$4,810</span>
+  </article>
+</section>
+
+<div class="chart-filter">
+  <label class="chart-filter__label" for="snapBeds">Bedrooms</label>
+  <select id="snapBeds" class="listings__select" aria-label="Filter charts by bedrooms">
+    <option value="all">All bedrooms</option>
+  </select>
+</div>
+
+<section class="charts" aria-label="Snapshot charts">
+  <figure class="card">
+    <figcaption class="card__title">Units by community</figcaption>
+    <div class="card__canvas card__canvas--square">
+      <canvas id="snapUnitsByCommunity"></canvas>
+    </div>
+    <div id="snapUnitsByCommunity-legend" class="card__legend"></div>
+  </figure>
+
+  <figure class="card">
+    <figcaption class="card__title">Units by floor-plan size</figcaption>
+    <div class="card__canvas card__canvas--square">
+      <canvas id="snapUnitsByBedrooms"></canvas>
+    </div>
+    <div id="snapUnitsByBedrooms-legend" class="card__legend"></div>
+  </figure>
+
+  <figure class="card">
+    <figcaption class="card__title">Average rent by size</figcaption>
+    <div class="card__canvas">
+      <canvas id="snapRentByBedrooms"></canvas>
+    </div>
+  </figure>
+
+  <figure class="card">
+    <figcaption class="card__title">Rent distribution</figcaption>
+    <p class="card__hint">Units grouped into $250 bands.</p>
+    <div class="card__canvas">
+      <canvas id="snapRentHistogram"></canvas>
+    </div>
+  </figure>
+</section>
+
+
+<section class="listings" aria-label="Listings on 2026-07-07">
+  <div class="listings__head">
+    <h2 class="listings__title">Listings on 2026-07-07</h2>
+    <div class="listings__filters">
+      <input
+        id="snap-search"
+        class="listings__filter"
+        type="search"
+        placeholder="Search…"
+        aria-label="Search listings"
+      />
+      <select id="snap-community" class="listings__select" aria-label="Filter by community">
+        <option value="">All communities</option>
+      </select>
+      <select id="snap-beds" class="listings__select" aria-label="Filter by bedrooms">
+        <option value="">All beds</option>
+      </select>
+      <select id="snap-baths" class="listings__select" aria-label="Filter by bathrooms">
+        <option value="">All baths</option>
+      </select>
+    </div>
+  </div>
+
+  <p class="listings__count" id="snap-count" aria-live="polite"></p>
+
+  <div class="listings__scroll">
+    <table id="snap-table" class="listings__table">
+      <thead>
+        <tr>
+          <th scope="col">Community</th>
+          <th scope="col">Unit</th>
+          <th scope="col">Floor plan</th>
+          <th scope="col" class="num">Beds</th>
+          <th scope="col" class="num">Baths</th>
+          <th scope="col" class="num">Sq ft</th>
+          <th scope="col" class="num">Rent</th>
+          <th scope="col">Available</th>
+          <th scope="col"></th>
+        </tr>
+      </thead>
+      <tbody>
+        
+        <tr
+          data-community="AVA Esterra Park"
+          data-bedrooms="0"
+          data-bathrooms="1"
+        >
+          <td>AVA Esterra Park</td>
+          <td>001-634</td>
+          <td>S1</td>
+          <td class="num" data-sort="0">
+            Studio
+          </td>
+          <td class="num" data-sort="1">1</td>
+          <td class="num" data-sort="462">462</td>
+          <td class="num" data-sort="1935">$1,935</td>
+          <td data-sort="2026-07-12">2026-07-12</td>
+          <td>
+            <a href="https://www.avaloncommunities.com/washington/redmond-apartments/ava-esterra-park/apartment/WA031-WA031-001-634" target="_blank" rel="noopener">View</a>
+          </td>
+        </tr>
+        
+        <tr
+          data-community="AVA Esterra Park"
+          data-bedrooms="0"
+          data-bathrooms="1"
+        >
+          <td>AVA Esterra Park</td>
+          <td>001-715</td>
+          <td>S4</td>
+          <td class="num" data-sort="0">
+            Studio
+          </td>
+          <td class="num" data-sort="1">1</td>
+          <td class="num" data-sort="490">490</td>
+          <td class="num" data-sort="1985">$1,985</td>
+          <td data-sort="2026-07-12">2026-07-12</td>
+          <td>
+            <a href="https://www.avaloncommunities.com/washington/redmond-apartments/ava-esterra-park/apartment/WA031-WA031-001-715" target="_blank" rel="noopener">View</a>
+          </td>
+        </tr>
+        
+        <tr
+          data-community="AVA Esterra Park"
+          data-bedrooms="0"
+          data-bathrooms="1"
+        >
+          <td>AVA Esterra Park</td>
+          <td>001-413</td>
+          <td>S4</td>
+          <td class="num" data-sort="0">
+            Studio
+          </td>
+          <td class="num" data-sort="1">1</td>
+          <td class="num" data-sort="490">490</td>
+          <td class="num" data-sort="2015">$2,015</td>
+          <td data-sort="2026-11-07">2026-11-07</td>
+          <td>
+            <a href="https://www.avaloncommunities.com/washington/redmond-apartments/ava-esterra-park/apartment/WA031-WA031-001-413" target="_blank" rel="noopener">View</a>
+          </td>
+        </tr>
+        
+        <tr
+          data-community="AVA Esterra Park"
+          data-bedrooms="0"
+          data-bathrooms="1"
+        >
+          <td>AVA Esterra Park</td>
+          <td>001-727</td>
+          <td>SM04-2</td>
+          <td class="num" data-sort="0">
+            Studio
+          </td>
+          <td class="num" data-sort="1">1</td>
+          <td class="num" data-sort="522">522</td>
+          <td class="num" data-sort="2095">$2,095</td>
+          <td data-sort="2026-08-14">2026-08-14</td>
+          <td>
+            <a href="https://www.avaloncommunities.com/washington/redmond-apartments/ava-esterra-park/apartment/WA031-WA031-001-727" target="_blank" rel="noopener">View</a>
+          </td>
+        </tr>
+        
+        <tr
+          data-community="AVA Esterra Park"
+          data-bedrooms="1"
+          data-bathrooms="1"
+        >
+          <td>AVA Esterra Park</td>
+          <td>001-448</td>
+          <td>A3</td>
+          <td class="num" data-sort="1">
+            1
+          </td>
+          <td class="num" data-sort="1">1</td>
+          <td class="num" data-sort="624">624</td>
+          <td class="num" data-sort="2265">$2,265</td>
+          <td data-sort="2026-07-12">2026-07-12</td>
+          <td>
+            <a href="https://www.avaloncommunities.com/washington/redmond-apartments/ava-esterra-park/apartment/WA031-WA031-001-448" target="_blank" rel="noopener">View</a>
+          </td>
+        </tr>
+        
+        <tr
+          data-community="AVA Esterra Park"
+          data-bedrooms="1"
+          data-bathrooms="1"
+        >
+          <td>AVA Esterra Park</td>
+          <td>001-740</td>
+          <td>AM01</td>
+          <td class="num" data-sort="1">
+            1
+          </td>
+          <td class="num" data-sort="1">1</td>
+          <td class="num" data-sort="569">569</td>
+          <td class="num" data-sort="2300">$2,300</td>
+          <td data-sort="2026-07-12">2026-07-12</td>
+          <td>
+            <a href="https://www.avaloncommunities.com/washington/redmond-apartments/ava-esterra-park/apartment/WA031-WA031-001-740" target="_blank" rel="noopener">View</a>
+          </td>
+        </tr>
+        
+        <tr
+          data-community="AVA Esterra Park"
+          data-bedrooms="1"
+          data-bathrooms="1"
+        >
+          <td>AVA Esterra Park</td>
+          <td>001-540</td>
+          <td>AM01</td>
+          <td class="num" data-sort="1">
+            1
+          </td>
+          <td class="num" data-sort="1">1</td>
+          <td class="num" data-sort="569">569</td>
+          <td class="num" data-sort="2310">$2,310</td>
+          <td data-sort="2026-07-12">2026-07-12</td>
+          <td>
+            <a href="https://www.avaloncommunities.com/washington/redmond-apartments/ava-esterra-park/apartment/WA031-WA031-001-540" target="_blank" rel="noopener">View</a>
+          </td>
+        </tr>
+        
+        <tr
+          data-community="AVA Esterra Park"
+          data-bedrooms="1"
+          data-bathrooms="1"
+        >
+          <td>AVA Esterra Park</td>
+          <td>001-819</td>
+          <td>A2</td>
+          <td class="num" data-sort="1">
+            1
+          </td>
+          <td class="num" data-sort="1">1</td>
+          <td class="num" data-sort="598">598</td>
+          <td class="num" data-sort="2325">$2,325</td>
+          <td data-sort="2026-07-12">2026-07-12</td>
+          <td>
+            <a href="https://www.avaloncommunities.com/washington/redmond-apartments/ava-esterra-park/apartment/WA031-WA031-001-819" target="_blank" rel="noopener">View</a>
+          </td>
+        </tr>
+        
+        <tr
+          data-community="AVA Esterra Park"
+          data-bedrooms="1"
+          data-bathrooms="1"
+        >
+          <td>AVA Esterra Park</td>
+          <td>001-649</td>
+          <td>A5</td>
+          <td class="num" data-sort="1">
+            1
+          </td>
+          <td class="num" data-sort="1">1</td>
+          <td class="num" data-sort="667">667</td>
+          <td class="num" data-sort="2415">$2,415</td>
+          <td data-sort="2026-08-15">2026-08-15</td>
+          <td>
+            <a href="https://www.avaloncommunities.com/washington/redmond-apartments/ava-esterra-park/apartment/WA031-WA031-001-649" target="_blank" rel="noopener">View</a>
+          </td>
+        </tr>
+        
+        <tr
+          data-community="AVA Esterra Park"
+          data-bedrooms="1"
+          data-bathrooms="1"
+        >
+          <td>AVA Esterra Park</td>
+          <td>001-724</td>
+          <td>A7</td>
+          <td class="num" data-sort="1">
+            1
+          </td>
+          <td class="num" data-sort="1">1</td>
+          <td class="num" data-sort="685">685</td>
+          <td class="num" data-sort="2425">$2,425</td>
+          <td data-sort="2026-07-15">2026-07-15</td>
+          <td>
+            <a href="https://www.avaloncommunities.com/washington/redmond-apartments/ava-esterra-park/apartment/WA031-WA031-001-724" target="_blank" rel="noopener">View</a>
+          </td>
+        </tr>
+        
+        <tr
+          data-community="AVA Esterra Park"
+          data-bedrooms="1"
+          data-bathrooms="1"
+        >
+          <td>AVA Esterra Park</td>
+          <td>001-752</td>
+          <td>A22</td>
+          <td class="num" data-sort="1">
+            1
+          </td>
+          <td class="num" data-sort="1">1</td>
+          <td class="num" data-sort="736">736</td>
+          <td class="num" data-sort="2425">$2,425</td>
+          <td data-sort="2026-07-08">2026-07-08</td>
+          <td>
+            <a href="https://www.avaloncommunities.com/washington/redmond-apartments/ava-esterra-park/apartment/WA031-WA031-001-752" target="_blank" rel="noopener">View</a>
+          </td>
+        </tr>
+        
+        <tr
+          data-community="AVA Esterra Park"
+          data-bedrooms="1"
+          data-bathrooms="1"
+        >
+          <td>AVA Esterra Park</td>
+          <td>001-646</td>
+          <td>A12</td>
+          <td class="num" data-sort="1">
+            1
+          </td>
+          <td class="num" data-sort="1">1</td>
+          <td class="num" data-sort="733">733</td>
+          <td class="num" data-sort="2490">$2,490</td>
+          <td data-sort="2026-07-12">2026-07-12</td>
+          <td>
+            <a href="https://www.avaloncommunities.com/washington/redmond-apartments/ava-esterra-park/apartment/WA031-WA031-001-646" target="_blank" rel="noopener">View</a>
+          </td>
+        </tr>
+        
+        <tr
+          data-community="AVA Esterra Park"
+          data-bedrooms="1"
+          data-bathrooms="1"
+        >
+          <td>AVA Esterra Park</td>
+          <td>001-852</td>
+          <td>A22</td>
+          <td class="num" data-sort="1">
+            1
+          </td>
+          <td class="num" data-sort="1">1</td>
+          <td class="num" data-sort="736">736</td>
+          <td class="num" data-sort="2510">$2,510</td>
+          <td data-sort="2026-07-16">2026-07-16</td>
+          <td>
+            <a href="https://www.avaloncommunities.com/washington/redmond-apartments/ava-esterra-park/apartment/WA031-WA031-001-852" target="_blank" rel="noopener">View</a>
+          </td>
+        </tr>
+        
+        <tr
+          data-community="AVA Esterra Park"
+          data-bedrooms="1"
+          data-bathrooms="1"
+        >
+          <td>AVA Esterra Park</td>
+          <td>001-439</td>
+          <td>A13</td>
+          <td class="num" data-sort="1">
+            1
+          </td>
+          <td class="num" data-sort="1">1</td>
+          <td class="num" data-sort="725">725</td>
+          <td class="num" data-sort="2560">$2,560</td>
+          <td data-sort="2026-10-27">2026-10-27</td>
+          <td>
+            <a href="https://www.avaloncommunities.com/washington/redmond-apartments/ava-esterra-park/apartment/WA031-WA031-001-439" target="_blank" rel="noopener">View</a>
+          </td>
+        </tr>
+        
+        <tr
+          data-community="AVA Esterra Park"
+          data-bedrooms="1"
+          data-bathrooms="1"
+        >
+          <td>AVA Esterra Park</td>
+          <td>001-441</td>
+          <td>A13</td>
+          <td class="num" data-sort="1">
+            1
+          </td>
+          <td class="num" data-sort="1">1</td>
+          <td class="num" data-sort="725">725</td>
+          <td class="num" data-sort="2560">$2,560</td>
+          <td data-sort="2026-09-29">2026-09-29</td>
+          <td>
+            <a href="https://www.avaloncommunities.com/washington/redmond-apartments/ava-esterra-park/apartment/WA031-WA031-001-441" target="_blank" rel="noopener">View</a>
+          </td>
+        </tr>
+        
+        <tr
+          data-community="AVA Esterra Park"
+          data-bedrooms="1"
+          data-bathrooms="1"
+        >
+          <td>AVA Esterra Park</td>
+          <td>001-543</td>
+          <td>AM10</td>
+          <td class="num" data-sort="1">
+            1
+          </td>
+          <td class="num" data-sort="1">1</td>
+          <td class="num" data-sort="751">751</td>
+          <td class="num" data-sort="2630">$2,630</td>
+          <td data-sort="2026-08-10">2026-08-10</td>
+          <td>
+            <a href="https://www.avaloncommunities.com/washington/redmond-apartments/ava-esterra-park/apartment/WA031-WA031-001-543" target="_blank" rel="noopener">View</a>
+          </td>
+        </tr>
+        
+        <tr
+          data-community="AVA Esterra Park"
+          data-bedrooms="1"
+          data-bathrooms="1.5"
+        >
+          <td>AVA Esterra Park</td>
+          <td>001-103</td>
+          <td>A1L</td>
+          <td class="num" data-sort="1">
+            1
+          </td>
+          <td class="num" data-sort="1.5">1.5</td>
+          <td class="num" data-sort="896">896</td>
+          <td class="num" data-sort="2845">$2,845</td>
+          <td data-sort="2026-08-07">2026-08-07</td>
+          <td>
+            <a href="https://www.avaloncommunities.com/washington/redmond-apartments/ava-esterra-park/apartment/WA031-WA031-001-103" target="_blank" rel="noopener">View</a>
+          </td>
+        </tr>
+        
+        <tr
+          data-community="AVA Esterra Park"
+          data-bedrooms="1"
+          data-bathrooms="1.5"
+        >
+          <td>AVA Esterra Park</td>
+          <td>001-107</td>
+          <td>A4L</td>
+          <td class="num" data-sort="1">
+            1
+          </td>
+          <td class="num" data-sort="1.5">1.5</td>
+          <td class="num" data-sort="1085">1,085</td>
+          <td class="num" data-sort="2992">$2,992</td>
+          <td data-sort="2026-07-08">2026-07-08</td>
+          <td>
+            <a href="https://www.avaloncommunities.com/washington/redmond-apartments/ava-esterra-park/apartment/WA031-WA031-001-107" target="_blank" rel="noopener">View</a>
+          </td>
+        </tr>
+        
+        <tr
+          data-community="AVA Esterra Park"
+          data-bedrooms="2"
+          data-bathrooms="2"
+        >
+          <td>AVA Esterra Park</td>
+          <td>001-856</td>
+          <td>B3</td>
+          <td class="num" data-sort="2">
+            2
+          </td>
+          <td class="num" data-sort="2">2</td>
+          <td class="num" data-sort="1080">1,080</td>
+          <td class="num" data-sort="3730">$3,730</td>
+          <td data-sort="2026-07-08">2026-07-08</td>
+          <td>
+            <a href="https://www.avaloncommunities.com/washington/redmond-apartments/ava-esterra-park/apartment/WA031-WA031-001-856" target="_blank" rel="noopener">View</a>
+          </td>
+        </tr>
+        
+        <tr
+          data-community="AVA Esterra Park"
+          data-bedrooms="2"
+          data-bathrooms="2"
+        >
+          <td>AVA Esterra Park</td>
+          <td>001-730</td>
+          <td>B6D</td>
+          <td class="num" data-sort="2">
+            2
+          </td>
+          <td class="num" data-sort="2">2</td>
+          <td class="num" data-sort="1310">1,310</td>
+          <td class="num" data-sort="3841">$3,841</td>
+          <td data-sort="2026-07-08">2026-07-08</td>
+          <td>
+            <a href="https://www.avaloncommunities.com/washington/redmond-apartments/ava-esterra-park/apartment/WA031-WA031-001-730" target="_blank" rel="noopener">View</a>
+          </td>
+        </tr>
+        
+        <tr
+          data-community="AVA Esterra Park"
+          data-bedrooms="2"
+          data-bathrooms="2"
+        >
+          <td>AVA Esterra Park</td>
+          <td>001-630</td>
+          <td>B6D</td>
+          <td class="num" data-sort="2">
+            2
+          </td>
+          <td class="num" data-sort="2">2</td>
+          <td class="num" data-sort="1310">1,310</td>
+          <td class="num" data-sort="3881">$3,881</td>
+          <td data-sort="2026-07-16">2026-07-16</td>
+          <td>
+            <a href="https://www.avaloncommunities.com/washington/redmond-apartments/ava-esterra-park/apartment/WA031-WA031-001-630" target="_blank" rel="noopener">View</a>
+          </td>
+        </tr>
+        
+        <tr
+          data-community="Avalon Esterra Park"
+          data-bedrooms="0"
+          data-bathrooms="1"
+        >
+          <td>Avalon Esterra Park</td>
+          <td>002-460</td>
+          <td>S4-581</td>
+          <td class="num" data-sort="0">
+            Studio
+          </td>
+          <td class="num" data-sort="1">1</td>
+          <td class="num" data-sort="581">581</td>
+          <td class="num" data-sort="2075">$2,075</td>
+          <td data-sort="2026-07-08">2026-07-08</td>
+          <td>
+            <a href="https://www.avaloncommunities.com/washington/redmond-apartments/avalon-esterra-park/apartment/WA027-WA027-002-460" target="_blank" rel="noopener">View</a>
+          </td>
+        </tr>
+        
+        <tr
+          data-community="Avalon Esterra Park"
+          data-bedrooms="0"
+          data-bathrooms="1"
+        >
+          <td>Avalon Esterra Park</td>
+          <td>002-678</td>
+          <td>S6-640</td>
+          <td class="num" data-sort="0">
+            Studio
+          </td>
+          <td class="num" data-sort="1">1</td>
+          <td class="num" data-sort="640">640</td>
+          <td class="num" data-sort="2190">$2,190</td>
+          <td data-sort="2026-07-16">2026-07-16</td>
+          <td>
+            <a href="https://www.avaloncommunities.com/washington/redmond-apartments/avalon-esterra-park/apartment/WA027-WA027-002-678" target="_blank" rel="noopener">View</a>
+          </td>
+        </tr>
+        
+        <tr
+          data-community="Avalon Esterra Park"
+          data-bedrooms="0"
+          data-bathrooms="1"
+        >
+          <td>Avalon Esterra Park</td>
+          <td>001-625</td>
+          <td>S3-555</td>
+          <td class="num" data-sort="0">
+            Studio
+          </td>
+          <td class="num" data-sort="1">1</td>
+          <td class="num" data-sort="555">555</td>
+          <td class="num" data-sort="2210">$2,210</td>
+          <td data-sort="2026-07-28">2026-07-28</td>
+          <td>
+            <a href="https://www.avaloncommunities.com/washington/redmond-apartments/avalon-esterra-park/apartment/WA027-WA027-001-625" target="_blank" rel="noopener">View</a>
+          </td>
+        </tr>
+        
+        <tr
+          data-community="Avalon Esterra Park"
+          data-bedrooms="1"
+          data-bathrooms="1"
+        >
+          <td>Avalon Esterra Park</td>
+          <td>001-420</td>
+          <td>A1A-525</td>
+          <td class="num" data-sort="1">
+            1
+          </td>
+          <td class="num" data-sort="1">1</td>
+          <td class="num" data-sort="525">525</td>
+          <td class="num" data-sort="2390">$2,390</td>
+          <td data-sort="2026-07-08">2026-07-08</td>
+          <td>
+            <a href="https://www.avaloncommunities.com/washington/redmond-apartments/avalon-esterra-park/apartment/WA027-WA027-001-420" target="_blank" rel="noopener">View</a>
+          </td>
+        </tr>
+        
+        <tr
+          data-community="Avalon Esterra Park"
+          data-bedrooms="1"
+          data-bathrooms="1"
+        >
+          <td>Avalon Esterra Park</td>
+          <td>001-724</td>
+          <td>A5V-685</td>
+          <td class="num" data-sort="1">
+            1
+          </td>
+          <td class="num" data-sort="1">1</td>
+          <td class="num" data-sort="685">685</td>
+          <td class="num" data-sort="2405">$2,405</td>
+          <td data-sort="2026-07-08">2026-07-08</td>
+          <td>
+            <a href="https://www.avaloncommunities.com/washington/redmond-apartments/avalon-esterra-park/apartment/WA027-WA027-001-724" target="_blank" rel="noopener">View</a>
+          </td>
+        </tr>
+        
+        <tr
+          data-community="Avalon Esterra Park"
+          data-bedrooms="1"
+          data-bathrooms="1"
+        >
+          <td>Avalon Esterra Park</td>
+          <td>001-827</td>
+          <td>A3V-688</td>
+          <td class="num" data-sort="1">
+            1
+          </td>
+          <td class="num" data-sort="1">1</td>
+          <td class="num" data-sort="688">688</td>
+          <td class="num" data-sort="2440">$2,440</td>
+          <td data-sort="2026-07-08">2026-07-08</td>
+          <td>
+            <a href="https://www.avaloncommunities.com/washington/redmond-apartments/avalon-esterra-park/apartment/WA027-WA027-001-827" target="_blank" rel="noopener">View</a>
+          </td>
+        </tr>
+        
+        <tr
+          data-community="Avalon Esterra Park"
+          data-bedrooms="1"
+          data-bathrooms="1"
+        >
+          <td>Avalon Esterra Park</td>
+          <td>002-284</td>
+          <td>A12-730</td>
+          <td class="num" data-sort="1">
+            1
+          </td>
+          <td class="num" data-sort="1">1</td>
+          <td class="num" data-sort="730">730</td>
+          <td class="num" data-sort="2490">$2,490</td>
+          <td data-sort="2026-08-03">2026-08-03</td>
+          <td>
+            <a href="https://www.avaloncommunities.com/washington/redmond-apartments/avalon-esterra-park/apartment/WA027-WA027-002-284" target="_blank" rel="noopener">View</a>
+          </td>
+        </tr>
+        
+        <tr
+          data-community="Avalon Esterra Park"
+          data-bedrooms="1"
+          data-bathrooms="1"
+        >
+          <td>Avalon Esterra Park</td>
+          <td>001-440</td>
+          <td>A1V-770-scheme2</td>
+          <td class="num" data-sort="1">
+            1
+          </td>
+          <td class="num" data-sort="1">1</td>
+          <td class="num" data-sort="770">770</td>
+          <td class="num" data-sort="2495">$2,495</td>
+          <td data-sort="2026-07-08">2026-07-08</td>
+          <td>
+            <a href="https://www.avaloncommunities.com/washington/redmond-apartments/avalon-esterra-park/apartment/WA027-WA027-001-440" target="_blank" rel="noopener">View</a>
+          </td>
+        </tr>
+        
+        <tr
+          data-community="Avalon Esterra Park"
+          data-bedrooms="1"
+          data-bathrooms="1"
+        >
+          <td>Avalon Esterra Park</td>
+          <td>001-733</td>
+          <td>A1V-770-scheme2</td>
+          <td class="num" data-sort="1">
+            1
+          </td>
+          <td class="num" data-sort="1">1</td>
+          <td class="num" data-sort="770">770</td>
+          <td class="num" data-sort="2510">$2,510</td>
+          <td data-sort="2026-07-24">2026-07-24</td>
+          <td>
+            <a href="https://www.avaloncommunities.com/washington/redmond-apartments/avalon-esterra-park/apartment/WA027-WA027-001-733" target="_blank" rel="noopener">View</a>
+          </td>
+        </tr>
+        
+        <tr
+          data-community="Avalon Esterra Park"
+          data-bedrooms="1"
+          data-bathrooms="1"
+        >
+          <td>Avalon Esterra Park</td>
+          <td>002-385</td>
+          <td>A4-680</td>
+          <td class="num" data-sort="1">
+            1
+          </td>
+          <td class="num" data-sort="1">1</td>
+          <td class="num" data-sort="680">680</td>
+          <td class="num" data-sort="2525">$2,525</td>
+          <td data-sort="2026-07-19">2026-07-19</td>
+          <td>
+            <a href="https://www.avaloncommunities.com/washington/redmond-apartments/avalon-esterra-park/apartment/WA027-WA027-002-385" target="_blank" rel="noopener">View</a>
+          </td>
+        </tr>
+        
+        <tr
+          data-community="Avalon Esterra Park"
+          data-bedrooms="1"
+          data-bathrooms="1"
+        >
+          <td>Avalon Esterra Park</td>
+          <td>001-843</td>
+          <td>A9-751</td>
+          <td class="num" data-sort="1">
+            1
+          </td>
+          <td class="num" data-sort="1">1</td>
+          <td class="num" data-sort="751">751</td>
+          <td class="num" data-sort="2590">$2,590</td>
+          <td data-sort="2026-07-08">2026-07-08</td>
+          <td>
+            <a href="https://www.avaloncommunities.com/washington/redmond-apartments/avalon-esterra-park/apartment/WA027-WA027-001-843" target="_blank" rel="noopener">View</a>
+          </td>
+        </tr>
+        
+        <tr
+          data-community="Avalon Esterra Park"
+          data-bedrooms="1"
+          data-bathrooms="1"
+        >
+          <td>Avalon Esterra Park</td>
+          <td>002-668</td>
+          <td>A13-784-contemp</td>
+          <td class="num" data-sort="1">
+            1
+          </td>
+          <td class="num" data-sort="1">1</td>
+          <td class="num" data-sort="784">784</td>
+          <td class="num" data-sort="2660">$2,660</td>
+          <td data-sort="2026-07-27">2026-07-27</td>
+          <td>
+            <a href="https://www.avaloncommunities.com/washington/redmond-apartments/avalon-esterra-park/apartment/WA027-WA027-002-668" target="_blank" rel="noopener">View</a>
+          </td>
+        </tr>
+        
+        <tr
+          data-community="Avalon Esterra Park"
+          data-bedrooms="1"
+          data-bathrooms="1"
+        >
+          <td>Avalon Esterra Park</td>
+          <td>002-857</td>
+          <td>A17-824-2</td>
+          <td class="num" data-sort="1">
+            1
+          </td>
+          <td class="num" data-sort="1">1</td>
+          <td class="num" data-sort="852">852</td>
+          <td class="num" data-sort="2660">$2,660</td>
+          <td data-sort="2026-07-15">2026-07-15</td>
+          <td>
+            <a href="https://www.avaloncommunities.com/washington/redmond-apartments/avalon-esterra-park/apartment/WA027-WA027-002-857" target="_blank" rel="noopener">View</a>
+          </td>
+        </tr>
+        
+        <tr
+          data-community="Avalon Esterra Park"
+          data-bedrooms="1"
+          data-bathrooms="1"
+        >
+          <td>Avalon Esterra Park</td>
+          <td>002-767</td>
+          <td>A18-873</td>
+          <td class="num" data-sort="1">
+            1
+          </td>
+          <td class="num" data-sort="1">1</td>
+          <td class="num" data-sort="873">873</td>
+          <td class="num" data-sort="2675">$2,675</td>
+          <td data-sort="2026-07-21">2026-07-21</td>
+          <td>
+            <a href="https://www.avaloncommunities.com/washington/redmond-apartments/avalon-esterra-park/apartment/WA027-WA027-002-767" target="_blank" rel="noopener">View</a>
+          </td>
+        </tr>
+        
+        <tr
+          data-community="Avalon Esterra Park"
+          data-bedrooms="2"
+          data-bathrooms="2"
+        >
+          <td>Avalon Esterra Park</td>
+          <td>002-393</td>
+          <td>B1-916-2</td>
+          <td class="num" data-sort="2">
+            2
+          </td>
+          <td class="num" data-sort="2">2</td>
+          <td class="num" data-sort="919">919</td>
+          <td class="num" data-sort="2920">$2,920</td>
+          <td data-sort="2026-07-08">2026-07-08</td>
+          <td>
+            <a href="https://www.avaloncommunities.com/washington/redmond-apartments/avalon-esterra-park/apartment/WA027-WA027-002-393" target="_blank" rel="noopener">View</a>
+          </td>
+        </tr>
+        
+        <tr
+          data-community="Avalon Esterra Park"
+          data-bedrooms="1"
+          data-bathrooms="1.5"
+        >
+          <td>Avalon Esterra Park</td>
+          <td>001-334</td>
+          <td>A21T</td>
+          <td class="num" data-sort="1">
+            1
+          </td>
+          <td class="num" data-sort="1.5">1.5</td>
+          <td class="num" data-sort="960">960</td>
+          <td class="num" data-sort="2935">$2,935</td>
+          <td data-sort="2026-07-08">2026-07-08</td>
+          <td>
+            <a href="https://www.avaloncommunities.com/washington/redmond-apartments/avalon-esterra-park/apartment/WA027-WA027-001-334" target="_blank" rel="noopener">View</a>
+          </td>
+        </tr>
+        
+        <tr
+          data-community="Avalon Esterra Park"
+          data-bedrooms="1"
+          data-bathrooms="1.5"
+        >
+          <td>Avalon Esterra Park</td>
+          <td>001-342</td>
+          <td>A21T</td>
+          <td class="num" data-sort="1">
+            1
+          </td>
+          <td class="num" data-sort="1.5">1.5</td>
+          <td class="num" data-sort="960">960</td>
+          <td class="num" data-sort="2935">$2,935</td>
+          <td data-sort="2026-07-08">2026-07-08</td>
+          <td>
+            <a href="https://www.avaloncommunities.com/washington/redmond-apartments/avalon-esterra-park/apartment/WA027-WA027-001-342" target="_blank" rel="noopener">View</a>
+          </td>
+        </tr>
+        
+        <tr
+          data-community="Avalon Esterra Park"
+          data-bedrooms="2"
+          data-bathrooms="2"
+        >
+          <td>Avalon Esterra Park</td>
+          <td>002-561</td>
+          <td>B8-1141</td>
+          <td class="num" data-sort="2">
+            2
+          </td>
+          <td class="num" data-sort="2">2</td>
+          <td class="num" data-sort="1127">1,127</td>
+          <td class="num" data-sort="3210">$3,210</td>
+          <td data-sort="2026-08-05">2026-08-05</td>
+          <td>
+            <a href="https://www.avaloncommunities.com/washington/redmond-apartments/avalon-esterra-park/apartment/WA027-WA027-002-561" target="_blank" rel="noopener">View</a>
+          </td>
+        </tr>
+        
+        <tr
+          data-community="Avalon Esterra Park"
+          data-bedrooms="2"
+          data-bathrooms="2"
+        >
+          <td>Avalon Esterra Park</td>
+          <td>001-448</td>
+          <td>B12-1276</td>
+          <td class="num" data-sort="2">
+            2
+          </td>
+          <td class="num" data-sort="2">2</td>
+          <td class="num" data-sort="1276">1,276</td>
+          <td class="num" data-sort="3220">$3,220</td>
+          <td data-sort="2026-08-11">2026-08-11</td>
+          <td>
+            <a href="https://www.avaloncommunities.com/washington/redmond-apartments/avalon-esterra-park/apartment/WA027-WA027-001-448" target="_blank" rel="noopener">View</a>
+          </td>
+        </tr>
+        
+        <tr
+          data-community="Avalon Esterra Park"
+          data-bedrooms="2"
+          data-bathrooms="2"
+        >
+          <td>Avalon Esterra Park</td>
+          <td>002-491</td>
+          <td>B10-1195</td>
+          <td class="num" data-sort="2">
+            2
+          </td>
+          <td class="num" data-sort="2">2</td>
+          <td class="num" data-sort="1195">1,195</td>
+          <td class="num" data-sort="3235">$3,235</td>
+          <td data-sort="2026-07-19">2026-07-19</td>
+          <td>
+            <a href="https://www.avaloncommunities.com/washington/redmond-apartments/avalon-esterra-park/apartment/WA027-WA027-002-491" target="_blank" rel="noopener">View</a>
+          </td>
+        </tr>
+        
+        <tr
+          data-community="Avalon Esterra Park"
+          data-bedrooms="2"
+          data-bathrooms="2"
+        >
+          <td>Avalon Esterra Park</td>
+          <td>002-474</td>
+          <td>B8-1141</td>
+          <td class="num" data-sort="2">
+            2
+          </td>
+          <td class="num" data-sort="2">2</td>
+          <td class="num" data-sort="1127">1,127</td>
+          <td class="num" data-sort="3290">$3,290</td>
+          <td data-sort="2026-07-31">2026-07-31</td>
+          <td>
+            <a href="https://www.avaloncommunities.com/washington/redmond-apartments/avalon-esterra-park/apartment/WA027-WA027-002-474" target="_blank" rel="noopener">View</a>
+          </td>
+        </tr>
+        
+        <tr
+          data-community="Avalon Esterra Park"
+          data-bedrooms="2"
+          data-bathrooms="2"
+        >
+          <td>Avalon Esterra Park</td>
+          <td>002-655</td>
+          <td>B11-1257</td>
+          <td class="num" data-sort="2">
+            2
+          </td>
+          <td class="num" data-sort="2">2</td>
+          <td class="num" data-sort="1257">1,257</td>
+          <td class="num" data-sort="3375">$3,375</td>
+          <td data-sort="2026-07-08">2026-07-08</td>
+          <td>
+            <a href="https://www.avaloncommunities.com/washington/redmond-apartments/avalon-esterra-park/apartment/WA027-WA027-002-655" target="_blank" rel="noopener">View</a>
+          </td>
+        </tr>
+        
+        <tr
+          data-community="Avalon Esterra Park"
+          data-bedrooms="2"
+          data-bathrooms="2"
+        >
+          <td>Avalon Esterra Park</td>
+          <td>002-387</td>
+          <td>B8-1141</td>
+          <td class="num" data-sort="2">
+            2
+          </td>
+          <td class="num" data-sort="2">2</td>
+          <td class="num" data-sort="1127">1,127</td>
+          <td class="num" data-sort="3390">$3,390</td>
+          <td data-sort="2026-07-08">2026-07-08</td>
+          <td>
+            <a href="https://www.avaloncommunities.com/washington/redmond-apartments/avalon-esterra-park/apartment/WA027-WA027-002-387" target="_blank" rel="noopener">View</a>
+          </td>
+        </tr>
+        
+        <tr
+          data-community="Avalon Redmond Campus"
+          data-bedrooms="0"
+          data-bathrooms="1"
+        >
+          <td>Avalon Redmond Campus</td>
+          <td>001-327</td>
+          <td>S2</td>
+          <td class="num" data-sort="0">
+            Studio
+          </td>
+          <td class="num" data-sort="1">1</td>
+          <td class="num" data-sort="501">501</td>
+          <td class="num" data-sort="2305">$2,305</td>
+          <td data-sort="2026-07-08">2026-07-08</td>
+          <td>
+            <a href="https://www.avaloncommunities.com/washington/redmond-apartments/avalon-redmond-campus/apartment/WA035-WA035-001-327" target="_blank" rel="noopener">View</a>
+          </td>
+        </tr>
+        
+        <tr
+          data-community="Avalon Redmond Campus"
+          data-bedrooms="1"
+          data-bathrooms="1"
+        >
+          <td>Avalon Redmond Campus</td>
+          <td>001-333</td>
+          <td>A2</td>
+          <td class="num" data-sort="1">
+            1
+          </td>
+          <td class="num" data-sort="1">1</td>
+          <td class="num" data-sort="699">699</td>
+          <td class="num" data-sort="2560">$2,560</td>
+          <td data-sort="2026-08-11">2026-08-11</td>
+          <td>
+            <a href="https://www.avaloncommunities.com/washington/redmond-apartments/avalon-redmond-campus/apartment/WA035-WA035-001-333" target="_blank" rel="noopener">View</a>
+          </td>
+        </tr>
+        
+        <tr
+          data-community="Avalon Redmond Campus"
+          data-bedrooms="1"
+          data-bathrooms="1"
+        >
+          <td>Avalon Redmond Campus</td>
+          <td>001-522</td>
+          <td>A4</td>
+          <td class="num" data-sort="1">
+            1
+          </td>
+          <td class="num" data-sort="1">1</td>
+          <td class="num" data-sort="699">699</td>
+          <td class="num" data-sort="2630">$2,630</td>
+          <td data-sort="2026-08-03">2026-08-03</td>
+          <td>
+            <a href="https://www.avaloncommunities.com/washington/redmond-apartments/avalon-redmond-campus/apartment/WA035-WA035-001-522" target="_blank" rel="noopener">View</a>
+          </td>
+        </tr>
+        
+        <tr
+          data-community="Avalon Redmond Campus"
+          data-bedrooms="1"
+          data-bathrooms="1"
+        >
+          <td>Avalon Redmond Campus</td>
+          <td>001-328</td>
+          <td>A2-1</td>
+          <td class="num" data-sort="1">
+            1
+          </td>
+          <td class="num" data-sort="1">1</td>
+          <td class="num" data-sort="699">699</td>
+          <td class="num" data-sort="2750">$2,750</td>
+          <td data-sort="2026-07-08">2026-07-08</td>
+          <td>
+            <a href="https://www.avaloncommunities.com/washington/redmond-apartments/avalon-redmond-campus/apartment/WA035-WA035-001-328" target="_blank" rel="noopener">View</a>
+          </td>
+        </tr>
+        
+        <tr
+          data-community="Avalon Redmond Campus"
+          data-bedrooms="1"
+          data-bathrooms="1"
+        >
+          <td>Avalon Redmond Campus</td>
+          <td>001-325</td>
+          <td>A2-1</td>
+          <td class="num" data-sort="1">
+            1
+          </td>
+          <td class="num" data-sort="1">1</td>
+          <td class="num" data-sort="699">699</td>
+          <td class="num" data-sort="2795">$2,795</td>
+          <td data-sort="2026-07-26">2026-07-26</td>
+          <td>
+            <a href="https://www.avaloncommunities.com/washington/redmond-apartments/avalon-redmond-campus/apartment/WA035-WA035-001-325" target="_blank" rel="noopener">View</a>
+          </td>
+        </tr>
+        
+        <tr
+          data-community="Avalon Redmond Campus"
+          data-bedrooms="1"
+          data-bathrooms="1"
+        >
+          <td>Avalon Redmond Campus</td>
+          <td>001-510</td>
+          <td>A2</td>
+          <td class="num" data-sort="1">
+            1
+          </td>
+          <td class="num" data-sort="1">1</td>
+          <td class="num" data-sort="699">699</td>
+          <td class="num" data-sort="2820">$2,820</td>
+          <td data-sort="2026-07-08">2026-07-08</td>
+          <td>
+            <a href="https://www.avaloncommunities.com/washington/redmond-apartments/avalon-redmond-campus/apartment/WA035-WA035-001-510" target="_blank" rel="noopener">View</a>
+          </td>
+        </tr>
+        
+        <tr
+          data-community="Avalon Redmond Campus"
+          data-bedrooms="1"
+          data-bathrooms="1"
+        >
+          <td>Avalon Redmond Campus</td>
+          <td>001-313</td>
+          <td>A6</td>
+          <td class="num" data-sort="1">
+            1
+          </td>
+          <td class="num" data-sort="1">1</td>
+          <td class="num" data-sort="699">699</td>
+          <td class="num" data-sort="2875">$2,875</td>
+          <td data-sort="2026-07-08">2026-07-08</td>
+          <td>
+            <a href="https://www.avaloncommunities.com/washington/redmond-apartments/avalon-redmond-campus/apartment/WA035-WA035-001-313" target="_blank" rel="noopener">View</a>
+          </td>
+        </tr>
+        
+        <tr
+          data-community="Avalon Redmond Campus"
+          data-bedrooms="2"
+          data-bathrooms="1"
+        >
+          <td>Avalon Redmond Campus</td>
+          <td>001-211</td>
+          <td>B1</td>
+          <td class="num" data-sort="2">
+            2
+          </td>
+          <td class="num" data-sort="1">1</td>
+          <td class="num" data-sort="1027">1,027</td>
+          <td class="num" data-sort="3350">$3,350</td>
+          <td data-sort="2026-07-08">2026-07-08</td>
+          <td>
+            <a href="https://www.avaloncommunities.com/washington/redmond-apartments/avalon-redmond-campus/apartment/WA035-WA035-001-211" target="_blank" rel="noopener">View</a>
+          </td>
+        </tr>
+        
+        <tr
+          data-community="Avalon Redmond Campus"
+          data-bedrooms="2"
+          data-bathrooms="2"
+        >
+          <td>Avalon Redmond Campus</td>
+          <td>001-207</td>
+          <td>B1</td>
+          <td class="num" data-sort="2">
+            2
+          </td>
+          <td class="num" data-sort="2">2</td>
+          <td class="num" data-sort="1027">1,027</td>
+          <td class="num" data-sort="3435">$3,435</td>
+          <td data-sort="2026-07-15">2026-07-15</td>
+          <td>
+            <a href="https://www.avaloncommunities.com/washington/redmond-apartments/avalon-redmond-campus/apartment/WA035-WA035-001-207" target="_blank" rel="noopener">View</a>
+          </td>
+        </tr>
+        
+        <tr
+          data-community="Avalon Redmond Campus"
+          data-bedrooms="2"
+          data-bathrooms="2"
+        >
+          <td>Avalon Redmond Campus</td>
+          <td>001-519</td>
+          <td>B1</td>
+          <td class="num" data-sort="2">
+            2
+          </td>
+          <td class="num" data-sort="2">2</td>
+          <td class="num" data-sort="1027">1,027</td>
+          <td class="num" data-sort="3440">$3,440</td>
+          <td data-sort="2026-07-08">2026-07-08</td>
+          <td>
+            <a href="https://www.avaloncommunities.com/washington/redmond-apartments/avalon-redmond-campus/apartment/WA035-WA035-001-519" target="_blank" rel="noopener">View</a>
+          </td>
+        </tr>
+        
+        <tr
+          data-community="Avalon Redmond Campus"
+          data-bedrooms="2"
+          data-bathrooms="2"
+        >
+          <td>Avalon Redmond Campus</td>
+          <td>001-615</td>
+          <td>B1-2</td>
+          <td class="num" data-sort="2">
+            2
+          </td>
+          <td class="num" data-sort="2">2</td>
+          <td class="num" data-sort="938">938</td>
+          <td class="num" data-sort="3445">$3,445</td>
+          <td data-sort="2026-07-08">2026-07-08</td>
+          <td>
+            <a href="https://www.avaloncommunities.com/washington/redmond-apartments/avalon-redmond-campus/apartment/WA035-WA035-001-615" target="_blank" rel="noopener">View</a>
+          </td>
+        </tr>
+        
+        <tr
+          data-community="Avalon Redmond Campus"
+          data-bedrooms="2"
+          data-bathrooms="2"
+        >
+          <td>Avalon Redmond Campus</td>
+          <td>001-419</td>
+          <td>B1</td>
+          <td class="num" data-sort="2">
+            2
+          </td>
+          <td class="num" data-sort="2">2</td>
+          <td class="num" data-sort="1027">1,027</td>
+          <td class="num" data-sort="3495">$3,495</td>
+          <td data-sort="2026-08-01">2026-08-01</td>
+          <td>
+            <a href="https://www.avaloncommunities.com/washington/redmond-apartments/avalon-redmond-campus/apartment/WA035-WA035-001-419" target="_blank" rel="noopener">View</a>
+          </td>
+        </tr>
+        
+        <tr
+          data-community="Avalon Redmond Campus"
+          data-bedrooms="2"
+          data-bathrooms="2"
+        >
+          <td>Avalon Redmond Campus</td>
+          <td>001-603</td>
+          <td>B1</td>
+          <td class="num" data-sort="2">
+            2
+          </td>
+          <td class="num" data-sort="2">2</td>
+          <td class="num" data-sort="1027">1,027</td>
+          <td class="num" data-sort="3495">$3,495</td>
+          <td data-sort="2026-07-08">2026-07-08</td>
+          <td>
+            <a href="https://www.avaloncommunities.com/washington/redmond-apartments/avalon-redmond-campus/apartment/WA035-WA035-001-603" target="_blank" rel="noopener">View</a>
+          </td>
+        </tr>
+        
+        <tr
+          data-community="Avalon Redmond Campus"
+          data-bedrooms="3"
+          data-bathrooms="2"
+        >
+          <td>Avalon Redmond Campus</td>
+          <td>001-429</td>
+          <td>C3</td>
+          <td class="num" data-sort="3">
+            3
+          </td>
+          <td class="num" data-sort="2">2</td>
+          <td class="num" data-sort="1346">1,346</td>
+          <td class="num" data-sort="4810">$4,810</td>
+          <td data-sort="2026-07-18">2026-07-18</td>
+          <td>
+            <a href="https://www.avaloncommunities.com/washington/redmond-apartments/avalon-redmond-campus/apartment/WA035-WA035-001-429" target="_blank" rel="noopener">View</a>
+          </td>
+        </tr>
+        
+        <tr
+          data-community="Hyde Square"
+          data-bedrooms="0"
+          data-bathrooms="1"
+        >
+          <td>Hyde Square</td>
+          <td>D331</td>
+          <td>A3.A</td>
+          <td class="num" data-sort="0">
+            Studio
+          </td>
+          <td class="num" data-sort="1">1</td>
+          <td class="num" data-sort="539">539</td>
+          <td class="num" data-sort="1906">$1,906</td>
+          <td data-sort="2026-07-16">2026-07-16</td>
+          <td>
+            <a href="https://hydesquare.com/floorplans/unit-3d3432444e4cd47e388871ca0fceaa2a/" target="_blank" rel="noopener">View</a>
+          </td>
+        </tr>
+        
+        <tr
+          data-community="Hyde Square"
+          data-bedrooms="0"
+          data-bathrooms="1"
+        >
+          <td>Hyde Square</td>
+          <td>B211</td>
+          <td>A5</td>
+          <td class="num" data-sort="0">
+            Studio
+          </td>
+          <td class="num" data-sort="1">1</td>
+          <td class="num" data-sort="580">580</td>
+          <td class="num" data-sort="2020">$2,020</td>
+          <td data-sort="2026-07-22">2026-07-22</td>
+          <td>
+            <a href="https://hydesquare.com/floorplans/unit-3a7dc7da5a50782a76d7060bbd61fd01/" target="_blank" rel="noopener">View</a>
+          </td>
+        </tr>
+        
+        <tr
+          data-community="Hyde Square"
+          data-bedrooms="0"
+          data-bathrooms="1"
+        >
+          <td>Hyde Square</td>
+          <td>A411</td>
+          <td>A4</td>
+          <td class="num" data-sort="0">
+            Studio
+          </td>
+          <td class="num" data-sort="1">1</td>
+          <td class="num" data-sort="582">582</td>
+          <td class="num" data-sort="2130">$2,130</td>
+          <td data-sort="2026-07-21">2026-07-21</td>
+          <td>
+            <a href="https://hydesquare.com/floorplans/unit-2d29252eaf16be379b4a7d4353fce04c/" target="_blank" rel="noopener">View</a>
+          </td>
+        </tr>
+        
+        <tr
+          data-community="Hyde Square"
+          data-bedrooms="0"
+          data-bathrooms="1"
+        >
+          <td>Hyde Square</td>
+          <td>B519</td>
+          <td>A1</td>
+          <td class="num" data-sort="0">
+            Studio
+          </td>
+          <td class="num" data-sort="1">1</td>
+          <td class="num" data-sort="557">557</td>
+          <td class="num" data-sort="2135">$2,135</td>
+          <td data-sort="2026-06-30">2026-06-30</td>
+          <td>
+            <a href="https://hydesquare.com/floorplans/unit-514a9238a95a294f8e3aa12696400eb5/" target="_blank" rel="noopener">View</a>
+          </td>
+        </tr>
+        
+        <tr
+          data-community="Hyde Square"
+          data-bedrooms="0"
+          data-bathrooms="1"
+        >
+          <td>Hyde Square</td>
+          <td>A611</td>
+          <td>A4</td>
+          <td class="num" data-sort="0">
+            Studio
+          </td>
+          <td class="num" data-sort="1">1</td>
+          <td class="num" data-sort="582">582</td>
+          <td class="num" data-sort="2165">$2,165</td>
+          <td data-sort="2026-07-05">2026-07-05</td>
+          <td>
+            <a href="https://hydesquare.com/floorplans/unit-6fed9c00bef23f070a49c967ad076027/" target="_blank" rel="noopener">View</a>
+          </td>
+        </tr>
+        
+        <tr
+          data-community="Hyde Square"
+          data-bedrooms="0"
+          data-bathrooms="1"
+        >
+          <td>Hyde Square</td>
+          <td>A632</td>
+          <td>A3</td>
+          <td class="num" data-sort="0">
+            Studio
+          </td>
+          <td class="num" data-sort="1">1</td>
+          <td class="num" data-sort="591">591</td>
+          <td class="num" data-sort="2190">$2,190</td>
+          <td data-sort="2025-10-06">2025-10-06</td>
+          <td>
+            <a href="https://hydesquare.com/floorplans/unit-6454ada52f824784f862913db856688a/" target="_blank" rel="noopener">View</a>
+          </td>
+        </tr>
+        
+        <tr
+          data-community="Hyde Square"
+          data-bedrooms="0"
+          data-bathrooms="1"
+        >
+          <td>Hyde Square</td>
+          <td>A719</td>
+          <td>A1</td>
+          <td class="num" data-sort="0">
+            Studio
+          </td>
+          <td class="num" data-sort="1">1</td>
+          <td class="num" data-sort="557">557</td>
+          <td class="num" data-sort="2190">$2,190</td>
+          <td data-sort="2026-08-15">2026-08-15</td>
+          <td>
+            <a href="https://hydesquare.com/floorplans/unit-b3aaffb88970da35a80183ec9aa0e956/" target="_blank" rel="noopener">View</a>
+          </td>
+        </tr>
+        
+        <tr
+          data-community="Hyde Square"
+          data-bedrooms="0"
+          data-bathrooms="1"
+        >
+          <td>Hyde Square</td>
+          <td>C609</td>
+          <td>A4</td>
+          <td class="num" data-sort="0">
+            Studio
+          </td>
+          <td class="num" data-sort="1">1</td>
+          <td class="num" data-sort="582">582</td>
+          <td class="num" data-sort="2200">$2,200</td>
+          <td data-sort="2026-06-14">2026-06-14</td>
+          <td>
+            <a href="https://hydesquare.com/floorplans/unit-44af5428ad436a5f19e7da44e367c2a6/" target="_blank" rel="noopener">View</a>
+          </td>
+        </tr>
+        
+        <tr
+          data-community="Hyde Square"
+          data-bedrooms="0"
+          data-bathrooms="1"
+        >
+          <td>Hyde Square</td>
+          <td>B632</td>
+          <td>A3</td>
+          <td class="num" data-sort="0">
+            Studio
+          </td>
+          <td class="num" data-sort="1">1</td>
+          <td class="num" data-sort="591">591</td>
+          <td class="num" data-sort="2215">$2,215</td>
+          <td data-sort="2026-07-15">2026-07-15</td>
+          <td>
+            <a href="https://hydesquare.com/floorplans/unit-aa104889d7c4f3077be542f42563d212/" target="_blank" rel="noopener">View</a>
+          </td>
+        </tr>
+        
+        <tr
+          data-community="Hyde Square"
+          data-bedrooms="1"
+          data-bathrooms="1"
+        >
+          <td>Hyde Square</td>
+          <td>D218</td>
+          <td>B1</td>
+          <td class="num" data-sort="1">
+            1
+          </td>
+          <td class="num" data-sort="1">1</td>
+          <td class="num" data-sort="640">640</td>
+          <td class="num" data-sort="2232">$2,232</td>
+          <td data-sort="2026-07-11">2026-07-11</td>
+          <td>
+            <a href="https://hydesquare.com/floorplans/unit-a28c60d06872492b9b83472e3368a31c/" target="_blank" rel="noopener">View</a>
+          </td>
+        </tr>
+        
+        <tr
+          data-community="Hyde Square"
+          data-bedrooms="0"
+          data-bathrooms="1"
+        >
+          <td>Hyde Square</td>
+          <td>A728</td>
+          <td>A3</td>
+          <td class="num" data-sort="0">
+            Studio
+          </td>
+          <td class="num" data-sort="1">1</td>
+          <td class="num" data-sort="591">591</td>
+          <td class="num" data-sort="2235">$2,235</td>
+          <td data-sort="2026-07-23">2026-07-23</td>
+          <td>
+            <a href="https://hydesquare.com/floorplans/unit-7802c99006644067ac18d1aecf6be775/" target="_blank" rel="noopener">View</a>
+          </td>
+        </tr>
+        
+        <tr
+          data-community="Hyde Square"
+          data-bedrooms="1"
+          data-bathrooms="1"
+        >
+          <td>Hyde Square</td>
+          <td>B332</td>
+          <td>B1</td>
+          <td class="num" data-sort="1">
+            1
+          </td>
+          <td class="num" data-sort="1">1</td>
+          <td class="num" data-sort="640">640</td>
+          <td class="num" data-sort="2238">$2,238</td>
+          <td data-sort="2026-06-14">2026-06-14</td>
+          <td>
+            <a href="https://hydesquare.com/floorplans/unit-94647c7af6ebb0609b811bb0c23868df/" target="_blank" rel="noopener">View</a>
+          </td>
+        </tr>
+        
+        <tr
+          data-community="Hyde Square"
+          data-bedrooms="1"
+          data-bathrooms="1"
+        >
+          <td>Hyde Square</td>
+          <td>C612</td>
+          <td>B1</td>
+          <td class="num" data-sort="1">
+            1
+          </td>
+          <td class="num" data-sort="1">1</td>
+          <td class="num" data-sort="640">640</td>
+          <td class="num" data-sort="2247">$2,247</td>
+          <td data-sort="2026-07-10">2026-07-10</td>
+          <td>
+            <a href="https://hydesquare.com/floorplans/unit-924cb712f08bb750491647e542bc9888/" target="_blank" rel="noopener">View</a>
+          </td>
+        </tr>
+        
+        <tr
+          data-community="Hyde Square"
+          data-bedrooms="1"
+          data-bathrooms="1"
+        >
+          <td>Hyde Square</td>
+          <td>A102</td>
+          <td>B2</td>
+          <td class="num" data-sort="1">
+            1
+          </td>
+          <td class="num" data-sort="1">1</td>
+          <td class="num" data-sort="709">709</td>
+          <td class="num" data-sort="2278">$2,278</td>
+          <td data-sort="2026-08-08">2026-08-08</td>
+          <td>
+            <a href="https://hydesquare.com/floorplans/unit-aed9b59e9a36e517a8f1d40acada0d22/" target="_blank" rel="noopener">View</a>
+          </td>
+        </tr>
+        
+        <tr
+          data-community="Hyde Square"
+          data-bedrooms="1"
+          data-bathrooms="1"
+        >
+          <td>Hyde Square</td>
+          <td>B330</td>
+          <td>B1</td>
+          <td class="num" data-sort="1">
+            1
+          </td>
+          <td class="num" data-sort="1">1</td>
+          <td class="num" data-sort="640">640</td>
+          <td class="num" data-sort="2278">$2,278</td>
+          <td data-sort="2026-06-14">2026-06-14</td>
+          <td>
+            <a href="https://hydesquare.com/floorplans/unit-56186595e05ea8ff6170c565d7ea1158/" target="_blank" rel="noopener">View</a>
+          </td>
+        </tr>
+        
+        <tr
+          data-community="Hyde Square"
+          data-bedrooms="1"
+          data-bathrooms="1"
+        >
+          <td>Hyde Square</td>
+          <td>A226</td>
+          <td>B6</td>
+          <td class="num" data-sort="1">
+            1
+          </td>
+          <td class="num" data-sort="1">1</td>
+          <td class="num" data-sort="725">725</td>
+          <td class="num" data-sort="2318">$2,318</td>
+          <td data-sort="2026-02-16">2026-02-16</td>
+          <td>
+            <a href="https://hydesquare.com/floorplans/unit-8a3006428a8e61c4844b0ee5bd93386e/" target="_blank" rel="noopener">View</a>
+          </td>
+        </tr>
+        
+        <tr
+          data-community="Hyde Square"
+          data-bedrooms="1"
+          data-bathrooms="1"
+        >
+          <td>Hyde Square</td>
+          <td>C127</td>
+          <td>B2</td>
+          <td class="num" data-sort="1">
+            1
+          </td>
+          <td class="num" data-sort="1">1</td>
+          <td class="num" data-sort="709">709</td>
+          <td class="num" data-sort="2323">$2,323</td>
+          <td data-sort="2026-05-29">2026-05-29</td>
+          <td>
+            <a href="https://hydesquare.com/floorplans/unit-868b0584e850758ffd0f2cd76436e932/" target="_blank" rel="noopener">View</a>
+          </td>
+        </tr>
+        
+        <tr
+          data-community="Hyde Square"
+          data-bedrooms="1"
+          data-bathrooms="1"
+        >
+          <td>Hyde Square</td>
+          <td>B608</td>
+          <td>B1</td>
+          <td class="num" data-sort="1">
+            1
+          </td>
+          <td class="num" data-sort="1">1</td>
+          <td class="num" data-sort="640">640</td>
+          <td class="num" data-sort="2327">$2,327</td>
+          <td data-sort="2026-06-17">2026-06-17</td>
+          <td>
+            <a href="https://hydesquare.com/floorplans/unit-7ef904a86ff9ce7ba0346230793aed1c/" target="_blank" rel="noopener">View</a>
+          </td>
+        </tr>
+        
+        <tr
+          data-community="Hyde Square"
+          data-bedrooms="1"
+          data-bathrooms="1"
+        >
+          <td>Hyde Square</td>
+          <td>B214</td>
+          <td>B2</td>
+          <td class="num" data-sort="1">
+            1
+          </td>
+          <td class="num" data-sort="1">1</td>
+          <td class="num" data-sort="709">709</td>
+          <td class="num" data-sort="2328">$2,328</td>
+          <td data-sort="2026-08-08">2026-08-08</td>
+          <td>
+            <a href="https://hydesquare.com/floorplans/unit-ebce0282cd33e96b1a6db9ef11764bff/" target="_blank" rel="noopener">View</a>
+          </td>
+        </tr>
+        
+        <tr
+          data-community="Hyde Square"
+          data-bedrooms="1"
+          data-bathrooms="1"
+        >
+          <td>Hyde Square</td>
+          <td>D110</td>
+          <td>B2</td>
+          <td class="num" data-sort="1">
+            1
+          </td>
+          <td class="num" data-sort="1">1</td>
+          <td class="num" data-sort="709">709</td>
+          <td class="num" data-sort="2348">$2,348</td>
+          <td data-sort="2026-07-29">2026-07-29</td>
+          <td>
+            <a href="https://hydesquare.com/floorplans/unit-712879624b2d6a31acddd7518abafd84/" target="_blank" rel="noopener">View</a>
+          </td>
+        </tr>
+        
+        <tr
+          data-community="Hyde Square"
+          data-bedrooms="1"
+          data-bathrooms="1"
+        >
+          <td>Hyde Square</td>
+          <td>C111</td>
+          <td>B4</td>
+          <td class="num" data-sort="1">
+            1
+          </td>
+          <td class="num" data-sort="1">1</td>
+          <td class="num" data-sort="696">696</td>
+          <td class="num" data-sort="2353">$2,353</td>
+          <td data-sort="2026-07-16">2026-07-16</td>
+          <td>
+            <a href="https://hydesquare.com/floorplans/unit-cf4c1fabdcdd0c69eb0acd71aa1fe83a/" target="_blank" rel="noopener">View</a>
+          </td>
+        </tr>
+        
+        <tr
+          data-community="Hyde Square"
+          data-bedrooms="1"
+          data-bathrooms="1"
+        >
+          <td>Hyde Square</td>
+          <td>B710</td>
+          <td>B1</td>
+          <td class="num" data-sort="1">
+            1
+          </td>
+          <td class="num" data-sort="1">1</td>
+          <td class="num" data-sort="640">640</td>
+          <td class="num" data-sort="2357">$2,357</td>
+          <td data-sort="2026-06-17">2026-06-17</td>
+          <td>
+            <a href="https://hydesquare.com/floorplans/unit-6426d25ee8ec6a7dcfbc37b2510113b4/" target="_blank" rel="noopener">View</a>
+          </td>
+        </tr>
+        
+        <tr
+          data-community="Hyde Square"
+          data-bedrooms="1"
+          data-bathrooms="1"
+        >
+          <td>Hyde Square</td>
+          <td>B712</td>
+          <td>B1</td>
+          <td class="num" data-sort="1">
+            1
+          </td>
+          <td class="num" data-sort="1">1</td>
+          <td class="num" data-sort="640">640</td>
+          <td class="num" data-sort="2357">$2,357</td>
+          <td data-sort="2026-06-14">2026-06-14</td>
+          <td>
+            <a href="https://hydesquare.com/floorplans/unit-235a86bacf98de61b977e3145bf4bf7e/" target="_blank" rel="noopener">View</a>
+          </td>
+        </tr>
+        
+        <tr
+          data-community="Hyde Square"
+          data-bedrooms="1"
+          data-bathrooms="1"
+        >
+          <td>Hyde Square</td>
+          <td>B216</td>
+          <td>B2</td>
+          <td class="num" data-sort="1">
+            1
+          </td>
+          <td class="num" data-sort="1">1</td>
+          <td class="num" data-sort="709">709</td>
+          <td class="num" data-sort="2373">$2,373</td>
+          <td data-sort="2026-07-13">2026-07-13</td>
+          <td>
+            <a href="https://hydesquare.com/floorplans/unit-82c6f80956ce332375285f988b698395/" target="_blank" rel="noopener">View</a>
+          </td>
+        </tr>
+        
+        <tr
+          data-community="Hyde Square"
+          data-bedrooms="1"
+          data-bathrooms="1"
+        >
+          <td>Hyde Square</td>
+          <td>A327</td>
+          <td>B2</td>
+          <td class="num" data-sort="1">
+            1
+          </td>
+          <td class="num" data-sort="1">1</td>
+          <td class="num" data-sort="709">709</td>
+          <td class="num" data-sort="2384">$2,384</td>
+          <td data-sort="2026-07-13">2026-07-13</td>
+          <td>
+            <a href="https://hydesquare.com/floorplans/unit-b58f72ae1222236076c212373acaee54/" target="_blank" rel="noopener">View</a>
+          </td>
+        </tr>
+        
+        <tr
+          data-community="Hyde Square"
+          data-bedrooms="1"
+          data-bathrooms="1"
+        >
+          <td>Hyde Square</td>
+          <td>A403</td>
+          <td>B2</td>
+          <td class="num" data-sort="1">
+            1
+          </td>
+          <td class="num" data-sort="1">1</td>
+          <td class="num" data-sort="709">709</td>
+          <td class="num" data-sort="2398">$2,398</td>
+          <td data-sort="2026-08-30">2026-08-30</td>
+          <td>
+            <a href="https://hydesquare.com/floorplans/unit-cf57ef4357d1d7e4315e2cac1dea22b4/" target="_blank" rel="noopener">View</a>
+          </td>
+        </tr>
+        
+        <tr
+          data-community="Hyde Square"
+          data-bedrooms="1"
+          data-bathrooms="1"
+        >
+          <td>Hyde Square</td>
+          <td>A503</td>
+          <td>B2</td>
+          <td class="num" data-sort="1">
+            1
+          </td>
+          <td class="num" data-sort="1">1</td>
+          <td class="num" data-sort="709">709</td>
+          <td class="num" data-sort="2423">$2,423</td>
+          <td data-sort="2026-07-17">2026-07-17</td>
+          <td>
+            <a href="https://hydesquare.com/floorplans/unit-606b015b1f1e91621cae7a7084974be1/" target="_blank" rel="noopener">View</a>
+          </td>
+        </tr>
+        
+        <tr
+          data-community="Hyde Square"
+          data-bedrooms="1"
+          data-bathrooms="1"
+        >
+          <td>Hyde Square</td>
+          <td>A317</td>
+          <td>B4</td>
+          <td class="num" data-sort="1">
+            1
+          </td>
+          <td class="num" data-sort="1">1</td>
+          <td class="num" data-sort="696">696</td>
+          <td class="num" data-sort="2459">$2,459</td>
+          <td data-sort="2026-08-01">2026-08-01</td>
+          <td>
+            <a href="https://hydesquare.com/floorplans/unit-84e7c5a679c6c740d73556f9d9087f00/" target="_blank" rel="noopener">View</a>
+          </td>
+        </tr>
+        
+        <tr
+          data-community="Hyde Square"
+          data-bedrooms="1"
+          data-bathrooms="1"
+        >
+          <td>Hyde Square</td>
+          <td>C415</td>
+          <td>B4</td>
+          <td class="num" data-sort="1">
+            1
+          </td>
+          <td class="num" data-sort="1">1</td>
+          <td class="num" data-sort="696">696</td>
+          <td class="num" data-sort="2473">$2,473</td>
+          <td data-sort="2026-08-06">2026-08-06</td>
+          <td>
+            <a href="https://hydesquare.com/floorplans/unit-6fde3d58114972053c11e889adc13032/" target="_blank" rel="noopener">View</a>
+          </td>
+        </tr>
+        
+        <tr
+          data-community="Hyde Square"
+          data-bedrooms="1"
+          data-bathrooms="1"
+        >
+          <td>Hyde Square</td>
+          <td>B726</td>
+          <td>B6</td>
+          <td class="num" data-sort="1">
+            1
+          </td>
+          <td class="num" data-sort="1">1</td>
+          <td class="num" data-sort="725">725</td>
+          <td class="num" data-sort="2533">$2,533</td>
+          <td data-sort="2026-07-27">2026-07-27</td>
+          <td>
+            <a href="https://hydesquare.com/floorplans/unit-486b690e9586d590385ed9527d32e334/" target="_blank" rel="noopener">View</a>
+          </td>
+        </tr>
+        
+        <tr
+          data-community="Hyde Square"
+          data-bedrooms="1"
+          data-bathrooms="1"
+        >
+          <td>Hyde Square</td>
+          <td>B202</td>
+          <td>B3.A</td>
+          <td class="num" data-sort="1">
+            1
+          </td>
+          <td class="num" data-sort="1">1</td>
+          <td class="num" data-sort="766">766</td>
+          <td class="num" data-sort="2663">$2,663</td>
+          <td data-sort="2026-02-26">2026-02-26</td>
+          <td>
+            <a href="https://hydesquare.com/floorplans/unit-71dd135b71405f9b80c845b12616e55b/" target="_blank" rel="noopener">View</a>
+          </td>
+        </tr>
+        
+        <tr
+          data-community="Hyde Square"
+          data-bedrooms="1"
+          data-bathrooms="1"
+        >
+          <td>Hyde Square</td>
+          <td>A404</td>
+          <td>B3.A</td>
+          <td class="num" data-sort="1">
+            1
+          </td>
+          <td class="num" data-sort="1">1</td>
+          <td class="num" data-sort="766">766</td>
+          <td class="num" data-sort="2763">$2,763</td>
+          <td data-sort="2026-07-19">2026-07-19</td>
+          <td>
+            <a href="https://hydesquare.com/floorplans/unit-4f6a9a70e924240f809844f8742a73f0/" target="_blank" rel="noopener">View</a>
+          </td>
+        </tr>
+        
+        <tr
+          data-community="Hyde Square"
+          data-bedrooms="1"
+          data-bathrooms="1"
+        >
+          <td>Hyde Square</td>
+          <td>A502</td>
+          <td>B3.A</td>
+          <td class="num" data-sort="1">
+            1
+          </td>
+          <td class="num" data-sort="1">1</td>
+          <td class="num" data-sort="766">766</td>
+          <td class="num" data-sort="2788">$2,788</td>
+          <td data-sort="2026-05-23">2026-05-23</td>
+          <td>
+            <a href="https://hydesquare.com/floorplans/unit-38984b3b3017c5df669b847f1c11ec25/" target="_blank" rel="noopener">View</a>
+          </td>
+        </tr>
+        
+        <tr
+          data-community="Hyde Square"
+          data-bedrooms="1"
+          data-bathrooms="1"
+        >
+          <td>Hyde Square</td>
+          <td>A618</td>
+          <td>B3</td>
+          <td class="num" data-sort="1">
+            1
+          </td>
+          <td class="num" data-sort="1">1</td>
+          <td class="num" data-sort="754">754</td>
+          <td class="num" data-sort="2788">$2,788</td>
+          <td data-sort="2026-06-14">2026-06-14</td>
+          <td>
+            <a href="https://hydesquare.com/floorplans/unit-fe9a5e4a4b677fdfc0559ef6e59ac562/" target="_blank" rel="noopener">View</a>
+          </td>
+        </tr>
+        
+        <tr
+          data-community="Hyde Square"
+          data-bedrooms="2"
+          data-bathrooms="2"
+        >
+          <td>Hyde Square</td>
+          <td>C224</td>
+          <td>Affordable B2</td>
+          <td class="num" data-sort="2">
+            2
+          </td>
+          <td class="num" data-sort="2">2</td>
+          <td class="num" data-sort="1044">1,044</td>
+          <td class="num" data-sort="2817">$2,817</td>
+          <td data-sort="2026-07-22">2026-07-22</td>
+          <td>
+            <a href="https://hydesquare.com/floorplans/unit-e3fff32bae264b2d09ca50a87eae8b36/" target="_blank" rel="noopener">View</a>
+          </td>
+        </tr>
+        
+        <tr
+          data-community="Hyde Square"
+          data-bedrooms="1"
+          data-bathrooms="1"
+        >
+          <td>Hyde Square</td>
+          <td>B714</td>
+          <td>B3</td>
+          <td class="num" data-sort="1">
+            1
+          </td>
+          <td class="num" data-sort="1">1</td>
+          <td class="num" data-sort="754">754</td>
+          <td class="num" data-sort="2833">$2,833</td>
+          <td data-sort="2026-06-20">2026-06-20</td>
+          <td>
+            <a href="https://hydesquare.com/floorplans/unit-c37c6dfa04c3b4d6bd39b3f992940159/" target="_blank" rel="noopener">View</a>
+          </td>
+        </tr>
+        
+        <tr
+          data-community="Hyde Square"
+          data-bedrooms="2"
+          data-bathrooms="2"
+        >
+          <td>Hyde Square</td>
+          <td>B238</td>
+          <td>C9</td>
+          <td class="num" data-sort="2">
+            2
+          </td>
+          <td class="num" data-sort="2">2</td>
+          <td class="num" data-sort="1017">1,017</td>
+          <td class="num" data-sort="3336">$3,336</td>
+          <td data-sort="2026-05-26">2026-05-26</td>
+          <td>
+            <a href="https://hydesquare.com/floorplans/unit-0ab91f557c46a03f8d7bf3955e955daf/" target="_blank" rel="noopener">View</a>
+          </td>
+        </tr>
+        
+        <tr
+          data-community="Hyde Square"
+          data-bedrooms="2"
+          data-bathrooms="2"
+        >
+          <td>Hyde Square</td>
+          <td>A536</td>
+          <td>C12</td>
+          <td class="num" data-sort="2">
+            2
+          </td>
+          <td class="num" data-sort="2">2</td>
+          <td class="num" data-sort="966">966</td>
+          <td class="num" data-sort="3355">$3,355</td>
+          <td data-sort="2026-07-05">2026-07-05</td>
+          <td>
+            <a href="https://hydesquare.com/floorplans/unit-f4601111aab88299c6977d712639dadb/" target="_blank" rel="noopener">View</a>
+          </td>
+        </tr>
+        
+        <tr
+          data-community="Hyde Square"
+          data-bedrooms="2"
+          data-bathrooms="2"
+        >
+          <td>Hyde Square</td>
+          <td>A224</td>
+          <td>C3</td>
+          <td class="num" data-sort="2">
+            2
+          </td>
+          <td class="num" data-sort="2">2</td>
+          <td class="num" data-sort="1049">1,049</td>
+          <td class="num" data-sort="3358">$3,358</td>
+          <td data-sort="2026-04-13">2026-04-13</td>
+          <td>
+            <a href="https://hydesquare.com/floorplans/unit-e46d01ae42479d2e2b6e1bfe3e64fdf6/" target="_blank" rel="noopener">View</a>
+          </td>
+        </tr>
+        
+        <tr
+          data-community="Hyde Square"
+          data-bedrooms="2"
+          data-bathrooms="2"
+        >
+          <td>Hyde Square</td>
+          <td>B422</td>
+          <td>C1</td>
+          <td class="num" data-sort="2">
+            2
+          </td>
+          <td class="num" data-sort="2">2</td>
+          <td class="num" data-sort="1028">1,028</td>
+          <td class="num" data-sort="3435">$3,435</td>
+          <td data-sort="2026-06-14">2026-06-14</td>
+          <td>
+            <a href="https://hydesquare.com/floorplans/unit-78252982b5d5b3e9291790dc28627e4c/" target="_blank" rel="noopener">View</a>
+          </td>
+        </tr>
+        
+        <tr
+          data-community="Hyde Square"
+          data-bedrooms="2"
+          data-bathrooms="2"
+        >
+          <td>Hyde Square</td>
+          <td>C531</td>
+          <td>C7</td>
+          <td class="num" data-sort="2">
+            2
+          </td>
+          <td class="num" data-sort="2">2</td>
+          <td class="num" data-sort="1046">1,046</td>
+          <td class="num" data-sort="3440">$3,440</td>
+          <td data-sort="2026-07-17">2026-07-17</td>
+          <td>
+            <a href="https://hydesquare.com/floorplans/unit-7a3379696ea3eb5e3d258e221bf08739/" target="_blank" rel="noopener">View</a>
+          </td>
+        </tr>
+        
+        <tr
+          data-community="Hyde Square"
+          data-bedrooms="2"
+          data-bathrooms="2"
+        >
+          <td>Hyde Square</td>
+          <td>B235</td>
+          <td>C2</td>
+          <td class="num" data-sort="2">
+            2
+          </td>
+          <td class="num" data-sort="2">2</td>
+          <td class="num" data-sort="1054">1,054</td>
+          <td class="num" data-sort="3463">$3,463</td>
+          <td data-sort="2026-04-17">2026-04-17</td>
+          <td>
+            <a href="https://hydesquare.com/floorplans/unit-0fe8e03207d97022a38e7ab265158cd9/" target="_blank" rel="noopener">View</a>
+          </td>
+        </tr>
+        
+        <tr
+          data-community="Hyde Square"
+          data-bedrooms="2"
+          data-bathrooms="2"
+        >
+          <td>Hyde Square</td>
+          <td>A338</td>
+          <td>C9</td>
+          <td class="num" data-sort="2">
+            2
+          </td>
+          <td class="num" data-sort="2">2</td>
+          <td class="num" data-sort="1017">1,017</td>
+          <td class="num" data-sort="3465">$3,465</td>
+          <td data-sort="2026-07-27">2026-07-27</td>
+          <td>
+            <a href="https://hydesquare.com/floorplans/unit-60f655662dd679f0dadecc03bc2572c8/" target="_blank" rel="noopener">View</a>
+          </td>
+        </tr>
+        
+        <tr
+          data-community="Hyde Square"
+          data-bedrooms="2"
+          data-bathrooms="2"
+        >
+          <td>Hyde Square</td>
+          <td>C201</td>
+          <td>C4</td>
+          <td class="num" data-sort="2">
+            2
+          </td>
+          <td class="num" data-sort="2">2</td>
+          <td class="num" data-sort="1101">1,101</td>
+          <td class="num" data-sort="3470">$3,470</td>
+          <td data-sort="2026-06-10">2026-06-10</td>
+          <td>
+            <a href="https://hydesquare.com/floorplans/unit-b728d64b0f657eb4f354a9091128b767/" target="_blank" rel="noopener">View</a>
+          </td>
+        </tr>
+        
+        <tr
+          data-community="Hyde Square"
+          data-bedrooms="2"
+          data-bathrooms="2"
+        >
+          <td>Hyde Square</td>
+          <td>A201</td>
+          <td>C4</td>
+          <td class="num" data-sort="2">
+            2
+          </td>
+          <td class="num" data-sort="2">2</td>
+          <td class="num" data-sort="1101">1,101</td>
+          <td class="num" data-sort="3503">$3,503</td>
+          <td data-sort="2026-06-25">2026-06-25</td>
+          <td>
+            <a href="https://hydesquare.com/floorplans/unit-adfb4e14b94553e861a1c5a0b26addc8/" target="_blank" rel="noopener">View</a>
+          </td>
+        </tr>
+        
+        <tr
+          data-community="Hyde Square"
+          data-bedrooms="2"
+          data-bathrooms="2"
+        >
+          <td>Hyde Square</td>
+          <td>B324</td>
+          <td>C3</td>
+          <td class="num" data-sort="2">
+            2
+          </td>
+          <td class="num" data-sort="2">2</td>
+          <td class="num" data-sort="1049">1,049</td>
+          <td class="num" data-sort="3529">$3,529</td>
+          <td data-sort="2026-06-14">2026-06-14</td>
+          <td>
+            <a href="https://hydesquare.com/floorplans/unit-59eb458eda1e693256d2072eb2edb8d1/" target="_blank" rel="noopener">View</a>
+          </td>
+        </tr>
+        
+        <tr
+          data-community="Hyde Square"
+          data-bedrooms="2"
+          data-bathrooms="2"
+        >
+          <td>Hyde Square</td>
+          <td>A424</td>
+          <td>C3</td>
+          <td class="num" data-sort="2">
+            2
+          </td>
+          <td class="num" data-sort="2">2</td>
+          <td class="num" data-sort="1049">1,049</td>
+          <td class="num" data-sort="3543">$3,543</td>
+          <td data-sort="2026-05-14">2026-05-14</td>
+          <td>
+            <a href="https://hydesquare.com/floorplans/unit-e254e7537efbcd62c6f0a7d6520f4665/" target="_blank" rel="noopener">View</a>
+          </td>
+        </tr>
+        
+        <tr
+          data-community="Hyde Square"
+          data-bedrooms="2"
+          data-bathrooms="2"
+        >
+          <td>Hyde Square</td>
+          <td>B301</td>
+          <td>C4</td>
+          <td class="num" data-sort="2">
+            2
+          </td>
+          <td class="num" data-sort="2">2</td>
+          <td class="num" data-sort="1101">1,101</td>
+          <td class="num" data-sort="3551">$3,551</td>
+          <td data-sort="2026-06-25">2026-06-25</td>
+          <td>
+            <a href="https://hydesquare.com/floorplans/unit-2cc9be221318027dd333bcde911fba9e/" target="_blank" rel="noopener">View</a>
+          </td>
+        </tr>
+        
+        <tr
+          data-community="Hyde Square"
+          data-bedrooms="2"
+          data-bathrooms="2"
+        >
+          <td>Hyde Square</td>
+          <td>D506</td>
+          <td>C3</td>
+          <td class="num" data-sort="2">
+            2
+          </td>
+          <td class="num" data-sort="2">2</td>
+          <td class="num" data-sort="1049">1,049</td>
+          <td class="num" data-sort="3588">$3,588</td>
+          <td data-sort="2026-07-29">2026-07-29</td>
+          <td>
+            <a href="https://hydesquare.com/floorplans/unit-4a934245bad5d8353a3f3bad61e26359/" target="_blank" rel="noopener">View</a>
+          </td>
+        </tr>
+        
+        <tr
+          data-community="Hyde Square"
+          data-bedrooms="2"
+          data-bathrooms="2"
+        >
+          <td>Hyde Square</td>
+          <td>A736</td>
+          <td>C11</td>
+          <td class="num" data-sort="2">
+            2
+          </td>
+          <td class="num" data-sort="2">2</td>
+          <td class="num" data-sort="1122">1,122</td>
+          <td class="num" data-sort="3640">$3,640</td>
+          <td data-sort="2026-07-05">2026-07-05</td>
+          <td>
+            <a href="https://hydesquare.com/floorplans/unit-250f136a73cef6b320d80e30ddc96b0b/" target="_blank" rel="noopener">View</a>
+          </td>
+        </tr>
+        
+        <tr
+          data-community="Hyde Square"
+          data-bedrooms="2"
+          data-bathrooms="2"
+        >
+          <td>Hyde Square</td>
+          <td>C601</td>
+          <td>C4</td>
+          <td class="num" data-sort="2">
+            2
+          </td>
+          <td class="num" data-sort="2">2</td>
+          <td class="num" data-sort="1101">1,101</td>
+          <td class="num" data-sort="3675">$3,675</td>
+          <td data-sort="2026-07-29">2026-07-29</td>
+          <td>
+            <a href="https://hydesquare.com/floorplans/unit-2350e1a6a5a0b2521e6fddda51aac3ea/" target="_blank" rel="noopener">View</a>
+          </td>
+        </tr>
+        
+        <tr
+          data-community="Nightingale"
+          data-bedrooms="0"
+          data-bathrooms="1"
+        >
+          <td>Nightingale</td>
+          <td>111</td>
+          <td>Studio 2</td>
+          <td class="num" data-sort="0">
+            Studio
+          </td>
+          <td class="num" data-sort="1">1</td>
+          <td class="num" data-sort="475">475</td>
+          <td class="num" data-sort="1950">$1,950</td>
+          <td data-sort="2026-08-10">2026-08-10</td>
+          <td>
+            <a href="https://www.livenightingale.com/apartments/wa/redmond/floor-plans#/floorplans/589869/" target="_blank" rel="noopener">View</a>
+          </td>
+        </tr>
+        
+        <tr
+          data-community="Nightingale"
+          data-bedrooms="0"
+          data-bathrooms="1"
+        >
+          <td>Nightingale</td>
+          <td>427</td>
+          <td>Studio 8</td>
+          <td class="num" data-sort="0">
+            Studio
+          </td>
+          <td class="num" data-sort="1">1</td>
+          <td class="num" data-sort="512">512</td>
+          <td class="num" data-sort="2050">$2,050</td>
+          <td data-sort="2026-07-13">2026-07-13</td>
+          <td>
+            <a href="https://www.livenightingale.com/apartments/wa/redmond/floor-plans#/floorplans/589877/" target="_blank" rel="noopener">View</a>
+          </td>
+        </tr>
+        
+        <tr
+          data-community="Nightingale"
+          data-bedrooms="1"
+          data-bathrooms="1"
+        >
+          <td>Nightingale</td>
+          <td>548</td>
+          <td>One Bed 12</td>
+          <td class="num" data-sort="1">
+            1
+          </td>
+          <td class="num" data-sort="1">1</td>
+          <td class="num" data-sort="651">651</td>
+          <td class="num" data-sort="2325">$2,325</td>
+          <td data-sort="2026-07-10">2026-07-10</td>
+          <td>
+            <a href="https://www.livenightingale.com/apartments/wa/redmond/floor-plans#/floorplans/589891/" target="_blank" rel="noopener">View</a>
+          </td>
+        </tr>
+        
+        <tr
+          data-community="Nightingale"
+          data-bedrooms="1"
+          data-bathrooms="1"
+        >
+          <td>Nightingale</td>
+          <td>226</td>
+          <td>One Bed 16</td>
+          <td class="num" data-sort="1">
+            1
+          </td>
+          <td class="num" data-sort="1">1</td>
+          <td class="num" data-sort="702">702</td>
+          <td class="num" data-sort="2350">$2,350</td>
+          <td data-sort="2026-07-10">2026-07-10</td>
+          <td>
+            <a href="https://www.livenightingale.com/apartments/wa/redmond/floor-plans#/floorplans/589928/" target="_blank" rel="noopener">View</a>
+          </td>
+        </tr>
+        
+        <tr
+          data-community="Nightingale"
+          data-bedrooms="0"
+          data-bathrooms="1"
+        >
+          <td>Nightingale</td>
+          <td>729</td>
+          <td>Studio Loft 4</td>
+          <td class="num" data-sort="0">
+            Studio
+          </td>
+          <td class="num" data-sort="1">1</td>
+          <td class="num" data-sort="653">653</td>
+          <td class="num" data-sort="2368">$2,368</td>
+          <td data-sort="2026-07-18">2026-07-18</td>
+          <td>
+            <a href="https://www.livenightingale.com/apartments/wa/redmond/floor-plans#/floorplans/589903/" target="_blank" rel="noopener">View</a>
+          </td>
+        </tr>
+        
+        <tr
+          data-community="Nightingale"
+          data-bedrooms="1"
+          data-bathrooms="1"
+        >
+          <td>Nightingale</td>
+          <td>351</td>
+          <td>One Bed 22</td>
+          <td class="num" data-sort="1">
+            1
+          </td>
+          <td class="num" data-sort="1">1</td>
+          <td class="num" data-sort="706">706</td>
+          <td class="num" data-sort="2399">$2,399</td>
+          <td data-sort="2026-05-27">2026-05-27</td>
+          <td>
+            <a href="https://www.livenightingale.com/apartments/wa/redmond/floor-plans#/floorplans/589935/" target="_blank" rel="noopener">View</a>
+          </td>
+        </tr>
+        
+        <tr
+          data-community="Nightingale"
+          data-bedrooms="1"
+          data-bathrooms="1"
+        >
+          <td>Nightingale</td>
+          <td>417</td>
+          <td>One Bed 14</td>
+          <td class="num" data-sort="1">
+            1
+          </td>
+          <td class="num" data-sort="1">1</td>
+          <td class="num" data-sort="689">689</td>
+          <td class="num" data-sort="2425">$2,425</td>
+          <td data-sort="2026-07-15">2026-07-15</td>
+          <td>
+            <a href="https://www.livenightingale.com/apartments/wa/redmond/floor-plans#/floorplans/589914/" target="_blank" rel="noopener">View</a>
+          </td>
+        </tr>
+        
+        <tr
+          data-community="Nightingale"
+          data-bedrooms="1"
+          data-bathrooms="1"
+        >
+          <td>Nightingale</td>
+          <td>453</td>
+          <td>One Bed 22</td>
+          <td class="num" data-sort="1">
+            1
+          </td>
+          <td class="num" data-sort="1">1</td>
+          <td class="num" data-sort="706">706</td>
+          <td class="num" data-sort="2460">$2,460</td>
+          <td data-sort="2026-05-22">2026-05-22</td>
+          <td>
+            <a href="https://www.livenightingale.com/apartments/wa/redmond/floor-plans#/floorplans/589935/" target="_blank" rel="noopener">View</a>
+          </td>
+        </tr>
+        
+        <tr
+          data-community="Nightingale"
+          data-bedrooms="1"
+          data-bathrooms="1"
+        >
+          <td>Nightingale</td>
+          <td>654</td>
+          <td>One Bed 22</td>
+          <td class="num" data-sort="1">
+            1
+          </td>
+          <td class="num" data-sort="1">1</td>
+          <td class="num" data-sort="706">706</td>
+          <td class="num" data-sort="2499">$2,499</td>
+          <td data-sort="2026-06-26">2026-06-26</td>
+          <td>
+            <a href="https://www.livenightingale.com/apartments/wa/redmond/floor-plans#/floorplans/589935/" target="_blank" rel="noopener">View</a>
+          </td>
+        </tr>
+        
+        <tr
+          data-community="Nightingale"
+          data-bedrooms="0"
+          data-bathrooms="1"
+        >
+          <td>Nightingale</td>
+          <td>730</td>
+          <td>Studio Loft 3</td>
+          <td class="num" data-sort="0">
+            Studio
+          </td>
+          <td class="num" data-sort="1">1</td>
+          <td class="num" data-sort="648">648</td>
+          <td class="num" data-sort="2499">$2,499</td>
+          <td data-sort="2026-07-03">2026-07-03</td>
+          <td>
+            <a href="https://www.livenightingale.com/apartments/wa/redmond/floor-plans#/floorplans/589882/" target="_blank" rel="noopener">View</a>
+          </td>
+        </tr>
+        
+        <tr
+          data-community="Nightingale"
+          data-bedrooms="0"
+          data-bathrooms="1"
+        >
+          <td>Nightingale</td>
+          <td>721</td>
+          <td>Studio Loft 4</td>
+          <td class="num" data-sort="0">
+            Studio
+          </td>
+          <td class="num" data-sort="1">1</td>
+          <td class="num" data-sort="653">653</td>
+          <td class="num" data-sort="2599">$2,599</td>
+          <td data-sort="2026-06-30">2026-06-30</td>
+          <td>
+            <a href="https://www.livenightingale.com/apartments/wa/redmond/floor-plans#/floorplans/589903/" target="_blank" rel="noopener">View</a>
+          </td>
+        </tr>
+        
+        <tr
+          data-community="Nightingale"
+          data-bedrooms="0"
+          data-bathrooms="1"
+        >
+          <td>Nightingale</td>
+          <td>737</td>
+          <td>Studio Loft 5</td>
+          <td class="num" data-sort="0">
+            Studio
+          </td>
+          <td class="num" data-sort="1">1</td>
+          <td class="num" data-sort="694">694</td>
+          <td class="num" data-sort="2699">$2,699</td>
+          <td data-sort="2026-08-10">2026-08-10</td>
+          <td>
+            <a href="https://www.livenightingale.com/apartments/wa/redmond/floor-plans#/floorplans/589924/" target="_blank" rel="noopener">View</a>
+          </td>
+        </tr>
+        
+        <tr
+          data-community="Nightingale"
+          data-bedrooms="1"
+          data-bathrooms="1"
+        >
+          <td>Nightingale</td>
+          <td>526</td>
+          <td>One Bed + Den 26</td>
+          <td class="num" data-sort="1">
+            1
+          </td>
+          <td class="num" data-sort="1">1</td>
+          <td class="num" data-sort="895">895</td>
+          <td class="num" data-sort="2850">$2,850</td>
+          <td data-sort="2026-06-23">2026-06-23</td>
+          <td>
+            <a href="https://www.livenightingale.com/apartments/wa/redmond/floor-plans#/floorplans/589948/" target="_blank" rel="noopener">View</a>
+          </td>
+        </tr>
+        
+        <tr
+          data-community="Nightingale"
+          data-bedrooms="0"
+          data-bathrooms="1.5"
+        >
+          <td>Nightingale</td>
+          <td>708</td>
+          <td>Studio Loft 12</td>
+          <td class="num" data-sort="0">
+            Studio
+          </td>
+          <td class="num" data-sort="1.5">1.5</td>
+          <td class="num" data-sort="902">902</td>
+          <td class="num" data-sort="2875">$2,875</td>
+          <td data-sort="2026-08-10">2026-08-10</td>
+          <td>
+            <a href="https://www.livenightingale.com/apartments/wa/redmond/floor-plans#/floorplans/589953/" target="_blank" rel="noopener">View</a>
+          </td>
+        </tr>
+        
+        <tr
+          data-community="Nightingale"
+          data-bedrooms="2"
+          data-bathrooms="2"
+        >
+          <td>Nightingale</td>
+          <td>741</td>
+          <td>Two Bed Penthouse 11</td>
+          <td class="num" data-sort="2">
+            2
+          </td>
+          <td class="num" data-sort="2">2</td>
+          <td class="num" data-sort="1342">1,342</td>
+          <td class="num" data-sort="3975">$3,975</td>
+          <td data-sort="2026-06-25">2026-06-25</td>
+          <td>
+            <a href="https://www.livenightingale.com/apartments/wa/redmond/floor-plans#/floorplans/589958/" target="_blank" rel="noopener">View</a>
+          </td>
+        </tr>
+        
+        <tr
+          data-community="Parkside Esterra Park"
+          data-bedrooms="0"
+          data-bathrooms="1"
+        >
+          <td>Parkside Esterra Park</td>
+          <td>S214</td>
+          <td>S1 - ARCH</td>
+          <td class="num" data-sort="0">
+            Studio
+          </td>
+          <td class="num" data-sort="1">1</td>
+          <td class="num" data-sort="508">508</td>
+          <td class="num" data-sort="1764">$1,764</td>
+          <td data-sort="2026-05-27">2026-05-27</td>
+          <td>
+            <a href="https://parksideesterrapark.com/floorplans/unit-6edce4d7542edb5976432947162c68b2/" target="_blank" rel="noopener">View</a>
+          </td>
+        </tr>
+        
+        <tr
+          data-community="Parkside Esterra Park"
+          data-bedrooms="1"
+          data-bathrooms="1"
+        >
+          <td>Parkside Esterra Park</td>
+          <td>W317</td>
+          <td>A4 - ARCH</td>
+          <td class="num" data-sort="1">
+            1
+          </td>
+          <td class="num" data-sort="1">1</td>
+          <td class="num" data-sort="560">560</td>
+          <td class="num" data-sort="1864">$1,864</td>
+          <td data-sort="2026-04-22">2026-04-22</td>
+          <td>
+            <a href="https://parksideesterrapark.com/floorplans/unit-7b878ade6494a7b12ce8deb9a8e554a9/" target="_blank" rel="noopener">View</a>
+          </td>
+        </tr>
+        
+        <tr
+          data-community="Parkside Esterra Park"
+          data-bedrooms="1"
+          data-bathrooms="1"
+        >
+          <td>Parkside Esterra Park</td>
+          <td>E130</td>
+          <td>A1 - ARCH</td>
+          <td class="num" data-sort="1">
+            1
+          </td>
+          <td class="num" data-sort="1">1</td>
+          <td class="num" data-sort="752">752</td>
+          <td class="num" data-sort="2037">$2,037</td>
+          <td data-sort="2026-06-24">2026-06-24</td>
+          <td>
+            <a href="https://parksideesterrapark.com/floorplans/unit-89d1812334dce5d6542a24810951ad5d/" target="_blank" rel="noopener">View</a>
+          </td>
+        </tr>
+        
+        <tr
+          data-community="Parkside Esterra Park"
+          data-bedrooms="1"
+          data-bathrooms="1"
+        >
+          <td>Parkside Esterra Park</td>
+          <td>W217</td>
+          <td>A4 - ARCH</td>
+          <td class="num" data-sort="1">
+            1
+          </td>
+          <td class="num" data-sort="1">1</td>
+          <td class="num" data-sort="560">560</td>
+          <td class="num" data-sort="2037">$2,037</td>
+          <td data-sort="2026-06-25">2026-06-25</td>
+          <td>
+            <a href="https://parksideesterrapark.com/floorplans/unit-7e5c88c2c3ba6f9234ac526af5490263/" target="_blank" rel="noopener">View</a>
+          </td>
+        </tr>
+        
+        <tr
+          data-community="Parkside Esterra Park"
+          data-bedrooms="1"
+          data-bathrooms="1"
+        >
+          <td>Parkside Esterra Park</td>
+          <td>E422</td>
+          <td>A3 - ARCH</td>
+          <td class="num" data-sort="1">
+            1
+          </td>
+          <td class="num" data-sort="1">1</td>
+          <td class="num" data-sort="644">644</td>
+          <td class="num" data-sort="2057">$2,057</td>
+          <td data-sort="2026-08-10">2026-08-10</td>
+          <td>
+            <a href="https://parksideesterrapark.com/floorplans/unit-05fc5d569f697ab70338cee5c967bdcf/" target="_blank" rel="noopener">View</a>
+          </td>
+        </tr>
+        
+        <tr
+          data-community="Parkside Esterra Park"
+          data-bedrooms="0"
+          data-bathrooms="1"
+        >
+          <td>Parkside Esterra Park</td>
+          <td>E217</td>
+          <td>S1</td>
+          <td class="num" data-sort="0">
+            Studio
+          </td>
+          <td class="num" data-sort="1">1</td>
+          <td class="num" data-sort="564">564</td>
+          <td class="num" data-sort="2074">$2,074</td>
+          <td data-sort="2026-06-29">2026-06-29</td>
+          <td>
+            <a href="https://parksideesterrapark.com/floorplans/unit-0aa12061f947d512d3e814c3d501fab6/" target="_blank" rel="noopener">View</a>
+          </td>
+        </tr>
+        
+        <tr
+          data-community="Parkside Esterra Park"
+          data-bedrooms="1"
+          data-bathrooms="1"
+        >
+          <td>Parkside Esterra Park</td>
+          <td>E201</td>
+          <td>A3 - ARCH</td>
+          <td class="num" data-sort="1">
+            1
+          </td>
+          <td class="num" data-sort="1">1</td>
+          <td class="num" data-sort="800">800</td>
+          <td class="num" data-sort="2087">$2,087</td>
+          <td data-sort="2026-07-16">2026-07-16</td>
+          <td>
+            <a href="https://parksideesterrapark.com/floorplans/unit-a52e904ed7f1f5b6d690859d1a9c44f9/" target="_blank" rel="noopener">View</a>
+          </td>
+        </tr>
+        
+        <tr
+          data-community="Parkside Esterra Park"
+          data-bedrooms="1"
+          data-bathrooms="1"
+        >
+          <td>Parkside Esterra Park</td>
+          <td>W117</td>
+          <td>A4</td>
+          <td class="num" data-sort="1">
+            1
+          </td>
+          <td class="num" data-sort="1">1</td>
+          <td class="num" data-sort="560">560</td>
+          <td class="num" data-sort="2173">$2,173</td>
+          <td data-sort="2026-08-03">2026-08-03</td>
+          <td>
+            <a href="https://parksideesterrapark.com/floorplans/unit-30ba36f7217c5cada1915531139addcd/" target="_blank" rel="noopener">View</a>
+          </td>
+        </tr>
+        
+        <tr
+          data-community="Parkside Esterra Park"
+          data-bedrooms="1"
+          data-bathrooms="1"
+        >
+          <td>Parkside Esterra Park</td>
+          <td>W337</td>
+          <td>A3</td>
+          <td class="num" data-sort="1">
+            1
+          </td>
+          <td class="num" data-sort="1">1</td>
+          <td class="num" data-sort="690">690</td>
+          <td class="num" data-sort="2273">$2,273</td>
+          <td data-sort="2026-08-05">2026-08-05</td>
+          <td>
+            <a href="https://parksideesterrapark.com/floorplans/unit-86774545042c76442ca305b8d66036ab/" target="_blank" rel="noopener">View</a>
+          </td>
+        </tr>
+        
+        <tr
+          data-community="Parkside Esterra Park"
+          data-bedrooms="1"
+          data-bathrooms="1"
+        >
+          <td>Parkside Esterra Park</td>
+          <td>W535</td>
+          <td>A3</td>
+          <td class="num" data-sort="1">
+            1
+          </td>
+          <td class="num" data-sort="1">1</td>
+          <td class="num" data-sort="644">644</td>
+          <td class="num" data-sort="2333">$2,333</td>
+          <td data-sort="2026-07-18">2026-07-18</td>
+          <td>
+            <a href="https://parksideesterrapark.com/floorplans/unit-f2a80bbb77f4bc40f10e72d79a399b2a/" target="_blank" rel="noopener">View</a>
+          </td>
+        </tr>
+        
+        <tr
+          data-community="Parkside Esterra Park"
+          data-bedrooms="1"
+          data-bathrooms="1"
+        >
+          <td>Parkside Esterra Park</td>
+          <td>W426</td>
+          <td>A1</td>
+          <td class="num" data-sort="1">
+            1
+          </td>
+          <td class="num" data-sort="1">1</td>
+          <td class="num" data-sort="680">680</td>
+          <td class="num" data-sort="2433">$2,433</td>
+          <td data-sort="2026-07-31">2026-07-31</td>
+          <td>
+            <a href="https://parksideesterrapark.com/floorplans/unit-9b6462c0acd355f3425ef6f69754221a/" target="_blank" rel="noopener">View</a>
+          </td>
+        </tr>
+        
+        <tr
+          data-community="Parkside Esterra Park"
+          data-bedrooms="1"
+          data-bathrooms="1"
+        >
+          <td>Parkside Esterra Park</td>
+          <td>N202</td>
+          <td>A2</td>
+          <td class="num" data-sort="1">
+            1
+          </td>
+          <td class="num" data-sort="1">1</td>
+          <td class="num" data-sort="760">760</td>
+          <td class="num" data-sort="2476">$2,476</td>
+          <td data-sort="2026-07-30">2026-07-30</td>
+          <td>
+            <a href="https://parksideesterrapark.com/floorplans/unit-2241eb21fca8c7ebb53bc7031d56442e/" target="_blank" rel="noopener">View</a>
+          </td>
+        </tr>
+        
+        <tr
+          data-community="Parkside Esterra Park"
+          data-bedrooms="1"
+          data-bathrooms="1"
+        >
+          <td>Parkside Esterra Park</td>
+          <td>N302</td>
+          <td>A2</td>
+          <td class="num" data-sort="1">
+            1
+          </td>
+          <td class="num" data-sort="1">1</td>
+          <td class="num" data-sort="760">760</td>
+          <td class="num" data-sort="2508">$2,508</td>
+          <td data-sort="2026-07-30">2026-07-30</td>
+          <td>
+            <a href="https://parksideesterrapark.com/floorplans/unit-b2d937b6572c82681e88ffeccf728a13/" target="_blank" rel="noopener">View</a>
+          </td>
+        </tr>
+        
+        <tr
+          data-community="Parkside Esterra Park"
+          data-bedrooms="1"
+          data-bathrooms="1"
+        >
+          <td>Parkside Esterra Park</td>
+          <td>E604</td>
+          <td>A1</td>
+          <td class="num" data-sort="1">
+            1
+          </td>
+          <td class="num" data-sort="1">1</td>
+          <td class="num" data-sort="682">682</td>
+          <td class="num" data-sort="2558">$2,558</td>
+          <td data-sort="2026-05-22">2026-05-22</td>
+          <td>
+            <a href="https://parksideesterrapark.com/floorplans/unit-eba178ba58e9812faf1dfd12d97674a8/" target="_blank" rel="noopener">View</a>
+          </td>
+        </tr>
+        
+        <tr
+          data-community="Parkside Esterra Park"
+          data-bedrooms="2"
+          data-bathrooms="2"
+        >
+          <td>Parkside Esterra Park</td>
+          <td>E108</td>
+          <td>B1 - ARCH</td>
+          <td class="num" data-sort="2">
+            2
+          </td>
+          <td class="num" data-sort="2">2</td>
+          <td class="num" data-sort="1210">1,210</td>
+          <td class="num" data-sort="2602">$2,602</td>
+          <td data-sort="2026-07-22">2026-07-22</td>
+          <td>
+            <a href="https://parksideesterrapark.com/floorplans/unit-b35e3d37368111943ad2d1b3c11f1b12/" target="_blank" rel="noopener">View</a>
+          </td>
+        </tr>
+        
+        <tr
+          data-community="Parkside Esterra Park"
+          data-bedrooms="1"
+          data-bathrooms="1"
+        >
+          <td>Parkside Esterra Park</td>
+          <td>N402</td>
+          <td>A2</td>
+          <td class="num" data-sort="1">
+            1
+          </td>
+          <td class="num" data-sort="1">1</td>
+          <td class="num" data-sort="760">760</td>
+          <td class="num" data-sort="2613">$2,613</td>
+          <td data-sort="2026-07-30">2026-07-30</td>
+          <td>
+            <a href="https://parksideesterrapark.com/floorplans/unit-25a55927f11db3bb34c2445928826f98/" target="_blank" rel="noopener">View</a>
+          </td>
+        </tr>
+        
+        <tr
+          data-community="Parkside Esterra Park"
+          data-bedrooms="1"
+          data-bathrooms="1"
+        >
+          <td>Parkside Esterra Park</td>
+          <td>W628</td>
+          <td>A1</td>
+          <td class="num" data-sort="1">
+            1
+          </td>
+          <td class="num" data-sort="1">1</td>
+          <td class="num" data-sort="680">680</td>
+          <td class="num" data-sort="2643">$2,643</td>
+          <td data-sort="2026-07-08">2026-07-08</td>
+          <td>
+            <a href="https://parksideesterrapark.com/floorplans/unit-054d1ce9dd840f57c63ed827c0c6de26/" target="_blank" rel="noopener">View</a>
+          </td>
+        </tr>
+        
+        <tr
+          data-community="Parkside Esterra Park"
+          data-bedrooms="1"
+          data-bathrooms="1"
+        >
+          <td>Parkside Esterra Park</td>
+          <td>S818</td>
+          <td>A1</td>
+          <td class="num" data-sort="1">
+            1
+          </td>
+          <td class="num" data-sort="1">1</td>
+          <td class="num" data-sort="668">668</td>
+          <td class="num" data-sort="2663">$2,663</td>
+          <td data-sort="2026-07-08">2026-07-08</td>
+          <td>
+            <a href="https://parksideesterrapark.com/floorplans/unit-de4c5bb687be022abd66f981d95a5c07/" target="_blank" rel="noopener">View</a>
+          </td>
+        </tr>
+        
+        <tr
+          data-community="Parkside Esterra Park"
+          data-bedrooms="1"
+          data-bathrooms="1"
+        >
+          <td>Parkside Esterra Park</td>
+          <td>S123</td>
+          <td>A2</td>
+          <td class="num" data-sort="1">
+            1
+          </td>
+          <td class="num" data-sort="1">1</td>
+          <td class="num" data-sort="861">861</td>
+          <td class="num" data-sort="2714">$2,714</td>
+          <td data-sort="2026-05-08">2026-05-08</td>
+          <td>
+            <a href="https://parksideesterrapark.com/floorplans/unit-e5ba231f55de850ed76c09647ae3152d/" target="_blank" rel="noopener">View</a>
+          </td>
+        </tr>
+        
+        <tr
+          data-community="Parkside Esterra Park"
+          data-bedrooms="1"
+          data-bathrooms="1"
+        >
+          <td>Parkside Esterra Park</td>
+          <td>W323</td>
+          <td>A1</td>
+          <td class="num" data-sort="1">
+            1
+          </td>
+          <td class="num" data-sort="1">1</td>
+          <td class="num" data-sort="850">850</td>
+          <td class="num" data-sort="2736">$2,736</td>
+          <td data-sort="2026-05-12">2026-05-12</td>
+          <td>
+            <a href="https://parksideesterrapark.com/floorplans/unit-7bde571f7901d98c4736af95b586f5c0/" target="_blank" rel="noopener">View</a>
+          </td>
+        </tr>
+        
+        <tr
+          data-community="Parkside Esterra Park"
+          data-bedrooms="1"
+          data-bathrooms="1"
+        >
+          <td>Parkside Esterra Park</td>
+          <td>N502</td>
+          <td>A2</td>
+          <td class="num" data-sort="1">
+            1
+          </td>
+          <td class="num" data-sort="1">1</td>
+          <td class="num" data-sort="760">760</td>
+          <td class="num" data-sort="2803">$2,803</td>
+          <td data-sort="2026-07-30">2026-07-30</td>
+          <td>
+            <a href="https://parksideesterrapark.com/floorplans/unit-6addc0bd53025b822e16728530b616cc/" target="_blank" rel="noopener">View</a>
+          </td>
+        </tr>
+        
+        <tr
+          data-community="Parkside Esterra Park"
+          data-bedrooms="1"
+          data-bathrooms="1"
+        >
+          <td>Parkside Esterra Park</td>
+          <td>S520</td>
+          <td>A1</td>
+          <td class="num" data-sort="1">
+            1
+          </td>
+          <td class="num" data-sort="1">1</td>
+          <td class="num" data-sort="798">798</td>
+          <td class="num" data-sort="2828">$2,828</td>
+          <td data-sort="2026-05-21">2026-05-21</td>
+          <td>
+            <a href="https://parksideesterrapark.com/floorplans/unit-24ff969b31e46ff16d9b1d270fc663c6/" target="_blank" rel="noopener">View</a>
+          </td>
+        </tr>
+        
+        <tr
+          data-community="Parkside Esterra Park"
+          data-bedrooms="1"
+          data-bathrooms="1"
+        >
+          <td>Parkside Esterra Park</td>
+          <td>N512</td>
+          <td>A2</td>
+          <td class="num" data-sort="1">
+            1
+          </td>
+          <td class="num" data-sort="1">1</td>
+          <td class="num" data-sort="780">780</td>
+          <td class="num" data-sort="2898">$2,898</td>
+          <td data-sort="2026-07-08">2026-07-08</td>
+          <td>
+            <a href="https://parksideesterrapark.com/floorplans/unit-76e613753fa310bb212f8f880a0464e5/" target="_blank" rel="noopener">View</a>
+          </td>
+        </tr>
+        
+        <tr
+          data-community="Parkside Esterra Park"
+          data-bedrooms="2"
+          data-bathrooms="2"
+        >
+          <td>Parkside Esterra Park</td>
+          <td>W420</td>
+          <td>B2</td>
+          <td class="num" data-sort="2">
+            2
+          </td>
+          <td class="num" data-sort="2">2</td>
+          <td class="num" data-sort="1080">1,080</td>
+          <td class="num" data-sort="3428">$3,428</td>
+          <td data-sort="2026-07-08">2026-07-08</td>
+          <td>
+            <a href="https://parksideesterrapark.com/floorplans/unit-a43c7632523e76fb34e12261c87f37dc/" target="_blank" rel="noopener">View</a>
+          </td>
+        </tr>
+        
+        <tr
+          data-community="Parkside Esterra Park"
+          data-bedrooms="2"
+          data-bathrooms="2"
+        >
+          <td>Parkside Esterra Park</td>
+          <td>E125</td>
+          <td>B2</td>
+          <td class="num" data-sort="2">
+            2
+          </td>
+          <td class="num" data-sort="2">2</td>
+          <td class="num" data-sort="1221">1,221</td>
+          <td class="num" data-sort="3458">$3,458</td>
+          <td data-sort="2026-06-24">2026-06-24</td>
+          <td>
+            <a href="https://parksideesterrapark.com/floorplans/unit-c026989211091379f2d80b38a5225cd0/" target="_blank" rel="noopener">View</a>
+          </td>
+        </tr>
+        
+        <tr
+          data-community="Parkside Esterra Park"
+          data-bedrooms="2"
+          data-bathrooms="2"
+        >
+          <td>Parkside Esterra Park</td>
+          <td>E428</td>
+          <td>B2</td>
+          <td class="num" data-sort="2">
+            2
+          </td>
+          <td class="num" data-sort="2">2</td>
+          <td class="num" data-sort="1021">1,021</td>
+          <td class="num" data-sort="3488">$3,488</td>
+          <td data-sort="2026-06-24">2026-06-24</td>
+          <td>
+            <a href="https://parksideesterrapark.com/floorplans/unit-5dce5fdd03202c1d014f37f3f9ef3297/" target="_blank" rel="noopener">View</a>
+          </td>
+        </tr>
+        
+        <tr
+          data-community="Parkside Esterra Park"
+          data-bedrooms="2"
+          data-bathrooms="2"
+        >
+          <td>Parkside Esterra Park</td>
+          <td>W219</td>
+          <td>B2</td>
+          <td class="num" data-sort="2">
+            2
+          </td>
+          <td class="num" data-sort="2">2</td>
+          <td class="num" data-sort="1150">1,150</td>
+          <td class="num" data-sort="3518">$3,518</td>
+          <td data-sort="2026-08-02">2026-08-02</td>
+          <td>
+            <a href="https://parksideesterrapark.com/floorplans/unit-3cdb84df076ff29a2ff6fb4e31c364df/" target="_blank" rel="noopener">View</a>
+          </td>
+        </tr>
+        
+        <tr
+          data-community="Parkside Esterra Park"
+          data-bedrooms="2"
+          data-bathrooms="2"
+        >
+          <td>Parkside Esterra Park</td>
+          <td>S415</td>
+          <td>B1</td>
+          <td class="num" data-sort="2">
+            2
+          </td>
+          <td class="num" data-sort="2">2</td>
+          <td class="num" data-sort="1188">1,188</td>
+          <td class="num" data-sort="3528">$3,528</td>
+          <td data-sort="2026-07-15">2026-07-15</td>
+          <td>
+            <a href="https://parksideesterrapark.com/floorplans/unit-13ba12767bb39c1b420310cce1faf6cc/" target="_blank" rel="noopener">View</a>
+          </td>
+        </tr>
+        
+        <tr
+          data-community="Parkside Esterra Park"
+          data-bedrooms="2"
+          data-bathrooms="2"
+        >
+          <td>Parkside Esterra Park</td>
+          <td>W620</td>
+          <td>B2</td>
+          <td class="num" data-sort="2">
+            2
+          </td>
+          <td class="num" data-sort="2">2</td>
+          <td class="num" data-sort="1080">1,080</td>
+          <td class="num" data-sort="3541">$3,541</td>
+          <td data-sort="2026-05-22">2026-05-22</td>
+          <td>
+            <a href="https://parksideesterrapark.com/floorplans/unit-a761b146e8ee9a7978f4a4ff308776f9/" target="_blank" rel="noopener">View</a>
+          </td>
+        </tr>
+        
+        <tr
+          data-community="Parkside Esterra Park"
+          data-bedrooms="2"
+          data-bathrooms="2"
+        >
+          <td>Parkside Esterra Park</td>
+          <td>W224</td>
+          <td>B1</td>
+          <td class="num" data-sort="2">
+            2
+          </td>
+          <td class="num" data-sort="2">2</td>
+          <td class="num" data-sort="1320">1,320</td>
+          <td class="num" data-sort="3683">$3,683</td>
+          <td data-sort="2026-08-10">2026-08-10</td>
+          <td>
+            <a href="https://parksideesterrapark.com/floorplans/unit-fea8178cc771fecc20c1b3ddd116775b/" target="_blank" rel="noopener">View</a>
+          </td>
+        </tr>
+        
+        <tr
+          data-community="Parkside Esterra Park"
+          data-bedrooms="2"
+          data-bathrooms="2"
+        >
+          <td>Parkside Esterra Park</td>
+          <td>E628</td>
+          <td>B2</td>
+          <td class="num" data-sort="2">
+            2
+          </td>
+          <td class="num" data-sort="2">2</td>
+          <td class="num" data-sort="1021">1,021</td>
+          <td class="num" data-sort="3733">$3,733</td>
+          <td data-sort="2026-07-10">2026-07-10</td>
+          <td>
+            <a href="https://parksideesterrapark.com/floorplans/unit-d00200b932ea959367900905060df568/" target="_blank" rel="noopener">View</a>
+          </td>
+        </tr>
+        
+        <tr
+          data-community="Verde Esterra Park"
+          data-bedrooms="0"
+          data-bathrooms="1"
+        >
+          <td>Verde Esterra Park</td>
+          <td>9112</td>
+          <td>O.01.4</td>
+          <td class="num" data-sort="0">
+            Studio
+          </td>
+          <td class="num" data-sort="1">1</td>
+          <td class="num" data-sort="600">600</td>
+          <td class="num" data-sort="2152">$2,152</td>
+          <td data-sort="2026-04-15">2026-04-15</td>
+          <td>
+            <a href="https://verdeesterrapark.com/floorplans/unit-f72ea838465b57ea3c188d9fedd753a0/" target="_blank" rel="noopener">View</a>
+          </td>
+        </tr>
+        
+        <tr
+          data-community="Verde Esterra Park"
+          data-bedrooms="0"
+          data-bathrooms="1"
+        >
+          <td>Verde Esterra Park</td>
+          <td>8238</td>
+          <td>S.02.1</td>
+          <td class="num" data-sort="0">
+            Studio
+          </td>
+          <td class="num" data-sort="1">1</td>
+          <td class="num" data-sort="525">525</td>
+          <td class="num" data-sort="2174">$2,174</td>
+          <td data-sort="2026-05-14">2026-05-14</td>
+          <td>
+            <a href="https://verdeesterrapark.com/floorplans/unit-af67c04c89b069392dca939908a3133d/" target="_blank" rel="noopener">View</a>
+          </td>
+        </tr>
+        
+        <tr
+          data-community="Verde Esterra Park"
+          data-bedrooms="0"
+          data-bathrooms="1"
+        >
+          <td>Verde Esterra Park</td>
+          <td>7201</td>
+          <td>S.02.1</td>
+          <td class="num" data-sort="0">
+            Studio
+          </td>
+          <td class="num" data-sort="1">1</td>
+          <td class="num" data-sort="525">525</td>
+          <td class="num" data-sort="2178">$2,178</td>
+          <td data-sort="2026-08-08">2026-08-08</td>
+          <td>
+            <a href="https://verdeesterrapark.com/floorplans/unit-5e4b3cf60c6ec4610932390ae85384b5/" target="_blank" rel="noopener">View</a>
+          </td>
+        </tr>
+        
+        <tr
+          data-community="Verde Esterra Park"
+          data-bedrooms="0"
+          data-bathrooms="1"
+        >
+          <td>Verde Esterra Park</td>
+          <td>4135</td>
+          <td>S.02.1</td>
+          <td class="num" data-sort="0">
+            Studio
+          </td>
+          <td class="num" data-sort="1">1</td>
+          <td class="num" data-sort="525">525</td>
+          <td class="num" data-sort="2183">$2,183</td>
+          <td data-sort="2026-08-08">2026-08-08</td>
+          <td>
+            <a href="https://verdeesterrapark.com/floorplans/unit-919f14f7f18a8d19f3a1fce6346065a8/" target="_blank" rel="noopener">View</a>
+          </td>
+        </tr>
+        
+        <tr
+          data-community="Verde Esterra Park"
+          data-bedrooms="0"
+          data-bathrooms="1"
+        >
+          <td>Verde Esterra Park</td>
+          <td>8213</td>
+          <td>S.02.1</td>
+          <td class="num" data-sort="0">
+            Studio
+          </td>
+          <td class="num" data-sort="1">1</td>
+          <td class="num" data-sort="525">525</td>
+          <td class="num" data-sort="2185">$2,185</td>
+          <td data-sort="2026-07-10">2026-07-10</td>
+          <td>
+            <a href="https://verdeesterrapark.com/floorplans/unit-133fba863aea21f72a73949e70109152/" target="_blank" rel="noopener">View</a>
+          </td>
+        </tr>
+        
+        <tr
+          data-community="Verde Esterra Park"
+          data-bedrooms="0"
+          data-bathrooms="1"
+        >
+          <td>Verde Esterra Park</td>
+          <td>4104</td>
+          <td>O.01.1</td>
+          <td class="num" data-sort="0">
+            Studio
+          </td>
+          <td class="num" data-sort="1">1</td>
+          <td class="num" data-sort="585">585</td>
+          <td class="num" data-sort="2223">$2,223</td>
+          <td data-sort="2026-09-27">2026-09-27</td>
+          <td>
+            <a href="https://verdeesterrapark.com/floorplans/unit-d43b17f119b368ed862a013a37664b69/" target="_blank" rel="noopener">View</a>
+          </td>
+        </tr>
+        
+        <tr
+          data-community="Verde Esterra Park"
+          data-bedrooms="0"
+          data-bathrooms="1"
+        >
+          <td>Verde Esterra Park</td>
+          <td>8224</td>
+          <td>O.01.6</td>
+          <td class="num" data-sort="0">
+            Studio
+          </td>
+          <td class="num" data-sort="1">1</td>
+          <td class="num" data-sort="627">627</td>
+          <td class="num" data-sort="2245">$2,245</td>
+          <td data-sort="2026-04-16">2026-04-16</td>
+          <td>
+            <a href="https://verdeesterrapark.com/floorplans/unit-f33b6202ad72fe36bc3d7d0fe10cef14/" target="_blank" rel="noopener">View</a>
+          </td>
+        </tr>
+        
+        <tr
+          data-community="Verde Esterra Park"
+          data-bedrooms="0"
+          data-bathrooms="1"
+        >
+          <td>Verde Esterra Park</td>
+          <td>7151</td>
+          <td>S.02.2</td>
+          <td class="num" data-sort="0">
+            Studio
+          </td>
+          <td class="num" data-sort="1">1</td>
+          <td class="num" data-sort="537">537</td>
+          <td class="num" data-sort="2263">$2,263</td>
+          <td data-sort="2026-08-02">2026-08-02</td>
+          <td>
+            <a href="https://verdeesterrapark.com/floorplans/unit-8cbb8ef4ff71647276f165315ef07803/" target="_blank" rel="noopener">View</a>
+          </td>
+        </tr>
+        
+        <tr
+          data-community="Verde Esterra Park"
+          data-bedrooms="0"
+          data-bathrooms="1"
+        >
+          <td>Verde Esterra Park</td>
+          <td>11106</td>
+          <td>O.09.1</td>
+          <td class="num" data-sort="0">
+            Studio
+          </td>
+          <td class="num" data-sort="1">1</td>
+          <td class="num" data-sort="505">505</td>
+          <td class="num" data-sort="2266">$2,266</td>
+          <td data-sort="2026-05-22">2026-05-22</td>
+          <td>
+            <a href="https://verdeesterrapark.com/floorplans/unit-cf1d5405312beffe82681daa066c4cb7/" target="_blank" rel="noopener">View</a>
+          </td>
+        </tr>
+        
+        <tr
+          data-community="Verde Esterra Park"
+          data-bedrooms="0"
+          data-bathrooms="1"
+        >
+          <td>Verde Esterra Park</td>
+          <td>7142</td>
+          <td>O.01.1 - A</td>
+          <td class="num" data-sort="0">
+            Studio
+          </td>
+          <td class="num" data-sort="1">1</td>
+          <td class="num" data-sort="585">585</td>
+          <td class="num" data-sort="2285">$2,285</td>
+          <td data-sort="2026-07-29">2026-07-29</td>
+          <td>
+            <a href="https://verdeesterrapark.com/floorplans/unit-025bc94c02046e8e745a842140879154/" target="_blank" rel="noopener">View</a>
+          </td>
+        </tr>
+        
+        <tr
+          data-community="Verde Esterra Park"
+          data-bedrooms="0"
+          data-bathrooms="1"
+        >
+          <td>Verde Esterra Park</td>
+          <td>8142</td>
+          <td>O.01.1 - A</td>
+          <td class="num" data-sort="0">
+            Studio
+          </td>
+          <td class="num" data-sort="1">1</td>
+          <td class="num" data-sort="585">585</td>
+          <td class="num" data-sort="2294">$2,294</td>
+          <td data-sort="2026-07-09">2026-07-09</td>
+          <td>
+            <a href="https://verdeesterrapark.com/floorplans/unit-21957cbbdce47e64beadce8547c69f20/" target="_blank" rel="noopener">View</a>
+          </td>
+        </tr>
+        
+        <tr
+          data-community="Verde Esterra Park"
+          data-bedrooms="0"
+          data-bathrooms="1"
+        >
+          <td>Verde Esterra Park</td>
+          <td>4123</td>
+          <td>O.01.1</td>
+          <td class="num" data-sort="0">
+            Studio
+          </td>
+          <td class="num" data-sort="1">1</td>
+          <td class="num" data-sort="585">585</td>
+          <td class="num" data-sort="2299">$2,299</td>
+          <td data-sort="2026-07-05">2026-07-05</td>
+          <td>
+            <a href="https://verdeesterrapark.com/floorplans/unit-5d4307358c03dc80a3dca5e127f35a45/" target="_blank" rel="noopener">View</a>
+          </td>
+        </tr>
+        
+        <tr
+          data-community="Verde Esterra Park"
+          data-bedrooms="0"
+          data-bathrooms="1"
+        >
+          <td>Verde Esterra Park</td>
+          <td>6148</td>
+          <td>O.01.1</td>
+          <td class="num" data-sort="0">
+            Studio
+          </td>
+          <td class="num" data-sort="1">1</td>
+          <td class="num" data-sort="585">585</td>
+          <td class="num" data-sort="2335">$2,335</td>
+          <td data-sort="2026-08-05">2026-08-05</td>
+          <td>
+            <a href="https://verdeesterrapark.com/floorplans/unit-d0bfc730dd1c0d03bc8163853d296ab5/" target="_blank" rel="noopener">View</a>
+          </td>
+        </tr>
+        
+        <tr
+          data-community="Verde Esterra Park"
+          data-bedrooms="0"
+          data-bathrooms="1"
+        >
+          <td>Verde Esterra Park</td>
+          <td>6120</td>
+          <td>S.05.1</td>
+          <td class="num" data-sort="0">
+            Studio
+          </td>
+          <td class="num" data-sort="1">1</td>
+          <td class="num" data-sort="569">569</td>
+          <td class="num" data-sort="2354">$2,354</td>
+          <td data-sort="2026-05-14">2026-05-14</td>
+          <td>
+            <a href="https://verdeesterrapark.com/floorplans/unit-3575fe63c63b61eac22de6a7b660d176/" target="_blank" rel="noopener">View</a>
+          </td>
+        </tr>
+        
+        <tr
+          data-community="Verde Esterra Park"
+          data-bedrooms="0"
+          data-bathrooms="1"
+        >
+          <td>Verde Esterra Park</td>
+          <td>12225</td>
+          <td>O.01.1</td>
+          <td class="num" data-sort="0">
+            Studio
+          </td>
+          <td class="num" data-sort="1">1</td>
+          <td class="num" data-sort="585">585</td>
+          <td class="num" data-sort="2363">$2,363</td>
+          <td data-sort="2026-09-08">2026-09-08</td>
+          <td>
+            <a href="https://verdeesterrapark.com/floorplans/unit-bb0fc015b18dc62bb25ac90121a884be/" target="_blank" rel="noopener">View</a>
+          </td>
+        </tr>
+        
+        <tr
+          data-community="Verde Esterra Park"
+          data-bedrooms="0"
+          data-bathrooms="1"
+        >
+          <td>Verde Esterra Park</td>
+          <td>10114</td>
+          <td>O.01.4</td>
+          <td class="num" data-sort="0">
+            Studio
+          </td>
+          <td class="num" data-sort="1">1</td>
+          <td class="num" data-sort="600">600</td>
+          <td class="num" data-sort="2364">$2,364</td>
+          <td data-sort="2026-06-25">2026-06-25</td>
+          <td>
+            <a href="https://verdeesterrapark.com/floorplans/unit-017b376f26778672c96aa44f0c114cc8/" target="_blank" rel="noopener">View</a>
+          </td>
+        </tr>
+        
+        <tr
+          data-community="Verde Esterra Park"
+          data-bedrooms="0"
+          data-bathrooms="1"
+        >
+          <td>Verde Esterra Park</td>
+          <td>8115</td>
+          <td>O.01.4</td>
+          <td class="num" data-sort="0">
+            Studio
+          </td>
+          <td class="num" data-sort="1">1</td>
+          <td class="num" data-sort="600">600</td>
+          <td class="num" data-sort="2455">$2,455</td>
+          <td data-sort="2026-07-15">2026-07-15</td>
+          <td>
+            <a href="https://verdeesterrapark.com/floorplans/unit-6c3858318b7d19eb877487712e68062d/" target="_blank" rel="noopener">View</a>
+          </td>
+        </tr>
+        
+        <tr
+          data-community="Verde Esterra Park"
+          data-bedrooms="0"
+          data-bathrooms="1"
+        >
+          <td>Verde Esterra Park</td>
+          <td>7113</td>
+          <td>O.01.6</td>
+          <td class="num" data-sort="0">
+            Studio
+          </td>
+          <td class="num" data-sort="1">1</td>
+          <td class="num" data-sort="627">627</td>
+          <td class="num" data-sort="2458">$2,458</td>
+          <td data-sort="2026-09-08">2026-09-08</td>
+          <td>
+            <a href="https://verdeesterrapark.com/floorplans/unit-f63154f68ce1dd1b181de56cc62e70d5/" target="_blank" rel="noopener">View</a>
+          </td>
+        </tr>
+        
+        <tr
+          data-community="Verde Esterra Park"
+          data-bedrooms="1"
+          data-bathrooms="1"
+        >
+          <td>Verde Esterra Park</td>
+          <td>6205</td>
+          <td>O.04.1</td>
+          <td class="num" data-sort="1">
+            1
+          </td>
+          <td class="num" data-sort="1">1</td>
+          <td class="num" data-sort="680">680</td>
+          <td class="num" data-sort="2495">$2,495</td>
+          <td data-sort="2026-08-03">2026-08-03</td>
+          <td>
+            <a href="https://verdeesterrapark.com/floorplans/unit-e299b57b13806b484044c9a9ca3c7b75/" target="_blank" rel="noopener">View</a>
+          </td>
+        </tr>
+        
+        <tr
+          data-community="Verde Esterra Park"
+          data-bedrooms="1"
+          data-bathrooms="1"
+        >
+          <td>Verde Esterra Park</td>
+          <td>8237</td>
+          <td>O.02.2</td>
+          <td class="num" data-sort="1">
+            1
+          </td>
+          <td class="num" data-sort="1">1</td>
+          <td class="num" data-sort="604">604</td>
+          <td class="num" data-sort="2495">$2,495</td>
+          <td data-sort="2026-07-08">2026-07-08</td>
+          <td>
+            <a href="https://verdeesterrapark.com/floorplans/unit-9a8ed32a616e840882ed4a8639170e82/" target="_blank" rel="noopener">View</a>
+          </td>
+        </tr>
+        
+        <tr
+          data-community="Verde Esterra Park"
+          data-bedrooms="1"
+          data-bathrooms="1"
+        >
+          <td>Verde Esterra Park</td>
+          <td>5219</td>
+          <td>1.16.2b</td>
+          <td class="num" data-sort="1">
+            1
+          </td>
+          <td class="num" data-sort="1">1</td>
+          <td class="num" data-sort="782">782</td>
+          <td class="num" data-sort="2646">$2,646</td>
+          <td data-sort="2026-07-16">2026-07-16</td>
+          <td>
+            <a href="https://verdeesterrapark.com/floorplans/unit-46fdc50c2b44d76c6bcb174334f7a16f/" target="_blank" rel="noopener">View</a>
+          </td>
+        </tr>
+        
+        <tr
+          data-community="Verde Esterra Park"
+          data-bedrooms="1"
+          data-bathrooms="1"
+        >
+          <td>Verde Esterra Park</td>
+          <td>3126</td>
+          <td>1.01.1b</td>
+          <td class="num" data-sort="1">
+            1
+          </td>
+          <td class="num" data-sort="1">1</td>
+          <td class="num" data-sort="711">711</td>
+          <td class="num" data-sort="2678">$2,678</td>
+          <td data-sort="2026-05-26">2026-05-26</td>
+          <td>
+            <a href="https://verdeesterrapark.com/floorplans/unit-fe8ad1c97050153fd60c3d67787218ef/" target="_blank" rel="noopener">View</a>
+          </td>
+        </tr>
+        
+        <tr
+          data-community="Verde Esterra Park"
+          data-bedrooms="1"
+          data-bathrooms="1"
+        >
+          <td>Verde Esterra Park</td>
+          <td>6220</td>
+          <td>1.01.1b</td>
+          <td class="num" data-sort="1">
+            1
+          </td>
+          <td class="num" data-sort="1">1</td>
+          <td class="num" data-sort="735">735</td>
+          <td class="num" data-sort="2833">$2,833</td>
+          <td data-sort="2026-07-08">2026-07-08</td>
+          <td>
+            <a href="https://verdeesterrapark.com/floorplans/unit-fd005f24097a43a93b395a052745ebfd/" target="_blank" rel="noopener">View</a>
+          </td>
+        </tr>
+        
+        <tr
+          data-community="Verde Esterra Park"
+          data-bedrooms="1"
+          data-bathrooms="1"
+        >
+          <td>Verde Esterra Park</td>
+          <td>3101</td>
+          <td>1.10.1</td>
+          <td class="num" data-sort="1">
+            1
+          </td>
+          <td class="num" data-sort="1">1</td>
+          <td class="num" data-sort="794">794</td>
+          <td class="num" data-sort="2844">$2,844</td>
+          <td data-sort="2026-08-01">2026-08-01</td>
+          <td>
+            <a href="https://verdeesterrapark.com/floorplans/unit-6a067ae598d42808c823737a770a6323/" target="_blank" rel="noopener">View</a>
+          </td>
+        </tr>
+        
+        <tr
+          data-community="Verde Esterra Park"
+          data-bedrooms="1"
+          data-bathrooms="1"
+        >
+          <td>Verde Esterra Park</td>
+          <td>9235</td>
+          <td>1.01.1b</td>
+          <td class="num" data-sort="1">
+            1
+          </td>
+          <td class="num" data-sort="1">1</td>
+          <td class="num" data-sort="711">711</td>
+          <td class="num" data-sort="2857">$2,857</td>
+          <td data-sort="2026-07-28">2026-07-28</td>
+          <td>
+            <a href="https://verdeesterrapark.com/floorplans/unit-41cf382b75fa3c019c90a46d2bbe1e72/" target="_blank" rel="noopener">View</a>
+          </td>
+        </tr>
+        
+        <tr
+          data-community="Verde Esterra Park"
+          data-bedrooms="1"
+          data-bathrooms="1"
+        >
+          <td>Verde Esterra Park</td>
+          <td>11107</td>
+          <td>1.14.1</td>
+          <td class="num" data-sort="1">
+            1
+          </td>
+          <td class="num" data-sort="1">1</td>
+          <td class="num" data-sort="729">729</td>
+          <td class="num" data-sort="2877">$2,877</td>
+          <td data-sort="2026-05-30">2026-05-30</td>
+          <td>
+            <a href="https://verdeesterrapark.com/floorplans/unit-c2f6cc31e0aa975df94eccc8fbaacb58/" target="_blank" rel="noopener">View</a>
+          </td>
+        </tr>
+        
+        <tr
+          data-community="Verde Esterra Park"
+          data-bedrooms="1"
+          data-bathrooms="1"
+        >
+          <td>Verde Esterra Park</td>
+          <td>5110</td>
+          <td>1.01.1b</td>
+          <td class="num" data-sort="1">
+            1
+          </td>
+          <td class="num" data-sort="1">1</td>
+          <td class="num" data-sort="746">746</td>
+          <td class="num" data-sort="2887">$2,887</td>
+          <td data-sort="2026-08-06">2026-08-06</td>
+          <td>
+            <a href="https://verdeesterrapark.com/floorplans/unit-17fbf2a2f4f9df5b465aa820989ef707/" target="_blank" rel="noopener">View</a>
+          </td>
+        </tr>
+        
+        <tr
+          data-community="Verde Esterra Park"
+          data-bedrooms="1"
+          data-bathrooms="1"
+        >
+          <td>Verde Esterra Park</td>
+          <td>9204</td>
+          <td>1.06.1</td>
+          <td class="num" data-sort="1">
+            1
+          </td>
+          <td class="num" data-sort="1">1</td>
+          <td class="num" data-sort="677">677</td>
+          <td class="num" data-sort="2888">$2,888</td>
+          <td data-sort="2026-06-26">2026-06-26</td>
+          <td>
+            <a href="https://verdeesterrapark.com/floorplans/unit-36b964c8702a5fe52c7a503243410dde/" target="_blank" rel="noopener">View</a>
+          </td>
+        </tr>
+        
+        <tr
+          data-community="Verde Esterra Park"
+          data-bedrooms="1"
+          data-bathrooms="1"
+        >
+          <td>Verde Esterra Park</td>
+          <td>6203</td>
+          <td>1.06.1</td>
+          <td class="num" data-sort="1">
+            1
+          </td>
+          <td class="num" data-sort="1">1</td>
+          <td class="num" data-sort="677">677</td>
+          <td class="num" data-sort="2903">$2,903</td>
+          <td data-sort="2026-07-12">2026-07-12</td>
+          <td>
+            <a href="https://verdeesterrapark.com/floorplans/unit-53269ee27d532b9faf4ecc8c6d7233df/" target="_blank" rel="noopener">View</a>
+          </td>
+        </tr>
+        
+        <tr
+          data-community="Verde Esterra Park"
+          data-bedrooms="1"
+          data-bathrooms="1"
+        >
+          <td>Verde Esterra Park</td>
+          <td>8122</td>
+          <td>1.01.1b</td>
+          <td class="num" data-sort="1">
+            1
+          </td>
+          <td class="num" data-sort="1">1</td>
+          <td class="num" data-sort="735">735</td>
+          <td class="num" data-sort="2913">$2,913</td>
+          <td data-sort="2026-07-20">2026-07-20</td>
+          <td>
+            <a href="https://verdeesterrapark.com/floorplans/unit-0d7ef077bd29070895eecc315fd9b885/" target="_blank" rel="noopener">View</a>
+          </td>
+        </tr>
+        
+        <tr
+          data-community="Verde Esterra Park"
+          data-bedrooms="1"
+          data-bathrooms="1"
+        >
+          <td>Verde Esterra Park</td>
+          <td>6224</td>
+          <td>1.16.2b</td>
+          <td class="num" data-sort="1">
+            1
+          </td>
+          <td class="num" data-sort="1">1</td>
+          <td class="num" data-sort="811">811</td>
+          <td class="num" data-sort="2921">$2,921</td>
+          <td data-sort="2026-07-20">2026-07-20</td>
+          <td>
+            <a href="https://verdeesterrapark.com/floorplans/unit-303fd3607b2f3dde4cca019bde2a3d63/" target="_blank" rel="noopener">View</a>
+          </td>
+        </tr>
+        
+        <tr
+          data-community="Verde Esterra Park"
+          data-bedrooms="1"
+          data-bathrooms="1"
+        >
+          <td>Verde Esterra Park</td>
+          <td>7132</td>
+          <td>1.03.1b</td>
+          <td class="num" data-sort="1">
+            1
+          </td>
+          <td class="num" data-sort="1">1</td>
+          <td class="num" data-sort="727">727</td>
+          <td class="num" data-sort="2973">$2,973</td>
+          <td data-sort="2026-07-09">2026-07-09</td>
+          <td>
+            <a href="https://verdeesterrapark.com/floorplans/unit-dfcb2afed5492250c80f40d0b16b16b9/" target="_blank" rel="noopener">View</a>
+          </td>
+        </tr>
+        
+        <tr
+          data-community="Verde Esterra Park"
+          data-bedrooms="1"
+          data-bathrooms="2"
+        >
+          <td>Verde Esterra Park</td>
+          <td>9233</td>
+          <td>1.19.3b​</td>
+          <td class="num" data-sort="1">
+            1
+          </td>
+          <td class="num" data-sort="2">2</td>
+          <td class="num" data-sort="834">834</td>
+          <td class="num" data-sort="2976">$2,976</td>
+          <td data-sort="2026-09-02">2026-09-02</td>
+          <td>
+            <a href="https://verdeesterrapark.com/floorplans/unit-fc5a67192f5d5c5a19fd54f85ae809d1/" target="_blank" rel="noopener">View</a>
+          </td>
+        </tr>
+        
+        <tr
+          data-community="Verde Esterra Park"
+          data-bedrooms="1"
+          data-bathrooms="2"
+        >
+          <td>Verde Esterra Park</td>
+          <td>7233</td>
+          <td>1.19.3b​</td>
+          <td class="num" data-sort="1">
+            1
+          </td>
+          <td class="num" data-sort="2">2</td>
+          <td class="num" data-sort="834">834</td>
+          <td class="num" data-sort="3028">$3,028</td>
+          <td data-sort="2026-07-08">2026-07-08</td>
+          <td>
+            <a href="https://verdeesterrapark.com/floorplans/unit-c01d777d1a48ea4e9da213fa1232545e/" target="_blank" rel="noopener">View</a>
+          </td>
+        </tr>
+        
+        <tr
+          data-community="Verde Esterra Park"
+          data-bedrooms="1"
+          data-bathrooms="2"
+        >
+          <td>Verde Esterra Park</td>
+          <td>8233</td>
+          <td>1.19.3b​</td>
+          <td class="num" data-sort="1">
+            1
+          </td>
+          <td class="num" data-sort="2">2</td>
+          <td class="num" data-sort="834">834</td>
+          <td class="num" data-sort="3044">$3,044</td>
+          <td data-sort="2026-07-31">2026-07-31</td>
+          <td>
+            <a href="https://verdeesterrapark.com/floorplans/unit-926db843e49853b41c414cc7f2fdd467/" target="_blank" rel="noopener">View</a>
+          </td>
+        </tr>
+        
+        <tr
+          data-community="Verde Esterra Park"
+          data-bedrooms="1"
+          data-bathrooms="1"
+        >
+          <td>Verde Esterra Park</td>
+          <td>12214</td>
+          <td>1.02.4b</td>
+          <td class="num" data-sort="1">
+            1
+          </td>
+          <td class="num" data-sort="1">1</td>
+          <td class="num" data-sort="720">720</td>
+          <td class="num" data-sort="3143">$3,143</td>
+          <td data-sort="2026-07-06">2026-07-06</td>
+          <td>
+            <a href="https://verdeesterrapark.com/floorplans/unit-9704cae91731fd74d9cdc02465c3473a/" target="_blank" rel="noopener">View</a>
+          </td>
+        </tr>
+        
+        <tr
+          data-community="Verde Esterra Park"
+          data-bedrooms="1"
+          data-bathrooms="1"
+        >
+          <td>Verde Esterra Park</td>
+          <td>11122</td>
+          <td>1.02.2b</td>
+          <td class="num" data-sort="1">
+            1
+          </td>
+          <td class="num" data-sort="1">1</td>
+          <td class="num" data-sort="763">763</td>
+          <td class="num" data-sort="3261">$3,261</td>
+          <td data-sort="2026-06-02">2026-06-02</td>
+          <td>
+            <a href="https://verdeesterrapark.com/floorplans/unit-4d27aa19add5b901752dd36f567497ca/" target="_blank" rel="noopener">View</a>
+          </td>
+        </tr>
+        
+        <tr
+          data-community="Verde Esterra Park"
+          data-bedrooms="2"
+          data-bathrooms="2"
+        >
+          <td>Verde Esterra Park</td>
+          <td>3129</td>
+          <td>2.03.1</td>
+          <td class="num" data-sort="2">
+            2
+          </td>
+          <td class="num" data-sort="2">2</td>
+          <td class="num" data-sort="1020">1,020</td>
+          <td class="num" data-sort="3452">$3,452</td>
+          <td data-sort="2026-05-22">2026-05-22</td>
+          <td>
+            <a href="https://verdeesterrapark.com/floorplans/unit-97d20c5ca0c3dc06f5bbfb8ac3295e87/" target="_blank" rel="noopener">View</a>
+          </td>
+        </tr>
+        
+        <tr
+          data-community="Verde Esterra Park"
+          data-bedrooms="2"
+          data-bathrooms="2"
+        >
+          <td>Verde Esterra Park</td>
+          <td>9216</td>
+          <td>2.06.1</td>
+          <td class="num" data-sort="2">
+            2
+          </td>
+          <td class="num" data-sort="2">2</td>
+          <td class="num" data-sort="904">904</td>
+          <td class="num" data-sort="3725">$3,725</td>
+          <td data-sort="2026-07-07">2026-07-07</td>
+          <td>
+            <a href="https://verdeesterrapark.com/floorplans/unit-f5405f2d2edec0a825a363d6e31754c3/" target="_blank" rel="noopener">View</a>
+          </td>
+        </tr>
+        
+        <tr
+          data-community="Verde Esterra Park"
+          data-bedrooms="2"
+          data-bathrooms="2"
+        >
+          <td>Verde Esterra Park</td>
+          <td>7119</td>
+          <td>2.02.1</td>
+          <td class="num" data-sort="2">
+            2
+          </td>
+          <td class="num" data-sort="2">2</td>
+          <td class="num" data-sort="1045">1,045</td>
+          <td class="num" data-sort="3757">$3,757</td>
+          <td data-sort="2026-08-08">2026-08-08</td>
+          <td>
+            <a href="https://verdeesterrapark.com/floorplans/unit-aec34a49db6b03598c3dab84fc1ca098/" target="_blank" rel="noopener">View</a>
+          </td>
+        </tr>
+        
+        <tr
+          data-community="Vue 22 Apartments"
+          data-bedrooms="0"
+          data-bathrooms="1"
+        >
+          <td>Vue 22 Apartments</td>
+          <td>N-333</td>
+          <td>S1</td>
+          <td class="num" data-sort="0">
+            Studio
+          </td>
+          <td class="num" data-sort="1">1</td>
+          <td class="num" data-sort="442">442</td>
+          <td class="num" data-sort="1989">$1,989</td>
+          <td data-sort="Available">Available</td>
+          <td>
+            <a href="https://vue22apts.securecafe.com/onlineleasing/vue-22-apartments/oleapplication.aspx?stepname=RentalOptions&amp;myOlePropertyId=1282523&amp;FloorPlanID=3551216&amp;UnitID=27971537&amp;MoveInDate=7/7/2026&amp;PropLeadSource_1282523=portal" target="_blank" rel="noopener">View</a>
+          </td>
+        </tr>
+        
+        <tr
+          data-community="Vue 22 Apartments"
+          data-bedrooms="0"
+          data-bathrooms="1"
+        >
+          <td>Vue 22 Apartments</td>
+          <td>W-373</td>
+          <td>S1</td>
+          <td class="num" data-sort="0">
+            Studio
+          </td>
+          <td class="num" data-sort="1">1</td>
+          <td class="num" data-sort="442">442</td>
+          <td class="num" data-sort="1989">$1,989</td>
+          <td data-sort="2026-07-09">2026-07-09</td>
+          <td>
+            <a href="https://vue22apts.securecafe.com/onlineleasing/vue-22-apartments/oleapplication.aspx?stepname=RentalOptions&amp;myOlePropertyId=1282523&amp;FloorPlanID=3551216&amp;UnitID=27971787&amp;MoveInDate=7/9/2026&amp;PropLeadSource_1282523=portal" target="_blank" rel="noopener">View</a>
+          </td>
+        </tr>
+        
+        <tr
+          data-community="Vue 22 Apartments"
+          data-bedrooms="1"
+          data-bathrooms="1"
+        >
+          <td>Vue 22 Apartments</td>
+          <td>E-205</td>
+          <td>A3.1</td>
+          <td class="num" data-sort="1">
+            1
+          </td>
+          <td class="num" data-sort="1">1</td>
+          <td class="num" data-sort="506">506</td>
+          <td class="num" data-sort="1999">$1,999</td>
+          <td data-sort="Available">Available</td>
+          <td>
+            <a href="https://vue22apts.securecafe.com/onlineleasing/vue-22-apartments/oleapplication.aspx?stepname=RentalOptions&amp;myOlePropertyId=1282523&amp;FloorPlanID=3530529&amp;UnitID=27971433&amp;MoveInDate=7/7/2026&amp;PropLeadSource_1282523=portal" target="_blank" rel="noopener">View</a>
+          </td>
+        </tr>
+        
+        <tr
+          data-community="Vue 22 Apartments"
+          data-bedrooms="1"
+          data-bathrooms="1"
+        >
+          <td>Vue 22 Apartments</td>
+          <td>E-211</td>
+          <td>A3.1</td>
+          <td class="num" data-sort="1">
+            1
+          </td>
+          <td class="num" data-sort="1">1</td>
+          <td class="num" data-sort="506">506</td>
+          <td class="num" data-sort="1999">$1,999</td>
+          <td data-sort="2026-07-16">2026-07-16</td>
+          <td>
+            <a href="https://vue22apts.securecafe.com/onlineleasing/vue-22-apartments/oleapplication.aspx?stepname=RentalOptions&amp;myOlePropertyId=1282523&amp;FloorPlanID=3530529&amp;UnitID=27971437&amp;MoveInDate=7/16/2026&amp;PropLeadSource_1282523=portal" target="_blank" rel="noopener">View</a>
+          </td>
+        </tr>
+        
+        <tr
+          data-community="Vue 22 Apartments"
+          data-bedrooms="1"
+          data-bathrooms="1"
+        >
+          <td>Vue 22 Apartments</td>
+          <td>E-316</td>
+          <td>A9.1</td>
+          <td class="num" data-sort="1">
+            1
+          </td>
+          <td class="num" data-sort="1">1</td>
+          <td class="num" data-sort="571">571</td>
+          <td class="num" data-sort="1999">$1,999</td>
+          <td data-sort="2026-09-15">2026-09-15</td>
+          <td>
+            <a href="https://vue22apts.securecafe.com/onlineleasing/vue-22-apartments/oleapplication.aspx?stepname=RentalOptions&amp;myOlePropertyId=1282523&amp;FloorPlanID=3530532&amp;UnitID=27971460&amp;MoveInDate=9/15/2026&amp;PropLeadSource_1282523=portal" target="_blank" rel="noopener">View</a>
+          </td>
+        </tr>
+        
+        <tr
+          data-community="Vue 22 Apartments"
+          data-bedrooms="1"
+          data-bathrooms="1"
+        >
+          <td>Vue 22 Apartments</td>
+          <td>E-323</td>
+          <td>A9.1</td>
+          <td class="num" data-sort="1">
+            1
+          </td>
+          <td class="num" data-sort="1">1</td>
+          <td class="num" data-sort="571">571</td>
+          <td class="num" data-sort="1999">$1,999</td>
+          <td data-sort="Available">Available</td>
+          <td>
+            <a href="https://vue22apts.securecafe.com/onlineleasing/vue-22-apartments/oleapplication.aspx?stepname=RentalOptions&amp;myOlePropertyId=1282523&amp;FloorPlanID=3530532&amp;UnitID=27971467&amp;MoveInDate=7/7/2026&amp;PropLeadSource_1282523=portal" target="_blank" rel="noopener">View</a>
+          </td>
+        </tr>
+        
+        <tr
+          data-community="Vue 22 Apartments"
+          data-bedrooms="1"
+          data-bathrooms="1"
+        >
+          <td>Vue 22 Apartments</td>
+          <td>W-285</td>
+          <td>A12</td>
+          <td class="num" data-sort="1">
+            1
+          </td>
+          <td class="num" data-sort="1">1</td>
+          <td class="num" data-sort="609">609</td>
+          <td class="num" data-sort="2409">$2,409</td>
+          <td data-sort="2026-07-19">2026-07-19</td>
+          <td>
+            <a href="https://vue22apts.securecafe.com/onlineleasing/vue-22-apartments/oleapplication.aspx?stepname=RentalOptions&amp;myOlePropertyId=1282523&amp;FloorPlanID=3526501&amp;UnitID=27971782&amp;MoveInDate=7/19/2026&amp;PropLeadSource_1282523=portal" target="_blank" rel="noopener">View</a>
+          </td>
+        </tr>
+        
+        <tr
+          data-community="Vue 22 Apartments"
+          data-bedrooms="1"
+          data-bathrooms="1"
+        >
+          <td>Vue 22 Apartments</td>
+          <td>N-304</td>
+          <td>A12</td>
+          <td class="num" data-sort="1">
+            1
+          </td>
+          <td class="num" data-sort="1">1</td>
+          <td class="num" data-sort="609">609</td>
+          <td class="num" data-sort="2429">$2,429</td>
+          <td data-sort="2026-07-26">2026-07-26</td>
+          <td>
+            <a href="https://vue22apts.securecafe.com/onlineleasing/vue-22-apartments/oleapplication.aspx?stepname=RentalOptions&amp;myOlePropertyId=1282523&amp;FloorPlanID=3526501&amp;UnitID=27971515&amp;MoveInDate=7/26/2026&amp;PropLeadSource_1282523=portal" target="_blank" rel="noopener">View</a>
+          </td>
+        </tr>
+        
+        <tr
+          data-community="Vue 22 Apartments"
+          data-bedrooms="1"
+          data-bathrooms="1"
+        >
+          <td>Vue 22 Apartments</td>
+          <td>N-422</td>
+          <td>A14</td>
+          <td class="num" data-sort="1">
+            1
+          </td>
+          <td class="num" data-sort="1">1</td>
+          <td class="num" data-sort="644">644</td>
+          <td class="num" data-sort="2472">$2,472</td>
+          <td data-sort="Available">Available</td>
+          <td>
+            <a href="https://vue22apts.securecafe.com/onlineleasing/vue-22-apartments/oleapplication.aspx?stepname=RentalOptions&amp;myOlePropertyId=1282523&amp;FloorPlanID=3526503&amp;UnitID=27971561&amp;MoveInDate=7/7/2026&amp;PropLeadSource_1282523=portal" target="_blank" rel="noopener">View</a>
+          </td>
+        </tr>
+        
+        <tr
+          data-community="Vue 22 Apartments"
+          data-bedrooms="1"
+          data-bathrooms="1.5"
+        >
+          <td>Vue 22 Apartments</td>
+          <td>15576</td>
+          <td>L1</td>
+          <td class="num" data-sort="1">
+            1
+          </td>
+          <td class="num" data-sort="1.5">1.5</td>
+          <td class="num" data-sort="825">825</td>
+          <td class="num" data-sort="2493">$2,493</td>
+          <td data-sort="2026-08-22">2026-08-22</td>
+          <td>
+            <a href="https://vue22apts.securecafe.com/onlineleasing/vue-22-apartments/oleapplication.aspx?stepname=RentalOptions&amp;myOlePropertyId=1282523&amp;FloorPlanID=3526490&amp;UnitID=27971410&amp;MoveInDate=8/22/2026&amp;PropLeadSource_1282523=portal" target="_blank" rel="noopener">View</a>
+          </td>
+        </tr>
+        
+        <tr
+          data-community="Vue 22 Apartments"
+          data-bedrooms="1"
+          data-bathrooms="1"
+        >
+          <td>Vue 22 Apartments</td>
+          <td>S-765</td>
+          <td>A14</td>
+          <td class="num" data-sort="1">
+            1
+          </td>
+          <td class="num" data-sort="1">1</td>
+          <td class="num" data-sort="644">644</td>
+          <td class="num" data-sort="2512">$2,512</td>
+          <td data-sort="Available">Available</td>
+          <td>
+            <a href="https://vue22apts.securecafe.com/onlineleasing/vue-22-apartments/oleapplication.aspx?stepname=RentalOptions&amp;myOlePropertyId=1282523&amp;FloorPlanID=3526503&amp;UnitID=27971752&amp;MoveInDate=7/7/2026&amp;PropLeadSource_1282523=portal" target="_blank" rel="noopener">View</a>
+          </td>
+        </tr>
+        
+        <tr
+          data-community="Vue 22 Apartments"
+          data-bedrooms="1"
+          data-bathrooms="1"
+        >
+          <td>Vue 22 Apartments</td>
+          <td>S-852</td>
+          <td>A12</td>
+          <td class="num" data-sort="1">
+            1
+          </td>
+          <td class="num" data-sort="1">1</td>
+          <td class="num" data-sort="609">609</td>
+          <td class="num" data-sort="2579">$2,579</td>
+          <td data-sort="2026-08-09">2026-08-09</td>
+          <td>
+            <a href="https://vue22apts.securecafe.com/onlineleasing/vue-22-apartments/oleapplication.aspx?stepname=RentalOptions&amp;myOlePropertyId=1282523&amp;FloorPlanID=3526501&amp;UnitID=27971757&amp;MoveInDate=8/9/2026&amp;PropLeadSource_1282523=portal" target="_blank" rel="noopener">View</a>
+          </td>
+        </tr>
+        
+        <tr
+          data-community="Vue 22 Apartments"
+          data-bedrooms="1"
+          data-bathrooms="1"
+        >
+          <td>Vue 22 Apartments</td>
+          <td>N-432</td>
+          <td>A18</td>
+          <td class="num" data-sort="1">
+            1
+          </td>
+          <td class="num" data-sort="1">1</td>
+          <td class="num" data-sort="723">723</td>
+          <td class="num" data-sort="2587">$2,587</td>
+          <td data-sort="Available">Available</td>
+          <td>
+            <a href="https://vue22apts.securecafe.com/onlineleasing/vue-22-apartments/oleapplication.aspx?stepname=RentalOptions&amp;myOlePropertyId=1282523&amp;FloorPlanID=3526505&amp;UnitID=27971569&amp;MoveInDate=7/7/2026&amp;PropLeadSource_1282523=portal" target="_blank" rel="noopener">View</a>
+          </td>
+        </tr>
+        
+        <tr
+          data-community="Vue 22 Apartments"
+          data-bedrooms="1"
+          data-bathrooms="1"
+        >
+          <td>Vue 22 Apartments</td>
+          <td>N-632</td>
+          <td>A18</td>
+          <td class="num" data-sort="1">
+            1
+          </td>
+          <td class="num" data-sort="1">1</td>
+          <td class="num" data-sort="723">723</td>
+          <td class="num" data-sort="2652">$2,652</td>
+          <td data-sort="Available">Available</td>
+          <td>
+            <a href="https://vue22apts.securecafe.com/onlineleasing/vue-22-apartments/oleapplication.aspx?stepname=RentalOptions&amp;myOlePropertyId=1282523&amp;FloorPlanID=3526505&amp;UnitID=27971619&amp;MoveInDate=7/7/2026&amp;PropLeadSource_1282523=portal" target="_blank" rel="noopener">View</a>
+          </td>
+        </tr>
+        
+        <tr
+          data-community="Vue 22 Apartments"
+          data-bedrooms="2"
+          data-bathrooms="2"
+        >
+          <td>Vue 22 Apartments</td>
+          <td>E-325</td>
+          <td>B1.1</td>
+          <td class="num" data-sort="2">
+            2
+          </td>
+          <td class="num" data-sort="2">2</td>
+          <td class="num" data-sort="814">814</td>
+          <td class="num" data-sort="2680">$2,680</td>
+          <td data-sort="2026-07-18">2026-07-18</td>
+          <td>
+            <a href="https://vue22apts.securecafe.com/onlineleasing/vue-22-apartments/oleapplication.aspx?stepname=RentalOptions&amp;myOlePropertyId=1282523&amp;FloorPlanID=3530561&amp;UnitID=27971468&amp;MoveInDate=7/18/2026&amp;PropLeadSource_1282523=portal" target="_blank" rel="noopener">View</a>
+          </td>
+        </tr>
+        
+        <tr
+          data-community="Vue 22 Apartments"
+          data-bedrooms="1"
+          data-bathrooms="1"
+        >
+          <td>Vue 22 Apartments</td>
+          <td>W-574</td>
+          <td>A25</td>
+          <td class="num" data-sort="1">
+            1
+          </td>
+          <td class="num" data-sort="1">1</td>
+          <td class="num" data-sort="831">831</td>
+          <td class="num" data-sort="2985">$2,985</td>
+          <td data-sort="Available">Available</td>
+          <td>
+            <a href="https://vue22apts.securecafe.com/onlineleasing/vue-22-apartments/oleapplication.aspx?stepname=RentalOptions&amp;myOlePropertyId=1282523&amp;FloorPlanID=3530548&amp;UnitID=27971824&amp;MoveInDate=7/7/2026&amp;PropLeadSource_1282523=portal" target="_blank" rel="noopener">View</a>
+          </td>
+        </tr>
+        
+        <tr
+          data-community="Vue 22 Apartments"
+          data-bedrooms="2"
+          data-bathrooms="2"
+        >
+          <td>Vue 22 Apartments</td>
+          <td>N-315</td>
+          <td>B3</td>
+          <td class="num" data-sort="2">
+            2
+          </td>
+          <td class="num" data-sort="2">2</td>
+          <td class="num" data-sort="931">931</td>
+          <td class="num" data-sort="3230">$3,230</td>
+          <td data-sort="2026-07-30">2026-07-30</td>
+          <td>
+            <a href="https://vue22apts.securecafe.com/onlineleasing/vue-22-apartments/oleapplication.aspx?stepname=RentalOptions&amp;myOlePropertyId=1282523&amp;FloorPlanID=3526511&amp;UnitID=27971521&amp;MoveInDate=7/30/2026&amp;PropLeadSource_1282523=portal" target="_blank" rel="noopener">View</a>
+          </td>
+        </tr>
+        
+        <tr
+          data-community="Vue 22 Apartments"
+          data-bedrooms="2"
+          data-bathrooms="2"
+        >
+          <td>Vue 22 Apartments</td>
+          <td>S-451</td>
+          <td>B5</td>
+          <td class="num" data-sort="2">
+            2
+          </td>
+          <td class="num" data-sort="2">2</td>
+          <td class="num" data-sort="976">976</td>
+          <td class="num" data-sort="3325">$3,325</td>
+          <td data-sort="2026-09-01">2026-09-01</td>
+          <td>
+            <a href="https://vue22apts.securecafe.com/onlineleasing/vue-22-apartments/oleapplication.aspx?stepname=RentalOptions&amp;myOlePropertyId=1282523&amp;FloorPlanID=3526513&amp;UnitID=27971696&amp;MoveInDate=9/1/2026&amp;PropLeadSource_1282523=portal" target="_blank" rel="noopener">View</a>
+          </td>
+        </tr>
+        
+        <tr
+          data-community="Vue 22 Apartments"
+          data-bedrooms="2"
+          data-bathrooms="2"
+        >
+          <td>Vue 22 Apartments</td>
+          <td>N-519</td>
+          <td>B8</td>
+          <td class="num" data-sort="2">
+            2
+          </td>
+          <td class="num" data-sort="2">2</td>
+          <td class="num" data-sort="1028">1,028</td>
+          <td class="num" data-sort="3460">$3,460</td>
+          <td data-sort="Available">Available</td>
+          <td>
+            <a href="https://vue22apts.securecafe.com/onlineleasing/vue-22-apartments/oleapplication.aspx?stepname=RentalOptions&amp;myOlePropertyId=1282523&amp;FloorPlanID=3526516&amp;UnitID=27971582&amp;MoveInDate=7/7/2026&amp;PropLeadSource_1282523=portal" target="_blank" rel="noopener">View</a>
+          </td>
+        </tr>
+        
+        <tr
+          data-community="Vue 22 Apartments"
+          data-bedrooms="2"
+          data-bathrooms="2"
+        >
+          <td>Vue 22 Apartments</td>
+          <td>N-719</td>
+          <td>B8</td>
+          <td class="num" data-sort="2">
+            2
+          </td>
+          <td class="num" data-sort="2">2</td>
+          <td class="num" data-sort="1028">1,028</td>
+          <td class="num" data-sort="3470">$3,470</td>
+          <td data-sort="Available">Available</td>
+          <td>
+            <a href="https://vue22apts.securecafe.com/onlineleasing/vue-22-apartments/oleapplication.aspx?stepname=RentalOptions&amp;myOlePropertyId=1282523&amp;FloorPlanID=3526516&amp;UnitID=27971634&amp;MoveInDate=7/7/2026&amp;PropLeadSource_1282523=portal" target="_blank" rel="noopener">View</a>
+          </td>
+        </tr>
+        
+        <tr
+          data-community="Vue 22 Apartments"
+          data-bedrooms="2"
+          data-bathrooms="2"
+        >
+          <td>Vue 22 Apartments</td>
+          <td>S-557</td>
+          <td>B10</td>
+          <td class="num" data-sort="2">
+            2
+          </td>
+          <td class="num" data-sort="2">2</td>
+          <td class="num" data-sort="1055">1,055</td>
+          <td class="num" data-sort="3492">$3,492</td>
+          <td data-sort="2026-07-17">2026-07-17</td>
+          <td>
+            <a href="https://vue22apts.securecafe.com/onlineleasing/vue-22-apartments/oleapplication.aspx?stepname=RentalOptions&amp;myOlePropertyId=1282523&amp;FloorPlanID=3526517&amp;UnitID=27971717&amp;MoveInDate=7/17/2026&amp;PropLeadSource_1282523=portal" target="_blank" rel="noopener">View</a>
+          </td>
+        </tr>
+        
+        <tr
+          data-community="Vue 22 Apartments"
+          data-bedrooms="2"
+          data-bathrooms="2"
+        >
+          <td>Vue 22 Apartments</td>
+          <td>02180</td>
+          <td>L7</td>
+          <td class="num" data-sort="2">
+            2
+          </td>
+          <td class="num" data-sort="2">2</td>
+          <td class="num" data-sort="1292">1,292</td>
+          <td class="num" data-sort="3550">$3,550</td>
+          <td data-sort="Available">Available</td>
+          <td>
+            <a href="https://vue22apts.securecafe.com/onlineleasing/vue-22-apartments/oleapplication.aspx?stepname=RentalOptions&amp;myOlePropertyId=1282523&amp;FloorPlanID=3526875&amp;UnitID=27971393&amp;MoveInDate=7/7/2026&amp;PropLeadSource_1282523=portal" target="_blank" rel="noopener">View</a>
+          </td>
+        </tr>
+        
+        <tr
+          data-community="Vue 22 Apartments"
+          data-bedrooms="2"
+          data-bathrooms="2"
+        >
+          <td>Vue 22 Apartments</td>
+          <td>W-679</td>
+          <td>B5</td>
+          <td class="num" data-sort="2">
+            2
+          </td>
+          <td class="num" data-sort="2">2</td>
+          <td class="num" data-sort="976">976</td>
+          <td class="num" data-sort="3615">$3,615</td>
+          <td data-sort="2026-07-16">2026-07-16</td>
+          <td>
+            <a href="https://vue22apts.securecafe.com/onlineleasing/vue-22-apartments/oleapplication.aspx?stepname=RentalOptions&amp;myOlePropertyId=1282523&amp;FloorPlanID=3526513&amp;UnitID=27971837&amp;MoveInDate=7/16/2026&amp;PropLeadSource_1282523=portal" target="_blank" rel="noopener">View</a>
+          </td>
+        </tr>
+        
+        <tr
+          data-community="Vue 22 Apartments"
+          data-bedrooms="2"
+          data-bathrooms="2"
+        >
+          <td>Vue 22 Apartments</td>
+          <td>E-622</td>
+          <td>B22</td>
+          <td class="num" data-sort="2">
+            2
+          </td>
+          <td class="num" data-sort="2">2</td>
+          <td class="num" data-sort="1213">1,213</td>
+          <td class="num" data-sort="3802">$3,802</td>
+          <td data-sort="Available">Available</td>
+          <td>
+            <a href="https://vue22apts.securecafe.com/onlineleasing/vue-22-apartments/oleapplication.aspx?stepname=RentalOptions&amp;myOlePropertyId=1282523&amp;FloorPlanID=3530570&amp;UnitID=27971509&amp;MoveInDate=7/7/2026&amp;PropLeadSource_1282523=portal" target="_blank" rel="noopener">View</a>
+          </td>
+        </tr>
+        
+        <tr
+          data-community="Zephyr on the Park Apartments"
+          data-bedrooms="0"
+          data-bathrooms="1"
+        >
+          <td>Zephyr on the Park Apartments</td>
+          <td>717</td>
+          <td>S2</td>
+          <td class="num" data-sort="0">
+            Studio
+          </td>
+          <td class="num" data-sort="1">1</td>
+          <td class="num" data-sort="513">513</td>
+          <td class="num" data-sort="1935">$1,935</td>
+          <td data-sort="2026-07-24">2026-07-24</td>
+          <td>
+            <a href="https://www.equityapartments.com/UnitFees/24096/1/717" target="_blank" rel="noopener">View</a>
+          </td>
+        </tr>
+        
+        <tr
+          data-community="Zephyr on the Park Apartments"
+          data-bedrooms="0"
+          data-bathrooms="1"
+        >
+          <td>Zephyr on the Park Apartments</td>
+          <td>818</td>
+          <td>S1</td>
+          <td class="num" data-sort="0">
+            Studio
+          </td>
+          <td class="num" data-sort="1">1</td>
+          <td class="num" data-sort="481">481</td>
+          <td class="num" data-sort="1975">$1,975</td>
+          <td data-sort="2026-07-21">2026-07-21</td>
+          <td>
+            <a href="https://www.equityapartments.com/UnitFees/24096/1/818" target="_blank" rel="noopener">View</a>
+          </td>
+        </tr>
+        
+        <tr
+          data-community="Zephyr on the Park Apartments"
+          data-bedrooms="0"
+          data-bathrooms="1"
+        >
+          <td>Zephyr on the Park Apartments</td>
+          <td>625</td>
+          <td>S2</td>
+          <td class="num" data-sort="0">
+            Studio
+          </td>
+          <td class="num" data-sort="1">1</td>
+          <td class="num" data-sort="513">513</td>
+          <td class="num" data-sort="1985">$1,985</td>
+          <td data-sort="2026-07-07">2026-07-07</td>
+          <td>
+            <a href="https://www.equityapartments.com/UnitFees/24096/1/625" target="_blank" rel="noopener">View</a>
+          </td>
+        </tr>
+        
+        <tr
+          data-community="Zephyr on the Park Apartments"
+          data-bedrooms="1"
+          data-bathrooms="1"
+        >
+          <td>Zephyr on the Park Apartments</td>
+          <td>513</td>
+          <td>A17</td>
+          <td class="num" data-sort="1">
+            1
+          </td>
+          <td class="num" data-sort="1">1</td>
+          <td class="num" data-sort="770">770</td>
+          <td class="num" data-sort="2770">$2,770</td>
+          <td data-sort="2026-07-17">2026-07-17</td>
+          <td>
+            <a href="https://www.equityapartments.com/UnitFees/24096/1/513" target="_blank" rel="noopener">View</a>
+          </td>
+        </tr>
+        
+        <tr
+          data-community="Zephyr on the Park Apartments"
+          data-bedrooms="1"
+          data-bathrooms="1"
+        >
+          <td>Zephyr on the Park Apartments</td>
+          <td>432</td>
+          <td>A20</td>
+          <td class="num" data-sort="1">
+            1
+          </td>
+          <td class="num" data-sort="1">1</td>
+          <td class="num" data-sort="843">843</td>
+          <td class="num" data-sort="3050">$3,050</td>
+          <td data-sort="2026-07-15">2026-07-15</td>
+          <td>
+            <a href="https://www.equityapartments.com/UnitFees/24096/1/432" target="_blank" rel="noopener">View</a>
+          </td>
+        </tr>
+        
+        <tr
+          data-community="Zephyr on the Park Apartments"
+          data-bedrooms="1"
+          data-bathrooms="1"
+        >
+          <td>Zephyr on the Park Apartments</td>
+          <td>802</td>
+          <td>A21</td>
+          <td class="num" data-sort="1">
+            1
+          </td>
+          <td class="num" data-sort="1">1</td>
+          <td class="num" data-sort="890">890</td>
+          <td class="num" data-sort="3165">$3,165</td>
+          <td data-sort="2026-07-07">2026-07-07</td>
+          <td>
+            <a href="https://www.equityapartments.com/UnitFees/24096/1/802" target="_blank" rel="noopener">View</a>
+          </td>
+        </tr>
+        
+      </tbody>
+    </table>
+  </div>
+</section>
+
+</main>
+
+    <footer class="footer">
+      <a
+        class="footer__github"
+        href="https://github.com/JKomskis/Apartment-Scraper"
+        target="_blank"
+        rel="noopener"
+        >GitHub</a
+      >
+      <p>
+        Generated from 5 snapshot(s)
+        (2026-07-05 to
+        2026-07-09) · 2026-07-10T04:56:14.675Z
+      </p>
+    </footer>
+
+    
+    <script>
+      window.SNAPSHOT_DATA = {"bedroomOptions":["all","Studio","1 BR","2 BR","3 BR"],"byBedroom":{"all":{"communityLabels":["Hyde Square","Verde Esterra Park","Parkside Esterra Park","Vue 22 Apartments","Avalon Esterra Park","AVA Esterra Park","Nightingale","Avalon Redmond Campus","Zephyr on the Park Apartments"],"communityCounts":[51,40,31,24,23,21,15,14,6],"bedroomLabels":["Studio","1 BR","2 BR","3 BR"],"bedroomCounts":[50,120,54,1],"bedroomAvgRent":[2200,2557,3452,4810],"histogram":{"labels":["$1,750–2,000","$2,000–2,250","$2,250–2,500","$2,500–2,750","$2,750–3,000","$3,000–3,250","$3,250–3,500","$3,500–3,750","$3,750–4,000","$4,000–4,250","$4,250–4,500","$4,500–4,750","$4,750–5,000"],"counts":[15,31,59,31,32,9,26,16,5,0,0,0,1]}},"Studio":{"communityLabels":["Verde Esterra Park","Hyde Square","Nightingale","AVA Esterra Park","Avalon Esterra Park","Zephyr on the Park Apartments","Parkside Esterra Park","Vue 22 Apartments","Avalon Redmond Campus"],"communityCounts":[18,10,7,4,3,3,2,2,1],"bedroomLabels":["Studio"],"bedroomCounts":[50],"bedroomAvgRent":[2200],"histogram":{"labels":["$1,750–2,000","$2,000–2,250","$2,250–2,500","$2,500–2,750","$2,750–3,000"],"counts":[10,23,14,2,1]}},"1 BR":{"communityLabels":["Hyde Square","Parkside Esterra Park","Verde Esterra Park","AVA Esterra Park","Avalon Esterra Park","Vue 22 Apartments","Nightingale","Avalon Redmond Campus","Zephyr on the Park Apartments"],"communityCounts":[25,20,19,14,13,13,7,6,3],"bedroomLabels":["1 BR"],"bedroomCounts":[120],"bedroomAvgRent":[2557],"histogram":{"labels":["$1,750–2,000","$2,000–2,250","$2,250–2,500","$2,500–2,750","$2,750–3,000","$3,000–3,250","$3,250–3,500"],"counts":[5,8,45,27,29,5,1]}},"2 BR":{"communityLabels":["Hyde Square","Parkside Esterra Park","Vue 22 Apartments","Avalon Esterra Park","Avalon Redmond Campus","AVA Esterra Park","Verde Esterra Park","Nightingale"],"communityCounts":[16,9,9,7,6,3,3,1],"bedroomLabels":["2 BR"],"bedroomCounts":[54],"bedroomAvgRent":[3452],"histogram":{"labels":["$2,500–2,750","$2,750–3,000","$3,000–3,250","$3,250–3,500","$3,500–3,750","$3,750–4,000"],"counts":[2,2,4,25,16,5]}},"3 BR":{"communityLabels":["Avalon Redmond Campus"],"communityCounts":[1],"bedroomLabels":["3 BR"],"bedroomCounts":[1],"bedroomAvgRent":[4810],"histogram":{"labels":["$4,750–5,000"],"counts":[1]}}}};
+    </script>
+    
+  </body>
+</html>
