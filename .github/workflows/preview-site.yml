@@ -1,13 +1,13 @@
 name: Deploy PR site preview
 
-# Build every pull request and publish it below
+# Scrape and build every pull request, then publish it below
 # /pr-preview/pr-<number>/ on the repository's GitHub Pages site. The preview
 # is updated when the PR changes and removed when the PR closes.
 #
 # `pull_request_target` lets the publish and comment jobs use the base
-# repository's token for PRs from forks. Never build PR code in a job with that
-# write token: the untrusted build is isolated in a read-only job and only its
-# static artifact is passed to a fresh, write-enabled runner.
+# repository's token for PRs from forks. Never run PR code in a job with that
+# write token: the untrusted scrape and build are isolated in read-only jobs,
+# and only the final static artifact reaches a fresh, write-enabled runner.
 on:
   pull_request_target:
     types: [opened, reopened, synchronize, closed]
@@ -19,8 +19,20 @@ concurrency:
   cancel-in-progress: true
 
 jobs:
+  scrape:
+    if: github.event.action != 'closed'
+    permissions:
+      contents: read
+    uses: ./.github/workflows/daily-scrape.yml
+    with:
+      preview_mode: true
+      checkout_repository: ${{ github.event.pull_request.head.repo.full_name }}
+      checkout_ref: ${{ github.event.pull_request.head.sha }}
+      artifact_name: pr-scrape-data-${{ github.event.pull_request.number }}
+
   build:
     if: github.event.action != 'closed'
+    needs: scrape
     runs-on: ubuntu-latest
     permissions:
       contents: read
@@ -31,6 +43,12 @@ jobs:
           repository: ${{ github.event.pull_request.head.repo.full_name }}
           ref: ${{ github.event.pull_request.head.sha }}
           persist-credentials: false
+
+      - name: Download refreshed scrape data
+        uses: actions/download-artifact@v4
+        with:
+          name: pr-scrape-data-${{ github.event.pull_request.number }}
+          path: data
 
       - name: Set up Node.js
         uses: actions/setup-node@v4

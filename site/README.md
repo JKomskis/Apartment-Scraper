@@ -94,9 +94,18 @@ triggering a redeploy) and on manual dispatch. It builds with
 every pull request with its own base path and publishes a preview at
 `https://jkomskis.github.io/Apartment-Scraper/pr-preview/pr-<number>/`. The action
 adds or updates a sticky preview link on the pull request, rebuilds it after new
-commits, and removes its files when the pull request closes. Fork pull requests
-are supported without exposing a write token to their code: the build runs in an
-isolated read-only job and a fresh job deploys only the resulting static artifact.
+commits, and removes its files when the pull request closes.
+
+Before building, it calls
+[.github/workflows/daily-scrape.yml](../.github/workflows/daily-scrape.yml) in
+preview mode against the PR's exact commit. That runs every community configured
+by the PR (including newly added spiders), creates a current UTC-dated snapshot,
+and passes the refreshed `data/` directory to the Eleventy build as a temporary
+artifact. Preview-mode scrape results are never committed to the repository.
+
+Fork pull requests are supported without exposing a write token to their code:
+the untrusted scrape and build run in isolated read-only jobs with dependency
+caches disabled, and a fresh job deploys only the resulting static artifact.
 
 One-time setup (after the production workflow has created `gh-pages`): open the
 repository's **Settings → Pages → Build and deployment**, choose **Deploy from a
