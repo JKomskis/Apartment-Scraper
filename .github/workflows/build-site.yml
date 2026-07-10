@@ -1,32 +1,32 @@
 name: Deploy site to GitHub Pages
 
-# Builds the Eleventy + Vite static site in `site/` and publishes it to GitHub
-# Pages. Runs on pushes to `main` that touch the site or its data (the daily
-# scrape commits new `data/` snapshots, which triggers a fresh deploy) and can
-# also be run manually from the Actions tab.
+# Builds the Eleventy + Vite static site in `site/` and publishes it to the root
+# of the `gh-pages` branch. The PR preview workflow stores previews on that same
+# branch under `pr-preview/`, so this deployment preserves that directory.
+# Runs on pushes to `main` (the daily scrape commits new `data/` snapshots,
+# which triggers a fresh deploy) and can also be run manually from Actions.
 #
-# One-time setup: enable Pages with "GitHub Actions" as the source
-# (repo Settings -> Pages -> Build and deployment -> Source: GitHub Actions).
+# One-time setup: Settings -> Pages -> Build and deployment -> Source:
+# "Deploy from a branch", then select `gh-pages` and `/(root)`.
 
 on:
   push:
     branches: [main]
   workflow_dispatch:
 
-# Least-privilege token plus the permissions the Pages deployment needs.
+# The deployment commits the generated site to the publishing branch.
 permissions:
-  contents: read
-  pages: write
-  id-token: write
+  contents: write
 
-# Allow a single concurrent Pages deployment; don't cancel one in progress so a
-# queued deploy always finishes.
+# Production deployments are serialized. Preview deployments use their own
+# per-PR groups; both publishing actions use non-force pushes with rebase retries
+# so a simultaneous preview update cannot overwrite production (or vice versa).
 concurrency:
-  group: "pages"
+  group: pages-production
   cancel-in-progress: false
 
 jobs:
-  build:
+  build-and-deploy:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout repository
@@ -45,23 +45,19 @@ jobs:
 
       - name: Build static site
         working-directory: site
-        run: npm run build
+        run: |
+          npm run build
+          touch _site/.nojekyll
         env:
           # Served as a project site under https://<user>.github.io/<repo>/.
           BASE_PATH: /Apartment-Scraper/
 
-      - name: Upload Pages artifact
-        uses: actions/upload-pages-artifact@v3
+      - name: Deploy to GitHub Pages branch
+        uses: JamesIves/github-pages-deploy-action@d92aa235d04922e8f08b40ce78cc5442fcfbfa2f # v4.8.0
         with:
-          path: site/_site/
-
-  deploy:
-    environment:
-      name: github-pages
-      url: ${{ steps.deployment.outputs.page_url }}
-    runs-on: ubuntu-latest
-    needs: build
-    steps:
-      - name: Deploy to GitHub Pages
-        id: deployment
-        uses: actions/deploy-pages@v4
+          folder: site/_site/
+          branch: gh-pages
+          clean: true
+          clean-exclude: pr-preview/
+          force: false
+          attempt-limit: 10

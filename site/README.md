@@ -85,11 +85,24 @@ BASE_PATH=/Apartment-Scraper/ npm run build
 ## Deploy (GitHub Pages)
 
 [.github/workflows/build-site.yml](../.github/workflows/build-site.yml) builds the
-site and publishes it to GitHub Pages on every push to `main` that touches `site/`
-or `data/` (the daily scrape commits new snapshots, triggering a redeploy), and on
-manual dispatch. It builds with `BASE_PATH=/Apartment-Scraper/` and uploads
-`site/_site/`. One-time setup: repo **Settings → Pages → Build and deployment →
-Source: GitHub Actions**.
+production site on every push to `main` (the daily scrape commits new snapshots,
+triggering a redeploy) and on manual dispatch. It builds with
+`BASE_PATH=/Apartment-Scraper/` and publishes `site/_site/` to the root of the
+`gh-pages` branch.
+
+[.github/workflows/preview-site.yml](../.github/workflows/preview-site.yml) builds
+every pull request with its own base path and publishes a preview at
+`https://jkomskis.github.io/Apartment-Scraper/pr-preview/pr-<number>/`. The action
+adds or updates a sticky preview link on the pull request, rebuilds it after new
+commits, and removes its files when the pull request closes. Fork pull requests
+are supported without exposing a write token to their code: the build runs in an
+isolated read-only job and a fresh job deploys only the resulting static artifact.
+
+One-time setup (after the production workflow has created `gh-pages`): open the
+repository's **Settings → Pages → Build and deployment**, choose **Deploy from a
+branch**, select **gh-pages** and **/(root)**, then save. Both workflows use
+non-force pushes, and production deployments preserve the `pr-preview/`
+directory so active previews remain available.
 
 ## How it's wired
 

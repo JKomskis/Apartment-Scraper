@@ -1,0 +1,109 @@
+name: Deploy PR site preview
+
+# Build every pull request and publish it below
+# /pr-preview/pr-<number>/ on the repository's GitHub Pages site. The preview
+# is updated when the PR changes and removed when the PR closes.
+#
+# `pull_request_target` lets the publish and comment jobs use the base
+# repository's token for PRs from forks. Never build PR code in a job with that
+# write token: the untrusted build is isolated in a read-only job and only its
+# static artifact is passed to a fresh, write-enabled runner.
+on:
+  pull_request_target:
+    types: [opened, reopened, synchronize, closed]
+
+# Keep updates for one PR in order. A newer update (including close/cleanup)
+# supersedes an older build, while different PRs can build concurrently.
+concurrency:
+  group: pages-preview-${{ github.event.pull_request.number }}
+  cancel-in-progress: true
+
+jobs:
+  build:
+    if: github.event.action != 'closed'
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+    steps:
+      - name: Check out pull request
+        uses: actions/checkout@v4
+        with:
+          repository: ${{ github.event.pull_request.head.repo.full_name }}
+          ref: ${{ github.event.pull_request.head.sha }}
+          persist-credentials: false
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22
+
+      - name: Install dependencies
+        working-directory: site
+        run: npm ci
+
+      - name: Build static site
+        working-directory: site
+        run: npm run build
+        env:
+          BASE_PATH: /Apartment-Scraper/pr-preview/pr-${{ github.event.pull_request.number }}/
+
+      - name: Upload preview artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: pr-preview-site
+          path: site/_site/
+          retention-days: 1
+
+  deploy:
+    if: github.event.action != 'closed'
+    needs: build
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+      pull-requests: write
+    steps:
+      # The deployment action needs a trusted checkout in which to create its
+      # temporary git worktree. Do not check out or execute PR code in this job.
+      - name: Check out base repository
+        uses: actions/checkout@v4
+        with:
+          ref: ${{ github.event.pull_request.base.sha }}
+
+      - name: Download preview artifact
+        uses: actions/download-artifact@v4
+        with:
+          name: pr-preview-site
+          path: ${{ runner.temp }}/pr-preview-site
+
+      - name: Deploy preview
+        uses: rossjrw/pr-preview-action@ffa7509e91a3ec8dfc2e5536c4d5c1acdf7a6de9 # v1.8.1
+        with:
+          source-dir: ${{ runner.temp }}/pr-preview-site
+          preview-branch: gh-pages
+          umbrella-dir: pr-preview
+          pr-number: ${{ github.event.pull_request.number }}
+          action: deploy
+          wait-for-pages-deployment: true
+          qr-code: false
+
+  cleanup:
+    if: github.event.action == 'closed'
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+      pull-requests: write
+    steps:
+      - name: Check out base repository
+        uses: actions/checkout@v4
+        with:
+          ref: ${{ github.event.pull_request.base.sha }}
+
+      - name: Remove preview
+        uses: rossjrw/pr-preview-action@ffa7509e91a3ec8dfc2e5536c4d5c1acdf7a6de9 # v1.8.1
+        with:
+          preview-branch: gh-pages
+          umbrella-dir: pr-preview
+          pr-number: ${{ github.event.pull_request.number }}
+          action: remove
+          wait-for-pages-deployment: true
+          qr-code: false
