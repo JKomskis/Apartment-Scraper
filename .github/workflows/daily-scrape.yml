@@ -8,15 +8,46 @@ on:
     - cron: "0 8 * * *"
   # Allow manual runs from the Actions tab.
   workflow_dispatch:
+  # PR previews call the same scrape workflow in read-only mode. The caller
+  # supplies the untrusted PR repository/ref and receives refreshed `data/` as
+  # an artifact; no data is committed in this mode.
+  workflow_call:
+    inputs:
+      preview_mode:
+        description: Scrape for a PR preview without committing the data
+        required: false
+        type: boolean
+        default: false
+      checkout_repository:
+        description: Repository containing the scraper code to run
+        required: false
+        type: string
+        default: ""
+      checkout_ref:
+        description: Commit or ref containing the scraper code to run
+        required: false
+        type: string
+        default: ""
+      artifact_name:
+        description: Name of the refreshed data artifact in preview mode
+        required: false
+        type: string
+        default: scrape-data
+    secrets:
+      SCRAPE_PAT:
+        description: PAT used only by direct scheduled/manual publishing runs
+        required: false
 
-# The job commits the refreshed data back to the repository.
+# Direct scheduled/manual runs publish data and need write access. A reusable
+# workflow caller can only maintain or reduce these permissions; the PR preview
+# caller explicitly caps this token at `contents: read`.
 permissions:
   contents: write
 
-# Never let two scrape runs (e.g. the nightly cron and a manual run) push at once.
+# Serialize publishing runs, but give each PR its own cancellable scrape group.
 concurrency:
-  group: daily-scrape
-  cancel-in-progress: false
+  group: ${{ inputs.preview_mode == true && format('pr-scrape-{0}', github.event.pull_request.number) || 'daily-scrape' }}
+  cancel-in-progress: ${{ inputs.preview_mode == true }}
 
 jobs:
   scrape:
@@ -26,6 +57,8 @@ jobs:
       - name: Check out repository
         uses: actions/checkout@v4
         with:
+          repository: ${{ inputs.checkout_repository || github.repository }}
+          ref: ${{ inputs.checkout_ref || github.ref }}
           # Check out (and later push) with a PAT instead of the default
           # GITHUB_TOKEN. Pushes made with GITHUB_TOKEN deliberately do NOT
           # trigger other workflows, so the deploy-on-push-to-main workflow would
@@ -33,13 +66,18 @@ jobs:
           # the git credential, so the `git push` step below uses it automatically.
           # Create a fine-grained PAT with Contents: read & write on this repo and
           # store it as an Actions secret named SCRAPE_PAT.
-          token: ${{ secrets.SCRAPE_PAT }}
-          persist-credentials: true
+          #
+          # Preview mode instead uses the caller's read-only token and never
+          # persists credentials in the checkout that runs PR code.
+          token: ${{ inputs.preview_mode == true && github.token || secrets.SCRAPE_PAT }}
+          persist-credentials: ${{ inputs.preview_mode != true }}
 
       - name: Install uv
         uses: astral-sh/setup-uv@v6
         with:
-          enable-cache: true
+          # Do not let untrusted PR dependencies populate the cache restored by
+          # the privileged scheduled workflow.
+          enable-cache: ${{ inputs.preview_mode != true }}
           python-version: "3.13"
 
       - name: Install dependencies
@@ -71,7 +109,16 @@ jobs:
           echo "archive=${ARCHIVE}" >> "$GITHUB_ENV"
           echo "snapshot_date=${YEAR}-${MONTH}-${DAY}" >> "$GITHUB_ENV"
 
+      - name: Upload refreshed data for preview
+        if: inputs.preview_mode == true
+        uses: actions/upload-artifact@v4
+        with:
+          name: ${{ inputs.artifact_name }}
+          path: data/
+          retention-days: 1
+
       - name: Commit and push data
+        if: inputs.preview_mode != true
         run: |
           set -euo pipefail
           git config user.name "github-actions[bot]"
