@@ -23,12 +23,12 @@ jobs:
     if: github.event.action != 'closed'
     permissions:
       contents: read
-    uses: ./.github/workflows/daily-scrape.yml
+    uses: ./.github/workflows/scrape-data.yml
     with:
-      preview_mode: true
       checkout_repository: ${{ github.event.pull_request.head.repo.full_name }}
       checkout_ref: ${{ github.event.pull_request.head.sha }}
       artifact_name: pr-scrape-data-${{ github.event.pull_request.number }}
+      enable_cache: false
 
   build:
     if: github.event.action != 'closed'

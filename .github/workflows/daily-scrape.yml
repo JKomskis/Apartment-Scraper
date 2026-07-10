@@ -8,57 +8,34 @@ on:
     - cron: "0 8 * * *"
   # Allow manual runs from the Actions tab.
   workflow_dispatch:
-  # PR previews call the same scrape workflow in read-only mode. The caller
-  # supplies the untrusted PR repository/ref and receives refreshed `data/` as
-  # an artifact; no data is committed in this mode.
-  workflow_call:
-    inputs:
-      preview_mode:
-        description: Scrape for a PR preview without committing the data
-        required: false
-        type: boolean
-        default: false
-      checkout_repository:
-        description: Repository containing the scraper code to run
-        required: false
-        type: string
-        default: ""
-      checkout_ref:
-        description: Commit or ref containing the scraper code to run
-        required: false
-        type: string
-        default: ""
-      artifact_name:
-        description: Name of the refreshed data artifact in preview mode
-        required: false
-        type: string
-        default: scrape-data
-    secrets:
-      SCRAPE_PAT:
-        description: PAT used only by direct scheduled/manual publishing runs
-        required: false
 
-# Direct scheduled/manual runs publish data and need write access. A reusable
-# workflow caller can only maintain or reduce these permissions; the PR preview
-# caller explicitly caps this token at `contents: read`.
-permissions:
-  contents: write
+permissions: {}
 
-# Serialize publishing runs, but give each PR its own cancellable scrape group.
+# Never let two scrape runs (e.g. the nightly cron and a manual run) push at once.
 concurrency:
-  group: ${{ inputs.preview_mode == true && format('pr-scrape-{0}', github.event.pull_request.number) || 'daily-scrape' }}
-  cancel-in-progress: ${{ inputs.preview_mode == true }}
+  group: daily-scrape
+  cancel-in-progress: false
 
 jobs:
   scrape:
-    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+    uses: ./.github/workflows/scrape-data.yml
+    with:
+      checkout_repository: ${{ github.repository }}
+      checkout_ref: ${{ github.sha }}
+      artifact_name: daily-scrape-data
+      enable_cache: true
 
+  publish:
+    needs: scrape
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
     steps:
       - name: Check out repository
         uses: actions/checkout@v4
         with:
-          repository: ${{ inputs.checkout_repository || github.repository }}
-          ref: ${{ inputs.checkout_ref || github.ref }}
           # Check out (and later push) with a PAT instead of the default
           # GITHUB_TOKEN. Pushes made with GITHUB_TOKEN deliberately do NOT
           # trigger other workflows, so the deploy-on-push-to-main workflow would
@@ -66,67 +43,27 @@ jobs:
           # the git credential, so the `git push` step below uses it automatically.
           # Create a fine-grained PAT with Contents: read & write on this repo and
           # store it as an Actions secret named SCRAPE_PAT.
-          #
-          # Preview mode instead uses the caller's read-only token and never
-          # persists credentials in the checkout that runs PR code.
-          token: ${{ inputs.preview_mode == true && github.token || secrets.SCRAPE_PAT }}
-          persist-credentials: ${{ inputs.preview_mode != true }}
+          token: ${{ secrets.SCRAPE_PAT }}
+          persist-credentials: true
 
-      - name: Install uv
-        uses: astral-sh/setup-uv@v6
+      - name: Download refreshed data
+        uses: actions/download-artifact@v4
         with:
-          # Do not let untrusted PR dependencies populate the cache restored by
-          # the privileged scheduled workflow.
-          enable-cache: ${{ inputs.preview_mode != true }}
-          python-version: "3.13"
-
-      - name: Install dependencies
-        run: uv sync
-
-      - name: Install xvfb (virtual display for headed Chromium)
-        run: |
-          sudo apt-get update
-          sudo apt-get install -y xvfb
-
-      - name: Install Playwright Chromium
-        run: uv run playwright install --with-deps chromium
-
-      - name: Run scraper
-        # The spiders run a headed browser to get past bot challenges, so they
-        # need a display -- provide one with xvfb. This writes data/availability.json.
-        run: xvfb-run -a uv run python run.py
-
-      - name: Create dated gzipped snapshot
-        run: |
-          set -euo pipefail
-          # Read the date once so the folder and file name can never disagree
-          # across a midnight boundary.
-          read -r YEAR MONTH DAY <<< "$(date -u +'%Y %m %d')"
-          DEST_DIR="data/${YEAR}/${MONTH}"
-          mkdir -p "$DEST_DIR"
-          ARCHIVE="${DEST_DIR}/availability_${YEAR}_${MONTH}_${DAY}.json.gzip"
-          gzip -9 -c data/availability.json > "$ARCHIVE"
-          echo "archive=${ARCHIVE}" >> "$GITHUB_ENV"
-          echo "snapshot_date=${YEAR}-${MONTH}-${DAY}" >> "$GITHUB_ENV"
-
-      - name: Upload refreshed data for preview
-        if: inputs.preview_mode == true
-        uses: actions/upload-artifact@v4
-        with:
-          name: ${{ inputs.artifact_name }}
-          path: data/
-          retention-days: 1
+          name: daily-scrape-data
+          path: data
 
       - name: Commit and push data
-        if: inputs.preview_mode != true
+        env:
+          ARCHIVE: ${{ needs.scrape.outputs.archive }}
+          SNAPSHOT_DATE: ${{ needs.scrape.outputs.snapshot_date }}
         run: |
           set -euo pipefail
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
-          git add data/availability.json "$archive"
+          git add data/availability.json "$ARCHIVE"
           if git diff --cached --quiet; then
             echo "No changes to commit."
           else
-            git commit -m "Update availability ${snapshot_date}"
+            git commit -m "Update availability ${SNAPSHOT_DATE}"
             git push
           fi

@@ -97,11 +97,14 @@ adds or updates a sticky preview link on the pull request, rebuilds it after new
 commits, and removes its files when the pull request closes.
 
 Before building, it calls
-[.github/workflows/daily-scrape.yml](../.github/workflows/daily-scrape.yml) in
-preview mode against the PR's exact commit. That runs every community configured
-by the PR (including newly added spiders), creates a current UTC-dated snapshot,
-and passes the refreshed `data/` directory to the Eleventy build as a temporary
-artifact. Preview-mode scrape results are never committed to the repository.
+[.github/workflows/scrape-data.yml](../.github/workflows/scrape-data.yml) against
+the PR's exact commit. That reusable, read-only workflow runs every community
+configured by the PR (including newly added spiders), creates a current
+UTC-dated snapshot, and passes the refreshed `data/` directory to the Eleventy
+build as a temporary artifact. Preview scrape results are never committed to the
+repository. The scheduled
+[.github/workflows/daily-scrape.yml](../.github/workflows/daily-scrape.yml) calls
+the same scraper, then commits its artifact from a separate write-enabled job.
 
 Fork pull requests are supported without exposing a write token to their code:
 the untrusted scrape and build run in isolated read-only jobs with dependency

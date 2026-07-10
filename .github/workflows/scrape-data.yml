@@ -1,0 +1,95 @@
+name: Scrape availability data
+
+# Shared, read-only scrape implementation. Callers receive the refreshed
+# `data/` directory as an artifact; this workflow never commits or deploys it.
+on:
+  workflow_call:
+    inputs:
+      checkout_repository:
+        description: Repository containing the scraper code to run
+        required: false
+        type: string
+        default: ""
+      checkout_ref:
+        description: Commit or ref containing the scraper code to run
+        required: false
+        type: string
+        default: ""
+      artifact_name:
+        description: Name of the refreshed data artifact
+        required: false
+        type: string
+        default: scrape-data
+      enable_cache:
+        description: Whether to cache dependencies for trusted callers
+        required: false
+        type: boolean
+        default: false
+    outputs:
+      archive:
+        description: Path to the dated snapshot in the data artifact
+        value: ${{ jobs.scrape.outputs.archive }}
+      snapshot_date:
+        description: UTC date represented by the new snapshot
+        value: ${{ jobs.scrape.outputs.snapshot_date }}
+
+# This workflow can safely be called by a job capped at `contents: read`.
+permissions:
+  contents: read
+
+jobs:
+  scrape:
+    runs-on: ubuntu-latest
+    outputs:
+      archive: ${{ steps.snapshot.outputs.archive }}
+      snapshot_date: ${{ steps.snapshot.outputs.snapshot_date }}
+    steps:
+      - name: Check out scraper
+        uses: actions/checkout@v4
+        with:
+          repository: ${{ inputs.checkout_repository || github.repository }}
+          ref: ${{ inputs.checkout_ref || github.sha }}
+          persist-credentials: false
+
+      - name: Install uv
+        uses: astral-sh/setup-uv@v6
+        with:
+          enable-cache: ${{ inputs.enable_cache }}
+          python-version: "3.13"
+
+      - name: Install dependencies
+        run: uv sync
+
+      - name: Install xvfb (virtual display for headed Chromium)
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y xvfb
+
+      - name: Install Playwright Chromium
+        run: uv run playwright install --with-deps chromium
+
+      - name: Run scraper
+        # The spiders run a headed browser to get past bot challenges, so they
+        # need a display -- provide one with xvfb. This writes data/availability.json.
+        run: xvfb-run -a uv run python run.py
+
+      - name: Create dated gzipped snapshot
+        id: snapshot
+        run: |
+          set -euo pipefail
+          # Read the date once so the folder and file name can never disagree
+          # across a midnight boundary.
+          read -r YEAR MONTH DAY <<< "$(date -u +'%Y %m %d')"
+          DEST_DIR="data/${YEAR}/${MONTH}"
+          mkdir -p "$DEST_DIR"
+          ARCHIVE="${DEST_DIR}/availability_${YEAR}_${MONTH}_${DAY}.json.gzip"
+          gzip -9 -c data/availability.json > "$ARCHIVE"
+          echo "archive=${ARCHIVE}" >> "$GITHUB_OUTPUT"
+          echo "snapshot_date=${YEAR}-${MONTH}-${DAY}" >> "$GITHUB_OUTPUT"
+
+      - name: Upload refreshed data
+        uses: actions/upload-artifact@v4
+        with:
+          name: ${{ inputs.artifact_name }}
+          path: data/
+          retention-days: 1
