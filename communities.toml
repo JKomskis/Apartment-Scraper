@@ -35,8 +35,10 @@ start_urls = ["https://www.vue22apts.com/availableunits"]
 
 [[communities]]
 name = "Bell Overlake Apartments"
-spider = "g5rainmaker"
-start_urls = ["https://www.belloverlake.com/floor-plans/"]
+spider = "rentcafe_feed"
+start_urls = [
+    "https://mmccdn.com/mits/rentcafe/belloverlake-rentcafe-feed/feeds/belloverlake-feed.json",
+]
 
 [[communities]]
 name = "Avalon Esterra Park"
