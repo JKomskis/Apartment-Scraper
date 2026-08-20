@@ -6,8 +6,8 @@
     "bedrooms": 1,
     "bathrooms": 1.5,
     "square_feet": 896,
-    "rent": 2680,
-    "available_date": "2026-08-18",
+    "rent": 2715,
+    "available_date": "2026-08-21",
     "url": "https://www.avaloncommunities.com/washington/redmond-apartments/ava-esterra-park/apartment/WA031-WA031-001-103",
     "floor_plan_image_url": "https://resource.avalonbay.com/floorplans/wa031/wa031-a1l-896sf.jpg/1024/768"
   },
@@ -18,10 +18,22 @@
     "bedrooms": 1,
     "bathrooms": 1.5,
     "square_feet": 1085,
-    "rent": 2917,
-    "available_date": "2026-08-19",
+    "rent": 2907,
+    "available_date": "2026-08-21",
     "url": "https://www.avaloncommunities.com/washington/redmond-apartments/ava-esterra-park/apartment/WA031-WA031-001-107",
     "floor_plan_image_url": "https://resource.avalonbay.com/floorplans/wa031/wa031-a4l-1085.jpg/1024/768"
+  },
+  {
+    "community": "AVA Esterra Park",
+    "unit": "001-411",
+    "floor_plan": "A4",
+    "bedrooms": 1,
+    "bathrooms": 1,
+    "square_feet": 681,
+    "rent": 2335,
+    "available_date": "2026-09-01",
+    "url": "https://www.avaloncommunities.com/washington/redmond-apartments/ava-esterra-park/apartment/WA031-WA031-001-411",
+    "floor_plan_image_url": "https://resource.avalonbay.com/floorplans/wa031/wa031-a4-681sf.jpg/1024/768"
   },
   {
     "community": "AVA Esterra Park",
@@ -30,7 +42,7 @@
     "bedrooms": 0,
     "bathrooms": 1,
     "square_feet": 490,
-    "rent": 2110,
+    "rent": 2095,
     "available_date": "2026-11-07",
     "url": "https://www.avaloncommunities.com/washington/redmond-apartments/ava-esterra-park/apartment/WA031-WA031-001-413",
     "floor_plan_image_url": "https://resource.avalonbay.com/floorplans/wa031/wa031-s4-490sf.jpg/1024/768"
@@ -42,7 +54,7 @@
     "bedrooms": 1,
     "bathrooms": 1,
     "square_feet": 660,
-    "rent": 2313,
+    "rent": 2298,
     "available_date": "2026-09-10",
     "url": "https://www.avaloncommunities.com/washington/redmond-apartments/ava-esterra-park/apartment/WA031-WA031-001-416",
     "floor_plan_image_url": "https://resource.avalonbay.com/floorplans/wa031/wa031-a14-660sf.jpg/1024/768"
@@ -54,8 +66,8 @@
     "bedrooms": 2,
     "bathrooms": 2,
     "square_feet": 1408,
-    "rent": 3860,
-    "available_date": "2026-08-18",
+    "rent": 4070,
+    "available_date": "2026-08-21",
     "url": "https://www.avaloncommunities.com/washington/redmond-apartments/ava-esterra-park/apartment/WA031-WA031-001-430",
     "floor_plan_image_url": "https://resource.avalonbay.com/floorplans/wa031/wa031-b11-1408sf.jpg/1024/768"
   },
@@ -66,7 +78,7 @@
     "bedrooms": 0,
     "bathrooms": 1,
     "square_feet": 485,
-    "rent": 2250,
+    "rent": 2230,
     "available_date": "2026-08-22",
     "url": "https://www.avaloncommunities.com/washington/redmond-apartments/ava-esterra-park/apartment/WA031-WA031-001-432",
     "floor_plan_image_url": "https://resource.avalonbay.com/floorplans/wa031/wa031-s13-485sf.jpg/1024/768"
@@ -78,7 +90,7 @@
     "bedrooms": 1,
     "bathrooms": 1,
     "square_feet": 725,
-    "rent": 2490,
+    "rent": 2475,
     "available_date": "2026-09-15",
     "url": "https://www.avaloncommunities.com/washington/redmond-apartments/ava-esterra-park/apartment/WA031-WA031-001-437",
     "floor_plan_image_url": "https://resource.avalonbay.com/floorplans/wa031/wa031-a13-725-806sf.jpg/1024/768"
@@ -90,7 +102,7 @@
     "bedrooms": 1,
     "bathrooms": 1,
     "square_feet": 725,
-    "rent": 2500,
+    "rent": 2495,
     "available_date": "2026-10-27",
     "url": "https://www.avaloncommunities.com/washington/redmond-apartments/ava-esterra-park/apartment/WA031-WA031-001-439",
     "floor_plan_image_url": "https://resource.avalonbay.com/floorplans/wa031/wa031-a13-725-806sf.jpg/1024/768"
@@ -102,7 +114,7 @@
     "bedrooms": 1,
     "bathrooms": 1,
     "square_feet": 603,
-    "rent": 2285,
+    "rent": 2270,
     "available_date": "2026-09-12",
     "url": "https://www.avaloncommunities.com/washington/redmond-apartments/ava-esterra-park/apartment/WA031-WA031-001-446",
     "floor_plan_image_url": "https://resource.avalonbay.com/floorplans/wa031/wa031-a12-603-733sf.jpg/1024/768"
@@ -114,7 +126,7 @@
     "bedrooms": 1,
     "bathrooms": 1,
     "square_feet": 624,
-    "rent": 2240,
+    "rent": 2230,
     "available_date": "2026-09-21",
     "url": "https://www.avaloncommunities.com/washington/redmond-apartments/ava-esterra-park/apartment/WA031-WA031-001-449",
     "floor_plan_image_url": "https://resource.avalonbay.com/floorplans/wa031/wa031-a3-624sf.jpg/1024/768"
@@ -126,7 +138,7 @@
     "bedrooms": 0,
     "bathrooms": 1,
     "square_feet": 521,
-    "rent": 2200,
+    "rent": 2185,
     "available_date": "2026-09-22",
     "url": "https://www.avaloncommunities.com/washington/redmond-apartments/ava-esterra-park/apartment/WA031-WA031-001-506",
     "floor_plan_image_url": "https://resource.avalonbay.com/floorplans/wa031/wa031-sm04-505-521sf.jpg/1024/768"
@@ -138,7 +150,7 @@
     "bedrooms": 1,
     "bathrooms": 1,
     "square_feet": 660,
-    "rent": 2283,
+    "rent": 2268,
     "available_date": "2026-09-13",
     "url": "https://www.avaloncommunities.com/washington/redmond-apartments/ava-esterra-park/apartment/WA031-WA031-001-516",
     "floor_plan_image_url": "https://resource.avalonbay.com/floorplans/wa031/wa031-a14-660sf.jpg/1024/768"
@@ -150,7 +162,7 @@
     "bedrooms": 1,
     "bathrooms": 1,
     "square_feet": 564,
-    "rent": 2175,
+    "rent": 2170,
     "available_date": "2026-10-05",
     "url": "https://www.avaloncommunities.com/washington/redmond-apartments/ava-esterra-park/apartment/WA031-WA031-001-525",
     "floor_plan_image_url": "https://resource.avalonbay.com/floorplans/wa031/wa031-a1-564-634sf.jpg/1024/768"
@@ -162,8 +174,8 @@
     "bedrooms": 1,
     "bathrooms": 1,
     "square_feet": 751,
-    "rent": 2480,
-    "available_date": "2026-08-18",
+    "rent": 2470,
+    "available_date": "2026-08-20",
     "url": "https://www.avaloncommunities.com/washington/redmond-apartments/ava-esterra-park/apartment/WA031-WA031-001-543",
     "floor_plan_image_url": "https://resource.avalonbay.com/floorplans/wa031/wa031-am10-751sf.jpg/1024/768"
   },
@@ -174,7 +186,7 @@
     "bedrooms": 1,
     "bathrooms": 1,
     "square_feet": 833,
-    "rent": 2396,
+    "rent": 2381,
     "available_date": "2026-09-17",
     "url": "https://www.avaloncommunities.com/washington/redmond-apartments/ava-esterra-park/apartment/WA031-WA031-001-614",
     "floor_plan_image_url": "https://resource.avalonbay.com/floorplans/wa031/wa031-a8-694-833sf.jpg/1024/768"
@@ -186,8 +198,8 @@
     "bedrooms": 0,
     "bathrooms": 1,
     "square_feet": 462,
-    "rent": 2230,
-    "available_date": "2026-08-18",
+    "rent": 2210,
+    "available_date": "2026-08-21",
     "url": "https://www.avaloncommunities.com/washington/redmond-apartments/ava-esterra-park/apartment/WA031-WA031-001-634",
     "floor_plan_image_url": "https://resource.avalonbay.com/floorplans/wa031/wa031-s1-462sf.jpg/1024/768"
   },
@@ -198,34 +210,10 @@
     "bedrooms": 0,
     "bathrooms": 1,
     "square_feet": 521,
-    "rent": 2170,
+    "rent": 2155,
     "available_date": "2026-09-01",
     "url": "https://www.avaloncommunities.com/washington/redmond-apartments/ava-esterra-park/apartment/WA031-WA031-001-635",
     "floor_plan_image_url": "https://resource.avalonbay.com/floorplans/wa031/wa031-sm04-505-521sf.jpg/1024/768"
-  },
-  {
-    "community": "AVA Esterra Park",
-    "unit": "001-649",
-    "floor_plan": "A5",
-    "bedrooms": 1,
-    "bathrooms": 1,
-    "square_feet": 667,
-    "rent": 2265,
-    "available_date": "2026-08-18",
-    "url": "https://www.avaloncommunities.com/washington/redmond-apartments/ava-esterra-park/apartment/WA031-WA031-001-649",
-    "floor_plan_image_url": "https://resource.avalonbay.com/floorplans/wa031/wa031-a5-667sf.jpg/1024/768"
-  },
-  {
-    "community": "AVA Esterra Park",
-    "unit": "001-705",
-    "floor_plan": "A8",
-    "bedrooms": 1,
-    "bathrooms": 1,
-    "square_feet": 718,
-    "rent": 2246,
-    "available_date": "2026-09-01",
-    "url": "https://www.avaloncommunities.com/washington/redmond-apartments/ava-esterra-park/apartment/WA031-WA031-001-705",
-    "floor_plan_image_url": "https://resource.avalonbay.com/floorplans/wa031/wa031-a8-694-833sf.jpg/1024/768"
   },
   {
     "community": "AVA Esterra Park",
@@ -234,7 +222,7 @@
     "bedrooms": 1,
     "bathrooms": 1,
     "square_feet": 751,
-    "rent": 2470,
+    "rent": 2455,
     "available_date": "2026-09-12",
     "url": "https://www.avaloncommunities.com/washington/redmond-apartments/ava-esterra-park/apartment/WA031-WA031-001-743",
     "floor_plan_image_url": "https://resource.avalonbay.com/floorplans/wa031/wa031-am10-751sf.jpg/1024/768"
@@ -246,7 +234,7 @@
     "bedrooms": 1,
     "bathrooms": 1,
     "square_feet": 718,
-    "rent": 2246,
+    "rent": 2236,
     "available_date": "2026-09-25",
     "url": "https://www.avaloncommunities.com/washington/redmond-apartments/ava-esterra-park/apartment/WA031-WA031-001-748",
     "floor_plan_image_url": "https://resource.avalonbay.com/floorplans/wa031/wa031-a8-694-833sf.jpg/1024/768"
@@ -258,7 +246,7 @@
     "bedrooms": 1,
     "bathrooms": 1,
     "square_feet": 634,
-    "rent": 2250,
+    "rent": 2240,
     "available_date": "2026-09-23",
     "url": "https://www.avaloncommunities.com/washington/redmond-apartments/ava-esterra-park/apartment/WA031-WA031-001-753",
     "floor_plan_image_url": "https://resource.avalonbay.com/floorplans/wa031/wa031-a1-564-634sf.jpg/1024/768"
@@ -270,7 +258,7 @@
     "bedrooms": 2,
     "bathrooms": 2,
     "square_feet": 908,
-    "rent": 3195,
+    "rent": 3270,
     "available_date": "2026-09-13",
     "url": "https://www.avaloncommunities.com/washington/redmond-apartments/ava-esterra-park/apartment/WA031-WA031-001-822",
     "floor_plan_image_url": "https://resource.avalonbay.com/floorplans/wa031/wa031-b1-908-967sf.jpg/1024/768"
@@ -283,7 +271,7 @@
     "bathrooms": 1,
     "square_feet": 616,
     "rent": 2363,
-    "available_date": "2026-08-19",
+    "available_date": "2026-08-20",
     "url": "https://www.avaloncommunities.com/washington/redmond-apartments/ava-esterra-park/apartment/WA031-WA031-001-826",
     "floor_plan_image_url": "https://resource.avalonbay.com/floorplans/wa031/wa031-s14-616sf.jpg/1024/768"
   },
@@ -294,7 +282,7 @@
     "bedrooms": 1,
     "bathrooms": 1,
     "square_feet": 751,
-    "rent": 2545,
+    "rent": 2530,
     "available_date": "2026-09-10",
     "url": "https://www.avaloncommunities.com/washington/redmond-apartments/ava-esterra-park/apartment/WA031-WA031-001-843",
     "floor_plan_image_url": "https://resource.avalonbay.com/floorplans/wa031/wa031-am10-751sf.jpg/1024/768"
@@ -306,8 +294,8 @@
     "bedrooms": 1,
     "bathrooms": 1,
     "square_feet": 736,
-    "rent": 2355,
-    "available_date": "2026-08-19",
+    "rent": 2350,
+    "available_date": "2026-08-20",
     "url": "https://www.avaloncommunities.com/washington/redmond-apartments/ava-esterra-park/apartment/WA031-WA031-001-852",
     "floor_plan_image_url": "https://resource.avalonbay.com/floorplans/wa031/wa031-a22-707-736sf.jpg/1024/768"
   },
@@ -318,10 +306,22 @@
     "bedrooms": 1,
     "bathrooms": 1,
     "square_feet": 569,
-    "rent": 2215,
+    "rent": 2205,
     "available_date": "2026-08-23",
     "url": "https://www.avaloncommunities.com/washington/redmond-apartments/ava-esterra-park/apartment/WA031-WA031-001-940",
     "floor_plan_image_url": "https://resource.avalonbay.com/floorplans/wa031/wa031-am01-569sf.jpg/1024/768"
+  },
+  {
+    "community": "Avalon Esterra Park",
+    "unit": "001-208",
+    "floor_plan": "S3-575",
+    "bedrooms": 0,
+    "bathrooms": 1,
+    "square_feet": 575,
+    "rent": 2410,
+    "available_date": "2026-09-07",
+    "url": "https://www.avaloncommunities.com/washington/redmond-apartments/avalon-esterra-park/apartment/WA027-WA027-001-208",
+    "floor_plan_image_url": "https://resource.avalonbay.com/floorplans/wa027/wa027-s3-575%20sf.jpg/1024/768"
   },
   {
     "community": "Avalon Esterra Park",
@@ -330,22 +330,22 @@
     "bedrooms": 1,
     "bathrooms": 1,
     "square_feet": 745,
-    "rent": 2475,
-    "available_date": "2026-08-19",
+    "rent": 2465,
+    "available_date": "2026-08-21",
     "url": "https://www.avaloncommunities.com/washington/redmond-apartments/avalon-esterra-park/apartment/WA027-WA027-001-227",
     "floor_plan_image_url": "https://resource.avalonbay.com/floorplans/wa027/wa027-a14-745%20sf-scheme%201.jpg/1024/768"
   },
   {
     "community": "Avalon Esterra Park",
-    "unit": "001-328",
-    "floor_plan": "A3V-703",
-    "bedrooms": 1,
-    "bathrooms": 1,
-    "square_feet": 703,
-    "rent": 2125,
-    "available_date": "2026-09-14",
-    "url": "https://www.avaloncommunities.com/washington/redmond-apartments/avalon-esterra-park/apartment/WA027-WA027-001-328",
-    "floor_plan_image_url": "https://resource.avalonbay.com/floorplans/wa027/wa027-a3v-703%20sf.jpg/1024/768"
+    "unit": "001-309",
+    "floor_plan": "B7V-1115",
+    "bedrooms": 2,
+    "bathrooms": 2,
+    "square_feet": 1115,
+    "rent": 3010,
+    "available_date": "2026-09-17",
+    "url": "https://www.avaloncommunities.com/washington/redmond-apartments/avalon-esterra-park/apartment/WA027-WA027-001-309",
+    "floor_plan_image_url": "https://resource.avalonbay.com/floorplans/wa027/wa027-b7v-1115%20sf.jpg/1024/768"
   },
   {
     "community": "Avalon Esterra Park",
@@ -354,8 +354,8 @@
     "bedrooms": 1,
     "bathrooms": 1.5,
     "square_feet": 960,
-    "rent": 2865,
-    "available_date": "2026-08-19",
+    "rent": 2875,
+    "available_date": "2026-08-20",
     "url": "https://www.avaloncommunities.com/washington/redmond-apartments/avalon-esterra-park/apartment/WA027-WA027-001-334",
     "floor_plan_image_url": "https://resource.avalonbay.com/floorplans/wa027/a21tx960sf.jpg/1024/768"
   },
@@ -366,8 +366,8 @@
     "bedrooms": 1,
     "bathrooms": 1.5,
     "square_feet": 960,
-    "rent": 2865,
-    "available_date": "2026-08-19",
+    "rent": 2875,
+    "available_date": "2026-08-21",
     "url": "https://www.avaloncommunities.com/washington/redmond-apartments/avalon-esterra-park/apartment/WA027-WA027-001-342",
     "floor_plan_image_url": "https://resource.avalonbay.com/floorplans/wa027/a21tx960sf.jpg/1024/768"
   },
@@ -378,7 +378,7 @@
     "bedrooms": 2,
     "bathrooms": 2,
     "square_feet": 1160,
-    "rent": 3185,
+    "rent": 3240,
     "available_date": "2026-09-13",
     "url": "https://www.avaloncommunities.com/washington/redmond-apartments/avalon-esterra-park/apartment/WA027-WA027-001-447",
     "floor_plan_image_url": "https://resource.avalonbay.com/floorplans/wa027/wa027-b9-1160%20sf.jpg/1024/768"
@@ -390,7 +390,7 @@
     "bedrooms": 1,
     "bathrooms": 1,
     "square_feet": 751,
-    "rent": 2485,
+    "rent": 2480,
     "available_date": "2026-10-12",
     "url": "https://www.avaloncommunities.com/washington/redmond-apartments/avalon-esterra-park/apartment/WA027-WA027-001-543",
     "floor_plan_image_url": "https://resource.avalonbay.com/floorplans/wa027/wa027-a9-751%20sf.jpg/1024/768"
@@ -402,7 +402,7 @@
     "bedrooms": 2,
     "bathrooms": 2,
     "square_feet": 1115,
-    "rent": 2880,
+    "rent": 3005,
     "available_date": "2026-09-09",
     "url": "https://www.avaloncommunities.com/washington/redmond-apartments/avalon-esterra-park/apartment/WA027-WA027-001-606",
     "floor_plan_image_url": "https://resource.avalonbay.com/floorplans/wa027/wa027-b7v-1115%20sf.jpg/1024/768"
@@ -414,22 +414,10 @@
     "bedrooms": 2,
     "bathrooms": 2,
     "square_feet": 1115,
-    "rent": 2880,
+    "rent": 3005,
     "available_date": "2026-09-12",
     "url": "https://www.avaloncommunities.com/washington/redmond-apartments/avalon-esterra-park/apartment/WA027-WA027-001-609",
     "floor_plan_image_url": "https://resource.avalonbay.com/floorplans/wa027/wa027-b7v-1115%20sf.jpg/1024/768"
-  },
-  {
-    "community": "Avalon Esterra Park",
-    "unit": "001-619",
-    "floor_plan": "A25-683-scheme2",
-    "bedrooms": 1,
-    "bathrooms": 1,
-    "square_feet": 683,
-    "rent": 2300,
-    "available_date": "2026-09-12",
-    "url": "https://www.avaloncommunities.com/washington/redmond-apartments/avalon-esterra-park/apartment/WA027-WA027-001-619",
-    "floor_plan_image_url": "https://resource.avalonbay.com/floorplans/wa027/a25-685-sf-scheme-2.jpg/1024/768"
   },
   {
     "community": "Avalon Esterra Park",
@@ -438,7 +426,7 @@
     "bedrooms": 1,
     "bathrooms": 1,
     "square_feet": 770,
-    "rent": 2265,
+    "rent": 2260,
     "available_date": "2026-09-01",
     "url": "https://www.avaloncommunities.com/washington/redmond-apartments/avalon-esterra-park/apartment/WA027-WA027-001-632",
     "floor_plan_image_url": "https://resource.avalonbay.com/floorplans/wa027/wa027-a1v-770%20sf-scheme%202.jpg/1024/768"
@@ -450,7 +438,7 @@
     "bedrooms": 1,
     "bathrooms": 1,
     "square_feet": 770,
-    "rent": 2355,
+    "rent": 2350,
     "available_date": "2026-09-09",
     "url": "https://www.avaloncommunities.com/washington/redmond-apartments/avalon-esterra-park/apartment/WA027-WA027-001-634",
     "floor_plan_image_url": "https://resource.avalonbay.com/floorplans/wa027/wa027-a1v-770%20sf-scheme%202.jpg/1024/768"
@@ -462,7 +450,7 @@
     "bedrooms": 1,
     "bathrooms": 1,
     "square_feet": 770,
-    "rent": 2305,
+    "rent": 2200,
     "available_date": "2026-09-15",
     "url": "https://www.avaloncommunities.com/washington/redmond-apartments/avalon-esterra-park/apartment/WA027-WA027-001-639",
     "floor_plan_image_url": "https://resource.avalonbay.com/floorplans/wa027/wa027-a1v-770%20sf-scheme%202.jpg/1024/768"
@@ -474,22 +462,10 @@
     "bedrooms": 0,
     "bathrooms": 1,
     "square_feet": 588,
-    "rent": 2250,
+    "rent": 2245,
     "available_date": "2026-08-30",
     "url": "https://www.avaloncommunities.com/washington/redmond-apartments/avalon-esterra-park/apartment/WA027-WA027-001-642",
     "floor_plan_image_url": "https://resource.avalonbay.com/floorplans/wa027/wa027-s3-s3a-s5a_588-sf.jpg/1024/768"
-  },
-  {
-    "community": "Avalon Esterra Park",
-    "unit": "001-701",
-    "floor_plan": "B2V-1018",
-    "bedrooms": 2,
-    "bathrooms": 2,
-    "square_feet": 1018,
-    "rent": 2720,
-    "available_date": "2026-08-18",
-    "url": "https://www.avaloncommunities.com/washington/redmond-apartments/avalon-esterra-park/apartment/WA027-WA027-001-701",
-    "floor_plan_image_url": "https://resource.avalonbay.com/floorplans/wa027/wa027-b2a-1018sf%281%29.jpg/1024/768"
   },
   {
     "community": "Avalon Esterra Park",
@@ -498,7 +474,7 @@
     "bedrooms": 2,
     "bathrooms": 2,
     "square_feet": 1115,
-    "rent": 2990,
+    "rent": 3120,
     "available_date": "2026-08-30",
     "url": "https://www.avaloncommunities.com/washington/redmond-apartments/avalon-esterra-park/apartment/WA027-WA027-001-731",
     "floor_plan_image_url": "https://resource.avalonbay.com/floorplans/wa027/wa027-b7v-1115-sf-deck.jpg/1024/768"
@@ -510,7 +486,7 @@
     "bedrooms": 1,
     "bathrooms": 1,
     "square_feet": 770,
-    "rent": 2225,
+    "rent": 2220,
     "available_date": "2026-09-12",
     "url": "https://www.avaloncommunities.com/washington/redmond-apartments/avalon-esterra-park/apartment/WA027-WA027-001-737",
     "floor_plan_image_url": "https://resource.avalonbay.com/floorplans/wa027/wa027-a1v-770%20sf-scheme%202.jpg/1024/768"
@@ -522,8 +498,8 @@
     "bedrooms": 1,
     "bathrooms": 1,
     "square_feet": 730,
-    "rent": 2370,
-    "available_date": "2026-08-19",
+    "rent": 2360,
+    "available_date": "2026-08-21",
     "url": "https://www.avaloncommunities.com/washington/redmond-apartments/avalon-esterra-park/apartment/WA027-WA027-002-284",
     "floor_plan_image_url": "https://resource.avalonbay.com/floorplans/wa027/a12-740sf-sc1.jpg/1024/768"
   },
@@ -534,8 +510,8 @@
     "bedrooms": 1,
     "bathrooms": 1,
     "square_feet": 680,
-    "rent": 2430,
-    "available_date": "2026-08-18",
+    "rent": 2420,
+    "available_date": "2026-08-21",
     "url": "https://www.avaloncommunities.com/washington/redmond-apartments/avalon-esterra-park/apartment/WA027-WA027-002-385",
     "floor_plan_image_url": "https://resource.avalonbay.com/floorplans/wa027/a4-698sf-bl2-sc2.jpg/1024/768"
   },
@@ -546,8 +522,8 @@
     "bedrooms": 2,
     "bathrooms": 2,
     "square_feet": 919,
-    "rent": 2965,
-    "available_date": "2026-08-19",
+    "rent": 2970,
+    "available_date": "2026-08-21",
     "url": "https://www.avaloncommunities.com/washington/redmond-apartments/avalon-esterra-park/apartment/WA027-WA027-002-393",
     "floor_plan_image_url": "https://resource.avalonbay.com/floorplans/wa027/b1-916sf-bl2-sc2.jpg/1024/768"
   },
@@ -558,7 +534,7 @@
     "bedrooms": 0,
     "bathrooms": 1,
     "square_feet": 561,
-    "rent": 2295,
+    "rent": 2305,
     "available_date": "2026-09-01",
     "url": "https://www.avaloncommunities.com/washington/redmond-apartments/avalon-esterra-park/apartment/WA027-WA027-002-470",
     "floor_plan_image_url": "https://resource.avalonbay.com/floorplans/wa027/s3-567sf-bl2-sc2.jpg/1024/768"
@@ -570,7 +546,7 @@
     "bedrooms": 2,
     "bathrooms": 2,
     "square_feet": 1373,
-    "rent": 3415,
+    "rent": 3470,
     "available_date": "2026-09-13",
     "url": "https://www.avaloncommunities.com/washington/redmond-apartments/avalon-esterra-park/apartment/WA027-WA027-002-580",
     "floor_plan_image_url": "https://resource.avalonbay.com/floorplans/wa027/b14x1382x2.jpg/1024/768"
@@ -582,7 +558,7 @@
     "bedrooms": 2,
     "bathrooms": 2,
     "square_feet": 1127,
-    "rent": 3215,
+    "rent": 3270,
     "available_date": "2026-08-30",
     "url": "https://www.avaloncommunities.com/washington/redmond-apartments/avalon-esterra-park/apartment/WA027-WA027-002-663",
     "floor_plan_image_url": "https://resource.avalonbay.com/floorplans/wa027/wa027_b8_1141sf_schm2.jpg/1024/768"
@@ -594,22 +570,10 @@
     "bedrooms": 0,
     "bathrooms": 1,
     "square_feet": 561,
-    "rent": 2350,
+    "rent": 2340,
     "available_date": "2026-09-24",
     "url": "https://www.avaloncommunities.com/washington/redmond-apartments/avalon-esterra-park/apartment/WA027-WA027-002-666",
     "floor_plan_image_url": "https://resource.avalonbay.com/floorplans/wa027/s3-567sf-bl2-sc2.jpg/1024/768"
-  },
-  {
-    "community": "Avalon Esterra Park",
-    "unit": "002-668",
-    "floor_plan": "A13-784-contemp",
-    "bedrooms": 1,
-    "bathrooms": 1,
-    "square_feet": 784,
-    "rent": 2535,
-    "available_date": "2026-08-19",
-    "url": "https://www.avaloncommunities.com/washington/redmond-apartments/avalon-esterra-park/apartment/WA027-WA027-002-668",
-    "floor_plan_image_url": "https://resource.avalonbay.com/floorplans/wa027/a13x780x2.jpg/1024/768"
   },
   {
     "community": "Avalon Esterra Park",
@@ -618,10 +582,22 @@
     "bedrooms": 1,
     "bathrooms": 1,
     "square_feet": 873,
-    "rent": 2560,
-    "available_date": "2026-08-19",
+    "rent": 2550,
+    "available_date": "2026-08-21",
     "url": "https://www.avaloncommunities.com/washington/redmond-apartments/avalon-esterra-park/apartment/WA027-WA027-002-767",
     "floor_plan_image_url": "https://resource.avalonbay.com/floorplans/wa027/a18-873sf-bl2-s2.jpg/1024/768"
+  },
+  {
+    "community": "Avalon Redmond Campus",
+    "unit": "001-201",
+    "floor_plan": "C2",
+    "bedrooms": 3,
+    "bathrooms": 2,
+    "square_feet": 1416,
+    "rent": 4130,
+    "available_date": "2026-08-25",
+    "url": "https://www.avaloncommunities.com/washington/redmond-apartments/avalon-redmond-campus/apartment/WA035-WA035-001-201",
+    "floor_plan_image_url": "https://resource.avalonbay.com/floorplans/wa035/c2-201.png/1024/768"
   },
   {
     "community": "Avalon Redmond Campus",
@@ -630,7 +606,7 @@
     "bedrooms": 0,
     "bathrooms": 1,
     "square_feet": 501,
-    "rent": 2275,
+    "rent": 2290,
     "available_date": "2026-08-30",
     "url": "https://www.avaloncommunities.com/washington/redmond-apartments/avalon-redmond-campus/apartment/WA035-WA035-001-227",
     "floor_plan_image_url": "https://resource.avalonbay.com/floorplans/wa035/s2-227.png/1024/768"
@@ -642,8 +618,8 @@
     "bedrooms": 3,
     "bathrooms": 2,
     "square_feet": 1346,
-    "rent": 3945,
-    "available_date": "2026-08-18",
+    "rent": 3965,
+    "available_date": "2026-08-21",
     "url": "https://www.avaloncommunities.com/washington/redmond-apartments/avalon-redmond-campus/apartment/WA035-WA035-001-232",
     "floor_plan_image_url": "https://resource.avalonbay.com/floorplans/wa035/c3-232.png/1024/768"
   },
@@ -654,7 +630,7 @@
     "bedrooms": 1,
     "bathrooms": 1,
     "square_feet": 643,
-    "rent": 2315,
+    "rent": 2320,
     "available_date": "2026-09-05",
     "url": "https://www.avaloncommunities.com/washington/redmond-apartments/avalon-redmond-campus/apartment/WA035-WA035-001-236",
     "floor_plan_image_url": "https://resource.avalonbay.com/floorplans/wa035/a5-236.png/1024/768"
@@ -666,7 +642,7 @@
     "bedrooms": 3,
     "bathrooms": 2,
     "square_feet": 1385,
-    "rent": 4010,
+    "rent": 3890,
     "available_date": "2026-09-14",
     "url": "https://www.avaloncommunities.com/washington/redmond-apartments/avalon-redmond-campus/apartment/WA035-WA035-001-243",
     "floor_plan_image_url": "https://resource.avalonbay.com/floorplans/wa035/c1-243.png/1024/768"
@@ -690,7 +666,7 @@
     "bedrooms": 0,
     "bathrooms": 1,
     "square_feet": 455,
-    "rent": 2115,
+    "rent": 2130,
     "available_date": "2026-11-20",
     "url": "https://www.avaloncommunities.com/washington/redmond-apartments/avalon-redmond-campus/apartment/WA035-WA035-001-312",
     "floor_plan_image_url": "https://resource.avalonbay.com/floorplans/wa035/s1-212.png/1024/768"
@@ -702,7 +678,7 @@
     "bedrooms": 1,
     "bathrooms": 1,
     "square_feet": 699,
-    "rent": 2385,
+    "rent": 2390,
     "available_date": "2026-09-05",
     "url": "https://www.avaloncommunities.com/washington/redmond-apartments/avalon-redmond-campus/apartment/WA035-WA035-001-316",
     "floor_plan_image_url": "https://resource.avalonbay.com/floorplans/wa035/a2-699-sqft.png/1024/768"
@@ -726,8 +702,8 @@
     "bedrooms": 1,
     "bathrooms": 1,
     "square_feet": 700,
-    "rent": 2535,
-    "available_date": "2026-08-19",
+    "rent": 2540,
+    "available_date": "2026-08-21",
     "url": "https://www.avaloncommunities.com/washington/redmond-apartments/avalon-redmond-campus/apartment/WA035-WA035-001-321",
     "floor_plan_image_url": "https://resource.avalonbay.com/floorplans/wa035/a4-321.png/1024/768"
   },
@@ -738,22 +714,10 @@
     "bedrooms": 1,
     "bathrooms": 1,
     "square_feet": 699,
-    "rent": 2385,
-    "available_date": "2026-08-18",
+    "rent": 2390,
+    "available_date": "2026-08-21",
     "url": "https://www.avaloncommunities.com/washington/redmond-apartments/avalon-redmond-campus/apartment/WA035-WA035-001-333",
     "floor_plan_image_url": "https://resource.avalonbay.com/floorplans/wa035/a2-310.png/1024/768"
-  },
-  {
-    "community": "Avalon Redmond Campus",
-    "unit": "001-338",
-    "floor_plan": "B3",
-    "bedrooms": 2,
-    "bathrooms": 2,
-    "square_feet": 1043,
-    "rent": 3180,
-    "available_date": "2026-08-20",
-    "url": "https://www.avaloncommunities.com/washington/redmond-apartments/avalon-redmond-campus/apartment/WA035-WA035-001-338",
-    "floor_plan_image_url": "https://resource.avalonbay.com/floorplans/wa035/b3-238.png/1024/768"
   },
   {
     "community": "Avalon Redmond Campus",
@@ -769,12 +733,24 @@
   },
   {
     "community": "Avalon Redmond Campus",
+    "unit": "001-515",
+    "floor_plan": "B1-2",
+    "bedrooms": 2,
+    "bathrooms": 2,
+    "square_feet": 938,
+    "rent": 3185,
+    "available_date": "2026-09-18",
+    "url": "https://www.avaloncommunities.com/washington/redmond-apartments/avalon-redmond-campus/apartment/WA035-WA035-001-515",
+    "floor_plan_image_url": "https://resource.avalonbay.com/floorplans/wa035/b1-215.png/1024/768"
+  },
+  {
+    "community": "Avalon Redmond Campus",
     "unit": "001-517",
     "floor_plan": "B1",
     "bedrooms": 2,
     "bathrooms": 2,
     "square_feet": 1027,
-    "rent": 3260,
+    "rent": 3265,
     "available_date": "2026-08-22",
     "url": "https://www.avaloncommunities.com/washington/redmond-apartments/avalon-redmond-campus/apartment/WA035-WA035-001-517",
     "floor_plan_image_url": "https://resource.avalonbay.com/floorplans/wa035/b1-203.png/1024/768"
@@ -786,7 +762,7 @@
     "bedrooms": 1,
     "bathrooms": 1,
     "square_feet": 700,
-    "rent": 2455,
+    "rent": 2460,
     "available_date": "2026-09-01",
     "url": "https://www.avaloncommunities.com/washington/redmond-apartments/avalon-redmond-campus/apartment/WA035-WA035-001-521",
     "floor_plan_image_url": "https://resource.avalonbay.com/floorplans/wa035/a4-321.png/1024/768"
@@ -798,22 +774,10 @@
     "bedrooms": 1,
     "bathrooms": 1,
     "square_feet": 699,
-    "rent": 2430,
+    "rent": 2435,
     "available_date": "2026-09-01",
     "url": "https://www.avaloncommunities.com/washington/redmond-apartments/avalon-redmond-campus/apartment/WA035-WA035-001-524",
     "floor_plan_image_url": "https://resource.avalonbay.com/floorplans/wa035/a2-699-sqft.png/1024/768"
-  },
-  {
-    "community": "Avalon Redmond Campus",
-    "unit": "001-615",
-    "floor_plan": "B1-2",
-    "bedrooms": 2,
-    "bathrooms": 2,
-    "square_feet": 938,
-    "rent": 3265,
-    "available_date": "2026-08-19",
-    "url": "https://www.avaloncommunities.com/washington/redmond-apartments/avalon-redmond-campus/apartment/WA035-WA035-001-615",
-    "floor_plan_image_url": "https://resource.avalonbay.com/floorplans/wa035/b1-215.png/1024/768"
   },
   {
     "community": "Bell Overlake Apartments",
@@ -822,8 +786,8 @@
     "bedrooms": 0,
     "bathrooms": 1,
     "square_feet": 434,
-    "rent": -1,
-    "available_date": "2026-05-19",
+    "rent": 1845,
+    "available_date": "2026-09-18",
     "url": "https://belloverlake.securecafe.com/onlineleasing/bell-overlake/oleapplication.aspx?stepname=RentalOptions&myOlePropertyId=1108376&FloorPlanID=3184130&UnitID=17796836&header=1",
     "floor_plan_image_url": null
   },
@@ -834,9 +798,21 @@
     "bedrooms": 2,
     "bathrooms": 2,
     "square_feet": 949,
-    "rent": -1,
-    "available_date": "2026-05-19",
+    "rent": 2965,
+    "available_date": "2026-09-18",
     "url": "https://belloverlake.securecafe.com/onlineleasing/bell-overlake/oleapplication.aspx?stepname=RentalOptions&myOlePropertyId=1108376&FloorPlanID=3184157&UnitID=17796838&header=1",
+    "floor_plan_image_url": null
+  },
+  {
+    "community": "Bell Overlake Apartments",
+    "unit": "208",
+    "floor_plan": "A1I",
+    "bedrooms": 1,
+    "bathrooms": 1,
+    "square_feet": 695,
+    "rent": 2145,
+    "available_date": "2026-09-14",
+    "url": "https://belloverlake.securecafe.com/onlineleasing/bell-overlake/oleapplication.aspx?stepname=RentalOptions&myOlePropertyId=1108376&FloorPlanID=3184149&UnitID=17796841&header=1",
     "floor_plan_image_url": null
   },
   {
@@ -846,8 +822,8 @@
     "bedrooms": 1,
     "bathrooms": 1,
     "square_feet": 578,
-    "rent": 1985,
-    "available_date": "2026-08-17",
+    "rent": 1890,
+    "available_date": "2026-08-19",
     "url": "https://belloverlake.securecafe.com/onlineleasing/bell-overlake/oleapplication.aspx?stepname=RentalOptions&myOlePropertyId=1108376&FloorPlanID=3184138&UnitID=17796853&header=1",
     "floor_plan_image_url": null
   },
@@ -858,8 +834,8 @@
     "bedrooms": 1,
     "bathrooms": 1,
     "square_feet": 578,
-    "rent": 1985,
-    "available_date": "2026-08-18",
+    "rent": 1890,
+    "available_date": "2026-08-19",
     "url": "https://belloverlake.securecafe.com/onlineleasing/bell-overlake/oleapplication.aspx?stepname=RentalOptions&myOlePropertyId=1108376&FloorPlanID=3184138&UnitID=17796856&header=1",
     "floor_plan_image_url": null
   },
@@ -870,8 +846,8 @@
     "bedrooms": 0,
     "bathrooms": 1,
     "square_feet": 572,
-    "rent": 1843,
-    "available_date": "2026-06-09",
+    "rent": 1945,
+    "available_date": "2026-09-18",
     "url": "https://belloverlake.securecafe.com/onlineleasing/bell-overlake/oleapplication.aspx?stepname=RentalOptions&myOlePropertyId=1108376&FloorPlanID=3184134&UnitID=17796884&header=1",
     "floor_plan_image_url": null
   },
@@ -882,21 +858,9 @@
     "bedrooms": 2,
     "bathrooms": 2,
     "square_feet": 1088,
-    "rent": -1,
-    "available_date": "2026-04-07",
+    "rent": 3415,
+    "available_date": "2026-09-18",
     "url": "https://belloverlake.securecafe.com/onlineleasing/bell-overlake/oleapplication.aspx?stepname=RentalOptions&myOlePropertyId=1108376&FloorPlanID=3184161&UnitID=17796886&header=1",
-    "floor_plan_image_url": null
-  },
-  {
-    "community": "Bell Overlake Apartments",
-    "unit": "310",
-    "floor_plan": "A1I",
-    "bedrooms": 1,
-    "bathrooms": 1,
-    "square_feet": 695,
-    "rent": 2235,
-    "available_date": "2026-08-04",
-    "url": "https://belloverlake.securecafe.com/onlineleasing/bell-overlake/oleapplication.aspx?stepname=RentalOptions&myOlePropertyId=1108376&FloorPlanID=3184149&UnitID=17796896&header=1",
     "floor_plan_image_url": null
   },
   {
@@ -906,7 +870,7 @@
     "bedrooms": 1,
     "bathrooms": 1,
     "square_feet": 578,
-    "rent": 1985,
+    "rent": 1890,
     "available_date": "2026-07-01",
     "url": "https://belloverlake.securecafe.com/onlineleasing/bell-overlake/oleapplication.aspx?stepname=RentalOptions&myOlePropertyId=1108376&FloorPlanID=3184138&UnitID=17796905&header=1",
     "floor_plan_image_url": null
@@ -918,7 +882,7 @@
     "bedrooms": 1,
     "bathrooms": 1,
     "square_feet": 580,
-    "rent": 1985,
+    "rent": 1900,
     "available_date": "2026-08-24",
     "url": "https://belloverlake.securecafe.com/onlineleasing/bell-overlake/oleapplication.aspx?stepname=RentalOptions&myOlePropertyId=1108376&FloorPlanID=3184138&UnitID=17796910&header=1",
     "floor_plan_image_url": null
@@ -930,7 +894,7 @@
     "bedrooms": 1,
     "bathrooms": 1,
     "square_feet": 644,
-    "rent": 2135,
+    "rent": 2040,
     "available_date": "2026-07-20",
     "url": "https://belloverlake.securecafe.com/onlineleasing/bell-overlake/oleapplication.aspx?stepname=RentalOptions&myOlePropertyId=1108376&FloorPlanID=3184145&UnitID=17796914&header=1",
     "floor_plan_image_url": null
@@ -942,7 +906,7 @@
     "bedrooms": 1,
     "bathrooms": 1,
     "square_feet": 645,
-    "rent": 2160,
+    "rent": 2075,
     "available_date": "2026-08-24",
     "url": "https://belloverlake.securecafe.com/onlineleasing/bell-overlake/oleapplication.aspx?stepname=RentalOptions&myOlePropertyId=1108376&FloorPlanID=3184145&UnitID=17796922&header=1",
     "floor_plan_image_url": null
@@ -966,7 +930,7 @@
     "bedrooms": 0,
     "bathrooms": 1,
     "square_feet": 577,
-    "rent": 2070,
+    "rent": 1945,
     "available_date": "2026-09-04",
     "url": "https://belloverlake.securecafe.com/onlineleasing/bell-overlake/oleapplication.aspx?stepname=RentalOptions&myOlePropertyId=1108376&FloorPlanID=3184134&UnitID=17796936&header=1",
     "floor_plan_image_url": null
@@ -978,7 +942,7 @@
     "bedrooms": 1,
     "bathrooms": 1,
     "square_feet": 644,
-    "rent": 2195,
+    "rent": 2105,
     "available_date": "2026-09-07",
     "url": "https://belloverlake.securecafe.com/onlineleasing/bell-overlake/oleapplication.aspx?stepname=RentalOptions&myOlePropertyId=1108376&FloorPlanID=3184145&UnitID=17796967&header=1",
     "floor_plan_image_url": null
@@ -990,7 +954,7 @@
     "bedrooms": 1,
     "bathrooms": 1,
     "square_feet": 824,
-    "rent": 2595,
+    "rent": 2500,
     "available_date": "2026-08-14",
     "url": "https://belloverlake.securecafe.com/onlineleasing/bell-overlake/oleapplication.aspx?stepname=RentalOptions&myOlePropertyId=1108376&FloorPlanID=3184156&UnitID=17796970&header=1",
     "floor_plan_image_url": null
@@ -1002,7 +966,7 @@
     "bedrooms": 1,
     "bathrooms": 1,
     "square_feet": 1006,
-    "rent": 2910,
+    "rent": 2820,
     "available_date": "2026-09-07",
     "url": "https://belloverlake.securecafe.com/onlineleasing/bell-overlake/oleapplication.aspx?stepname=RentalOptions&myOlePropertyId=1108376&FloorPlanID=3349763&UnitID=17797015&header=1",
     "floor_plan_image_url": null
@@ -1014,9 +978,9 @@
     "bedrooms": 0,
     "bathrooms": 1,
     "square_feet": 475,
-    "rent": 1999,
+    "rent": 1975,
     "available_date": "2026-09-10",
-    "url": "https://www.livenightingale.com/apartments/wa/redmond/floor-plans#/floorplans/54623003/",
+    "url": "https://www.livenightingale.com/apartments/wa/redmond/floor-plans#/floorplans/57172163/",
     "floor_plan_image_url": "https://g5-assets-cld-res.cloudinary.com/image/upload/v1630020063/g5/g5-c-icwh344r-acacia-capital-corporation-client/g5-cl-1lo6ovwfaf-amc-acacia-capital-corporation-redmond-wa/services/Open_One_Bed_2_ngha02_475_SF_SA2_e4etb4.jpg"
   },
   {
@@ -1026,9 +990,9 @@
     "bedrooms": 2,
     "bathrooms": 2,
     "square_feet": 1083,
-    "rent": 3350,
+    "rent": 3495,
     "available_date": "2026-08-15",
-    "url": "https://www.livenightingale.com/apartments/wa/redmond/floor-plans#/floorplans/54623061/",
+    "url": "https://www.livenightingale.com/apartments/wa/redmond/floor-plans#/floorplans/57172197/",
     "floor_plan_image_url": "https://g5-assets-cld-res.cloudinary.com/image/upload/v1630022214/g5/g5-c-icwh344r-acacia-capital-corporation-client/g5-cl-1lo6ovwfaf-amc-acacia-capital-corporation-redmond-wa/services/Two_Bed_Two_Bath_7_nghb07_1083_SF_2C_ldreuo.jpg"
   },
   {
@@ -1040,7 +1004,7 @@
     "square_feet": 475,
     "rent": 1995,
     "available_date": "2026-09-10",
-    "url": "https://www.livenightingale.com/apartments/wa/redmond/floor-plans#/floorplans/54622998/",
+    "url": "https://www.livenightingale.com/apartments/wa/redmond/floor-plans#/floorplans/57172168/",
     "floor_plan_image_url": "https://g5-assets-cld-res.cloudinary.com/image/upload/v1630020160/g5/g5-c-icwh344r-acacia-capital-corporation-client/g5-cl-1lo6ovwfaf-amc-acacia-capital-corporation-redmond-wa/services/Open_One_Bed_3_ngha03_475_SF_SD_ui8t0i.jpg"
   },
   {
@@ -1050,9 +1014,9 @@
     "bedrooms": 1,
     "bathrooms": 1,
     "square_feet": 702,
-    "rent": 2299,
+    "rent": 2450,
     "available_date": "2026-09-15",
-    "url": "https://www.livenightingale.com/apartments/wa/redmond/floor-plans#/floorplans/54623031/",
+    "url": "https://www.livenightingale.com/apartments/wa/redmond/floor-plans#/floorplans/57172184/",
     "floor_plan_image_url": "https://g5-assets-cld-res.cloudinary.com/image/upload/v1630019192/g5/g5-c-icwh344r-acacia-capital-corporation-client/g5-cl-1lo6ovwfaf-amc-acacia-capital-corporation-redmond-wa/services/One_Bed_19_ngha19_702_SF_1A_FW_cbc3t0.jpg"
   },
   {
@@ -1064,7 +1028,7 @@
     "square_feet": 706,
     "rent": 2450,
     "available_date": "2026-09-10",
-    "url": "https://www.livenightingale.com/apartments/wa/redmond/floor-plans#/floorplans/54623039/",
+    "url": "https://www.livenightingale.com/apartments/wa/redmond/floor-plans#/floorplans/57172187/",
     "floor_plan_image_url": "https://g5-assets-cld-res.cloudinary.com/image/upload/v1630019289/g5/g5-c-icwh344r-acacia-capital-corporation-client/g5-cl-1lo6ovwfaf-amc-acacia-capital-corporation-redmond-wa/services/One_Bed_22_ngha22_706_SF_1A_e9blat.jpg"
   },
   {
@@ -1076,7 +1040,7 @@
     "square_feet": 512,
     "rent": 2175,
     "available_date": "2026-09-10",
-    "url": "https://www.livenightingale.com/apartments/wa/redmond/floor-plans#/floorplans/54623009/",
+    "url": "https://www.livenightingale.com/apartments/wa/redmond/floor-plans#/floorplans/57172171/",
     "floor_plan_image_url": "https://g5-assets-cld-res.cloudinary.com/image/upload/v1630020836/g5/g5-c-icwh344r-acacia-capital-corporation-client/g5-cl-1lo6ovwfaf-amc-acacia-capital-corporation-redmond-wa/services/Open_One_Bed_8_ngha08_512_SF_SA_hpewbx.jpg"
   },
   {
@@ -1088,7 +1052,7 @@
     "square_feet": 512,
     "rent": 2199,
     "available_date": "2026-10-10",
-    "url": "https://www.livenightingale.com/apartments/wa/redmond/floor-plans#/floorplans/54623009/",
+    "url": "https://www.livenightingale.com/apartments/wa/redmond/floor-plans#/floorplans/57172171/",
     "floor_plan_image_url": "https://g5-assets-cld-res.cloudinary.com/image/upload/v1630020836/g5/g5-c-icwh344r-acacia-capital-corporation-client/g5-cl-1lo6ovwfaf-amc-acacia-capital-corporation-redmond-wa/services/Open_One_Bed_8_ngha08_512_SF_SA_hpewbx.jpg"
   },
   {
@@ -1098,9 +1062,9 @@
     "bedrooms": 1,
     "bathrooms": 1,
     "square_feet": 706,
-    "rent": 2430,
+    "rent": 2465,
     "available_date": "2026-09-10",
-    "url": "https://www.livenightingale.com/apartments/wa/redmond/floor-plans#/floorplans/54623039/",
+    "url": "https://www.livenightingale.com/apartments/wa/redmond/floor-plans#/floorplans/57172187/",
     "floor_plan_image_url": "https://g5-assets-cld-res.cloudinary.com/image/upload/v1630019289/g5/g5-c-icwh344r-acacia-capital-corporation-client/g5-cl-1lo6ovwfaf-amc-acacia-capital-corporation-redmond-wa/services/One_Bed_22_ngha22_706_SF_1A_e9blat.jpg"
   },
   {
@@ -1110,9 +1074,9 @@
     "bedrooms": 2,
     "bathrooms": 2,
     "square_feet": 1090,
-    "rent": 3575,
-    "available_date": "2026-08-20",
-    "url": "https://www.livenightingale.com/apartments/wa/redmond/floor-plans#/floorplans/54623066/",
+    "rent": 3650,
+    "available_date": "2026-08-24",
+    "url": "https://www.livenightingale.com/apartments/wa/redmond/floor-plans#/floorplans/57172203/",
     "floor_plan_image_url": "https://g5-assets-cld-res.cloudinary.com/image/upload/v1630022262/g5/g5-c-icwh344r-acacia-capital-corporation-client/g5-cl-1lo6ovwfaf-amc-acacia-capital-corporation-redmond-wa/services/Two_Bed_Two_Bath_8_nghb08_1090_SF_2D_TYPE_A_wykp3p.jpg"
   },
   {
@@ -1123,8 +1087,8 @@
     "bathrooms": 1,
     "square_feet": 634,
     "rent": 2315,
-    "available_date": "2026-08-18",
-    "url": "https://www.livenightingale.com/apartments/wa/redmond/floor-plans#/floorplans/54623017/",
+    "available_date": "2026-08-21",
+    "url": "https://www.livenightingale.com/apartments/wa/redmond/floor-plans#/floorplans/57172177/",
     "floor_plan_image_url": "http://g5-assets-cld-res.cloudinary.com/image/upload/v1534796659/g5/themes/shared/comingsoon_floorplan_03.jpg"
   },
   {
@@ -1136,7 +1100,7 @@
     "square_feet": 648,
     "rent": 2485,
     "available_date": "2026-07-03",
-    "url": "https://www.livenightingale.com/apartments/wa/redmond/floor-plans#/floorplans/54623023/",
+    "url": "https://www.livenightingale.com/apartments/wa/redmond/floor-plans#/floorplans/57172179/",
     "floor_plan_image_url": "https://g5-assets-cld-res.cloudinary.com/image/upload/v1630021211/g5/g5-c-icwh344r-acacia-capital-corporation-client/g5-cl-1lo6ovwfaf-amc-acacia-capital-corporation-redmond-wa/services/Studio_Loft_3_nghe03_648_SF_1A_FW_l9v6qz.jpg"
   },
   {
@@ -1148,7 +1112,7 @@
     "square_feet": 956,
     "rent": 2950,
     "available_date": "2026-08-25",
-    "url": "https://www.livenightingale.com/apartments/wa/redmond/floor-plans#/floorplans/54623056/",
+    "url": "https://www.livenightingale.com/apartments/wa/redmond/floor-plans#/floorplans/57172194/",
     "floor_plan_image_url": "https://g5-assets-cld-res.cloudinary.com/image/upload/v1630021100/g5/g5-c-icwh344r-acacia-capital-corporation-client/g5-cl-1lo6ovwfaf-amc-acacia-capital-corporation-redmond-wa/services/Studio_Den_Loft_14_nghe13_956_SF_1D_wu8wti.jpg"
   },
   {
@@ -1158,9 +1122,9 @@
     "bedrooms": 1,
     "bathrooms": 2,
     "square_feet": 963,
-    "rent": 2517,
+    "rent": 2452,
     "available_date": "Available",
-    "url": "https://vue22apts.securecafe.com/onlineleasing/vue-22-apartments/oleapplication.aspx?stepname=RentalOptions&myOlePropertyId=1282523&FloorPlanID=3526492&UnitID=27971392&MoveInDate=8/18/2026&PropLeadSource_1282523=portal",
+    "url": "https://vue22apts.securecafe.com/onlineleasing/vue-22-apartments/oleapplication.aspx?stepname=RentalOptions&myOlePropertyId=1282523&FloorPlanID=3526492&UnitID=27971392&MoveInDate=8/20/2026&PropLeadSource_1282523=portal",
     "floor_plan_image_url": "https://resource.rentcafe.com/image/upload/q_auto,f_auto/s3/2/36484/snoqualmie%202.jpg"
   },
   {
@@ -1170,7 +1134,7 @@
     "bedrooms": 1,
     "bathrooms": 2,
     "square_feet": 1092,
-    "rent": 2577,
+    "rent": 2512,
     "available_date": "2026-08-27",
     "url": "https://vue22apts.securecafe.com/onlineleasing/vue-22-apartments/oleapplication.aspx?stepname=RentalOptions&myOlePropertyId=1282523&FloorPlanID=3526491&UnitID=27971396&MoveInDate=8/27/2026&PropLeadSource_1282523=portal",
     "floor_plan_image_url": "https://resource.rentcafe.com/image/upload/q_auto,f_auto/s3/2/36484/snoqualmie%201.jpg"
@@ -1182,7 +1146,7 @@
     "bedrooms": 1,
     "bathrooms": 1.5,
     "square_feet": 825,
-    "rent": 2363,
+    "rent": 2298,
     "available_date": "2026-08-22",
     "url": "https://vue22apts.securecafe.com/onlineleasing/vue-22-apartments/oleapplication.aspx?stepname=RentalOptions&myOlePropertyId=1282523&FloorPlanID=3526490&UnitID=27971410&MoveInDate=8/22/2026&PropLeadSource_1282523=portal",
     "floor_plan_image_url": "https://resource.rentcafe.com/image/upload/q_auto,f_auto/s3/2/36484/burke-gilman.jpg"
@@ -1196,8 +1160,20 @@
     "square_feet": 506,
     "rent": 2027,
     "available_date": "Available",
-    "url": "https://vue22apts.securecafe.com/onlineleasing/vue-22-apartments/oleapplication.aspx?stepname=RentalOptions&myOlePropertyId=1282523&FloorPlanID=3530529&UnitID=27971437&MoveInDate=8/18/2026&PropLeadSource_1282523=portal",
+    "url": "https://vue22apts.securecafe.com/onlineleasing/vue-22-apartments/oleapplication.aspx?stepname=RentalOptions&myOlePropertyId=1282523&FloorPlanID=3530529&UnitID=27971437&MoveInDate=8/20/2026&PropLeadSource_1282523=portal",
     "floor_plan_image_url": "https://resource.rentcafe.com/image/upload/q_auto,f_auto/s3/2/36484/screenshot%202026-06-22%20093634.png"
+  },
+  {
+    "community": "Vue 22 Apartments",
+    "unit": "E-306",
+    "floor_plan": "A17.1",
+    "bedrooms": 1,
+    "bathrooms": 1,
+    "square_feet": 703,
+    "rent": 2027,
+    "available_date": "2026-09-27",
+    "url": "https://vue22apts.securecafe.com/onlineleasing/vue-22-apartments/oleapplication.aspx?stepname=RentalOptions&myOlePropertyId=1282523&FloorPlanID=3530538&UnitID=27971454&MoveInDate=9/27/2026&PropLeadSource_1282523=portal",
+    "floor_plan_image_url": "https://resource.rentcafe.com/image/upload/q_auto,f_auto/s3/2/36484/a17%20floor%20plan.png"
   },
   {
     "community": "Vue 22 Apartments",
@@ -1220,7 +1196,7 @@
     "square_feet": 814,
     "rent": 2680,
     "available_date": "Available",
-    "url": "https://vue22apts.securecafe.com/onlineleasing/vue-22-apartments/oleapplication.aspx?stepname=RentalOptions&myOlePropertyId=1282523&FloorPlanID=3530561&UnitID=27971468&MoveInDate=8/18/2026&PropLeadSource_1282523=portal",
+    "url": "https://vue22apts.securecafe.com/onlineleasing/vue-22-apartments/oleapplication.aspx?stepname=RentalOptions&myOlePropertyId=1282523&FloorPlanID=3530561&UnitID=27971468&MoveInDate=8/20/2026&PropLeadSource_1282523=portal",
     "floor_plan_image_url": "https://resource.rentcafe.com/image/upload/q_auto,f_auto/s3/2/36484/b11%20vue%2022(1).jpg"
   },
   {
@@ -1242,7 +1218,7 @@
     "bedrooms": 2,
     "bathrooms": 2,
     "square_feet": 1297,
-    "rent": 3745,
+    "rent": 3736,
     "available_date": "2026-09-13",
     "url": "https://vue22apts.securecafe.com/onlineleasing/vue-22-apartments/oleapplication.aspx?stepname=RentalOptions&myOlePropertyId=1282523&FloorPlanID=3530575&UnitID=27971489&MoveInDate=9/13/2026&PropLeadSource_1282523=portal",
     "floor_plan_image_url": "https://resource.rentcafe.com/image/upload/q_auto,f_auto/s3/2/36484/e502%20floorplan.png"
@@ -1256,7 +1232,7 @@
     "square_feet": 743,
     "rent": 2409,
     "available_date": "Available",
-    "url": "https://vue22apts.securecafe.com/onlineleasing/vue-22-apartments/oleapplication.aspx?stepname=RentalOptions&myOlePropertyId=1282523&FloorPlanID=3530540&UnitID=27971490&MoveInDate=8/18/2026&PropLeadSource_1282523=portal",
+    "url": "https://vue22apts.securecafe.com/onlineleasing/vue-22-apartments/oleapplication.aspx?stepname=RentalOptions&myOlePropertyId=1282523&FloorPlanID=3530540&UnitID=27971490&MoveInDate=8/20/2026&PropLeadSource_1282523=portal",
     "floor_plan_image_url": "https://resource.rentcafe.com/image/upload/q_auto,f_auto/s3/2/36484/a19.png"
   },
   {
@@ -1268,7 +1244,7 @@
     "square_feet": 609,
     "rent": 2226,
     "available_date": "Available",
-    "url": "https://vue22apts.securecafe.com/onlineleasing/vue-22-apartments/oleapplication.aspx?stepname=RentalOptions&myOlePropertyId=1282523&FloorPlanID=3526501&UnitID=27971515&MoveInDate=8/18/2026&PropLeadSource_1282523=portal",
+    "url": "https://vue22apts.securecafe.com/onlineleasing/vue-22-apartments/oleapplication.aspx?stepname=RentalOptions&myOlePropertyId=1282523&FloorPlanID=3526501&UnitID=27971515&MoveInDate=8/20/2026&PropLeadSource_1282523=portal",
     "floor_plan_image_url": "https://resource.rentcafe.com/image/upload/q_auto,f_auto/s3/2/36484/lakemont%202.jpg"
   },
   {
@@ -1278,10 +1254,22 @@
     "bedrooms": 2,
     "bathrooms": 2,
     "square_feet": 931,
-    "rent": 3006,
+    "rent": 2997,
     "available_date": "Available",
-    "url": "https://vue22apts.securecafe.com/onlineleasing/vue-22-apartments/oleapplication.aspx?stepname=RentalOptions&myOlePropertyId=1282523&FloorPlanID=3526511&UnitID=27971521&MoveInDate=8/18/2026&PropLeadSource_1282523=portal",
+    "url": "https://vue22apts.securecafe.com/onlineleasing/vue-22-apartments/oleapplication.aspx?stepname=RentalOptions&myOlePropertyId=1282523&FloorPlanID=3526511&UnitID=27971521&MoveInDate=8/20/2026&PropLeadSource_1282523=portal",
     "floor_plan_image_url": "https://resource.rentcafe.com/image/upload/q_auto,f_auto/s3/2/36484/baker.jpg"
+  },
+  {
+    "community": "Vue 22 Apartments",
+    "unit": "N-341",
+    "floor_plan": "A6",
+    "bedrooms": 1,
+    "bathrooms": 1,
+    "square_feet": 556,
+    "rent": null,
+    "available_date": "2026-09-23",
+    "url": "https://vue22apts.securecafe.com/onlineleasing/vue-22-apartments/oleapplication.aspx?stepname=RentalOptions&myOlePropertyId=1282523&FloorPlanID=3526497&UnitID=27971542&MoveInDate=9/23/2026&PropLeadSource_1282523=portal",
+    "floor_plan_image_url": "https://resource.rentcafe.com/image/upload/q_auto,f_auto/s3/2/36484/lakemont%201.jpg"
   },
   {
     "community": "Vue 22 Apartments",
@@ -1294,6 +1282,18 @@
     "available_date": "2026-08-25",
     "url": "https://vue22apts.securecafe.com/onlineleasing/vue-22-apartments/oleapplication.aspx?stepname=RentalOptions&myOlePropertyId=1282523&FloorPlanID=3526520&UnitID=27971543&MoveInDate=8/25/2026&PropLeadSource_1282523=portal",
     "floor_plan_image_url": "https://resource.rentcafe.com/image/upload/q_auto,f_auto/s3/2/36484/constance.jpg"
+  },
+  {
+    "community": "Vue 22 Apartments",
+    "unit": "N-425",
+    "floor_plan": "A14",
+    "bedrooms": 1,
+    "bathrooms": 1,
+    "square_feet": 644,
+    "rent": 2249,
+    "available_date": "2026-09-23",
+    "url": "https://vue22apts.securecafe.com/onlineleasing/vue-22-apartments/oleapplication.aspx?stepname=RentalOptions&myOlePropertyId=1282523&FloorPlanID=3526503&UnitID=27971564&MoveInDate=9/23/2026&PropLeadSource_1282523=portal",
+    "floor_plan_image_url": "https://resource.rentcafe.com/image/upload/q_auto,f_auto/s3/2/36484/bear%20creek.jpg"
   },
   {
     "community": "Vue 22 Apartments",
@@ -1314,9 +1314,9 @@
     "bedrooms": 2,
     "bathrooms": 2,
     "square_feet": 1028,
-    "rent": 3260,
+    "rent": 3200,
     "available_date": "Available",
-    "url": "https://vue22apts.securecafe.com/onlineleasing/vue-22-apartments/oleapplication.aspx?stepname=RentalOptions&myOlePropertyId=1282523&FloorPlanID=3526516&UnitID=27971582&MoveInDate=8/18/2026&PropLeadSource_1282523=portal",
+    "url": "https://vue22apts.securecafe.com/onlineleasing/vue-22-apartments/oleapplication.aspx?stepname=RentalOptions&myOlePropertyId=1282523&FloorPlanID=3526516&UnitID=27971582&MoveInDate=8/20/2026&PropLeadSource_1282523=portal",
     "floor_plan_image_url": "https://resource.rentcafe.com/image/upload/q_auto,f_auto/s3/2/36484/rainier%201.jpg"
   },
   {
@@ -1330,18 +1330,6 @@
     "available_date": "2026-09-07",
     "url": "https://vue22apts.securecafe.com/onlineleasing/vue-22-apartments/oleapplication.aspx?stepname=RentalOptions&myOlePropertyId=1282523&FloorPlanID=3526517&UnitID=27971583&MoveInDate=9/7/2026&PropLeadSource_1282523=portal",
     "floor_plan_image_url": "https://resource.rentcafe.com/image/upload/q_auto,f_auto/s3/2/36484/olympus%201.jpg"
-  },
-  {
-    "community": "Vue 22 Apartments",
-    "unit": "N-527",
-    "floor_plan": "A10",
-    "bedrooms": 1,
-    "bathrooms": 1,
-    "square_feet": 590,
-    "rent": 2108,
-    "available_date": "2026-08-27",
-    "url": "https://vue22apts.securecafe.com/onlineleasing/vue-22-apartments/oleapplication.aspx?stepname=RentalOptions&myOlePropertyId=1282523&FloorPlanID=3526499&UnitID=27971590&MoveInDate=8/27/2026&PropLeadSource_1282523=portal",
-    "floor_plan_image_url": "https://resource.rentcafe.com/image/upload/q_auto,f_auto/s3/2/36484/lakemont%203.jpg"
   },
   {
     "community": "Vue 22 Apartments",
@@ -1369,18 +1357,6 @@
   },
   {
     "community": "Vue 22 Apartments",
-    "unit": "N-732",
-    "floor_plan": "A18",
-    "bedrooms": 1,
-    "bathrooms": 1,
-    "square_feet": 723,
-    "rent": 2454,
-    "available_date": "Available",
-    "url": "https://vue22apts.securecafe.com/onlineleasing/vue-22-apartments/oleapplication.aspx?stepname=RentalOptions&myOlePropertyId=1282523&FloorPlanID=3526505&UnitID=27971645&MoveInDate=8/18/2026&PropLeadSource_1282523=portal",
-    "floor_plan_image_url": "https://resource.rentcafe.com/image/upload/q_auto,f_auto/s3/2/36484/woodridge.jpg"
-  },
-  {
-    "community": "Vue 22 Apartments",
     "unit": "N-827",
     "floor_plan": "A10",
     "bedrooms": 1,
@@ -1388,7 +1364,7 @@
     "square_feet": 590,
     "rent": 2123,
     "available_date": "Available",
-    "url": "https://vue22apts.securecafe.com/onlineleasing/vue-22-apartments/oleapplication.aspx?stepname=RentalOptions&myOlePropertyId=1282523&FloorPlanID=3526499&UnitID=27971668&MoveInDate=8/18/2026&PropLeadSource_1282523=portal",
+    "url": "https://vue22apts.securecafe.com/onlineleasing/vue-22-apartments/oleapplication.aspx?stepname=RentalOptions&myOlePropertyId=1282523&FloorPlanID=3526499&UnitID=27971668&MoveInDate=8/20/2026&PropLeadSource_1282523=portal",
     "floor_plan_image_url": "https://resource.rentcafe.com/image/upload/q_auto,f_auto/s3/2/36484/lakemont%203.jpg"
   },
   {
@@ -1410,7 +1386,7 @@
     "bedrooms": 2,
     "bathrooms": 2,
     "square_feet": 976,
-    "rent": 3075,
+    "rent": 3066,
     "available_date": "2026-09-01",
     "url": "https://vue22apts.securecafe.com/onlineleasing/vue-22-apartments/oleapplication.aspx?stepname=RentalOptions&myOlePropertyId=1282523&FloorPlanID=3526513&UnitID=27971696&MoveInDate=9/1/2026&PropLeadSource_1282523=portal",
     "floor_plan_image_url": "https://resource.rentcafe.com/image/upload/q_auto,f_auto/s3/2/36484/index%201.jpg"
@@ -1434,10 +1410,22 @@
     "bedrooms": 2,
     "bathrooms": 2,
     "square_feet": 1151,
-    "rent": 3325,
+    "rent": 3316,
     "available_date": "2026-09-07",
     "url": "https://vue22apts.securecafe.com/onlineleasing/vue-22-apartments/oleapplication.aspx?stepname=RentalOptions&myOlePropertyId=1282523&FloorPlanID=3526591&UnitID=27971723&MoveInDate=9/7/2026&PropLeadSource_1282523=portal",
     "floor_plan_image_url": "https://resource.rentcafe.com/image/upload/q_auto,f_auto/s3/2/36484/glacier%201.jpg"
+  },
+  {
+    "community": "Vue 22 Apartments",
+    "unit": "S-759",
+    "floor_plan": "B5",
+    "bedrooms": 2,
+    "bathrooms": 2,
+    "square_feet": 976,
+    "rent": null,
+    "available_date": "2026-09-27",
+    "url": "https://vue22apts.securecafe.com/onlineleasing/vue-22-apartments/oleapplication.aspx?stepname=RentalOptions&myOlePropertyId=1282523&FloorPlanID=3526513&UnitID=27971748&MoveInDate=9/27/2026&PropLeadSource_1282523=portal",
+    "floor_plan_image_url": "https://resource.rentcafe.com/image/upload/q_auto,f_auto/s3/2/36484/index%201.jpg"
   },
   {
     "community": "Vue 22 Apartments",
@@ -1448,7 +1436,7 @@
     "square_feet": 609,
     "rent": 2376,
     "available_date": "Available",
-    "url": "https://vue22apts.securecafe.com/onlineleasing/vue-22-apartments/oleapplication.aspx?stepname=RentalOptions&myOlePropertyId=1282523&FloorPlanID=3526501&UnitID=27971757&MoveInDate=8/18/2026&PropLeadSource_1282523=portal",
+    "url": "https://vue22apts.securecafe.com/onlineleasing/vue-22-apartments/oleapplication.aspx?stepname=RentalOptions&myOlePropertyId=1282523&FloorPlanID=3526501&UnitID=27971757&MoveInDate=8/20/2026&PropLeadSource_1282523=portal",
     "floor_plan_image_url": "https://resource.rentcafe.com/image/upload/q_auto,f_auto/s3/2/36484/lakemont%202.jpg"
   },
   {
@@ -1458,7 +1446,7 @@
     "bedrooms": 2,
     "bathrooms": 2,
     "square_feet": 1028,
-    "rent": 3205,
+    "rent": 3196,
     "available_date": "2026-08-24",
     "url": "https://vue22apts.securecafe.com/onlineleasing/vue-22-apartments/oleapplication.aspx?stepname=RentalOptions&myOlePropertyId=1282523&FloorPlanID=3526516&UnitID=27971825&MoveInDate=8/24/2026&PropLeadSource_1282523=portal",
     "floor_plan_image_url": "https://resource.rentcafe.com/image/upload/q_auto,f_auto/s3/2/36484/rainier%201.jpg"
@@ -1470,8 +1458,8 @@
     "bedrooms": 1,
     "bathrooms": 1,
     "square_feet": 843,
-    "rent": 2955,
-    "available_date": "2026-08-18",
+    "rent": 2880,
+    "available_date": "2026-08-20",
     "url": "https://www.equityapartments.com/UnitFees/24096/1/432",
     "floor_plan_image_url": "https://images.equityapartments.com//media/wa_zephyronthepark/floorplans/zephyr_A20_1b1b_843sqft.png"
   },
@@ -1482,8 +1470,8 @@
     "bedrooms": 1,
     "bathrooms": 1,
     "square_feet": 770,
-    "rent": 2675,
-    "available_date": "2026-08-18",
+    "rent": 2600,
+    "available_date": "2026-08-20",
     "url": "https://www.equityapartments.com/UnitFees/24096/1/513",
     "floor_plan_image_url": "https://images.equityapartments.com//media/wa_zephyronthepark/floorplans/zephyr_A17_1b1b_770sqft.png"
   },
@@ -1494,7 +1482,7 @@
     "bedrooms": 1,
     "bathrooms": 1,
     "square_feet": 843,
-    "rent": 3005,
+    "rent": 2970,
     "available_date": "2026-09-10",
     "url": "https://www.equityapartments.com/UnitFees/24096/1/632",
     "floor_plan_image_url": "https://images.equityapartments.com//media/wa_zephyronthepark/floorplans/zephyr_A20_1b1b_843sqft.png"
@@ -1506,8 +1494,8 @@
     "bedrooms": 0,
     "bathrooms": 1,
     "square_feet": 513,
-    "rent": 1985,
-    "available_date": "2026-08-18",
+    "rent": 1970,
+    "available_date": "2026-08-20",
     "url": "https://www.equityapartments.com/UnitFees/24096/1/710",
     "floor_plan_image_url": "https://images.equityapartments.com//media/wa_zephyronthepark/floorplans/zephyr_S2_0b1b_513sqft.png"
   },
@@ -1518,8 +1506,8 @@
     "bedrooms": 0,
     "bathrooms": 1,
     "square_feet": 513,
-    "rent": 1960,
-    "available_date": "2026-08-18",
+    "rent": 1945,
+    "available_date": "2026-08-20",
     "url": "https://www.equityapartments.com/UnitFees/24096/1/717",
     "floor_plan_image_url": "https://images.equityapartments.com//media/wa_zephyronthepark/floorplans/zephyr_S2_0b1b_513sqft.png"
   },
@@ -1530,7 +1518,7 @@
     "bedrooms": 1,
     "bathrooms": 1,
     "square_feet": 673,
-    "rent": 2505,
+    "rent": 2450,
     "available_date": "2026-09-01",
     "url": "https://www.equityapartments.com/UnitFees/24096/1/720",
     "floor_plan_image_url": "https://images.equityapartments.com//media/wa_zephyronthepark/floorplans/zephyr_A12_1b1b_673sqft.png"
@@ -1542,7 +1530,7 @@
     "bedrooms": 1,
     "bathrooms": 1,
     "square_feet": 929,
-    "rent": 3235,
+    "rent": 3205,
     "available_date": "2026-09-04",
     "url": "https://www.equityapartments.com/UnitFees/24096/1/731",
     "floor_plan_image_url": "https://images.equityapartments.com//media/wa_zephyronthepark/floorplans/zephyr_A24_Den_1b1b_929sqft.png"
@@ -1554,8 +1542,8 @@
     "bedrooms": 1,
     "bathrooms": 1,
     "square_feet": 890,
-    "rent": 3070,
-    "available_date": "2026-08-18",
+    "rent": 2995,
+    "available_date": "2026-08-20",
     "url": "https://www.equityapartments.com/UnitFees/24096/1/802",
     "floor_plan_image_url": "https://images.equityapartments.com//media/wa_zephyronthepark/floorplans/zephyr_A21_1b1b_857-922sqft.png"
   },
@@ -1566,8 +1554,8 @@
     "bedrooms": 0,
     "bathrooms": 1,
     "square_feet": 481,
-    "rent": 2000,
-    "available_date": "2026-08-18",
+    "rent": 1985,
+    "available_date": "2026-08-20",
     "url": "https://www.equityapartments.com/UnitFees/24096/1/818",
     "floor_plan_image_url": "https://images.equityapartments.com//media/wa_zephyronthepark/floorplans/zephyr_S1_0b1b_481sqft.png"
   }
