@@ -65,6 +65,25 @@ name = "Zephyr on the Park Apartments"
 spider = "equity"
 start_urls = ["https://www.equityapartments.com/seattle/downtown-redmond/zephyr-on-the-park-apartments"]
 
+[[communities]]
+name = "Modera Overlake"
+spider = "entrata"
+start_urls = ["https://www.moderaoverlake.com/redmond/modera-overlake/conventional/"]
+
+[[communities]]
+name = "Modera Bridle Trails"
+spider = "entrata"
+start_urls = [
+    "https://www.moderabridletrails.com/kirkland/modera-bridle-trails/conventional/",
+]
+
+[[communities]]
+name = "Modera River Trail"
+spider = "entrata"
+start_urls = [
+    "https://www.moderarivertrail.com/redmond/modera-river-trail/conventional/",
+]
+
 # [[communities]]
 # name = "Example Community"
 # spider = "example"
