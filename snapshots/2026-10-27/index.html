@@ -1,0 +1,2559 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Snapshot 2026-10-27 · Apartment Availability Dashboard</title>
+    <meta name="description" content="Daily apartment availability, rent trends and floor-plan mix across tracked communities." />
+    <script type="module" crossorigin src="/Apartment-Scraper/assets/charts-D9r3jfOg.js"></script>
+    <script type="module" crossorigin src="/Apartment-Scraper/assets/snapshot-DHIn-4kH.js"></script>
+    <link rel="stylesheet" crossorigin href="/Apartment-Scraper/assets/styles-sJP6Tmkv.css">
+  </head>
+  <body>
+    <header class="topbar">
+      <div class="topbar__inner">
+        <a class="topbar__brand" href="/Apartment-Scraper/">Apartment Availability</a>
+        <nav class="topbar__nav">
+          <a
+            href="/Apartment-Scraper/"
+            
+            >Overview</a
+          >
+          <a
+            href="/Apartment-Scraper/snapshots/"
+            aria-current="page"
+            >Snapshots</a
+          >
+        </nav>
+      </div>
+    </header>
+
+    <main class="wrap">
+
+
+<section class="snap-head">
+  <div>
+    <p class="eyebrow">Daily snapshot</p>
+    <h1 class="page-title">2026-10-27</h1>
+    <p class="muted">
+      118 available units across
+      5 communities
+    </p>
+  </div>
+
+  <nav class="snap-nav" aria-label="Snapshot navigation">
+    
+    <a class="btn" href="/Apartment-Scraper/snapshots/2026-10-26/" rel="prev">
+      <span aria-hidden="true">←</span> 2026-10-26
+    </a>
+    
+
+    <a class="btn btn--ghost" href="/Apartment-Scraper/snapshots/">All</a>
+
+    
+    <span class="btn btn--disabled" aria-disabled="true">
+      Next <span aria-hidden="true">→</span>
+    </span>
+    
+  </nav>
+</section>
+
+<section class="stats" aria-label="Snapshot metrics">
+  <article class="stat">
+    <span class="stat__label">Available units</span>
+    <span class="stat__value">118</span>
+  </article>
+  <article class="stat">
+    <span class="stat__label">Communities</span>
+    <span class="stat__value">5</span>
+  </article>
+  <article class="stat">
+    <span class="stat__label">Median rent</span>
+    <span class="stat__value">$2,336</span>
+  </article>
+  <article class="stat">
+    <span class="stat__label">Average rent</span>
+    <span class="stat__value">$2,587</span>
+  </article>
+  <article class="stat">
+    <span class="stat__label">Lowest rent</span>
+    <span class="stat__value">$1,715</span>
+  </article>
+  <article class="stat">
+    <span class="stat__label">Highest rent</span>
+    <span class="stat__value">$4,615</span>
+  </article>
+</section>
+
+<div class="chart-filter">
+  <label class="chart-filter__label" for="snapBeds">Bedrooms</label>
+  <select id="snapBeds" class="listings__select" aria-label="Filter charts by bedrooms">
+    <option value="all">All bedrooms</option>
+  </select>
+</div>
+
+<section class="charts" aria-label="Snapshot charts">
+  <figure class="card">
+    <figcaption class="card__title">Units by community</figcaption>
+    <div class="card__canvas card__canvas--square">
+      <canvas id="snapUnitsByCommunity"></canvas>
+    </div>
+    <div id="snapUnitsByCommunity-legend" class="card__legend"></div>
+  </figure>
+
+  <figure class="card">
+    <figcaption class="card__title">Units by floor-plan size</figcaption>
+    <div class="card__canvas card__canvas--square">
+      <canvas id="snapUnitsByBedrooms"></canvas>
+    </div>
+    <div id="snapUnitsByBedrooms-legend" class="card__legend"></div>
+  </figure>
+
+  <figure class="card">
+    <figcaption class="card__title">Average rent by size</figcaption>
+    <div class="card__canvas">
+      <canvas id="snapRentByBedrooms"></canvas>
+    </div>
+  </figure>
+
+  <figure class="card">
+    <figcaption class="card__title">Rent distribution</figcaption>
+    <p class="card__hint">Units grouped into $250 bands.</p>
+    <div class="card__canvas">
+      <canvas id="snapRentHistogram"></canvas>
+    </div>
+  </figure>
+</section>
+
+
+<section class="listings" aria-label="Listings on 2026-10-27">
+  <div class="listings__head">
+    <h2 class="listings__title">Listings on 2026-10-27</h2>
+    <div class="listings__filters">
+      <input
+        id="snap-search"
+        class="listings__filter"
+        type="search"
+        placeholder="Search…"
+        aria-label="Search listings"
+      />
+      <select id="snap-community" class="listings__select" aria-label="Filter by community">
+        <option value="">All communities</option>
+      </select>
+      <select id="snap-beds" class="listings__select" aria-label="Filter by bedrooms">
+        <option value="">All beds</option>
+      </select>
+      <select id="snap-baths" class="listings__select" aria-label="Filter by bathrooms">
+        <option value="">All baths</option>
+      </select>
+    </div>
+  </div>
+
+  <p class="listings__count" id="snap-count" aria-live="polite"></p>
+
+  <div class="listings__scroll">
+    <table id="snap-table" class="listings__table">
+      <thead>
+        <tr>
+          <th scope="col">Community</th>
+          <th scope="col">Unit</th>
+          <th scope="col">Floor plan</th>
+          <th scope="col" class="num">Beds</th>
+          <th scope="col" class="num">Baths</th>
+          <th scope="col" class="num">Sq ft</th>
+          <th scope="col" class="num">Rent</th>
+          <th scope="col">Available</th>
+          <th scope="col"></th>
+        </tr>
+      </thead>
+      <tbody>
+        
+        <tr
+          data-community="AVA Esterra Park"
+          data-bedrooms="0"
+          data-bathrooms="1"
+        >
+          <td>AVA Esterra Park</td>
+          <td>001-534</td>
+          <td>S1</td>
+          <td class="num" data-sort="0">
+            Studio
+          </td>
+          <td class="num" data-sort="1">1</td>
+          <td class="num" data-sort="462">462</td>
+          <td class="num" data-sort="2010">$2,010</td>
+          <td data-sort="2026-11-13">2026-11-13</td>
+          <td>
+            <a href="https://www.avaloncommunities.com/washington/redmond-apartments/ava-esterra-park/apartment/WA031-WA031-001-534" target="_blank" rel="noopener">View</a>
+          </td>
+        </tr>
+        
+        <tr
+          data-community="AVA Esterra Park"
+          data-bedrooms="0"
+          data-bathrooms="1"
+        >
+          <td>AVA Esterra Park</td>
+          <td>001-733</td>
+          <td>S2</td>
+          <td class="num" data-sort="0">
+            Studio
+          </td>
+          <td class="num" data-sort="1">1</td>
+          <td class="num" data-sort="500">500</td>
+          <td class="num" data-sort="2016">$2,016</td>
+          <td data-sort="2026-10-28">2026-10-28</td>
+          <td>
+            <a href="https://www.avaloncommunities.com/washington/redmond-apartments/ava-esterra-park/apartment/WA031-WA031-001-733" target="_blank" rel="noopener">View</a>
+          </td>
+        </tr>
+        
+        <tr
+          data-community="AVA Esterra Park"
+          data-bedrooms="1"
+          data-bathrooms="1"
+        >
+          <td>AVA Esterra Park</td>
+          <td>001-620</td>
+          <td>A15</td>
+          <td class="num" data-sort="1">
+            1
+          </td>
+          <td class="num" data-sort="1">1</td>
+          <td class="num" data-sort="560">560</td>
+          <td class="num" data-sort="2115">$2,115</td>
+          <td data-sort="2026-11-09">2026-11-09</td>
+          <td>
+            <a href="https://www.avaloncommunities.com/washington/redmond-apartments/ava-esterra-park/apartment/WA031-WA031-001-620" target="_blank" rel="noopener">View</a>
+          </td>
+        </tr>
+        
+        <tr
+          data-community="AVA Esterra Park"
+          data-bedrooms="0"
+          data-bathrooms="1"
+        >
+          <td>AVA Esterra Park</td>
+          <td>001-303</td>
+          <td>S9</td>
+          <td class="num" data-sort="0">
+            Studio
+          </td>
+          <td class="num" data-sort="1">1</td>
+          <td class="num" data-sort="512">512</td>
+          <td class="num" data-sort="2122">$2,122</td>
+          <td data-sort="2026-11-25">2026-11-25</td>
+          <td>
+            <a href="https://www.avaloncommunities.com/washington/redmond-apartments/ava-esterra-park/apartment/WA031-WA031-001-303" target="_blank" rel="noopener">View</a>
+          </td>
+        </tr>
+        
+        <tr
+          data-community="AVA Esterra Park"
+          data-bedrooms="1"
+          data-bathrooms="1"
+        >
+          <td>AVA Esterra Park</td>
+          <td>001-453</td>
+          <td>A1</td>
+          <td class="num" data-sort="1">
+            1
+          </td>
+          <td class="num" data-sort="1">1</td>
+          <td class="num" data-sort="634">634</td>
+          <td class="num" data-sort="2145">$2,145</td>
+          <td data-sort="2026-11-20">2026-11-20</td>
+          <td>
+            <a href="https://www.avaloncommunities.com/washington/redmond-apartments/ava-esterra-park/apartment/WA031-WA031-001-453" target="_blank" rel="noopener">View</a>
+          </td>
+        </tr>
+        
+        <tr
+          data-community="AVA Esterra Park"
+          data-bedrooms="0"
+          data-bathrooms="1"
+        >
+          <td>AVA Esterra Park</td>
+          <td>001-806</td>
+          <td>SM04</td>
+          <td class="num" data-sort="0">
+            Studio
+          </td>
+          <td class="num" data-sort="1">1</td>
+          <td class="num" data-sort="521">521</td>
+          <td class="num" data-sort="2160">$2,160</td>
+          <td data-sort="2026-10-31">2026-10-31</td>
+          <td>
+            <a href="https://www.avaloncommunities.com/washington/redmond-apartments/ava-esterra-park/apartment/WA031-WA031-001-806" target="_blank" rel="noopener">View</a>
+          </td>
+        </tr>
+        
+        <tr
+          data-community="AVA Esterra Park"
+          data-bedrooms="1"
+          data-bathrooms="1"
+        >
+          <td>AVA Esterra Park</td>
+          <td>001-409</td>
+          <td>A8</td>
+          <td class="num" data-sort="1">
+            1
+          </td>
+          <td class="num" data-sort="1">1</td>
+          <td class="num" data-sort="718">718</td>
+          <td class="num" data-sort="2171">$2,171</td>
+          <td data-sort="2026-11-27">2026-11-27</td>
+          <td>
+            <a href="https://www.avaloncommunities.com/washington/redmond-apartments/ava-esterra-park/apartment/WA031-WA031-001-409" target="_blank" rel="noopener">View</a>
+          </td>
+        </tr>
+        
+        <tr
+          data-community="AVA Esterra Park"
+          data-bedrooms="1"
+          data-bathrooms="1"
+        >
+          <td>AVA Esterra Park</td>
+          <td>001-619</td>
+          <td>A2</td>
+          <td class="num" data-sort="1">
+            1
+          </td>
+          <td class="num" data-sort="1">1</td>
+          <td class="num" data-sort="598">598</td>
+          <td class="num" data-sort="2175">$2,175</td>
+          <td data-sort="2027-01-15">2027-01-15</td>
+          <td>
+            <a href="https://www.avaloncommunities.com/washington/redmond-apartments/ava-esterra-park/apartment/WA031-WA031-001-619" target="_blank" rel="noopener">View</a>
+          </td>
+        </tr>
+        
+        <tr
+          data-community="AVA Esterra Park"
+          data-bedrooms="1"
+          data-bathrooms="1"
+        >
+          <td>AVA Esterra Park</td>
+          <td>001-405</td>
+          <td>A8</td>
+          <td class="num" data-sort="1">
+            1
+          </td>
+          <td class="num" data-sort="1">1</td>
+          <td class="num" data-sort="718">718</td>
+          <td class="num" data-sort="2176">$2,176</td>
+          <td data-sort="2027-01-06">2027-01-06</td>
+          <td>
+            <a href="https://www.avaloncommunities.com/washington/redmond-apartments/ava-esterra-park/apartment/WA031-WA031-001-405" target="_blank" rel="noopener">View</a>
+          </td>
+        </tr>
+        
+        <tr
+          data-community="AVA Esterra Park"
+          data-bedrooms="1"
+          data-bathrooms="1"
+        >
+          <td>AVA Esterra Park</td>
+          <td>001-848</td>
+          <td>A8</td>
+          <td class="num" data-sort="1">
+            1
+          </td>
+          <td class="num" data-sort="1">1</td>
+          <td class="num" data-sort="718">718</td>
+          <td class="num" data-sort="2221">$2,221</td>
+          <td data-sort="2026-12-17">2026-12-17</td>
+          <td>
+            <a href="https://www.avaloncommunities.com/washington/redmond-apartments/ava-esterra-park/apartment/WA031-WA031-001-848" target="_blank" rel="noopener">View</a>
+          </td>
+        </tr>
+        
+        <tr
+          data-community="AVA Esterra Park"
+          data-bedrooms="1"
+          data-bathrooms="1"
+        >
+          <td>AVA Esterra Park</td>
+          <td>001-714</td>
+          <td>A8</td>
+          <td class="num" data-sort="1">
+            1
+          </td>
+          <td class="num" data-sort="1">1</td>
+          <td class="num" data-sort="833">833</td>
+          <td class="num" data-sort="2331">$2,331</td>
+          <td data-sort="2026-11-18">2026-11-18</td>
+          <td>
+            <a href="https://www.avaloncommunities.com/washington/redmond-apartments/ava-esterra-park/apartment/WA031-WA031-001-714" target="_blank" rel="noopener">View</a>
+          </td>
+        </tr>
+        
+        <tr
+          data-community="AVA Esterra Park"
+          data-bedrooms="1"
+          data-bathrooms="1"
+        >
+          <td>AVA Esterra Park</td>
+          <td>001-416</td>
+          <td>A14</td>
+          <td class="num" data-sort="1">
+            1
+          </td>
+          <td class="num" data-sort="1">1</td>
+          <td class="num" data-sort="660">660</td>
+          <td class="num" data-sort="2348">$2,348</td>
+          <td data-sort="2026-10-28">2026-10-28</td>
+          <td>
+            <a href="https://www.avaloncommunities.com/washington/redmond-apartments/ava-esterra-park/apartment/WA031-WA031-001-416" target="_blank" rel="noopener">View</a>
+          </td>
+        </tr>
+        
+        <tr
+          data-community="AVA Esterra Park"
+          data-bedrooms="1"
+          data-bathrooms="1"
+        >
+          <td>AVA Esterra Park</td>
+          <td>001-949</td>
+          <td>A5</td>
+          <td class="num" data-sort="1">
+            1
+          </td>
+          <td class="num" data-sort="1">1</td>
+          <td class="num" data-sort="667">667</td>
+          <td class="num" data-sort="2360">$2,360</td>
+          <td data-sort="2026-11-12">2026-11-12</td>
+          <td>
+            <a href="https://www.avaloncommunities.com/washington/redmond-apartments/ava-esterra-park/apartment/WA031-WA031-001-949" target="_blank" rel="noopener">View</a>
+          </td>
+        </tr>
+        
+        <tr
+          data-community="AVA Esterra Park"
+          data-bedrooms="1"
+          data-bathrooms="1"
+        >
+          <td>AVA Esterra Park</td>
+          <td>001-546</td>
+          <td>A12</td>
+          <td class="num" data-sort="1">
+            1
+          </td>
+          <td class="num" data-sort="1">1</td>
+          <td class="num" data-sort="733">733</td>
+          <td class="num" data-sort="2400">$2,400</td>
+          <td data-sort="2026-11-11">2026-11-11</td>
+          <td>
+            <a href="https://www.avaloncommunities.com/washington/redmond-apartments/ava-esterra-park/apartment/WA031-WA031-001-546" target="_blank" rel="noopener">View</a>
+          </td>
+        </tr>
+        
+        <tr
+          data-community="AVA Esterra Park"
+          data-bedrooms="1"
+          data-bathrooms="1.5"
+        >
+          <td>AVA Esterra Park</td>
+          <td>001-103</td>
+          <td>A1L</td>
+          <td class="num" data-sort="1">
+            1
+          </td>
+          <td class="num" data-sort="1.5">1.5</td>
+          <td class="num" data-sort="896">896</td>
+          <td class="num" data-sort="2825">$2,825</td>
+          <td data-sort="2026-10-28">2026-10-28</td>
+          <td>
+            <a href="https://www.avaloncommunities.com/washington/redmond-apartments/ava-esterra-park/apartment/WA031-WA031-001-103" target="_blank" rel="noopener">View</a>
+          </td>
+        </tr>
+        
+        <tr
+          data-community="AVA Esterra Park"
+          data-bedrooms="2"
+          data-bathrooms="2"
+        >
+          <td>AVA Esterra Park</td>
+          <td>001-822</td>
+          <td>B1</td>
+          <td class="num" data-sort="2">
+            2
+          </td>
+          <td class="num" data-sort="2">2</td>
+          <td class="num" data-sort="908">908</td>
+          <td class="num" data-sort="3155">$3,155</td>
+          <td data-sort="2026-10-28">2026-10-28</td>
+          <td>
+            <a href="https://www.avaloncommunities.com/washington/redmond-apartments/ava-esterra-park/apartment/WA031-WA031-001-822" target="_blank" rel="noopener">View</a>
+          </td>
+        </tr>
+        
+        <tr
+          data-community="AVA Esterra Park"
+          data-bedrooms="2"
+          data-bathrooms="2"
+        >
+          <td>AVA Esterra Park</td>
+          <td>001-617</td>
+          <td>BM01</td>
+          <td class="num" data-sort="2">
+            2
+          </td>
+          <td class="num" data-sort="2">2</td>
+          <td class="num" data-sort="1061">1,061</td>
+          <td class="num" data-sort="3285">$3,285</td>
+          <td data-sort="2026-12-22">2026-12-22</td>
+          <td>
+            <a href="https://www.avaloncommunities.com/washington/redmond-apartments/ava-esterra-park/apartment/WA031-WA031-001-617" target="_blank" rel="noopener">View</a>
+          </td>
+        </tr>
+        
+        <tr
+          data-community="AVA Esterra Park"
+          data-bedrooms="2"
+          data-bathrooms="2"
+        >
+          <td>AVA Esterra Park</td>
+          <td>001-854</td>
+          <td>B2</td>
+          <td class="num" data-sort="2">
+            2
+          </td>
+          <td class="num" data-sort="2">2</td>
+          <td class="num" data-sort="1047">1,047</td>
+          <td class="num" data-sort="3445">$3,445</td>
+          <td data-sort="2026-11-04">2026-11-04</td>
+          <td>
+            <a href="https://www.avaloncommunities.com/washington/redmond-apartments/ava-esterra-park/apartment/WA031-WA031-001-854" target="_blank" rel="noopener">View</a>
+          </td>
+        </tr>
+        
+        <tr
+          data-community="AVA Esterra Park"
+          data-bedrooms="2"
+          data-bathrooms="2"
+        >
+          <td>AVA Esterra Park</td>
+          <td>001-401</td>
+          <td>B7</td>
+          <td class="num" data-sort="2">
+            2
+          </td>
+          <td class="num" data-sort="2">2</td>
+          <td class="num" data-sort="1225">1,225</td>
+          <td class="num" data-sort="3660">$3,660</td>
+          <td data-sort="2026-12-04">2026-12-04</td>
+          <td>
+            <a href="https://www.avaloncommunities.com/washington/redmond-apartments/ava-esterra-park/apartment/WA031-WA031-001-401" target="_blank" rel="noopener">View</a>
+          </td>
+        </tr>
+        
+        <tr
+          data-community="AVA Esterra Park"
+          data-bedrooms="2"
+          data-bathrooms="2"
+        >
+          <td>AVA Esterra Park</td>
+          <td>001-501</td>
+          <td>B8D</td>
+          <td class="num" data-sort="2">
+            2
+          </td>
+          <td class="num" data-sort="2">2</td>
+          <td class="num" data-sort="1392">1,392</td>
+          <td class="num" data-sort="4110">$4,110</td>
+          <td data-sort="2026-11-25">2026-11-25</td>
+          <td>
+            <a href="https://www.avaloncommunities.com/washington/redmond-apartments/ava-esterra-park/apartment/WA031-WA031-001-501" target="_blank" rel="noopener">View</a>
+          </td>
+        </tr>
+        
+        <tr
+          data-community="AVA Esterra Park"
+          data-bedrooms="2"
+          data-bathrooms="2"
+        >
+          <td>AVA Esterra Park</td>
+          <td>001-430</td>
+          <td>B11</td>
+          <td class="num" data-sort="2">
+            2
+          </td>
+          <td class="num" data-sort="2">2</td>
+          <td class="num" data-sort="1408">1,408</td>
+          <td class="num" data-sort="4230">$4,230</td>
+          <td data-sort="2026-10-28">2026-10-28</td>
+          <td>
+            <a href="https://www.avaloncommunities.com/washington/redmond-apartments/ava-esterra-park/apartment/WA031-WA031-001-430" target="_blank" rel="noopener">View</a>
+          </td>
+        </tr>
+        
+        <tr
+          data-community="Avalon Esterra Park"
+          data-bedrooms="0"
+          data-bathrooms="1"
+        >
+          <td>Avalon Esterra Park</td>
+          <td>001-344</td>
+          <td>S2-548</td>
+          <td class="num" data-sort="0">
+            Studio
+          </td>
+          <td class="num" data-sort="1">1</td>
+          <td class="num" data-sort="548">548</td>
+          <td class="num" data-sort="2050">$2,050</td>
+          <td data-sort="2026-11-25">2026-11-25</td>
+          <td>
+            <a href="https://www.avaloncommunities.com/washington/redmond-apartments/avalon-esterra-park/apartment/WA027-WA027-001-344" target="_blank" rel="noopener">View</a>
+          </td>
+        </tr>
+        
+        <tr
+          data-community="Avalon Esterra Park"
+          data-bedrooms="0"
+          data-bathrooms="1"
+        >
+          <td>Avalon Esterra Park</td>
+          <td>002-766</td>
+          <td>S3A-567-2</td>
+          <td class="num" data-sort="0">
+            Studio
+          </td>
+          <td class="num" data-sort="1">1</td>
+          <td class="num" data-sort="561">561</td>
+          <td class="num" data-sort="2140">$2,140</td>
+          <td data-sort="2026-11-07">2026-11-07</td>
+          <td>
+            <a href="https://www.avaloncommunities.com/washington/redmond-apartments/avalon-esterra-park/apartment/WA027-WA027-002-766" target="_blank" rel="noopener">View</a>
+          </td>
+        </tr>
+        
+        <tr
+          data-community="Avalon Esterra Park"
+          data-bedrooms="0"
+          data-bathrooms="1"
+        >
+          <td>Avalon Esterra Park</td>
+          <td>001-846</td>
+          <td>S5-A-588</td>
+          <td class="num" data-sort="0">
+            Studio
+          </td>
+          <td class="num" data-sort="1">1</td>
+          <td class="num" data-sort="588">588</td>
+          <td class="num" data-sort="2210">$2,210</td>
+          <td data-sort="2027-01-08">2027-01-08</td>
+          <td>
+            <a href="https://www.avaloncommunities.com/washington/redmond-apartments/avalon-esterra-park/apartment/WA027-WA027-001-846" target="_blank" rel="noopener">View</a>
+          </td>
+        </tr>
+        
+        <tr
+          data-community="Avalon Esterra Park"
+          data-bedrooms="1"
+          data-bathrooms="1"
+        >
+          <td>Avalon Esterra Park</td>
+          <td>002-585</td>
+          <td>A4-680</td>
+          <td class="num" data-sort="1">
+            1
+          </td>
+          <td class="num" data-sort="1">1</td>
+          <td class="num" data-sort="680">680</td>
+          <td class="num" data-sort="2225">$2,225</td>
+          <td data-sort="2027-01-27">2027-01-27</td>
+          <td>
+            <a href="https://www.avaloncommunities.com/washington/redmond-apartments/avalon-esterra-park/apartment/WA027-WA027-002-585" target="_blank" rel="noopener">View</a>
+          </td>
+        </tr>
+        
+        <tr
+          data-community="Avalon Esterra Park"
+          data-bedrooms="1"
+          data-bathrooms="1"
+        >
+          <td>Avalon Esterra Park</td>
+          <td>002-781</td>
+          <td>A4-680</td>
+          <td class="num" data-sort="1">
+            1
+          </td>
+          <td class="num" data-sort="1">1</td>
+          <td class="num" data-sort="680">680</td>
+          <td class="num" data-sort="2295">$2,295</td>
+          <td data-sort="2026-11-25">2026-11-25</td>
+          <td>
+            <a href="https://www.avaloncommunities.com/washington/redmond-apartments/avalon-esterra-park/apartment/WA027-WA027-002-781" target="_blank" rel="noopener">View</a>
+          </td>
+        </tr>
+        
+        <tr
+          data-community="Avalon Esterra Park"
+          data-bedrooms="1"
+          data-bathrooms="1"
+        >
+          <td>Avalon Esterra Park</td>
+          <td>001-637</td>
+          <td>A1V-770-scheme2</td>
+          <td class="num" data-sort="1">
+            1
+          </td>
+          <td class="num" data-sort="1">1</td>
+          <td class="num" data-sort="770">770</td>
+          <td class="num" data-sort="2305">$2,305</td>
+          <td data-sort="2026-12-30">2026-12-30</td>
+          <td>
+            <a href="https://www.avaloncommunities.com/washington/redmond-apartments/avalon-esterra-park/apartment/WA027-WA027-001-637" target="_blank" rel="noopener">View</a>
+          </td>
+        </tr>
+        
+        <tr
+          data-community="Avalon Esterra Park"
+          data-bedrooms="1"
+          data-bathrooms="1"
+        >
+          <td>Avalon Esterra Park</td>
+          <td>001-527</td>
+          <td>A3V-688</td>
+          <td class="num" data-sort="1">
+            1
+          </td>
+          <td class="num" data-sort="1">1</td>
+          <td class="num" data-sort="688">688</td>
+          <td class="num" data-sort="2315">$2,315</td>
+          <td data-sort="2026-11-04">2026-11-04</td>
+          <td>
+            <a href="https://www.avaloncommunities.com/washington/redmond-apartments/avalon-esterra-park/apartment/WA027-WA027-001-527" target="_blank" rel="noopener">View</a>
+          </td>
+        </tr>
+        
+        <tr
+          data-community="Avalon Esterra Park"
+          data-bedrooms="1"
+          data-bathrooms="1"
+        >
+          <td>Avalon Esterra Park</td>
+          <td>001-331</td>
+          <td>A3V-706</td>
+          <td class="num" data-sort="1">
+            1
+          </td>
+          <td class="num" data-sort="1">1</td>
+          <td class="num" data-sort="706">706</td>
+          <td class="num" data-sort="2325">$2,325</td>
+          <td data-sort="2026-11-25">2026-11-25</td>
+          <td>
+            <a href="https://www.avaloncommunities.com/washington/redmond-apartments/avalon-esterra-park/apartment/WA027-WA027-001-331" target="_blank" rel="noopener">View</a>
+          </td>
+        </tr>
+        
+        <tr
+          data-community="Avalon Esterra Park"
+          data-bedrooms="1"
+          data-bathrooms="1"
+        >
+          <td>Avalon Esterra Park</td>
+          <td>001-539</td>
+          <td>A1V-770-scheme2</td>
+          <td class="num" data-sort="1">
+            1
+          </td>
+          <td class="num" data-sort="1">1</td>
+          <td class="num" data-sort="770">770</td>
+          <td class="num" data-sort="2325">$2,325</td>
+          <td data-sort="2026-11-26">2026-11-26</td>
+          <td>
+            <a href="https://www.avaloncommunities.com/washington/redmond-apartments/avalon-esterra-park/apartment/WA027-WA027-001-539" target="_blank" rel="noopener">View</a>
+          </td>
+        </tr>
+        
+        <tr
+          data-community="Avalon Esterra Park"
+          data-bedrooms="1"
+          data-bathrooms="1"
+        >
+          <td>Avalon Esterra Park</td>
+          <td>002-665</td>
+          <td>A13-787</td>
+          <td class="num" data-sort="1">
+            1
+          </td>
+          <td class="num" data-sort="1">1</td>
+          <td class="num" data-sort="784">784</td>
+          <td class="num" data-sort="2325">$2,325</td>
+          <td data-sort="2026-11-11">2026-11-11</td>
+          <td>
+            <a href="https://www.avaloncommunities.com/washington/redmond-apartments/avalon-esterra-park/apartment/WA027-WA027-002-665" target="_blank" rel="noopener">View</a>
+          </td>
+        </tr>
+        
+        <tr
+          data-community="Avalon Esterra Park"
+          data-bedrooms="0"
+          data-bathrooms="1"
+        >
+          <td>Avalon Esterra Park</td>
+          <td>001-208</td>
+          <td>S3-575</td>
+          <td class="num" data-sort="0">
+            Studio
+          </td>
+          <td class="num" data-sort="1">1</td>
+          <td class="num" data-sort="575">575</td>
+          <td class="num" data-sort="2345">$2,345</td>
+          <td data-sort="2026-10-28">2026-10-28</td>
+          <td>
+            <a href="https://www.avaloncommunities.com/washington/redmond-apartments/avalon-esterra-park/apartment/WA027-WA027-001-208" target="_blank" rel="noopener">View</a>
+          </td>
+        </tr>
+        
+        <tr
+          data-community="Avalon Esterra Park"
+          data-bedrooms="1"
+          data-bathrooms="1"
+        >
+          <td>Avalon Esterra Park</td>
+          <td>002-584</td>
+          <td>A13-784-urban</td>
+          <td class="num" data-sort="1">
+            1
+          </td>
+          <td class="num" data-sort="1">1</td>
+          <td class="num" data-sort="784">784</td>
+          <td class="num" data-sort="2355">$2,355</td>
+          <td data-sort="2026-11-12">2026-11-12</td>
+          <td>
+            <a href="https://www.avaloncommunities.com/washington/redmond-apartments/avalon-esterra-park/apartment/WA027-WA027-002-584" target="_blank" rel="noopener">View</a>
+          </td>
+        </tr>
+        
+        <tr
+          data-community="Avalon Esterra Park"
+          data-bedrooms="0"
+          data-bathrooms="1"
+        >
+          <td>Avalon Esterra Park</td>
+          <td>002-666</td>
+          <td>S3A-567-2</td>
+          <td class="num" data-sort="0">
+            Studio
+          </td>
+          <td class="num" data-sort="1">1</td>
+          <td class="num" data-sort="561">561</td>
+          <td class="num" data-sort="2370">$2,370</td>
+          <td data-sort="2026-10-28">2026-10-28</td>
+          <td>
+            <a href="https://www.avaloncommunities.com/washington/redmond-apartments/avalon-esterra-park/apartment/WA027-WA027-002-666" target="_blank" rel="noopener">View</a>
+          </td>
+        </tr>
+        
+        <tr
+          data-community="Avalon Esterra Park"
+          data-bedrooms="1"
+          data-bathrooms="1"
+        >
+          <td>Avalon Esterra Park</td>
+          <td>001-510</td>
+          <td>A1V-770-scheme1</td>
+          <td class="num" data-sort="1">
+            1
+          </td>
+          <td class="num" data-sort="1">1</td>
+          <td class="num" data-sort="770">770</td>
+          <td class="num" data-sort="2375">$2,375</td>
+          <td data-sort="2026-11-12">2026-11-12</td>
+          <td>
+            <a href="https://www.avaloncommunities.com/washington/redmond-apartments/avalon-esterra-park/apartment/WA027-WA027-001-510" target="_blank" rel="noopener">View</a>
+          </td>
+        </tr>
+        
+        <tr
+          data-community="Avalon Esterra Park"
+          data-bedrooms="1"
+          data-bathrooms="1"
+        >
+          <td>Avalon Esterra Park</td>
+          <td>001-837</td>
+          <td>A1V-770-scheme2</td>
+          <td class="num" data-sort="1">
+            1
+          </td>
+          <td class="num" data-sort="1">1</td>
+          <td class="num" data-sort="770">770</td>
+          <td class="num" data-sort="2380">$2,380</td>
+          <td data-sort="2027-01-06">2027-01-06</td>
+          <td>
+            <a href="https://www.avaloncommunities.com/washington/redmond-apartments/avalon-esterra-park/apartment/WA027-WA027-001-837" target="_blank" rel="noopener">View</a>
+          </td>
+        </tr>
+        
+        <tr
+          data-community="Avalon Esterra Park"
+          data-bedrooms="1"
+          data-bathrooms="1"
+        >
+          <td>Avalon Esterra Park</td>
+          <td>001-841</td>
+          <td>A1V-770-scheme2</td>
+          <td class="num" data-sort="1">
+            1
+          </td>
+          <td class="num" data-sort="1">1</td>
+          <td class="num" data-sort="770">770</td>
+          <td class="num" data-sort="2380">$2,380</td>
+          <td data-sort="2027-01-15">2027-01-15</td>
+          <td>
+            <a href="https://www.avaloncommunities.com/washington/redmond-apartments/avalon-esterra-park/apartment/WA027-WA027-001-841" target="_blank" rel="noopener">View</a>
+          </td>
+        </tr>
+        
+        <tr
+          data-community="Avalon Esterra Park"
+          data-bedrooms="1"
+          data-bathrooms="1"
+        >
+          <td>Avalon Esterra Park</td>
+          <td>001-434</td>
+          <td>A1V-770-scheme2</td>
+          <td class="num" data-sort="1">
+            1
+          </td>
+          <td class="num" data-sort="1">1</td>
+          <td class="num" data-sort="770">770</td>
+          <td class="num" data-sort="2430">$2,430</td>
+          <td data-sort="2026-10-31">2026-10-31</td>
+          <td>
+            <a href="https://www.avaloncommunities.com/washington/redmond-apartments/avalon-esterra-park/apartment/WA027-WA027-001-434" target="_blank" rel="noopener">View</a>
+          </td>
+        </tr>
+        
+        <tr
+          data-community="Avalon Esterra Park"
+          data-bedrooms="1"
+          data-bathrooms="1"
+        >
+          <td>Avalon Esterra Park</td>
+          <td>002-657</td>
+          <td>A17-852</td>
+          <td class="num" data-sort="1">
+            1
+          </td>
+          <td class="num" data-sort="1">1</td>
+          <td class="num" data-sort="852">852</td>
+          <td class="num" data-sort="2465">$2,465</td>
+          <td data-sort="2026-11-20">2026-11-20</td>
+          <td>
+            <a href="https://www.avaloncommunities.com/washington/redmond-apartments/avalon-esterra-park/apartment/WA027-WA027-002-657" target="_blank" rel="noopener">View</a>
+          </td>
+        </tr>
+        
+        <tr
+          data-community="Avalon Esterra Park"
+          data-bedrooms="1"
+          data-bathrooms="1"
+        >
+          <td>Avalon Esterra Park</td>
+          <td>002-757</td>
+          <td>A17-852</td>
+          <td class="num" data-sort="1">
+            1
+          </td>
+          <td class="num" data-sort="1">1</td>
+          <td class="num" data-sort="852">852</td>
+          <td class="num" data-sort="2480">$2,480</td>
+          <td data-sort="2026-12-04">2026-12-04</td>
+          <td>
+            <a href="https://www.avaloncommunities.com/washington/redmond-apartments/avalon-esterra-park/apartment/WA027-WA027-002-757" target="_blank" rel="noopener">View</a>
+          </td>
+        </tr>
+        
+        <tr
+          data-community="Avalon Esterra Park"
+          data-bedrooms="1"
+          data-bathrooms="1"
+        >
+          <td>Avalon Esterra Park</td>
+          <td>002-581</td>
+          <td>A4-680</td>
+          <td class="num" data-sort="1">
+            1
+          </td>
+          <td class="num" data-sort="1">1</td>
+          <td class="num" data-sort="680">680</td>
+          <td class="num" data-sort="2515">$2,515</td>
+          <td data-sort="2026-11-05">2026-11-05</td>
+          <td>
+            <a href="https://www.avaloncommunities.com/washington/redmond-apartments/avalon-esterra-park/apartment/WA027-WA027-002-581" target="_blank" rel="noopener">View</a>
+          </td>
+        </tr>
+        
+        <tr
+          data-community="Avalon Esterra Park"
+          data-bedrooms="1"
+          data-bathrooms="1.5"
+        >
+          <td>Avalon Esterra Park</td>
+          <td>001-336</td>
+          <td>A21T</td>
+          <td class="num" data-sort="1">
+            1
+          </td>
+          <td class="num" data-sort="1.5">1.5</td>
+          <td class="num" data-sort="960">960</td>
+          <td class="num" data-sort="3005">$3,005</td>
+          <td data-sort="2026-11-07">2026-11-07</td>
+          <td>
+            <a href="https://www.avaloncommunities.com/washington/redmond-apartments/avalon-esterra-park/apartment/WA027-WA027-001-336" target="_blank" rel="noopener">View</a>
+          </td>
+        </tr>
+        
+        <tr
+          data-community="Avalon Esterra Park"
+          data-bedrooms="2"
+          data-bathrooms="2"
+        >
+          <td>Avalon Esterra Park</td>
+          <td>002-674</td>
+          <td>B8-1141</td>
+          <td class="num" data-sort="2">
+            2
+          </td>
+          <td class="num" data-sort="2">2</td>
+          <td class="num" data-sort="1127">1,127</td>
+          <td class="num" data-sort="3260">$3,260</td>
+          <td data-sort="2026-11-18">2026-11-18</td>
+          <td>
+            <a href="https://www.avaloncommunities.com/washington/redmond-apartments/avalon-esterra-park/apartment/WA027-WA027-002-674" target="_blank" rel="noopener">View</a>
+          </td>
+        </tr>
+        
+        <tr
+          data-community="Avalon Esterra Park"
+          data-bedrooms="2"
+          data-bathrooms="2"
+        >
+          <td>Avalon Esterra Park</td>
+          <td>002-391</td>
+          <td>B10-1195</td>
+          <td class="num" data-sort="2">
+            2
+          </td>
+          <td class="num" data-sort="2">2</td>
+          <td class="num" data-sort="1240">1,240</td>
+          <td class="num" data-sort="3370">$3,370</td>
+          <td data-sort="2026-10-28">2026-10-28</td>
+          <td>
+            <a href="https://www.avaloncommunities.com/washington/redmond-apartments/avalon-esterra-park/apartment/WA027-WA027-002-391" target="_blank" rel="noopener">View</a>
+          </td>
+        </tr>
+        
+        <tr
+          data-community="Avalon Esterra Park"
+          data-bedrooms="2"
+          data-bathrooms="2"
+        >
+          <td>Avalon Esterra Park</td>
+          <td>002-362</td>
+          <td>B13-1300</td>
+          <td class="num" data-sort="2">
+            2
+          </td>
+          <td class="num" data-sort="2">2</td>
+          <td class="num" data-sort="1300">1,300</td>
+          <td class="num" data-sort="3445">$3,445</td>
+          <td data-sort="2026-10-28">2026-10-28</td>
+          <td>
+            <a href="https://www.avaloncommunities.com/washington/redmond-apartments/avalon-esterra-park/apartment/WA027-WA027-002-362" target="_blank" rel="noopener">View</a>
+          </td>
+        </tr>
+        
+        <tr
+          data-community="Avalon Esterra Park"
+          data-bedrooms="2"
+          data-bathrooms="2"
+        >
+          <td>Avalon Esterra Park</td>
+          <td>002-356</td>
+          <td>B15-1357</td>
+          <td class="num" data-sort="2">
+            2
+          </td>
+          <td class="num" data-sort="2">2</td>
+          <td class="num" data-sort="1357">1,357</td>
+          <td class="num" data-sort="3550">$3,550</td>
+          <td data-sort="2026-10-28">2026-10-28</td>
+          <td>
+            <a href="https://www.avaloncommunities.com/washington/redmond-apartments/avalon-esterra-park/apartment/WA027-WA027-002-356" target="_blank" rel="noopener">View</a>
+          </td>
+        </tr>
+        
+        <tr
+          data-community="Avalon Esterra Park"
+          data-bedrooms="3"
+          data-bathrooms="2"
+        >
+          <td>Avalon Esterra Park</td>
+          <td>002-382</td>
+          <td>C1-1359</td>
+          <td class="num" data-sort="3">
+            3
+          </td>
+          <td class="num" data-sort="2">2</td>
+          <td class="num" data-sort="1359">1,359</td>
+          <td class="num" data-sort="4205">$4,205</td>
+          <td data-sort="2026-12-16">2026-12-16</td>
+          <td>
+            <a href="https://www.avaloncommunities.com/washington/redmond-apartments/avalon-esterra-park/apartment/WA027-WA027-002-382" target="_blank" rel="noopener">View</a>
+          </td>
+        </tr>
+        
+        <tr
+          data-community="Avalon Esterra Park"
+          data-bedrooms="3"
+          data-bathrooms="2"
+        >
+          <td>Avalon Esterra Park</td>
+          <td>002-558</td>
+          <td>C3-1644</td>
+          <td class="num" data-sort="3">
+            3
+          </td>
+          <td class="num" data-sort="2">2</td>
+          <td class="num" data-sort="1644">1,644</td>
+          <td class="num" data-sort="4360">$4,360</td>
+          <td data-sort="2026-11-30">2026-11-30</td>
+          <td>
+            <a href="https://www.avaloncommunities.com/washington/redmond-apartments/avalon-esterra-park/apartment/WA027-WA027-002-558" target="_blank" rel="noopener">View</a>
+          </td>
+        </tr>
+        
+        <tr
+          data-community="Avalon Esterra Park"
+          data-bedrooms="3"
+          data-bathrooms="2"
+        >
+          <td>Avalon Esterra Park</td>
+          <td>002-582</td>
+          <td>C1-1359</td>
+          <td class="num" data-sort="3">
+            3
+          </td>
+          <td class="num" data-sort="2">2</td>
+          <td class="num" data-sort="1359">1,359</td>
+          <td class="num" data-sort="4555">$4,555</td>
+          <td data-sort="2026-11-13">2026-11-13</td>
+          <td>
+            <a href="https://www.avaloncommunities.com/washington/redmond-apartments/avalon-esterra-park/apartment/WA027-WA027-002-582" target="_blank" rel="noopener">View</a>
+          </td>
+        </tr>
+        
+        <tr
+          data-community="Avalon Redmond Campus"
+          data-bedrooms="1"
+          data-bathrooms="1"
+        >
+          <td>Avalon Redmond Campus</td>
+          <td>001-236</td>
+          <td>A5</td>
+          <td class="num" data-sort="1">
+            1
+          </td>
+          <td class="num" data-sort="1">1</td>
+          <td class="num" data-sort="643">643</td>
+          <td class="num" data-sort="2280">$2,280</td>
+          <td data-sort="2026-10-28">2026-10-28</td>
+          <td>
+            <a href="https://www.avaloncommunities.com/washington/redmond-apartments/avalon-redmond-campus/apartment/WA035-WA035-001-236" target="_blank" rel="noopener">View</a>
+          </td>
+        </tr>
+        
+        <tr
+          data-community="Avalon Redmond Campus"
+          data-bedrooms="0"
+          data-bathrooms="1"
+        >
+          <td>Avalon Redmond Campus</td>
+          <td>001-212</td>
+          <td>S1</td>
+          <td class="num" data-sort="0">
+            Studio
+          </td>
+          <td class="num" data-sort="1">1</td>
+          <td class="num" data-sort="455">455</td>
+          <td class="num" data-sort="2305">$2,305</td>
+          <td data-sort="2027-01-08">2027-01-08</td>
+          <td>
+            <a href="https://www.avaloncommunities.com/washington/redmond-apartments/avalon-redmond-campus/apartment/WA035-WA035-001-212" target="_blank" rel="noopener">View</a>
+          </td>
+        </tr>
+        
+        <tr
+          data-community="Avalon Redmond Campus"
+          data-bedrooms="1"
+          data-bathrooms="1"
+        >
+          <td>Avalon Redmond Campus</td>
+          <td>001-310</td>
+          <td>A2</td>
+          <td class="num" data-sort="1">
+            1
+          </td>
+          <td class="num" data-sort="1">1</td>
+          <td class="num" data-sort="699">699</td>
+          <td class="num" data-sort="2365">$2,365</td>
+          <td data-sort="2026-11-04">2026-11-04</td>
+          <td>
+            <a href="https://www.avaloncommunities.com/washington/redmond-apartments/avalon-redmond-campus/apartment/WA035-WA035-001-310" target="_blank" rel="noopener">View</a>
+          </td>
+        </tr>
+        
+        <tr
+          data-community="Avalon Redmond Campus"
+          data-bedrooms="1"
+          data-bathrooms="1"
+        >
+          <td>Avalon Redmond Campus</td>
+          <td>001-516</td>
+          <td>A2-1</td>
+          <td class="num" data-sort="1">
+            1
+          </td>
+          <td class="num" data-sort="1">1</td>
+          <td class="num" data-sort="699">699</td>
+          <td class="num" data-sort="2420">$2,420</td>
+          <td data-sort="2026-10-28">2026-10-28</td>
+          <td>
+            <a href="https://www.avaloncommunities.com/washington/redmond-apartments/avalon-redmond-campus/apartment/WA035-WA035-001-516" target="_blank" rel="noopener">View</a>
+          </td>
+        </tr>
+        
+        <tr
+          data-community="Avalon Redmond Campus"
+          data-bedrooms="0"
+          data-bathrooms="1"
+        >
+          <td>Avalon Redmond Campus</td>
+          <td>001-312</td>
+          <td>S1</td>
+          <td class="num" data-sort="0">
+            Studio
+          </td>
+          <td class="num" data-sort="1">1</td>
+          <td class="num" data-sort="455">455</td>
+          <td class="num" data-sort="2450">$2,450</td>
+          <td data-sort="2026-10-28">2026-10-28</td>
+          <td>
+            <a href="https://www.avaloncommunities.com/washington/redmond-apartments/avalon-redmond-campus/apartment/WA035-WA035-001-312" target="_blank" rel="noopener">View</a>
+          </td>
+        </tr>
+        
+        <tr
+          data-community="Avalon Redmond Campus"
+          data-bedrooms="1"
+          data-bathrooms="1"
+        >
+          <td>Avalon Redmond Campus</td>
+          <td>001-421</td>
+          <td>A4-1</td>
+          <td class="num" data-sort="1">
+            1
+          </td>
+          <td class="num" data-sort="1">1</td>
+          <td class="num" data-sort="700">700</td>
+          <td class="num" data-sort="2510">$2,510</td>
+          <td data-sort="2026-10-28">2026-10-28</td>
+          <td>
+            <a href="https://www.avaloncommunities.com/washington/redmond-apartments/avalon-redmond-campus/apartment/WA035-WA035-001-421" target="_blank" rel="noopener">View</a>
+          </td>
+        </tr>
+        
+        <tr
+          data-community="Avalon Redmond Campus"
+          data-bedrooms="1"
+          data-bathrooms="1"
+        >
+          <td>Avalon Redmond Campus</td>
+          <td>001-630</td>
+          <td>A1-3</td>
+          <td class="num" data-sort="1">
+            1
+          </td>
+          <td class="num" data-sort="1">1</td>
+          <td class="num" data-sort="717">717</td>
+          <td class="num" data-sort="2525">$2,525</td>
+          <td data-sort="2026-10-28">2026-10-28</td>
+          <td>
+            <a href="https://www.avaloncommunities.com/washington/redmond-apartments/avalon-redmond-campus/apartment/WA035-WA035-001-630" target="_blank" rel="noopener">View</a>
+          </td>
+        </tr>
+        
+        <tr
+          data-community="Avalon Redmond Campus"
+          data-bedrooms="2"
+          data-bathrooms="2"
+        >
+          <td>Avalon Redmond Campus</td>
+          <td>001-403</td>
+          <td>B1</td>
+          <td class="num" data-sort="2">
+            2
+          </td>
+          <td class="num" data-sort="2">2</td>
+          <td class="num" data-sort="1027">1,027</td>
+          <td class="num" data-sort="3330">$3,330</td>
+          <td data-sort="2026-12-23">2026-12-23</td>
+          <td>
+            <a href="https://www.avaloncommunities.com/washington/redmond-apartments/avalon-redmond-campus/apartment/WA035-WA035-001-403" target="_blank" rel="noopener">View</a>
+          </td>
+        </tr>
+        
+        <tr
+          data-community="Avalon Redmond Campus"
+          data-bedrooms="2"
+          data-bathrooms="2"
+        >
+          <td>Avalon Redmond Campus</td>
+          <td>001-515</td>
+          <td>B1-2</td>
+          <td class="num" data-sort="2">
+            2
+          </td>
+          <td class="num" data-sort="2">2</td>
+          <td class="num" data-sort="938">938</td>
+          <td class="num" data-sort="3355">$3,355</td>
+          <td data-sort="2026-10-29">2026-10-29</td>
+          <td>
+            <a href="https://www.avaloncommunities.com/washington/redmond-apartments/avalon-redmond-campus/apartment/WA035-WA035-001-515" target="_blank" rel="noopener">View</a>
+          </td>
+        </tr>
+        
+        <tr
+          data-community="Avalon Redmond Campus"
+          data-bedrooms="2"
+          data-bathrooms="2"
+        >
+          <td>Avalon Redmond Campus</td>
+          <td>001-607</td>
+          <td>B1</td>
+          <td class="num" data-sort="2">
+            2
+          </td>
+          <td class="num" data-sort="2">2</td>
+          <td class="num" data-sort="1027">1,027</td>
+          <td class="num" data-sort="3420">$3,420</td>
+          <td data-sort="2026-12-02">2026-12-02</td>
+          <td>
+            <a href="https://www.avaloncommunities.com/washington/redmond-apartments/avalon-redmond-campus/apartment/WA035-WA035-001-607" target="_blank" rel="noopener">View</a>
+          </td>
+        </tr>
+        
+        <tr
+          data-community="Avalon Redmond Campus"
+          data-bedrooms="2"
+          data-bathrooms="2"
+        >
+          <td>Avalon Redmond Campus</td>
+          <td>001-302</td>
+          <td>B2-1</td>
+          <td class="num" data-sort="2">
+            2
+          </td>
+          <td class="num" data-sort="2">2</td>
+          <td class="num" data-sort="1158">1,158</td>
+          <td class="num" data-sort="3475">$3,475</td>
+          <td data-sort="2026-10-28">2026-10-28</td>
+          <td>
+            <a href="https://www.avaloncommunities.com/washington/redmond-apartments/avalon-redmond-campus/apartment/WA035-WA035-001-302" target="_blank" rel="noopener">View</a>
+          </td>
+        </tr>
+        
+        <tr
+          data-community="Avalon Redmond Campus"
+          data-bedrooms="3"
+          data-bathrooms="2"
+        >
+          <td>Avalon Redmond Campus</td>
+          <td>001-243</td>
+          <td>C1</td>
+          <td class="num" data-sort="3">
+            3
+          </td>
+          <td class="num" data-sort="2">2</td>
+          <td class="num" data-sort="1385">1,385</td>
+          <td class="num" data-sort="4275">$4,275</td>
+          <td data-sort="2026-10-28">2026-10-28</td>
+          <td>
+            <a href="https://www.avaloncommunities.com/washington/redmond-apartments/avalon-redmond-campus/apartment/WA035-WA035-001-243" target="_blank" rel="noopener">View</a>
+          </td>
+        </tr>
+        
+        <tr
+          data-community="Avalon Redmond Campus"
+          data-bedrooms="3"
+          data-bathrooms="2"
+        >
+          <td>Avalon Redmond Campus</td>
+          <td>001-613</td>
+          <td>C4</td>
+          <td class="num" data-sort="3">
+            3
+          </td>
+          <td class="num" data-sort="2">2</td>
+          <td class="num" data-sort="1416">1,416</td>
+          <td class="num" data-sort="4515">$4,515</td>
+          <td data-sort="2026-12-03">2026-12-03</td>
+          <td>
+            <a href="https://www.avaloncommunities.com/washington/redmond-apartments/avalon-redmond-campus/apartment/WA035-WA035-001-613" target="_blank" rel="noopener">View</a>
+          </td>
+        </tr>
+        
+        <tr
+          data-community="Avalon Redmond Campus"
+          data-bedrooms="3"
+          data-bathrooms="2"
+        >
+          <td>Avalon Redmond Campus</td>
+          <td>001-301</td>
+          <td>C2</td>
+          <td class="num" data-sort="3">
+            3
+          </td>
+          <td class="num" data-sort="2">2</td>
+          <td class="num" data-sort="1416">1,416</td>
+          <td class="num" data-sort="4545">$4,545</td>
+          <td data-sort="2026-10-28">2026-10-28</td>
+          <td>
+            <a href="https://www.avaloncommunities.com/washington/redmond-apartments/avalon-redmond-campus/apartment/WA035-WA035-001-301" target="_blank" rel="noopener">View</a>
+          </td>
+        </tr>
+        
+        <tr
+          data-community="Avalon Redmond Campus"
+          data-bedrooms="3"
+          data-bathrooms="2"
+        >
+          <td>Avalon Redmond Campus</td>
+          <td>001-501</td>
+          <td>C2</td>
+          <td class="num" data-sort="3">
+            3
+          </td>
+          <td class="num" data-sort="2">2</td>
+          <td class="num" data-sort="1416">1,416</td>
+          <td class="num" data-sort="4615">$4,615</td>
+          <td data-sort="2026-10-28">2026-10-28</td>
+          <td>
+            <a href="https://www.avaloncommunities.com/washington/redmond-apartments/avalon-redmond-campus/apartment/WA035-WA035-001-501" target="_blank" rel="noopener">View</a>
+          </td>
+        </tr>
+        
+        <tr
+          data-community="Bell Overlake Apartments"
+          data-bedrooms="0"
+          data-bathrooms="1"
+        >
+          <td>Bell Overlake Apartments</td>
+          <td>117</td>
+          <td>S1B</td>
+          <td class="num" data-sort="0">
+            Studio
+          </td>
+          <td class="num" data-sort="1">1</td>
+          <td class="num" data-sort="467">467</td>
+          <td class="num" data-sort="1715">$1,715</td>
+          <td data-sort="2026-09-28">2026-09-28</td>
+          <td>
+            <a href="https://belloverlake.securecafe.com/onlineleasing/bell-overlake/oleapplication.aspx?stepname=RentalOptions&amp;myOlePropertyId=1108376&amp;FloorPlanID=3184130&amp;UnitID=17796813&amp;header=1" target="_blank" rel="noopener">View</a>
+          </td>
+        </tr>
+        
+        <tr
+          data-community="Bell Overlake Apartments"
+          data-bedrooms="0"
+          data-bathrooms="1"
+        >
+          <td>Bell Overlake Apartments</td>
+          <td>203</td>
+          <td>S1B</td>
+          <td class="num" data-sort="0">
+            Studio
+          </td>
+          <td class="num" data-sort="1">1</td>
+          <td class="num" data-sort="434">434</td>
+          <td class="num" data-sort="1715">$1,715</td>
+          <td data-sort="2026-10-12">2026-10-12</td>
+          <td>
+            <a href="https://belloverlake.securecafe.com/onlineleasing/bell-overlake/oleapplication.aspx?stepname=RentalOptions&amp;myOlePropertyId=1108376&amp;FloorPlanID=3184130&amp;UnitID=17796836&amp;header=1" target="_blank" rel="noopener">View</a>
+          </td>
+        </tr>
+        
+        <tr
+          data-community="Bell Overlake Apartments"
+          data-bedrooms="0"
+          data-bathrooms="1"
+        >
+          <td>Bell Overlake Apartments</td>
+          <td>243</td>
+          <td>S1B</td>
+          <td class="num" data-sort="0">
+            Studio
+          </td>
+          <td class="num" data-sort="1">1</td>
+          <td class="num" data-sort="461">461</td>
+          <td class="num" data-sort="1735">$1,735</td>
+          <td data-sort="2026-11-23">2026-11-23</td>
+          <td>
+            <a href="https://belloverlake.securecafe.com/onlineleasing/bell-overlake/oleapplication.aspx?stepname=RentalOptions&amp;myOlePropertyId=1108376&amp;FloorPlanID=3184130&amp;UnitID=17796876&amp;header=1" target="_blank" rel="noopener">View</a>
+          </td>
+        </tr>
+        
+        <tr
+          data-community="Bell Overlake Apartments"
+          data-bedrooms="0"
+          data-bathrooms="1"
+        >
+          <td>Bell Overlake Apartments</td>
+          <td>516</td>
+          <td>S1B</td>
+          <td class="num" data-sort="0">
+            Studio
+          </td>
+          <td class="num" data-sort="1">1</td>
+          <td class="num" data-sort="434">434</td>
+          <td class="num" data-sort="1790">$1,790</td>
+          <td data-sort="2026-09-21">2026-09-21</td>
+          <td>
+            <a href="https://belloverlake.securecafe.com/onlineleasing/bell-overlake/oleapplication.aspx?stepname=RentalOptions&amp;myOlePropertyId=1108376&amp;FloorPlanID=3184130&amp;UnitID=17796999&amp;header=1" target="_blank" rel="noopener">View</a>
+          </td>
+        </tr>
+        
+        <tr
+          data-community="Bell Overlake Apartments"
+          data-bedrooms="0"
+          data-bathrooms="1"
+        >
+          <td>Bell Overlake Apartments</td>
+          <td>502</td>
+          <td>S1B</td>
+          <td class="num" data-sort="0">
+            Studio
+          </td>
+          <td class="num" data-sort="1">1</td>
+          <td class="num" data-sort="434">434</td>
+          <td class="num" data-sort="1805">$1,805</td>
+          <td data-sort="2026-11-05">2026-11-05</td>
+          <td>
+            <a href="https://belloverlake.securecafe.com/onlineleasing/bell-overlake/oleapplication.aspx?stepname=RentalOptions&amp;myOlePropertyId=1108376&amp;FloorPlanID=3184130&amp;UnitID=17796985&amp;header=1" target="_blank" rel="noopener">View</a>
+          </td>
+        </tr>
+        
+        <tr
+          data-community="Bell Overlake Apartments"
+          data-bedrooms="0"
+          data-bathrooms="1"
+        >
+          <td>Bell Overlake Apartments</td>
+          <td>517</td>
+          <td>S1B</td>
+          <td class="num" data-sort="0">
+            Studio
+          </td>
+          <td class="num" data-sort="1">1</td>
+          <td class="num" data-sort="435">435</td>
+          <td class="num" data-sort="1810">$1,810</td>
+          <td data-sort="2026-11-28">2026-11-28</td>
+          <td>
+            <a href="https://belloverlake.securecafe.com/onlineleasing/bell-overlake/oleapplication.aspx?stepname=RentalOptions&amp;myOlePropertyId=1108376&amp;FloorPlanID=3184130&amp;UnitID=17797000&amp;header=1" target="_blank" rel="noopener">View</a>
+          </td>
+        </tr>
+        
+        <tr
+          data-community="Bell Overlake Apartments"
+          data-bedrooms="0"
+          data-bathrooms="1"
+        >
+          <td>Bell Overlake Apartments</td>
+          <td>251</td>
+          <td>S1E</td>
+          <td class="num" data-sort="0">
+            Studio
+          </td>
+          <td class="num" data-sort="1">1</td>
+          <td class="num" data-sort="572">572</td>
+          <td class="num" data-sort="1815">$1,815</td>
+          <td data-sort="2026-10-20">2026-10-20</td>
+          <td>
+            <a href="https://belloverlake.securecafe.com/onlineleasing/bell-overlake/oleapplication.aspx?stepname=RentalOptions&amp;myOlePropertyId=1108376&amp;FloorPlanID=3184134&amp;UnitID=17796884&amp;header=1" target="_blank" rel="noopener">View</a>
+          </td>
+        </tr>
+        
+        <tr
+          data-community="Bell Overlake Apartments"
+          data-bedrooms="0"
+          data-bathrooms="1"
+        >
+          <td>Bell Overlake Apartments</td>
+          <td>350</td>
+          <td>S1E</td>
+          <td class="num" data-sort="0">
+            Studio
+          </td>
+          <td class="num" data-sort="1">1</td>
+          <td class="num" data-sort="577">577</td>
+          <td class="num" data-sort="1815">$1,815</td>
+          <td data-sort="2026-10-16">2026-10-16</td>
+          <td>
+            <a href="https://belloverlake.securecafe.com/onlineleasing/bell-overlake/oleapplication.aspx?stepname=RentalOptions&amp;myOlePropertyId=1108376&amp;FloorPlanID=3184134&amp;UnitID=17796936&amp;header=1" target="_blank" rel="noopener">View</a>
+          </td>
+        </tr>
+        
+        <tr
+          data-community="Bell Overlake Apartments"
+          data-bedrooms="1"
+          data-bathrooms="1"
+        >
+          <td>Bell Overlake Apartments</td>
+          <td>223</td>
+          <td>A1C</td>
+          <td class="num" data-sort="1">
+            1
+          </td>
+          <td class="num" data-sort="1">1</td>
+          <td class="num" data-sort="578">578</td>
+          <td class="num" data-sort="1945">$1,945</td>
+          <td data-sort="2026-08-19">2026-08-19</td>
+          <td>
+            <a href="https://belloverlake.securecafe.com/onlineleasing/bell-overlake/oleapplication.aspx?stepname=RentalOptions&amp;myOlePropertyId=1108376&amp;FloorPlanID=3184138&amp;UnitID=17796856&amp;header=1" target="_blank" rel="noopener">View</a>
+          </td>
+        </tr>
+        
+        <tr
+          data-community="Bell Overlake Apartments"
+          data-bedrooms="1"
+          data-bathrooms="1"
+        >
+          <td>Bell Overlake Apartments</td>
+          <td>323</td>
+          <td>A1C</td>
+          <td class="num" data-sort="1">
+            1
+          </td>
+          <td class="num" data-sort="1">1</td>
+          <td class="num" data-sort="578">578</td>
+          <td class="num" data-sort="1945">$1,945</td>
+          <td data-sort="2026-11-01">2026-11-01</td>
+          <td>
+            <a href="https://belloverlake.securecafe.com/onlineleasing/bell-overlake/oleapplication.aspx?stepname=RentalOptions&amp;myOlePropertyId=1108376&amp;FloorPlanID=3184138&amp;UnitID=17796909&amp;header=1" target="_blank" rel="noopener">View</a>
+          </td>
+        </tr>
+        
+        <tr
+          data-community="Bell Overlake Apartments"
+          data-bedrooms="1"
+          data-bathrooms="1"
+        >
+          <td>Bell Overlake Apartments</td>
+          <td>324</td>
+          <td>A1C</td>
+          <td class="num" data-sort="1">
+            1
+          </td>
+          <td class="num" data-sort="1">1</td>
+          <td class="num" data-sort="580">580</td>
+          <td class="num" data-sort="1945">$1,945</td>
+          <td data-sort="2026-08-26">2026-08-26</td>
+          <td>
+            <a href="https://belloverlake.securecafe.com/onlineleasing/bell-overlake/oleapplication.aspx?stepname=RentalOptions&amp;myOlePropertyId=1108376&amp;FloorPlanID=3184138&amp;UnitID=17796910&amp;header=1" target="_blank" rel="noopener">View</a>
+          </td>
+        </tr>
+        
+        <tr
+          data-community="Bell Overlake Apartments"
+          data-bedrooms="1"
+          data-bathrooms="1"
+        >
+          <td>Bell Overlake Apartments</td>
+          <td>346</td>
+          <td>A1C</td>
+          <td class="num" data-sort="1">
+            1
+          </td>
+          <td class="num" data-sort="1">1</td>
+          <td class="num" data-sort="583">583</td>
+          <td class="num" data-sort="2015">$2,015</td>
+          <td data-sort="2026-11-23">2026-11-23</td>
+          <td>
+            <a href="https://belloverlake.securecafe.com/onlineleasing/bell-overlake/oleapplication.aspx?stepname=RentalOptions&amp;myOlePropertyId=1108376&amp;FloorPlanID=3184138&amp;UnitID=17796932&amp;header=1" target="_blank" rel="noopener">View</a>
+          </td>
+        </tr>
+        
+        <tr
+          data-community="Bell Overlake Apartments"
+          data-bedrooms="1"
+          data-bathrooms="1"
+        >
+          <td>Bell Overlake Apartments</td>
+          <td>419</td>
+          <td>A1C</td>
+          <td class="num" data-sort="1">
+            1
+          </td>
+          <td class="num" data-sort="1">1</td>
+          <td class="num" data-sort="578">578</td>
+          <td class="num" data-sort="2025">$2,025</td>
+          <td data-sort="2026-11-14">2026-11-14</td>
+          <td>
+            <a href="https://belloverlake.securecafe.com/onlineleasing/bell-overlake/oleapplication.aspx?stepname=RentalOptions&amp;myOlePropertyId=1108376&amp;FloorPlanID=3184138&amp;UnitID=17796958&amp;header=1" target="_blank" rel="noopener">View</a>
+          </td>
+        </tr>
+        
+        <tr
+          data-community="Bell Overlake Apartments"
+          data-bedrooms="1"
+          data-bathrooms="1"
+        >
+          <td>Bell Overlake Apartments</td>
+          <td>136</td>
+          <td>A1E</td>
+          <td class="num" data-sort="1">
+            1
+          </td>
+          <td class="num" data-sort="1">1</td>
+          <td class="num" data-sort="645">645</td>
+          <td class="num" data-sort="2095">$2,095</td>
+          <td data-sort="2026-10-05">2026-10-05</td>
+          <td>
+            <a href="https://belloverlake.securecafe.com/onlineleasing/bell-overlake/oleapplication.aspx?stepname=RentalOptions&amp;myOlePropertyId=1108376&amp;FloorPlanID=3184145&amp;UnitID=17796829&amp;header=1" target="_blank" rel="noopener">View</a>
+          </td>
+        </tr>
+        
+        <tr
+          data-community="Bell Overlake Apartments"
+          data-bedrooms="1"
+          data-bathrooms="1"
+        >
+          <td>Bell Overlake Apartments</td>
+          <td>135</td>
+          <td>A1E</td>
+          <td class="num" data-sort="1">
+            1
+          </td>
+          <td class="num" data-sort="1">1</td>
+          <td class="num" data-sort="643">643</td>
+          <td class="num" data-sort="2115">$2,115</td>
+          <td data-sort="2026-11-06">2026-11-06</td>
+          <td>
+            <a href="https://belloverlake.securecafe.com/onlineleasing/bell-overlake/oleapplication.aspx?stepname=RentalOptions&amp;myOlePropertyId=1108376&amp;FloorPlanID=3184145&amp;UnitID=17796828&amp;header=1" target="_blank" rel="noopener">View</a>
+          </td>
+        </tr>
+        
+        <tr
+          data-community="Bell Overlake Apartments"
+          data-bedrooms="1"
+          data-bathrooms="1"
+        >
+          <td>Bell Overlake Apartments</td>
+          <td>336</td>
+          <td>A1E</td>
+          <td class="num" data-sort="1">
+            1
+          </td>
+          <td class="num" data-sort="1">1</td>
+          <td class="num" data-sort="645">645</td>
+          <td class="num" data-sort="2120">$2,120</td>
+          <td data-sort="2026-08-26">2026-08-26</td>
+          <td>
+            <a href="https://belloverlake.securecafe.com/onlineleasing/bell-overlake/oleapplication.aspx?stepname=RentalOptions&amp;myOlePropertyId=1108376&amp;FloorPlanID=3184145&amp;UnitID=17796922&amp;header=1" target="_blank" rel="noopener">View</a>
+          </td>
+        </tr>
+        
+        <tr
+          data-community="Bell Overlake Apartments"
+          data-bedrooms="1"
+          data-bathrooms="1"
+        >
+          <td>Bell Overlake Apartments</td>
+          <td>235</td>
+          <td>A1E</td>
+          <td class="num" data-sort="1">
+            1
+          </td>
+          <td class="num" data-sort="1">1</td>
+          <td class="num" data-sort="643">643</td>
+          <td class="num" data-sort="2145">$2,145</td>
+          <td data-sort="2026-10-12">2026-10-12</td>
+          <td>
+            <a href="https://belloverlake.securecafe.com/onlineleasing/bell-overlake/oleapplication.aspx?stepname=RentalOptions&amp;myOlePropertyId=1108376&amp;FloorPlanID=3184145&amp;UnitID=17796868&amp;header=1" target="_blank" rel="noopener">View</a>
+          </td>
+        </tr>
+        
+        <tr
+          data-community="Bell Overlake Apartments"
+          data-bedrooms="1"
+          data-bathrooms="1"
+        >
+          <td>Bell Overlake Apartments</td>
+          <td>428</td>
+          <td>A1E</td>
+          <td class="num" data-sort="1">
+            1
+          </td>
+          <td class="num" data-sort="1">1</td>
+          <td class="num" data-sort="644">644</td>
+          <td class="num" data-sort="2155">$2,155</td>
+          <td data-sort="2026-09-14">2026-09-14</td>
+          <td>
+            <a href="https://belloverlake.securecafe.com/onlineleasing/bell-overlake/oleapplication.aspx?stepname=RentalOptions&amp;myOlePropertyId=1108376&amp;FloorPlanID=3184145&amp;UnitID=17796967&amp;header=1" target="_blank" rel="noopener">View</a>
+          </td>
+        </tr>
+        
+        <tr
+          data-community="Bell Overlake Apartments"
+          data-bedrooms="1"
+          data-bathrooms="1"
+        >
+          <td>Bell Overlake Apartments</td>
+          <td>308</td>
+          <td>A1I</td>
+          <td class="num" data-sort="1">
+            1
+          </td>
+          <td class="num" data-sort="1">1</td>
+          <td class="num" data-sort="695">695</td>
+          <td class="num" data-sort="2215">$2,215</td>
+          <td data-sort="2026-11-27">2026-11-27</td>
+          <td>
+            <a href="https://belloverlake.securecafe.com/onlineleasing/bell-overlake/oleapplication.aspx?stepname=RentalOptions&amp;myOlePropertyId=1108376&amp;FloorPlanID=3184149&amp;UnitID=17796894&amp;header=1" target="_blank" rel="noopener">View</a>
+          </td>
+        </tr>
+        
+        <tr
+          data-community="Bell Overlake Apartments"
+          data-bedrooms="1"
+          data-bathrooms="1"
+        >
+          <td>Bell Overlake Apartments</td>
+          <td>618</td>
+          <td>A1F</td>
+          <td class="num" data-sort="1">
+            1
+          </td>
+          <td class="num" data-sort="1">1</td>
+          <td class="num" data-sort="672">672</td>
+          <td class="num" data-sort="2225">$2,225</td>
+          <td data-sort="2026-10-26">2026-10-26</td>
+          <td>
+            <a href="https://belloverlake.securecafe.com/onlineleasing/bell-overlake/oleapplication.aspx?stepname=RentalOptions&amp;myOlePropertyId=1108376&amp;FloorPlanID=3184146&amp;UnitID=17797046&amp;header=1" target="_blank" rel="noopener">View</a>
+          </td>
+        </tr>
+        
+        <tr
+          data-community="Bell Overlake Apartments"
+          data-bedrooms="1"
+          data-bathrooms="1"
+        >
+          <td>Bell Overlake Apartments</td>
+          <td>521</td>
+          <td>A1G + den</td>
+          <td class="num" data-sort="1">
+            1
+          </td>
+          <td class="num" data-sort="1">1</td>
+          <td class="num" data-sort="673">673</td>
+          <td class="num" data-sort="2340">$2,340</td>
+          <td data-sort="2026-11-06">2026-11-06</td>
+          <td>
+            <a href="https://belloverlake.securecafe.com/onlineleasing/bell-overlake/oleapplication.aspx?stepname=RentalOptions&amp;myOlePropertyId=1108376&amp;FloorPlanID=3184147&amp;UnitID=17797004&amp;header=1" target="_blank" rel="noopener">View</a>
+          </td>
+        </tr>
+        
+        <tr
+          data-community="Bell Overlake Apartments"
+          data-bedrooms="2"
+          data-bathrooms="2"
+        >
+          <td>Bell Overlake Apartments</td>
+          <td>209</td>
+          <td>B2A</td>
+          <td class="num" data-sort="2">
+            2
+          </td>
+          <td class="num" data-sort="2">2</td>
+          <td class="num" data-sort="946">946</td>
+          <td class="num" data-sort="2775">$2,775</td>
+          <td data-sort="2026-10-23">2026-10-23</td>
+          <td>
+            <a href="https://belloverlake.securecafe.com/onlineleasing/bell-overlake/oleapplication.aspx?stepname=RentalOptions&amp;myOlePropertyId=1108376&amp;FloorPlanID=3184157&amp;UnitID=17796842&amp;header=1" target="_blank" rel="noopener">View</a>
+          </td>
+        </tr>
+        
+        <tr
+          data-community="Bell Overlake Apartments"
+          data-bedrooms="1"
+          data-bathrooms="1"
+        >
+          <td>Bell Overlake Apartments</td>
+          <td>539</td>
+          <td>A1R + den</td>
+          <td class="num" data-sort="1">
+            1
+          </td>
+          <td class="num" data-sort="1">1</td>
+          <td class="num" data-sort="1006">1,006</td>
+          <td class="num" data-sort="2870">$2,870</td>
+          <td data-sort="2026-09-09">2026-09-09</td>
+          <td>
+            <a href="https://belloverlake.securecafe.com/onlineleasing/bell-overlake/oleapplication.aspx?stepname=RentalOptions&amp;myOlePropertyId=1108376&amp;FloorPlanID=3349763&amp;UnitID=17797015&amp;header=1" target="_blank" rel="noopener">View</a>
+          </td>
+        </tr>
+        
+        <tr
+          data-community="Bell Overlake Apartments"
+          data-bedrooms="2"
+          data-bathrooms="2"
+        >
+          <td>Bell Overlake Apartments</td>
+          <td>253</td>
+          <td>B2E</td>
+          <td class="num" data-sort="2">
+            2
+          </td>
+          <td class="num" data-sort="2">2</td>
+          <td class="num" data-sort="1088">1,088</td>
+          <td class="num" data-sort="3225">$3,225</td>
+          <td data-sort="2026-10-13">2026-10-13</td>
+          <td>
+            <a href="https://belloverlake.securecafe.com/onlineleasing/bell-overlake/oleapplication.aspx?stepname=RentalOptions&amp;myOlePropertyId=1108376&amp;FloorPlanID=3184161&amp;UnitID=17796886&amp;header=1" target="_blank" rel="noopener">View</a>
+          </td>
+        </tr>
+        
+        <tr
+          data-community="Bell Overlake Apartments"
+          data-bedrooms="2"
+          data-bathrooms="2"
+        >
+          <td>Bell Overlake Apartments</td>
+          <td>607</td>
+          <td>B2D + loft</td>
+          <td class="num" data-sort="2">
+            2
+          </td>
+          <td class="num" data-sort="2">2</td>
+          <td class="num" data-sort="1047">1,047</td>
+          <td class="num" data-sort="3305">$3,305</td>
+          <td data-sort="2026-10-31">2026-10-31</td>
+          <td>
+            <a href="https://belloverlake.securecafe.com/onlineleasing/bell-overlake/oleapplication.aspx?stepname=RentalOptions&amp;myOlePropertyId=1108376&amp;FloorPlanID=3184160&amp;UnitID=17797035&amp;header=1" target="_blank" rel="noopener">View</a>
+          </td>
+        </tr>
+        
+        <tr
+          data-community="Bell Overlake Apartments"
+          data-bedrooms="2"
+          data-bathrooms="2"
+        >
+          <td>Bell Overlake Apartments</td>
+          <td>609</td>
+          <td>B2D + loft</td>
+          <td class="num" data-sort="2">
+            2
+          </td>
+          <td class="num" data-sort="2">2</td>
+          <td class="num" data-sort="1047">1,047</td>
+          <td class="num" data-sort="3305">$3,305</td>
+          <td data-sort="2026-10-05">2026-10-05</td>
+          <td>
+            <a href="https://belloverlake.securecafe.com/onlineleasing/bell-overlake/oleapplication.aspx?stepname=RentalOptions&amp;myOlePropertyId=1108376&amp;FloorPlanID=3184160&amp;UnitID=17797037&amp;header=1" target="_blank" rel="noopener">View</a>
+          </td>
+        </tr>
+        
+        <tr
+          data-community="Vue 22 Apartments"
+          data-bedrooms="0"
+          data-bathrooms="1"
+        >
+          <td>Vue 22 Apartments</td>
+          <td>N-833</td>
+          <td>S1</td>
+          <td class="num" data-sort="0">
+            Studio
+          </td>
+          <td class="num" data-sort="1">1</td>
+          <td class="num" data-sort="442">442</td>
+          <td class="num" data-sort="1799">$1,799</td>
+          <td data-sort="Available">Available</td>
+          <td>
+            <a href="https://vue22apts.securecafe.com/onlineleasing/vue-22-apartments/oleapplication.aspx?stepname=RentalOptions&amp;myOlePropertyId=1282523&amp;FloorPlanID=3551216&amp;UnitID=27971672&amp;MoveInDate=10/27/2026&amp;PropLeadSource_1282523=portal" target="_blank" rel="noopener">View</a>
+          </td>
+        </tr>
+        
+        <tr
+          data-community="Vue 22 Apartments"
+          data-bedrooms="1"
+          data-bathrooms="1"
+        >
+          <td>Vue 22 Apartments</td>
+          <td>W-482</td>
+          <td>A1</td>
+          <td class="num" data-sort="1">
+            1
+          </td>
+          <td class="num" data-sort="1">1</td>
+          <td class="num" data-sort="487">487</td>
+          <td class="num" data-sort="1870">$1,870</td>
+          <td data-sort="2026-11-21">2026-11-21</td>
+          <td>
+            <a href="https://vue22apts.securecafe.com/onlineleasing/vue-22-apartments/oleapplication.aspx?stepname=RentalOptions&amp;myOlePropertyId=1282523&amp;FloorPlanID=3526493&amp;UnitID=27971812&amp;MoveInDate=11/21/2026&amp;PropLeadSource_1282523=portal" target="_blank" rel="noopener">View</a>
+          </td>
+        </tr>
+        
+        <tr
+          data-community="Vue 22 Apartments"
+          data-bedrooms="1"
+          data-bathrooms="1"
+        >
+          <td>Vue 22 Apartments</td>
+          <td>W-282</td>
+          <td>A1</td>
+          <td class="num" data-sort="1">
+            1
+          </td>
+          <td class="num" data-sort="1">1</td>
+          <td class="num" data-sort="487">487</td>
+          <td class="num" data-sort="1875">$1,875</td>
+          <td data-sort="2026-11-07">2026-11-07</td>
+          <td>
+            <a href="https://vue22apts.securecafe.com/onlineleasing/vue-22-apartments/oleapplication.aspx?stepname=RentalOptions&amp;myOlePropertyId=1282523&amp;FloorPlanID=3526493&amp;UnitID=27971779&amp;MoveInDate=11/7/2026&amp;PropLeadSource_1282523=portal" target="_blank" rel="noopener">View</a>
+          </td>
+        </tr>
+        
+        <tr
+          data-community="Vue 22 Apartments"
+          data-bedrooms="1"
+          data-bathrooms="1"
+        >
+          <td>Vue 22 Apartments</td>
+          <td>E-315</td>
+          <td>A9.1</td>
+          <td class="num" data-sort="1">
+            1
+          </td>
+          <td class="num" data-sort="1">1</td>
+          <td class="num" data-sort="571">571</td>
+          <td class="num" data-sort="1970">$1,970</td>
+          <td data-sort="Available">Available</td>
+          <td>
+            <a href="https://vue22apts.securecafe.com/onlineleasing/vue-22-apartments/oleapplication.aspx?stepname=RentalOptions&amp;myOlePropertyId=1282523&amp;FloorPlanID=3530532&amp;UnitID=27971459&amp;MoveInDate=10/27/2026&amp;PropLeadSource_1282523=portal" target="_blank" rel="noopener">View</a>
+          </td>
+        </tr>
+        
+        <tr
+          data-community="Vue 22 Apartments"
+          data-bedrooms="1"
+          data-bathrooms="1"
+        >
+          <td>Vue 22 Apartments</td>
+          <td>N-637</td>
+          <td>A6</td>
+          <td class="num" data-sort="1">
+            1
+          </td>
+          <td class="num" data-sort="1">1</td>
+          <td class="num" data-sort="556">556</td>
+          <td class="num" data-sort="1985">$1,985</td>
+          <td data-sort="Available">Available</td>
+          <td>
+            <a href="https://vue22apts.securecafe.com/onlineleasing/vue-22-apartments/oleapplication.aspx?stepname=RentalOptions&amp;myOlePropertyId=1282523&amp;FloorPlanID=3526497&amp;UnitID=27971622&amp;MoveInDate=10/27/2026&amp;PropLeadSource_1282523=portal" target="_blank" rel="noopener">View</a>
+          </td>
+        </tr>
+        
+        <tr
+          data-community="Vue 22 Apartments"
+          data-bedrooms="1"
+          data-bathrooms="1"
+        >
+          <td>Vue 22 Apartments</td>
+          <td>N-717</td>
+          <td>A6</td>
+          <td class="num" data-sort="1">
+            1
+          </td>
+          <td class="num" data-sort="1">1</td>
+          <td class="num" data-sort="556">556</td>
+          <td class="num" data-sort="1990">$1,990</td>
+          <td data-sort="2026-11-19">2026-11-19</td>
+          <td>
+            <a href="https://vue22apts.securecafe.com/onlineleasing/vue-22-apartments/oleapplication.aspx?stepname=RentalOptions&amp;myOlePropertyId=1282523&amp;FloorPlanID=3526497&amp;UnitID=27971632&amp;MoveInDate=11/19/2026&amp;PropLeadSource_1282523=portal" target="_blank" rel="noopener">View</a>
+          </td>
+        </tr>
+        
+        <tr
+          data-community="Vue 22 Apartments"
+          data-bedrooms="1"
+          data-bathrooms="1"
+        >
+          <td>Vue 22 Apartments</td>
+          <td>N-837</td>
+          <td>A6</td>
+          <td class="num" data-sort="1">
+            1
+          </td>
+          <td class="num" data-sort="1">1</td>
+          <td class="num" data-sort="556">556</td>
+          <td class="num" data-sort="1995">$1,995</td>
+          <td data-sort="2026-11-16">2026-11-16</td>
+          <td>
+            <a href="https://vue22apts.securecafe.com/onlineleasing/vue-22-apartments/oleapplication.aspx?stepname=RentalOptions&amp;myOlePropertyId=1282523&amp;FloorPlanID=3526497&amp;UnitID=27971674&amp;MoveInDate=11/16/2026&amp;PropLeadSource_1282523=portal" target="_blank" rel="noopener">View</a>
+          </td>
+        </tr>
+        
+        <tr
+          data-community="Vue 22 Apartments"
+          data-bedrooms="1"
+          data-bathrooms="1"
+        >
+          <td>Vue 22 Apartments</td>
+          <td>N-526</td>
+          <td>A6</td>
+          <td class="num" data-sort="1">
+            1
+          </td>
+          <td class="num" data-sort="1">1</td>
+          <td class="num" data-sort="556">556</td>
+          <td class="num" data-sort="2000">$2,000</td>
+          <td data-sort="2026-11-11">2026-11-11</td>
+          <td>
+            <a href="https://vue22apts.securecafe.com/onlineleasing/vue-22-apartments/oleapplication.aspx?stepname=RentalOptions&amp;myOlePropertyId=1282523&amp;FloorPlanID=3526497&amp;UnitID=27971589&amp;MoveInDate=11/11/2026&amp;PropLeadSource_1282523=portal" target="_blank" rel="noopener">View</a>
+          </td>
+        </tr>
+        
+        <tr
+          data-community="Vue 22 Apartments"
+          data-bedrooms="1"
+          data-bathrooms="1"
+        >
+          <td>Vue 22 Apartments</td>
+          <td>N-718</td>
+          <td>A4</td>
+          <td class="num" data-sort="1">
+            1
+          </td>
+          <td class="num" data-sort="1">1</td>
+          <td class="num" data-sort="542">542</td>
+          <td class="num" data-sort="2015">$2,015</td>
+          <td data-sort="2026-11-07">2026-11-07</td>
+          <td>
+            <a href="https://vue22apts.securecafe.com/onlineleasing/vue-22-apartments/oleapplication.aspx?stepname=RentalOptions&amp;myOlePropertyId=1282523&amp;FloorPlanID=3526495&amp;UnitID=27971633&amp;MoveInDate=11/7/2026&amp;PropLeadSource_1282523=portal" target="_blank" rel="noopener">View</a>
+          </td>
+        </tr>
+        
+        <tr
+          data-community="Vue 22 Apartments"
+          data-bedrooms="1"
+          data-bathrooms="1"
+        >
+          <td>Vue 22 Apartments</td>
+          <td>N-627</td>
+          <td>A10</td>
+          <td class="num" data-sort="1">
+            1
+          </td>
+          <td class="num" data-sort="1">1</td>
+          <td class="num" data-sort="590">590</td>
+          <td class="num" data-sort="2040">$2,040</td>
+          <td data-sort="Available">Available</td>
+          <td>
+            <a href="https://vue22apts.securecafe.com/onlineleasing/vue-22-apartments/oleapplication.aspx?stepname=RentalOptions&amp;myOlePropertyId=1282523&amp;FloorPlanID=3526499&amp;UnitID=27971616&amp;MoveInDate=10/27/2026&amp;PropLeadSource_1282523=portal" target="_blank" rel="noopener">View</a>
+          </td>
+        </tr>
+        
+        <tr
+          data-community="Vue 22 Apartments"
+          data-bedrooms="1"
+          data-bathrooms="1"
+        >
+          <td>Vue 22 Apartments</td>
+          <td>N-327</td>
+          <td>A10</td>
+          <td class="num" data-sort="1">
+            1
+          </td>
+          <td class="num" data-sort="1">1</td>
+          <td class="num" data-sort="590">590</td>
+          <td class="num" data-sort="2042">$2,042</td>
+          <td data-sort="2026-11-15">2026-11-15</td>
+          <td>
+            <a href="https://vue22apts.securecafe.com/onlineleasing/vue-22-apartments/oleapplication.aspx?stepname=RentalOptions&amp;myOlePropertyId=1282523&amp;FloorPlanID=3526499&amp;UnitID=27971533&amp;MoveInDate=11/15/2026&amp;PropLeadSource_1282523=portal" target="_blank" rel="noopener">View</a>
+          </td>
+        </tr>
+        
+        <tr
+          data-community="Vue 22 Apartments"
+          data-bedrooms="1"
+          data-bathrooms="1"
+        >
+          <td>Vue 22 Apartments</td>
+          <td>N-339</td>
+          <td>A14</td>
+          <td class="num" data-sort="1">
+            1
+          </td>
+          <td class="num" data-sort="1">1</td>
+          <td class="num" data-sort="644">644</td>
+          <td class="num" data-sort="2205">$2,205</td>
+          <td data-sort="Available">Available</td>
+          <td>
+            <a href="https://vue22apts.securecafe.com/onlineleasing/vue-22-apartments/oleapplication.aspx?stepname=RentalOptions&amp;myOlePropertyId=1282523&amp;FloorPlanID=3526503&amp;UnitID=27971541&amp;MoveInDate=10/27/2026&amp;PropLeadSource_1282523=portal" target="_blank" rel="noopener">View</a>
+          </td>
+        </tr>
+        
+        <tr
+          data-community="Vue 22 Apartments"
+          data-bedrooms="1"
+          data-bathrooms="1"
+        >
+          <td>Vue 22 Apartments</td>
+          <td>N-616</td>
+          <td>A14</td>
+          <td class="num" data-sort="1">
+            1
+          </td>
+          <td class="num" data-sort="1">1</td>
+          <td class="num" data-sort="644">644</td>
+          <td class="num" data-sort="2238">$2,238</td>
+          <td data-sort="2026-11-07">2026-11-07</td>
+          <td>
+            <a href="https://vue22apts.securecafe.com/onlineleasing/vue-22-apartments/oleapplication.aspx?stepname=RentalOptions&amp;myOlePropertyId=1282523&amp;FloorPlanID=3526503&amp;UnitID=27971605&amp;MoveInDate=11/7/2026&amp;PropLeadSource_1282523=portal" target="_blank" rel="noopener">View</a>
+          </td>
+        </tr>
+        
+        <tr
+          data-community="Vue 22 Apartments"
+          data-bedrooms="1"
+          data-bathrooms="1"
+        >
+          <td>Vue 22 Apartments</td>
+          <td>N-635</td>
+          <td>A14</td>
+          <td class="num" data-sort="1">
+            1
+          </td>
+          <td class="num" data-sort="1">1</td>
+          <td class="num" data-sort="644">644</td>
+          <td class="num" data-sort="2238">$2,238</td>
+          <td data-sort="Available">Available</td>
+          <td>
+            <a href="https://vue22apts.securecafe.com/onlineleasing/vue-22-apartments/oleapplication.aspx?stepname=RentalOptions&amp;myOlePropertyId=1282523&amp;FloorPlanID=3526503&amp;UnitID=27971621&amp;MoveInDate=10/27/2026&amp;PropLeadSource_1282523=portal" target="_blank" rel="noopener">View</a>
+          </td>
+        </tr>
+        
+        <tr
+          data-community="Vue 22 Apartments"
+          data-bedrooms="1"
+          data-bathrooms="1"
+        >
+          <td>Vue 22 Apartments</td>
+          <td>N-322</td>
+          <td>A14</td>
+          <td class="num" data-sort="1">
+            1
+          </td>
+          <td class="num" data-sort="1">1</td>
+          <td class="num" data-sort="644">644</td>
+          <td class="num" data-sort="2243">$2,243</td>
+          <td data-sort="Available">Available</td>
+          <td>
+            <a href="https://vue22apts.securecafe.com/onlineleasing/vue-22-apartments/oleapplication.aspx?stepname=RentalOptions&amp;myOlePropertyId=1282523&amp;FloorPlanID=3526503&amp;UnitID=27971528&amp;MoveInDate=10/27/2026&amp;PropLeadSource_1282523=portal" target="_blank" rel="noopener">View</a>
+          </td>
+        </tr>
+        
+        <tr
+          data-community="Vue 22 Apartments"
+          data-bedrooms="1"
+          data-bathrooms="1"
+        >
+          <td>Vue 22 Apartments</td>
+          <td>N-532</td>
+          <td>A18</td>
+          <td class="num" data-sort="1">
+            1
+          </td>
+          <td class="num" data-sort="1">1</td>
+          <td class="num" data-sort="723">723</td>
+          <td class="num" data-sort="2293">$2,293</td>
+          <td data-sort="2026-11-08">2026-11-08</td>
+          <td>
+            <a href="https://vue22apts.securecafe.com/onlineleasing/vue-22-apartments/oleapplication.aspx?stepname=RentalOptions&amp;myOlePropertyId=1282523&amp;FloorPlanID=3526505&amp;UnitID=27971593&amp;MoveInDate=11/8/2026&amp;PropLeadSource_1282523=portal" target="_blank" rel="noopener">View</a>
+          </td>
+        </tr>
+        
+        <tr
+          data-community="Vue 22 Apartments"
+          data-bedrooms="1"
+          data-bathrooms="1"
+        >
+          <td>Vue 22 Apartments</td>
+          <td>E-504</td>
+          <td>A19</td>
+          <td class="num" data-sort="1">
+            1
+          </td>
+          <td class="num" data-sort="1">1</td>
+          <td class="num" data-sort="743">743</td>
+          <td class="num" data-sort="2353">$2,353</td>
+          <td data-sort="Available">Available</td>
+          <td>
+            <a href="https://vue22apts.securecafe.com/onlineleasing/vue-22-apartments/oleapplication.aspx?stepname=RentalOptions&amp;myOlePropertyId=1282523&amp;FloorPlanID=3530540&amp;UnitID=27971490&amp;MoveInDate=10/27/2026&amp;PropLeadSource_1282523=portal" target="_blank" rel="noopener">View</a>
+          </td>
+        </tr>
+        
+        <tr
+          data-community="Vue 22 Apartments"
+          data-bedrooms="1"
+          data-bathrooms="1.5"
+        >
+          <td>Vue 22 Apartments</td>
+          <td>15558</td>
+          <td>L1</td>
+          <td class="num" data-sort="1">
+            1
+          </td>
+          <td class="num" data-sort="1.5">1.5</td>
+          <td class="num" data-sort="825">825</td>
+          <td class="num" data-sort="2392">$2,392</td>
+          <td data-sort="Available">Available</td>
+          <td>
+            <a href="https://vue22apts.securecafe.com/onlineleasing/vue-22-apartments/oleapplication.aspx?stepname=RentalOptions&amp;myOlePropertyId=1282523&amp;FloorPlanID=3526490&amp;UnitID=27971407&amp;MoveInDate=10/27/2026&amp;PropLeadSource_1282523=portal" target="_blank" rel="noopener">View</a>
+          </td>
+        </tr>
+        
+        <tr
+          data-community="Vue 22 Apartments"
+          data-bedrooms="1"
+          data-bathrooms="1"
+        >
+          <td>Vue 22 Apartments</td>
+          <td>W-179</td>
+          <td>A28</td>
+          <td class="num" data-sort="1">
+            1
+          </td>
+          <td class="num" data-sort="1">1</td>
+          <td class="num" data-sort="880">880</td>
+          <td class="num" data-sort="2540">$2,540</td>
+          <td data-sort="2026-11-10">2026-11-10</td>
+          <td>
+            <a href="https://vue22apts.securecafe.com/onlineleasing/vue-22-apartments/oleapplication.aspx?stepname=RentalOptions&amp;myOlePropertyId=1282523&amp;FloorPlanID=3530550&amp;UnitID=27971768&amp;MoveInDate=11/10/2026&amp;PropLeadSource_1282523=portal" target="_blank" rel="noopener">View</a>
+          </td>
+        </tr>
+        
+        <tr
+          data-community="Vue 22 Apartments"
+          data-bedrooms="1"
+          data-bathrooms="2"
+        >
+          <td>Vue 22 Apartments</td>
+          <td>02246</td>
+          <td>L5</td>
+          <td class="num" data-sort="1">
+            1
+          </td>
+          <td class="num" data-sort="2">2</td>
+          <td class="num" data-sort="1092">1,092</td>
+          <td class="num" data-sort="2646">$2,646</td>
+          <td data-sort="2026-11-12">2026-11-12</td>
+          <td>
+            <a href="https://vue22apts.securecafe.com/onlineleasing/vue-22-apartments/oleapplication.aspx?stepname=RentalOptions&amp;myOlePropertyId=1282523&amp;FloorPlanID=3526491&amp;UnitID=27971399&amp;MoveInDate=11/12/2026&amp;PropLeadSource_1282523=portal" target="_blank" rel="noopener">View</a>
+          </td>
+        </tr>
+        
+        <tr
+          data-community="Vue 22 Apartments"
+          data-bedrooms="2"
+          data-bathrooms="2"
+        >
+          <td>Vue 22 Apartments</td>
+          <td>E-325</td>
+          <td>B1.1</td>
+          <td class="num" data-sort="2">
+            2
+          </td>
+          <td class="num" data-sort="2">2</td>
+          <td class="num" data-sort="814">814</td>
+          <td class="num" data-sort="2680">$2,680</td>
+          <td data-sort="Available">Available</td>
+          <td>
+            <a href="https://vue22apts.securecafe.com/onlineleasing/vue-22-apartments/oleapplication.aspx?stepname=RentalOptions&amp;myOlePropertyId=1282523&amp;FloorPlanID=3530561&amp;UnitID=27971468&amp;MoveInDate=10/27/2026&amp;PropLeadSource_1282523=portal" target="_blank" rel="noopener">View</a>
+          </td>
+        </tr>
+        
+        <tr
+          data-community="Vue 22 Apartments"
+          data-bedrooms="2"
+          data-bathrooms="2"
+        >
+          <td>Vue 22 Apartments</td>
+          <td>N-315</td>
+          <td>B3</td>
+          <td class="num" data-sort="2">
+            2
+          </td>
+          <td class="num" data-sort="2">2</td>
+          <td class="num" data-sort="931">931</td>
+          <td class="num" data-sort="2875">$2,875</td>
+          <td data-sort="Available">Available</td>
+          <td>
+            <a href="https://vue22apts.securecafe.com/onlineleasing/vue-22-apartments/oleapplication.aspx?stepname=RentalOptions&amp;myOlePropertyId=1282523&amp;FloorPlanID=3526511&amp;UnitID=27971521&amp;MoveInDate=10/27/2026&amp;PropLeadSource_1282523=portal" target="_blank" rel="noopener">View</a>
+          </td>
+        </tr>
+        
+        <tr
+          data-community="Vue 22 Apartments"
+          data-bedrooms="2"
+          data-bathrooms="2"
+        >
+          <td>Vue 22 Apartments</td>
+          <td>W-575</td>
+          <td>B8</td>
+          <td class="num" data-sort="2">
+            2
+          </td>
+          <td class="num" data-sort="2">2</td>
+          <td class="num" data-sort="1028">1,028</td>
+          <td class="num" data-sort="3197">$3,197</td>
+          <td data-sort="Available">Available</td>
+          <td>
+            <a href="https://vue22apts.securecafe.com/onlineleasing/vue-22-apartments/oleapplication.aspx?stepname=RentalOptions&amp;myOlePropertyId=1282523&amp;FloorPlanID=3526516&amp;UnitID=27971825&amp;MoveInDate=10/27/2026&amp;PropLeadSource_1282523=portal" target="_blank" rel="noopener">View</a>
+          </td>
+        </tr>
+        
+        <tr
+          data-community="Vue 22 Apartments"
+          data-bedrooms="2"
+          data-bathrooms="2"
+        >
+          <td>Vue 22 Apartments</td>
+          <td>S-767</td>
+          <td>B7</td>
+          <td class="num" data-sort="2">
+            2
+          </td>
+          <td class="num" data-sort="2">2</td>
+          <td class="num" data-sort="1015">1,015</td>
+          <td class="num" data-sort="3204">$3,204</td>
+          <td data-sort="2026-11-07">2026-11-07</td>
+          <td>
+            <a href="https://vue22apts.securecafe.com/onlineleasing/vue-22-apartments/oleapplication.aspx?stepname=RentalOptions&amp;myOlePropertyId=1282523&amp;FloorPlanID=3526515&amp;UnitID=27971754&amp;MoveInDate=11/7/2026&amp;PropLeadSource_1282523=portal" target="_blank" rel="noopener">View</a>
+          </td>
+        </tr>
+        
+        <tr
+          data-community="Vue 22 Apartments"
+          data-bedrooms="2"
+          data-bathrooms="2"
+        >
+          <td>Vue 22 Apartments</td>
+          <td>N-731</td>
+          <td>B5</td>
+          <td class="num" data-sort="2">
+            2
+          </td>
+          <td class="num" data-sort="2">2</td>
+          <td class="num" data-sort="976">976</td>
+          <td class="num" data-sort="3214">$3,214</td>
+          <td data-sort="Available">Available</td>
+          <td>
+            <a href="https://vue22apts.securecafe.com/onlineleasing/vue-22-apartments/oleapplication.aspx?stepname=RentalOptions&amp;myOlePropertyId=1282523&amp;FloorPlanID=3526513&amp;UnitID=27971644&amp;MoveInDate=10/27/2026&amp;PropLeadSource_1282523=portal" target="_blank" rel="noopener">View</a>
+          </td>
+        </tr>
+        
+        <tr
+          data-community="Vue 22 Apartments"
+          data-bedrooms="2"
+          data-bathrooms="2"
+        >
+          <td>Vue 22 Apartments</td>
+          <td>S-566</td>
+          <td>B17</td>
+          <td class="num" data-sort="2">
+            2
+          </td>
+          <td class="num" data-sort="2">2</td>
+          <td class="num" data-sort="1151">1,151</td>
+          <td class="num" data-sort="3316">$3,316</td>
+          <td data-sort="Available">Available</td>
+          <td>
+            <a href="https://vue22apts.securecafe.com/onlineleasing/vue-22-apartments/oleapplication.aspx?stepname=RentalOptions&amp;myOlePropertyId=1282523&amp;FloorPlanID=3526591&amp;UnitID=27971723&amp;MoveInDate=10/27/2026&amp;PropLeadSource_1282523=portal" target="_blank" rel="noopener">View</a>
+          </td>
+        </tr>
+        
+        <tr
+          data-community="Vue 22 Apartments"
+          data-bedrooms="2"
+          data-bathrooms="2"
+        >
+          <td>Vue 22 Apartments</td>
+          <td>W-579</td>
+          <td>B5</td>
+          <td class="num" data-sort="2">
+            2
+          </td>
+          <td class="num" data-sort="2">2</td>
+          <td class="num" data-sort="976">976</td>
+          <td class="num" data-sort="3379">$3,379</td>
+          <td data-sort="Available">Available</td>
+          <td>
+            <a href="https://vue22apts.securecafe.com/onlineleasing/vue-22-apartments/oleapplication.aspx?stepname=RentalOptions&amp;myOlePropertyId=1282523&amp;FloorPlanID=3526513&amp;UnitID=27971828&amp;MoveInDate=10/27/2026&amp;PropLeadSource_1282523=portal" target="_blank" rel="noopener">View</a>
+          </td>
+        </tr>
+        
+        <tr
+          data-community="Vue 22 Apartments"
+          data-bedrooms="2"
+          data-bathrooms="2"
+        >
+          <td>Vue 22 Apartments</td>
+          <td>S-655</td>
+          <td>B10</td>
+          <td class="num" data-sort="2">
+            2
+          </td>
+          <td class="num" data-sort="2">2</td>
+          <td class="num" data-sort="1055">1,055</td>
+          <td class="num" data-sort="3541">$3,541</td>
+          <td data-sort="2026-11-07">2026-11-07</td>
+          <td>
+            <a href="https://vue22apts.securecafe.com/onlineleasing/vue-22-apartments/oleapplication.aspx?stepname=RentalOptions&amp;myOlePropertyId=1282523&amp;FloorPlanID=3526517&amp;UnitID=27971730&amp;MoveInDate=11/7/2026&amp;PropLeadSource_1282523=portal" target="_blank" rel="noopener">View</a>
+          </td>
+        </tr>
+        
+      </tbody>
+    </table>
+  </div>
+</section>
+
+</main>
+
+    <footer class="footer">
+      <a
+        class="footer__github"
+        href="https://github.com/JKomskis/Apartment-Scraper"
+        target="_blank"
+        rel="noopener"
+        >GitHub</a
+      >
+      <p>
+        Generated from 114 snapshot(s)
+        (2026-07-05 to
+        2026-10-27) · 2026-10-27T14:24:45.292Z
+      </p>
+    </footer>
+
+    
+    <script>
+      window.SNAPSHOT_DATA = {"bedroomOptions":["all","Studio","1 BR","2 BR","3 BR"],"byBedroom":{"all":{"communityLabels":["Avalon Esterra Park","Vue 22 Apartments","Bell Overlake Apartments","AVA Esterra Park","Avalon Redmond Campus"],"communityCounts":[28,28,26,21,15],"bedroomLabels":["Studio","1 BR","2 BR","3 BR"],"bedroomCounts":[20,65,26,7],"bedroomAvgRent":[2009,2261,3350,4439],"histogram":{"labels":["$1,500–1,750","$1,750–2,000","$2,000–2,250","$2,250–2,500","$2,500–2,750","$2,750–3,000","$3,000–3,250","$3,250–3,500","$3,500–3,750","$3,750–4,000","$4,000–4,250","$4,250–4,500","$4,500–4,750"],"counts":[3,15,31,28,6,4,6,13,3,0,3,2,4]}},"Studio":{"communityLabels":["Bell Overlake Apartments","Avalon Esterra Park","AVA Esterra Park","Avalon Redmond Campus","Vue 22 Apartments"],"communityCounts":[8,5,4,2,1],"bedroomLabels":["Studio"],"bedroomCounts":[20],"bedroomAvgRent":[2009],"histogram":{"labels":["$1,500–1,750","$1,750–2,000","$2,000–2,250","$2,250–2,500"],"counts":[3,6,7,4]}},"1 BR":{"communityLabels":["Vue 22 Apartments","Avalon Esterra Park","Bell Overlake Apartments","AVA Esterra Park","Avalon Redmond Campus"],"communityCounts":[19,16,14,11,5],"bedroomLabels":["1 BR"],"bedroomCounts":[65],"bedroomAvgRent":[2261],"histogram":{"labels":["$1,750–2,000","$2,000–2,250","$2,250–2,500","$2,500–2,750","$2,750–3,000","$3,000–3,250"],"counts":[9,24,24,5,2,1]}},"2 BR":{"communityLabels":["Vue 22 Apartments","AVA Esterra Park","Avalon Esterra Park","Avalon Redmond Campus","Bell Overlake Apartments"],"communityCounts":[8,6,4,4,4],"bedroomLabels":["2 BR"],"bedroomCounts":[26],"bedroomAvgRent":[3350],"histogram":{"labels":["$2,500–2,750","$2,750–3,000","$3,000–3,250","$3,250–3,500","$3,500–3,750","$3,750–4,000","$4,000–4,250"],"counts":[1,2,5,13,3,0,2]}},"3 BR":{"communityLabels":["Avalon Redmond Campus","Avalon Esterra Park"],"communityCounts":[4,3],"bedroomLabels":["3 BR"],"bedroomCounts":[7],"bedroomAvgRent":[4439],"histogram":{"labels":["$4,000–4,250","$4,250–4,500","$4,500–4,750"],"counts":[1,2,4]}}}};
+    </script>
+    
+  </body>
+</html>
